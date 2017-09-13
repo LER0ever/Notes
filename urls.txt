@@ -131,46 +131,46 @@ http://wiz.rongyi.ml/posts/19.html
 http://wiz.rongyi.ml/posts/20.html
 http://wiz.rongyi.ml/posts/21.html
 http://wiz.rongyi.ml/posts/22.html
+http://wiz.rongyi.ml/tags/CS354.html
 http://wiz.rongyi.ml/tags/CS559.html
-http://wiz.rongyi.ml/tags/Lumos.html
-http://wiz.rongyi.ml/tags/Econ102.html
-http://wiz.rongyi.ml/tags/Math240.html
-http://wiz.rongyi.ml/tags/Psych202.html
+http://wiz.rongyi.ml/tags/CNNs.html
+http://wiz.rongyi.ml/tags/CS252.html
+http://wiz.rongyi.ml/tags/NS132.html
+http://wiz.rongyi.ml/tags/Kines100.html
+http://wiz.rongyi.ml/tags/CS367.html
+http://wiz.rongyi.ml/tags/ESL118.html
 http://wiz.rongyi.ml/tags/Math320.html
 http://wiz.rongyi.ml/tags/CS540.html
-http://wiz.rongyi.ml/tags/CS252.html
-http://wiz.rongyi.ml/tags/Kines100.html
-http://wiz.rongyi.ml/tags/ESL118.html
-http://wiz.rongyi.ml/tags/CS354.html
+http://wiz.rongyi.ml/tags/Math240.html
 http://wiz.rongyi.ml/tags/CS368.html
-http://wiz.rongyi.ml/tags/Bio101.html
-http://wiz.rongyi.ml/tags/CNNs.html
-http://wiz.rongyi.ml/tags/NS132.html
-http://wiz.rongyi.ml/tags/CS367.html
 http://wiz.rongyi.ml/tags/Test.html
-http://wiz.rongyi.ml/category/ESL118.html
-http://wiz.rongyi.ml/category/CS540.html
-http://wiz.rongyi.ml/category/Economics.html
-http://wiz.rongyi.ml/category/Nutritional Science.html
-http://wiz.rongyi.ml/category/Psych202.html
-http://wiz.rongyi.ml/category/Psychology.html
-http://wiz.rongyi.ml/category/Kinesiology.html
-http://wiz.rongyi.ml/category/CS367.html
-http://wiz.rongyi.ml/category/Test.html
-http://wiz.rongyi.ml/category/Deep Learning.html
-http://wiz.rongyi.ml/category/CS252.html
-http://wiz.rongyi.ml/category/Econ102.html
-http://wiz.rongyi.ml/category/NS132.html
-http://wiz.rongyi.ml/category/Math240.html
-http://wiz.rongyi.ml/category/Bio101.html
-http://wiz.rongyi.ml/category/Artificial Intelligence.html
-http://wiz.rongyi.ml/category/Computer Science.html
-http://wiz.rongyi.ml/category/CS354.html
-http://wiz.rongyi.ml/category/Math.html
-http://wiz.rongyi.ml/category/CS559.html
+http://wiz.rongyi.ml/tags/Lumos.html
+http://wiz.rongyi.ml/tags/Econ102.html
+http://wiz.rongyi.ml/tags/Psych202.html
+http://wiz.rongyi.ml/tags/Bio101.html
 http://wiz.rongyi.ml/category/CS368.html
 http://wiz.rongyi.ml/category/Website.html
+http://wiz.rongyi.ml/category/Deep Learning.html
+http://wiz.rongyi.ml/category/Computer Science.html
+http://wiz.rongyi.ml/category/Economics.html
+http://wiz.rongyi.ml/category/Psychology.html
+http://wiz.rongyi.ml/category/CS559.html
 http://wiz.rongyi.ml/category/Go.html
-http://wiz.rongyi.ml/category/Kines100.html
-http://wiz.rongyi.ml/category/Biology.html
+http://wiz.rongyi.ml/category/Artificial Intelligence.html
+http://wiz.rongyi.ml/category/CS252.html
+http://wiz.rongyi.ml/category/Nutritional Science.html
+http://wiz.rongyi.ml/category/Math240.html
+http://wiz.rongyi.ml/category/Kinesiology.html
 http://wiz.rongyi.ml/category/Math320.html
+http://wiz.rongyi.ml/category/Psych202.html
+http://wiz.rongyi.ml/category/Kines100.html
+http://wiz.rongyi.ml/category/CS367.html
+http://wiz.rongyi.ml/category/Bio101.html
+http://wiz.rongyi.ml/category/Math.html
+http://wiz.rongyi.ml/category/Biology.html
+http://wiz.rongyi.ml/category/ESL118.html
+http://wiz.rongyi.ml/category/Test.html
+http://wiz.rongyi.ml/category/CS540.html
+http://wiz.rongyi.ml/category/Econ102.html
+http://wiz.rongyi.ml/category/CS354.html
+http://wiz.rongyi.ml/category/NS132.html
