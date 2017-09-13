@@ -1,0 +1,251 @@
+<!doctype html><head lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>Page 17 - L.E.R Wiz</title><meta name=format-detection content="telephone=no"><script>if(self!=top){top.location=this.location.href;}</script><meta name=keywords content="LER0ever,L.E.R,Yi Rong,blog,L.E.R Space,Lumos,Wiz"><meta name=description content="L.E.R Space, a magical personal website by Yi Rong"><link rel=icon href=/favicon.ico><link rel="shortcut icon" href=/favicon.ico><link rel=stylesheet id=font-style-css href=/css/fonts-google.css><link rel=stylesheet id=fancybox-css href=/css/jquery.fancybox-1.3.4.css><link rel=stylesheet id=cr-style-css href=/css/style.css><link rel=stylesheet href=/css/hljs/monokai-sublime.css><script src=/js/jquery.min.js></script><script src=/js/jquery-migrate.min.js></script><script type=text/x-mathjax-config>
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script><script async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><body class="home post-list"><div id=wrapper><header id=branding><div class="wrapper clearfix"><div class="hgroup-wrap clearfix"><div class=hgroup-right><div class="social-profiles clearfix"><ul></ul></div><form class="searchform clearfix"><label class=assistive-text for=s>Search</label>
+<input id=searchbox placeholder=Search class="s field" name=s></form></div><div id=site-logo class=clearfix><h3 id=site-title><a href=http://wiz.yirong.ml title="L.E.R Wiz" rel=home>L.E.R Wiz</a></h3><h4 id=site-description>All Ways Forward @ UW-Madison</h4></div></div><nav id=access class=clearfix><ul class=root><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/>Home</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/academics>My Academics</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/sn>Contact Me</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/archive>Archive</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=http://yirong.ml target=_blank>L.E.R Space</a><li class=default-menu><a href=https://etasry.ml title=Navigation>Navigation</a></ul></nav></div></header><div id=main class="site-main wrapper clearfix"><div class=container><div id=primary class=no-margin-left><div id=content><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS367-Introduction To Data Structures 15</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
+<span class="date updated"><a href=/2016/11/8/cs367-introtods15.html title="November 8, 2016">November 8, 2016</a></span>
+<span class=category><a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;
+<a href=/category/CS367.html rel="category tag">CS367</a>;</span>
+<span class=category>Tags
+<a href=/tags/CS367.html rel="category tag">#CS367</a></span>
+<span class=comments><a href>Comments are closed</a></span></div></header><h4 id=bstnode-class>BSTnode Class</h4><pre><code class=language-java>class BSTnode&lt;K&gt; {
+    private K key;index
+    private BSTnode&lt;K&gt; left, right;
+    public BSTnode(K key, BSTnode&lt;K&gt; left, BSTnode&lt;K&gt; right) {
+        this.key = key;
+        this.left = left;
+        this.right = right;
+    }
+    public K getKey() { return key; }
+    public BSTnode&lt;K&gt; getLeft() { return left; }
+    public BSTnode&lt;K&gt; getRight() { return right; }
+    public void setKey(K newK) { key = newK; }
+    public void setLeft(BSTnode&lt;K&gt; newL) { left = newL; }
+    public void setRight(BSTnode&lt;K&gt; newR) { right = newR; }
+}
+
+</code></pre><h2 id=bst-class>BST Class</h2><pre><code class=language-java>import java.io.*; //for PrintStream
+public class BST&lt;K extends Comparable&lt;K&gt;&gt; {
+    private BSTnode&lt;K&gt; root;
+    public BST() { root = null; }
+    public void insert(K key) throws DuplicateException {
+        root = insert(root, key);
+    }
+    public void delete(K key) {
+        root = delete(root, key);
+    }
+    public boolean lookup(K key) {
+        return lookup(root, key); //AKA Search in P4
+    }
+    public void print(PrintStream p) {
+        print(root, p);
+    }
+    //add helpers ...
+
+}
+</code></pre><h2 id=implementing-print>Implementing Print</h2><h4 id=complete-the-print-method-based-on-the-recursive-definition> Complete the print method based on the recursive definition</h4><pre><code class=language-java>public void print( PrintStream p ) { print( root, p ); }
+private void print( BSTnode&lt;K&gt; n, PrintStream p ) {
+    if (n == null) return;
+    else {
+        print(n.getLeft(), p); //L
+        p.println(n.getKey()); //V
+        print(n.getRight(), p); //R
+    }
+}
+</code></pre><h2 id=implementing-lookup-and-insert>Implementing <code>Lookup</code> and <code>Insert</code></h2><h4 id=pseudo-code-algorithm-for-lookup>Pseudo-Code Algorithm for lookup</h4><pre><code>private boolean lookup(BSTnode&lt;K&gt; n, K key) {
+    if n is null, return false;
+    if n's key equals key, return true;
+    if n's key is larger than key, return lookup n's left subtree
+    else return lookup n's right subtree
+}
+</code></pre><h4 id=high-level-algorithm-for-insert>High-Level Algorithm for insert</h4><pre><code>private BSTnode&lt;K&gt; insert(BSTnode&lt;K&gt; n, K key) throws DuplicateException {
+    Search down tree as in lookup
+    if we find a node with same key
+        throw DuplicateException
+    There will be a point where search ends
+    When we reach that point
+        we will insert a new leaf node
+}
+</code></pre><h2 id=inserting-into-a-bst>Inserting into a BST</h2><h4 id=what-is-the-shape-of-a-bst-when-values-are-inserted-in-sorted-order>What is the shape of a BST when values are inserted in sorted order?</h4><p>A Line<h4 id=will-you-get-a-bad-shape-only-if-values-are-inserted-in-sorted-order>Will you get a bad shape only if values are inserted in sorted order?</h4><p>No： 11， 53， 22， 44， 33<p><strong>The order if a BSTree deoebds upon the order of inserts and delete</strong><ul><li>Unbalanced does not give O(logN) complexity<li>Balanced does give O(H) complexity, where h is height of the tree</ul><h2 id=implementing-delete>Implementing <code>delete</code></h2><h4 id=high-level-algorithm>High-Level Algorithm</h4><pre><code>private BSTnode&lt;K&gt; delete( BSTnode&lt;K&gt; n, K key ) {
+    Search down the tree as in loopup
+    if n is null, return null
+    if n's key equals key //FOUND --&gt; must remove
+    ..Action depends upon n's left and right children
+
+    //Case 1: n has no children, AKA leaf node.
+    nulink n from its parents, by setting appropriate child of p to null
+
+    //Case 2: n has one child
+    Delete n by setting appropriate child of parent to n's child
+    
+    //Case 3: n has two children
+    Sol: find a replacement value for n in either left or right subtree
+    //(reading -- chooses smallest of right subtree)
+    Copy k, v from replacement node
+    delete key from that subtree
+}
+</code></pre><h4 id=how-do-you-delete-50-or-30-from-the-above-tree>How do you delete 50 or 30 from the above tree</h4><ol><li>largest value on left subtree or smallest value on right subtree<li>delete the &ldquo;new&rdquo; key from the correct subtree</ol><p><strong>Key Concept: find a replacement for n&rsquo;s key instead of lots of relinking</strong><p>Delete 30 from the tree above using the inorder predecessor 20<br>Delete 50 from the tree above using the inorder sucessor 60<h2 id=complexity-of-bst-method>Complexity of BST Method</h2><ul><li>N: number of nodes<li>print: O(N)<li>lookup, insert, delete: O(H)</ul><p>H is the height of the tree<br>roughtly O(logN) if tree is Balanced<br>O(N) if tree is not balanced :</p><a class=readmore href=/2016/11/8/cs367-introtods15.html title="CS367-Introduction To Data Structures 15">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS367-Introduction To Data Structures 14</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
+<span class="date updated"><a href=/2016/11/3/cs367-introtods14.html title="November 3, 2016">November 3, 2016</a></span>
+<span class=category><a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;
+<a href=/category/CS367.html rel="category tag">CS367</a>;</span>
+<span class=category>Tags
+<a href=/tags/CS367.html rel="category tag">#CS367</a></span>
+<span class=comments><a href>Comments are closed</a></span></div></header><h2 id=tower-of-hanoi>Tower of hanoi</h2><h4 id=algorithm>Algorithm</h4><pre><code>solveTowers(count, src, dest, spare){
+    if (count == 1) move src to dest;
+    else {
+        solveTowers(count - 1, src, spare, dest);
+        solveTowers(1, src, dest, spare);
+        solveTowers(count - 1, spare, dest, src);
+    }
+}
+</code></pre><h4 id=complexity>Complexity</h4><p><strong>Problem Size N is</strong><br>Num of Disks<br><strong>1. Equation</strong><br>T(1) = 1<br>T(N) = T(N-1) + T(1) + T(N-1) = 2T(N-1) + 1<br><strong>2.Table</strong><br>&hellip;<br>2^k - 1
+<strong>3. Verify</strong><br>T(N) = 2T(N-1) + 1<br>2^k-1 = 2 * (2^(N-1) -1) + 1<h2 id=picking-lottery-numbers>Picking Lottery Numbers</h2><ul><li>order does not matter<li>duplicates not allowed<li><p>combination matters, not permutation<h4 id=n-choose-k>N Choose K</h4><p>N: Number to choose from
+K: Number of items in a combination<h4 id=recursive-definition>Recursive Definition</h4><p>c(n,k) = c(n-1, k-1) + c(n-1, k)<br>with fav # in case<h4 id=base-cases>Base cases</h4><p>c(n, k) = 0 when k &gt; n // no comb solves
+c(n, k) = 1 when k = n // one comb - all numbers
+c(n, k) = 1 when k = 0 // empty set - no pick</ul><h4 id=recursive-case>Recursive case</h4><p>for c(n-1, k-1), we eventually reach k = 0<br>for (n-1, k) we eventually reach<h4 id=implement-the-c-n-k>Implement the c(n,k)</h4><pre><code>int c(int n, int k) {
+    if (k&gt;n) return 0;
+    if (k==0 || k==n) return 1;
+    return c(n-1, k-1) + c(n-1, k);
+}
+</code></pre><p>T(N) = n!/k!(n-k)!<h2 id=searching>Searching</h2><p><strong>N - Num of items in a list</strong><h4 id=linear-search>Linear Search</h4><ul><li>search one by one<li>the list can be unsorted</ul><pre><code>boolean LinSearch(ListADT L, int pos, E x) {
+    if (pos &gt;= L.size()) return false;
+    if (x.equals(L.get(pos))) return true;
+    return LinSearch(L, pos+1, x);
+}
+</code></pre><h4 id=binary-search>Binary search</h4><ul><li>Divide &amp; Conquer<li>Require a sorted list</ul><pre><code>boolean BinSearch(L, first, last, x) {
+    if (first &gt; last) return false;
+    int center = (first + last)/2.
+    if (x.equals(L.get(center))) return true;
+    if (x.compareTo(L.get(center))) &lt; 0)
+        return BinSearch(L, first, center-1, x);
+    else
+        return BinSearch(L, center+1, last, x);
+}
+</code></pre><h2 id=categorising-adt-part-1>Categorising ADT Part 1</h2><ul><li>Linear ADT<ul><li>list<li>stack<li>queue</ul></ul><p>bext.prev relationship, 1 processor, 1 successor<ul><li>Hierarchical<ul><li>Tree</ul></ul><p>parent/child relationship, 1 processor, multiple successor<ul><li>Graphical<ul><li>graph</ul></ul><p>pairwise relationship, 1 or more processors, 1 or more successors<h2 id=general-tree>General Tree</h2><ul><li>each node can store an arbitrary number of child</ul><p>Treenode
+data -&gt;
+children -&gt; treenode<h2 id=determining-height-of-a-general-tree>Determining Height of a General Tree</h2><h4 id=writing-a-recursive-definition-for-the-height-of-a-general-tree>writing a recursive definition for the height of a general tree</h4><p>height(t) = 0 if t is null<br>height = 1 if t is a leaf<br>height = 1 + max(height of children)<pre><code class=language-java>public int height() {
+    
+}
+private int height(Treenode&lt;T&gt; t) {
+    if (t == null) return 0;
+    if (t.getChildren().size() == 0) return 1;
+    
+    // get max height of all children
+    int max = 0;
+    for (Treenode&lt;T&gt; child: t.getChildren()) {
+        int h = height(child);
+        IF (h &gt; max) max = h;
+    }
+    reture 1+max;
+}
+</code></pre><h2 id=binary-tree>Binary Tree</h2><h4 id=each-node-has-at-most-two-children>Each node has at most two children</h4><blockquote><p>//TODO: Arrange notes</blockquote><p>get/set method<h2 id=tree-traversal>Tree Traversal</h2><h4 id=goal-visit-every-node-in-the-tree-exactly-once>Goal: visit every node in the tree exactly once</h4><ul><li>V - visit -- do something with the nodes data<li>C - children -- traverse the children (left to right)<li>L - Left child -- traverse the left child<li>R - right child -- traverse the right child</ul><h4 id=level-order>Level order</h4><p>Top to bottom
+Left to right<h4 id=pre-order>Pre-order</h4><p>VLR (VC)<h4 id=post-order>Post-order</h4><p>LRV (CV)<h4 id=in-order>In-order</h4><p>LVR<h2 id=categorising-adt-part-2>Categorising ADT part 2</h2><p>Position-oriented ADTs: add, remove, lookup by position
+List stack, queue
+Value-oriented ADTs: operation occur at a specific based on the items value
+Sorted List: name determines the position to add remove, lookup
+MapADT - key-value pair
+* in 367, we only focus on the keys
+* we assume that you can get the value from the key<h2 id=binary-search-tree>Binary Search Tree</h2><p>Value-Oriented - Duplicates are not allowed<h4 id=goal>Goal</h4><ul><li>Fast lookup<li>Insert<li>Remove</ul><p><strong>BST are not guaranteed to be ideal shape</strong><p>for each node N having a key value K, L &lt; K for a very node in the left subtree of N, R is greater than K for every node in the right subtree of N</p><a class=readmore href=/2016/11/3/cs367-introtods14.html title="CS367-Introduction To Data Structures 14">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS367-Introduction To Data Structures 12</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
+<span class="date updated"><a href=/2016/10/13/cs367-introtods12.html title="October 13, 2016">October 13, 2016</a></span>
+<span class=category><a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;
+<a href=/category/CS367.html rel="category tag">CS367</a>;</span>
+<span class=category>Tags
+<a href=/tags/CS367.html rel="category tag">#CS367</a></span>
+<span class=comments><a href>Comments are closed</a></span></div></header><h2 id=stack-adt>Stack ADT</h2><h4 id=operation>Operation</h4><ul><li>push(E item)<li>E pop()<li>E peak()<li>boolean isEmpty()</ul><h4 id=implementing-using-an-array>Implementing using an array</h4><p><strong>Top at index</strong>
+Push: O(N)<br>Pop: O(N)<br>Peak: O(1) //must shift<br><strong>Top at numItem</strong><br>Push: O(1) Pop: O(1)<br>Peak O(1) //top = numItem -1<h4 id=implementing-using-a-chain-of-nodes>Implementing using a chain of nodes</h4><p><strong>if top = head</strong><br>Push: O(1)<br>Pop: O(1)<br>Peak: O(1) //top=head<br><strong>top = tail</strong><br>Push: O(1)<br>Pop: O(N)//update tail<br>Peak: O(1)<br><strong>top at end, no tail</strong><br>Push: O(N)<br>Pop: O(N)<br>Peak: O(N)<h2 id=queue-adt>Queue ADT</h2><h4 id=concepts>Concepts</h4><p>Like a checkout line. First in First out<h4 id=operations>Operations</h4><p>(present traditional names)<ul><li>void enqueue(E item) // add<li>E dequeue() // remove<li>boolean isEmpty()</ul><h4 id=implementing-using-a-chain-of-nodes-1>Implementing using a chain of nodes</h4><p><strong>Option 1: front of queue is at head, rear of queue is at tail</strong><ul><li>Enqueue: O(1)<li>Dequeue: O(1)</ul><p><strong>front of queue is at tail, rear of queue is at head</strong><ul><li>Enqueue: O(1)<li>Dequeue: O(N)</ul><h4 id=implementing-using-an-array-1>Implementing using an array</h4><p><strong>Option 1: front of queue is at 0, rear of queue is at n-1</strong><ul><li>Enqueue: O(1)<li>Dequeue: O(N)</ul><p><strong>Option 2: front of queue at numItem -1, rear of queue at 0</strong><ul><li>Enqueue: O(N)<li>Dequeue: O(1)</ul><p><strong>Option 3: front of queue at first item, rear of queue at last item</strong><ul><li>Enqueue: O(1)<li>Dequeue: O(1)</ul><pre><code class=language-java>private int incrementIndex(int i){
+    if (i == items.length - 1)
+        return 0;
+    return i++
+}
+</code></pre><h2 id=implementing-using-circular-array>Implementing using Circular Array</h2><h4 id=concepts-1>Concepts</h4><p>using free elements at front of array<br>Only expand if all elements used<h4 id=enqueue-e-item>Enqueue (E item)</h4><pre><code class=language-java>if (numItems == items.length)
+    expand();
+R = incrementIndex(R);
+items[R] = item;
+numItems ++;
+</code></pre><h4 id=e-dequeue>E Dequeue()</h4><pre><code class=language-java>if (numItems &lt;= 0)
+    throw new EmptyQueueException();
+E temp = items[F];
+F = incrementIndex(F);
+return temp;
+</code></pre><h4 id=expand>Expand()</h4><p>System.<strong>ArrayCopy</strong>(q(source), F(srcPos), newQ(dest), Q(destPos), length)<pre><code class=language-java>
+</code></pre><h2 id=end-of-exam-1>End of exam 1</h2><h2 id=tree-terminology>Tree Terminology</h2><blockquote><p>outlineW6R -3</blockquote><ol><li>Root: H<br><li>How many leaves: 4, EFDI<li>3<li>B<li>2<li>G<li>6<li>A, H<li>3<li>5<li>4</ol><h2 id=priority-queue-adt>Priority Queue ADT</h2><p>store items - so they can be remove in order of hiest priority<h4 id=priority>Priority</h4><ul><li>each item is assigned a priority value<li>allow duplicated priority<li>highest priority is smallest (or largest) value (just be clear which it is)</ul><h4 id=concepts-2>Concepts</h4><p>Items are removed in order of their priority<p><strong>Goal</strong>: Fast acces to highest priority<h4 id=operation-1>Operation</h4><ul><li>void insert(comparable item)<li>comparable removeMax()<li>comparable getMax()<li>boolean isEmpty()</ul><a class=readmore href=/2016/10/13/cs367-introtods12.html title="CS367-Introduction To Data Structures 12">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS367-Introduction To Data Structures 11</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
+<span class="date updated"><a href=/2016/10/11/cs367-introtods11.html title="October 11, 2016">October 11, 2016</a></span>
+<span class=category><a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;
+<a href=/category/CS367.html rel="category tag">CS367</a>;</span>
+<span class=category>Tags
+<a href=/tags/CS367.html rel="category tag">#CS367</a></span>
+<span class=comments><a href>Comments are closed</a></span></div></header><h2 id=number-guessing-game>Number Guessing Game</h2><h6 id=linear-search>Linear Search</h6><ul><li>O(N) W.C.<li>O(1) B.C.<li>O(N/2) A.C.</ul><h6 id=binary-search>Binary Search</h6><p>7 Guess for N &lt; 100<h2 id=complexity-caveats>Complexity Caveats</h2><h4 id=small-problem-size>Small Problem Size</h4><p>Complexity analysis is not a good basic for choosing an algorithm when the problem size is small<br>T(N) = N^2 + 3<br>T(N) = 10 * N + 30<h4 id=same-complexity-or-dominant-operations>Same Complexity (or dominant operations)</h4><ul><li>look at multiplication constant<li>look at lower order terms<li>look at the amount of memory<li>look at expected problem size</ul><h2 id=returning-n-paper-to-n-students>Returning N Paper to N students</h2><h4 id=algorithm-1>Algorithm 1:</h4><p>call out each name,<br>have student come forward &amp; pick up<br>O(2N)<br>Best Case: O(N)<br>Worst Case: O(N)<h4 id=algorithm-2>Algorithm 2:</h4><p>hand pile to first student,<br>student linearly searches through papers &amp; takes hers/his,<br>pass pile to next student who does likewise<br>O(N^2) Quadratic<h4 id=algorithm-3>Algorithm 3:</h4><p>sort the papers alphabetically, O(NlogN)<br>hand pile to first student who does binary search, &lt; NlogN<br>pass to next student who does likewise<br>O(2NlogN) ==&gt; O(NlogN)<h2 id=shadow-array>Shadow Array</h2><ul><li>if items is full, expand shadow<ol><li>create new arr 2x shadow<li>reassign items to shadow (item = shadow)<li>reassign shadow to new array (shadow = newarray)<li>place new item in items<li>place new item in shadow array<li>copy one item from items to shadow</ol></ul><p>All Constant time, O(6)<br>We add to array (w/shadow) is O(1) constant<h2 id=stack-adt>Stack ADT</h2><h4 id=operation>Operation</h4><ul><li>push(E item)<li>E pop()<li>E peak()<li>boolean isEmpty()</ul><a class=readmore href=/2016/10/11/cs367-introtods11.html title="CS367-Introduction To Data Structures 11">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS367-Introduction To Data Structures 10</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
+<span class="date updated"><a href=/2016/10/4/cs367-introtods10.html title="October 4, 2016">October 4, 2016</a></span>
+<span class=category><a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;
+<a href=/category/CS367.html rel="category tag">CS367</a>;</span>
+<span class=category>Tags
+<a href=/tags/CS367.html rel="category tag">#CS367</a></span>
+<span class=comments><a href>Comments are closed</a></span></div></header><table><thead><tr><th align=center>T(N) = n+2<th align=center>f(N) = N<th align=center>C=2, cxf(N)<tbody><tr><td align=center>T(1) = 3<td align=center>f(1) = 1<td align=center>2<tr><td align=center>T(2) = 4<td align=center>f(2) = 2<td align=center>4<tr><td align=center>T(N) = N+2<td align=center>f(N) = N<td align=center>2N</table><p><strong>Choose the smallest growth rate function that is an upper bound</strong><h2 id=complexity-of-java-code>Complexity of Java Code</h2><h4 id=basic-operation>Basic operation</h4><p>O(1) anything that is not a control statement or method call<h4 id=sequence-os-statement-sum-of-comp-of-each-stmt>Sequence os statement //Sum of comp of each stmt</h4><pre><code>statement1;
+statement2;
+...
+statementk;
+</code></pre><p>O(K) ==&gt; O(1) CONSTANT<h4 id=if-else>If else</h4><pre><code class=language-java>if (cond) {
+    //if sequence of statements
+}
+else {
+    //else sequence of statements
+}
+</code></pre><p>O<br>=O(Cond) + Max(Gif, Gelse)
+=Max(Cond, Gif, Gelse)<p><strong>Pick the block that does most work</strong><h4 id=basic-loop>Basic loop</h4><pre><code class=language-java>for (i = 0; i &lt; j; i++) {
+    //sequence of statements
+}
+</code></pre><p>Repeats J times<br>if O(1) then JxO(1) = O(j)<h4 id=nested-loop>Nested Loop</h4><pre><code class=language-java>for (i = 0; i &lt; N; i++) {
+    for (j = 0; j &lt; M; j++) {
+        //sequence of statements
+    }
+}
+</code></pre><p>N * M * Gbody = O(N * M * Gbody)<br>When doing analysis, keep vars.<h4 id=loops-with-nested-method-calls-assume-problem-size-based-on-n>Loops with nested method calls (assume problem size based on N)</h4><pre><code class=language-java>for (i = 0; i &lt; N; i++) {
+    f1(i); //assume O(1)
+}
+for (i = 0; i &lt; N; i++) {
+    f2(N); //assume O(N)
+}
+for (i = 0; i &lt; N; i++) { // 
+    f3(i); //assume O(i)
+}
+</code></pre><p><strong>Must unroll loop if O dependes on a loop</strong><h2 id=comparing-listadt-implentation>Comparing ListADT Implentation</h2><p>| | Constructor | add(E) | add(E) at pos | contains(E) | size | isEmpty | get(int) | remove(int) |
+| | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--:
+| Array | O(1) | O(N) | O(N) | O(N) Linear Search | O(1) | O(1) | O(1) | O(N) |
+| Single-Linked List | same | O(1) | O(N) | same | O(1) | O(1) | O(N) W.C. O(N/2) A.C O(1) B.C. | O(N) W.C O(N/2) A.C O(1) B.C |
+| Circular SLL | same | same | same | same | O(1) | O(1) | same | same |
+| Double Linked List | same | same | same | same | same | same | same | same |
+| Circular DLL | same | same | same | same | same | same | same | same |<p>expand the array is O(N) lenear for , O(1) for shadowarray<h2 id=comparing-listadt-implementation>Comparing ListADT IMplementation</h2><h4 id=problem-size>Problem Size</h4><p>Each Element(same for all, ignore for today)
+1. Array
+- 2N
+- Shift items
+- Expand array
+- naive
+- shadow
+2. Singly-Linked List
+- 2N
+3. Circular SLL
+- 2N
+4. Doubly-Linked List
+- 3N
+5. Circular DLL
+- 3N<p>At first, getting links correct.<br>Draw pictures of chain of node, keep references to curr, prev</p><a class=readmore href=/2016/10/4/cs367-introtods10.html title="CS367-Introduction To Data Structures 10">Read more</a></article></section><hr><ul class="default-wp-page clearfix"><li class=previous><a href=/posts/16.html>← Prev</a><li class=Next><a href=/posts/18.html>← Next</a></ul></div></div><div id=secondary class="widget-area col-md-4" role=complementary><aside id=toolbox class=widget><h4 class=widget-title>Wisdom never fades</h4><div class=author_bio_message>This is my personal notes website.
+You are welcomed to use it as a reference.
+But do NOT share the link!</div></aside><aside id=recent-posts-2 class="widget widget_recent_entries"><h4 class=widget-title>Recent</h4><ul><li><a href=/2017/9/13/cs540-04.html>CS540-04</a><li><a href=/2017/9/12/cs354-02.html>Econ102-02</a><li><a href=/2017/9/12/cs354-02.html>CS354-02</a><li><a href=/2017/9/11/cs540-03.html>CS540-03 Introduction</a><li><a href=/2017/9/11/cs252-03.html>CS252-03 Binary System</a><li><a href=/2017/9/8/cs540-02.html>CS540-02 Introduction</a><li><a href=/2017/9/8/cs252-02.html>CS252-02 Binary System</a><li><a href=/2017/9/6/cs540-01.html>CS540-01 Introduction</a><li><a href=/2017/9/6/cs252-01.html>CS252-01 Introduction</a><li><a href=/2017/5/10/ns132-3x%20Final%20Review.html>NS132-3x</a></ul></aside><aside id=categories-2 class="widget widget_categories"><h4 class=widget-title>Categories</h4><ul><li class=cat-item><a href=/category/Artificial%20Intelligence.html>Artificial Intelligence</a>(1)<li class=cat-item><a href=/category/Bio101.html>Bio101</a>(5)<li class=cat-item><a href=/category/Biology.html>Biology</a>(5)<li class=cat-item><a href=/category/CS252.html>CS252</a>(3)<li class=cat-item><a href=/category/CS354.html>CS354</a>(1)<li class=cat-item><a href=/category/CS367.html>CS367</a>(23)<li class=cat-item><a href=/category/CS368.html>CS368</a>(1)<li class=cat-item><a href=/category/CS540.html>CS540</a>(4)<li class=cat-item><a href=/category/CS559.html>CS559</a>(5)<li class=cat-item><a href=/category/Computer%20Science.html>Computer Science</a>(57)<li class=cat-item><a href=/category/Deep%20Learning.html>Deep Learning</a>(1)<li class=cat-item><a href=/category/ESL118.html>ESL118</a>(1)<li class=cat-item><a href=/category/Econ102.html>Econ102</a>(1)<li class=cat-item><a href=/category/Economics.html>Economics</a>(1)<li class=cat-item><a href=/category/Go.html>Go</a>(1)<li class=cat-item><a href=/category/Kines100.html>Kines100</a>(3)<li class=cat-item><a href=/category/Kinesiology.html>Kinesiology</a>(3)<li class=cat-item><a href=/category/Math.html>Math</a>(22)<li class=cat-item><a href=/category/Math240.html>Math240</a>(20)<li class=cat-item><a href=/category/Math320.html>Math320</a>(2)<li class=cat-item><a href=/category/NS132.html>NS132</a>(30)<li class=cat-item><a href=/category/Nutritional%20Science.html>Nutritional Science</a>(30)<li class=cat-item><a href=/category/Psych202.html>Psych202</a>(3)<li class=cat-item><a href=/category/Psychology.html>Psychology</a>(3)<li class=cat-item><a href=/category/Test.html>Test</a>(1)<li class=cat-item><a href=/category/Website.html>Website</a>(1)</ul></aside><aside id=tag_cloud-3 class="widget widget_tag_cloud"><h4 class=widget-title>Tags</h4><div class=tagcloud><a href=/tags/Bio101.html class="tag-link tag-link-position" style=font-size:8pt>Bio101</a>
+<a href=/tags/CNNs.html class="tag-link tag-link-position" style=font-size:8pt>CNNs</a>
+<a href=/tags/CS252.html class="tag-link tag-link-position" style=font-size:8pt>CS252</a>
+<a href=/tags/CS354.html class="tag-link tag-link-position" style=font-size:8pt>CS354</a>
+<a href=/tags/CS367.html class="tag-link tag-link-position" style=font-size:8pt>CS367</a>
+<a href=/tags/CS368.html class="tag-link tag-link-position" style=font-size:8pt>CS368</a>
+<a href=/tags/CS540.html class="tag-link tag-link-position" style=font-size:8pt>CS540</a>
+<a href=/tags/CS559.html class="tag-link tag-link-position" style=font-size:8pt>CS559</a>
+<a href=/tags/ESL118.html class="tag-link tag-link-position" style=font-size:8pt>ESL118</a>
+<a href=/tags/Econ102.html class="tag-link tag-link-position" style=font-size:8pt>Econ102</a>
+<a href=/tags/Kines100.html class="tag-link tag-link-position" style=font-size:8pt>Kines100</a>
+<a href=/tags/Lumos.html class="tag-link tag-link-position" style=font-size:8pt>Lumos</a>
+<a href=/tags/Math240.html class="tag-link tag-link-position" style=font-size:8pt>Math240</a>
+<a href=/tags/Math320.html class="tag-link tag-link-position" style=font-size:8pt>Math320</a>
+<a href=/tags/NS132.html class="tag-link tag-link-position" style=font-size:8pt>NS132</a>
+<a href=/tags/Psych202.html class="tag-link tag-link-position" style=font-size:8pt>Psych202</a>
+<a href=/tags/Test.html class="tag-link tag-link-position" style=font-size:8pt>Test</a></div></aside></div></div></div></div><footer id=colophon class=clearfix><div class=wrapper><div id=site-generator class=clearfix><div class=copyright><a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>CC BY-NC-ND 4.0</a> |
+<a href=/feed.xml>Feed</a> |
+<a href=/sitemap.xml>Sitemap</a></div></div><div id=site-generator class=clearfix><div class=copyright>Copyright © 2016-2017 <a href=https://yirong.ml/ title="L.E.R Wiz"><span>L.E.R Wiz</span></a> |
+Powered by: <a href=/portus.html target=_blank title=Lumos><span>Portus Engine 1.3.0</span></a></div></div></div><div class=back-to-top style=display:none><a href=#branding>Back to Top</a></div></footer><div class=search-tool style=position:fixed;top:0;bottom:0;left:0;right:0;opacity:.95;background-color:#111;z-index:9999;display:none><input class="form-control search-content" id=search-content style=position:fixed;top:60px placeholder="文章标题 分类 标签 (L.E.R Wiz 站内搜索)"><div style=position:fixed;top:16px;right:16px><img src=/search/img/close.png id=close-btn></div></div><link rel=stylesheet href=/search/css/search.css><script src=/search/js/bootstrap3-typeahead.min.js></script><script src=/search/js/search.js></script><script src=/js/backtotop.js></script><script src=/js/tinynav.js></script><script src=/js/jquery.cycle.all.min.js></script><script>var cleanretina_slider_value={"transition_effect":"fade","transition_delay":"4000","transition_duration":"1000"};</script><script src=/js/cleanretina-slider-setting.js></script><script src=/js/jquery.fancybox-1.3.4.pack.js></script><script src=/js/cleanretina-custom-fancybox-script.js></script><script src=/js/highlight.pack.js></script><script src=/js/copynotice.js></script><script>hljs.initHighlightingOnLoad();</script>

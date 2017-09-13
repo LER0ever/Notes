@@ -1,0 +1,108 @@
+<!doctype html><head lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>CS367-Introduction To Data Structures 15 - L.E.R Wiz</title><meta name=format-detection content="telephone=no"><script>if(self!=top){top.location=this.location.href;}</script><meta name=keywords content="LER0ever,L.E.R,Yi Rong,blog,L.E.R Space,Lumos,Wiz"><meta name=description content><link rel=icon href=/favicon.ico><link rel="shortcut icon" href=/favicon.ico><link rel=stylesheet id=font-style-css href=/css/fonts-google.css><link rel=stylesheet id=fancybox-css href=/css/jquery.fancybox-1.3.4.css><link rel=stylesheet id=cr-style-css href=/css/style.css><link rel=stylesheet href=/css/hljs/monokai-sublime.css><script src=/js/jquery.min.js></script><script src=/js/jquery-migrate.min.js></script><script type=text/x-mathjax-config>
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script><script async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><body class="home post"><div id=wrapper><header id=branding><div class="wrapper clearfix"><div class="hgroup-wrap clearfix"><div class=hgroup-right><div class="social-profiles clearfix"><ul></ul></div><form class="searchform clearfix"><label class=assistive-text for=s>Search</label>
+<input id=searchbox placeholder=Search class="s field" name=s></form></div><div id=site-logo class=clearfix><h3 id=site-title><a href=http://wiz.yirong.ml title="L.E.R Wiz" rel=home>L.E.R Wiz</a></h3><h4 id=site-description>All Ways Forward @ UW-Madison</h4></div></div><nav id=access class=clearfix><ul class=root><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/>Home</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/academics>My Academics</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/sn>Contact Me</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/archive>Archive</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=http://yirong.ml target=_blank>L.E.R Space</a><li class=default-menu><a href=https://etasry.ml title=Navigation>Navigation</a></ul></nav></div></header><div id=main class="site-main wrapper clearfix"><div class=container><div id=primary class=no-margin-left><div id=content><header class=entry-header><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
+<span class="date updated"><a href=/2016/11/8/cs367-introtods15.html title="November 8, 2016">November 8, 2016</a></span>
+<span class=category><a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;
+<a href=/category/CS367.html rel="category tag">CS367</a>;</span>
+<span class=category>Tags
+<a href=/tags/CS367.html rel="category tag">#CS367</a></span>
+<span class=comments><a href>Comments are welcomed</a></span></div><h1 class=entry-title>CS367-Introduction To Data Structures 15</h1></header><h4 id=bstnode-class>BSTnode Class</h4><pre><code class=language-java>class BSTnode&lt;K&gt; {
+    private K key;index
+    private BSTnode&lt;K&gt; left, right;
+    public BSTnode(K key, BSTnode&lt;K&gt; left, BSTnode&lt;K&gt; right) {
+        this.key = key;
+        this.left = left;
+        this.right = right;
+    }
+    public K getKey() { return key; }
+    public BSTnode&lt;K&gt; getLeft() { return left; }
+    public BSTnode&lt;K&gt; getRight() { return right; }
+    public void setKey(K newK) { key = newK; }
+    public void setLeft(BSTnode&lt;K&gt; newL) { left = newL; }
+    public void setRight(BSTnode&lt;K&gt; newR) { right = newR; }
+}
+
+</code></pre><h2 id=bst-class>BST Class</h2><pre><code class=language-java>import java.io.*; //for PrintStream
+public class BST&lt;K extends Comparable&lt;K&gt;&gt; {
+    private BSTnode&lt;K&gt; root;
+    public BST() { root = null; }
+    public void insert(K key) throws DuplicateException {
+        root = insert(root, key);
+    }
+    public void delete(K key) {
+        root = delete(root, key);
+    }
+    public boolean lookup(K key) {
+        return lookup(root, key); //AKA Search in P4
+    }
+    public void print(PrintStream p) {
+        print(root, p);
+    }
+    //add helpers ...
+
+}
+</code></pre><h2 id=implementing-print>Implementing Print</h2><h4 id=complete-the-print-method-based-on-the-recursive-definition> Complete the print method based on the recursive definition</h4><pre><code class=language-java>public void print( PrintStream p ) { print( root, p ); }
+private void print( BSTnode&lt;K&gt; n, PrintStream p ) {
+    if (n == null) return;
+    else {
+        print(n.getLeft(), p); //L
+        p.println(n.getKey()); //V
+        print(n.getRight(), p); //R
+    }
+}
+</code></pre><h2 id=implementing-lookup-and-insert>Implementing <code>Lookup</code> and <code>Insert</code></h2><h4 id=pseudo-code-algorithm-for-lookup>Pseudo-Code Algorithm for lookup</h4><pre><code>private boolean lookup(BSTnode&lt;K&gt; n, K key) {
+    if n is null, return false;
+    if n's key equals key, return true;
+    if n's key is larger than key, return lookup n's left subtree
+    else return lookup n's right subtree
+}
+</code></pre><h4 id=high-level-algorithm-for-insert>High-Level Algorithm for insert</h4><pre><code>private BSTnode&lt;K&gt; insert(BSTnode&lt;K&gt; n, K key) throws DuplicateException {
+    Search down tree as in lookup
+    if we find a node with same key
+        throw DuplicateException
+    There will be a point where search ends
+    When we reach that point
+        we will insert a new leaf node
+}
+</code></pre><h2 id=inserting-into-a-bst>Inserting into a BST</h2><h4 id=what-is-the-shape-of-a-bst-when-values-are-inserted-in-sorted-order>What is the shape of a BST when values are inserted in sorted order?</h4><p>A Line<h4 id=will-you-get-a-bad-shape-only-if-values-are-inserted-in-sorted-order>Will you get a bad shape only if values are inserted in sorted order?</h4><p>No： 11， 53， 22， 44， 33<p><strong>The order if a BSTree deoebds upon the order of inserts and delete</strong><ul><li>Unbalanced does not give O(logN) complexity<li>Balanced does give O(H) complexity, where h is height of the tree</ul><h2 id=implementing-delete>Implementing <code>delete</code></h2><h4 id=high-level-algorithm>High-Level Algorithm</h4><pre><code>private BSTnode&lt;K&gt; delete( BSTnode&lt;K&gt; n, K key ) {
+    Search down the tree as in loopup
+    if n is null, return null
+    if n's key equals key //FOUND --&gt; must remove
+    ..Action depends upon n's left and right children
+
+    //Case 1: n has no children, AKA leaf node.
+    nulink n from its parents, by setting appropriate child of p to null
+
+    //Case 2: n has one child
+    Delete n by setting appropriate child of parent to n's child
+    
+    //Case 3: n has two children
+    Sol: find a replacement value for n in either left or right subtree
+    //(reading -- chooses smallest of right subtree)
+    Copy k, v from replacement node
+    delete key from that subtree
+}
+</code></pre><h4 id=how-do-you-delete-50-or-30-from-the-above-tree>How do you delete 50 or 30 from the above tree</h4><ol><li>largest value on left subtree or smallest value on right subtree<li>delete the &ldquo;new&rdquo; key from the correct subtree</ol><p><strong>Key Concept: find a replacement for n&rsquo;s key instead of lots of relinking</strong><p>Delete 30 from the tree above using the inorder predecessor 20<br>Delete 50 from the tree above using the inorder sucessor 60<h2 id=complexity-of-bst-method>Complexity of BST Method</h2><ul><li>N: number of nodes<li>print: O(N)<li>lookup, insert, delete: O(H)</ul><p>H is the height of the tree<br>roughtly O(logN) if tree is Balanced<br>O(N) if tree is not balanced :</p><br><br><div id=comments class=comments-area><section id=comment><div class=row><div class="comment-body clearfix col-md-12"><div id=disqus_thread></div><script>(function(){var d=document,s=d.createElement('script');s.src='//l-e-r-wiz.disqus.com/embed.js';s.setAttribute('data-timestamp',+new Date());(d.head||d.body).appendChild(s);})();</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript rel=nofollow>comments
+powered by Disqus.</a></noscript></div></div></section></div></div></div><div id=secondary class="widget-area col-md-4" role=complementary><aside id=toolbox class=widget><h4 class=widget-title>Wisdom never fades</h4><div class=author_bio_message>This is my personal notes website.
+You are welcomed to use it as a reference.
+But do NOT share the link!</div></aside><aside id=recent-posts-2 class="widget widget_recent_entries"><h4 class=widget-title>Recent</h4><ul><li><a href=/2017/9/13/cs540-04.html>CS540-04</a><li><a href=/2017/9/12/cs354-02.html>Econ102-02</a><li><a href=/2017/9/12/cs354-02.html>CS354-02</a><li><a href=/2017/9/11/cs540-03.html>CS540-03 Introduction</a><li><a href=/2017/9/11/cs252-03.html>CS252-03 Binary System</a><li><a href=/2017/9/8/cs540-02.html>CS540-02 Introduction</a><li><a href=/2017/9/8/cs252-02.html>CS252-02 Binary System</a><li><a href=/2017/9/6/cs540-01.html>CS540-01 Introduction</a><li><a href=/2017/9/6/cs252-01.html>CS252-01 Introduction</a><li><a href=/2017/5/10/ns132-3x%20Final%20Review.html>NS132-3x</a></ul></aside><aside id=categories-2 class="widget widget_categories"><h4 class=widget-title>Categories</h4><ul><li class=cat-item><a href=/category/Artificial%20Intelligence.html>Artificial Intelligence</a>(1)<li class=cat-item><a href=/category/Bio101.html>Bio101</a>(5)<li class=cat-item><a href=/category/Biology.html>Biology</a>(5)<li class=cat-item><a href=/category/CS252.html>CS252</a>(3)<li class=cat-item><a href=/category/CS354.html>CS354</a>(1)<li class=cat-item><a href=/category/CS367.html>CS367</a>(23)<li class=cat-item><a href=/category/CS368.html>CS368</a>(1)<li class=cat-item><a href=/category/CS540.html>CS540</a>(4)<li class=cat-item><a href=/category/CS559.html>CS559</a>(5)<li class=cat-item><a href=/category/Computer%20Science.html>Computer Science</a>(57)<li class=cat-item><a href=/category/Deep%20Learning.html>Deep Learning</a>(1)<li class=cat-item><a href=/category/ESL118.html>ESL118</a>(1)<li class=cat-item><a href=/category/Econ102.html>Econ102</a>(1)<li class=cat-item><a href=/category/Economics.html>Economics</a>(1)<li class=cat-item><a href=/category/Go.html>Go</a>(1)<li class=cat-item><a href=/category/Kines100.html>Kines100</a>(3)<li class=cat-item><a href=/category/Kinesiology.html>Kinesiology</a>(3)<li class=cat-item><a href=/category/Math.html>Math</a>(22)<li class=cat-item><a href=/category/Math240.html>Math240</a>(20)<li class=cat-item><a href=/category/Math320.html>Math320</a>(2)<li class=cat-item><a href=/category/NS132.html>NS132</a>(30)<li class=cat-item><a href=/category/Nutritional%20Science.html>Nutritional Science</a>(30)<li class=cat-item><a href=/category/Psych202.html>Psych202</a>(3)<li class=cat-item><a href=/category/Psychology.html>Psychology</a>(3)<li class=cat-item><a href=/category/Test.html>Test</a>(1)<li class=cat-item><a href=/category/Website.html>Website</a>(1)</ul></aside><aside id=tag_cloud-3 class="widget widget_tag_cloud"><h4 class=widget-title>Tags</h4><div class=tagcloud><a href=/tags/Bio101.html class="tag-link tag-link-position" style=font-size:8pt>Bio101</a>
+<a href=/tags/CNNs.html class="tag-link tag-link-position" style=font-size:8pt>CNNs</a>
+<a href=/tags/CS252.html class="tag-link tag-link-position" style=font-size:8pt>CS252</a>
+<a href=/tags/CS354.html class="tag-link tag-link-position" style=font-size:8pt>CS354</a>
+<a href=/tags/CS367.html class="tag-link tag-link-position" style=font-size:8pt>CS367</a>
+<a href=/tags/CS368.html class="tag-link tag-link-position" style=font-size:8pt>CS368</a>
+<a href=/tags/CS540.html class="tag-link tag-link-position" style=font-size:8pt>CS540</a>
+<a href=/tags/CS559.html class="tag-link tag-link-position" style=font-size:8pt>CS559</a>
+<a href=/tags/ESL118.html class="tag-link tag-link-position" style=font-size:8pt>ESL118</a>
+<a href=/tags/Econ102.html class="tag-link tag-link-position" style=font-size:8pt>Econ102</a>
+<a href=/tags/Kines100.html class="tag-link tag-link-position" style=font-size:8pt>Kines100</a>
+<a href=/tags/Lumos.html class="tag-link tag-link-position" style=font-size:8pt>Lumos</a>
+<a href=/tags/Math240.html class="tag-link tag-link-position" style=font-size:8pt>Math240</a>
+<a href=/tags/Math320.html class="tag-link tag-link-position" style=font-size:8pt>Math320</a>
+<a href=/tags/NS132.html class="tag-link tag-link-position" style=font-size:8pt>NS132</a>
+<a href=/tags/Psych202.html class="tag-link tag-link-position" style=font-size:8pt>Psych202</a>
+<a href=/tags/Test.html class="tag-link tag-link-position" style=font-size:8pt>Test</a></div></aside></div></div></div></div><footer id=colophon class=clearfix><div class=wrapper><div id=site-generator class=clearfix><div class=copyright><a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>CC BY-NC-ND 4.0</a> |
+<a href=/feed.xml>Feed</a> |
+<a href=/sitemap.xml>Sitemap</a></div></div><div id=site-generator class=clearfix><div class=copyright>Copyright © 2016-2017 <a href=https://yirong.ml/ title="L.E.R Wiz"><span>L.E.R Wiz</span></a> |
+Powered by: <a href=/portus.html target=_blank title=Lumos><span>Portus Engine 1.3.0</span></a></div></div></div><div class=back-to-top style=display:none><a href=#branding>Back to Top</a></div></footer><div class=search-tool style=position:fixed;top:0;bottom:0;left:0;right:0;opacity:.95;background-color:#111;z-index:9999;display:none><input class="form-control search-content" id=search-content style=position:fixed;top:60px placeholder="文章标题 分类 标签 (L.E.R Wiz 站内搜索)"><div style=position:fixed;top:16px;right:16px><img src=/search/img/close.png id=close-btn></div></div><link rel=stylesheet href=/search/css/search.css><script src=/search/js/bootstrap3-typeahead.min.js></script><script src=/search/js/search.js></script><script src=/js/backtotop.js></script><script src=/js/tinynav.js></script><script src=/js/jquery.cycle.all.min.js></script><script>var cleanretina_slider_value={"transition_effect":"fade","transition_delay":"4000","transition_duration":"1000"};</script><script src=/js/cleanretina-slider-setting.js></script><script src=/js/jquery.fancybox-1.3.4.pack.js></script><script src=/js/cleanretina-custom-fancybox-script.js></script><script src=/js/highlight.pack.js></script><script src=/js/copynotice.js></script><script>hljs.initHighlightingOnLoad();</script>

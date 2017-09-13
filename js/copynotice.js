@@ -1,0 +1,2 @@
+function warning(){if(navigator.userAgent.indexOf("MSIE")>0){art.dialog.alert('Successfully Copied!\nRedistribution of any content in this site is forbidden\nThis site is licensed under CC BY-NC-ND 4.0');}else{alert("Successfully Copied!\nRedistribution of any content in this site is forbidden\nThis site is licensed under CC BY-NC-ND 4.0");}}
+document.body.oncopy=function(){warning();}
