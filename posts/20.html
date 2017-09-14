@@ -1,7 +1,82 @@
 <!doctype html><head lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>Page 20 - L.E.R Wiz</title><meta name=format-detection content="telephone=no"><script>if(self!=top){top.location=this.location.href;}</script><meta name=keywords content="LER0ever,L.E.R,Yi Rong,blog,L.E.R Space,Lumos,Wiz"><meta name=description content="L.E.R Space, a magical personal website by Yi Rong"><link rel=icon href=/favicon.ico><link rel="shortcut icon" href=/favicon.ico><link rel=stylesheet id=font-style-css href=/css/fonts-google.css><link rel=stylesheet id=fancybox-css href=/css/jquery.fancybox-1.3.4.css><link rel=stylesheet id=cr-style-css href=/css/style.css><link rel=stylesheet href=/css/hljs/monokai-sublime.css><script src=/js/jquery.min.js></script><script src=/js/jquery-migrate.min.js></script><script type=text/x-mathjax-config>
         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
     </script><script async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><body class="home post-list"><div id=wrapper><header id=branding><div class="wrapper clearfix"><div class="hgroup-wrap clearfix"><div class=hgroup-right><div class="social-profiles clearfix"><ul></ul></div><form class="searchform clearfix"><label class=assistive-text for=s>Search</label>
-<input id=searchbox placeholder=Search class="s field" name=s></form></div><div id=site-logo class=clearfix><h3 id=site-title><a href=http://wiz.rongyi.ml title="L.E.R Wiz" rel=home>L.E.R Wiz</a></h3><h4 id=site-description>All Ways Forward @ UW-Madison</h4></div></div><nav id=access class=clearfix><ul class=root><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/>Home</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/academics>My Academics</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/sn>Contact Me</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/archive>Archive</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=https://rongyi.ml target=_blank>L.E.R Space</a><li class=default-menu><a href=https://etasry.ml title=Navigation>Navigation</a></ul></nav></div></header><div id=main class="site-main wrapper clearfix"><div class=container><div id=primary class=no-margin-left><div id=content><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>Bio101-Diversity of life</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
+<input id=searchbox placeholder=Search class="s field" name=s></form></div><div id=site-logo class=clearfix><h3 id=site-title><a href=http://wiz.rongyi.ml title="L.E.R Wiz" rel=home>L.E.R Wiz</a></h3><h4 id=site-description>All Ways Forward @ UW-Madison</h4></div></div><nav id=access class=clearfix><ul class=root><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/>Home</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/academics>My Academics</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/sn>Contact Me</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/archive>Archive</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=https://rongyi.ml target=_blank>L.E.R Space</a><li class=default-menu><a href=https://etasry.ml title=Navigation>Navigation</a></ul></nav></div></header><div id=main class="site-main wrapper clearfix"><div class=container><div id=primary class=no-margin-left><div id=content><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS367-Introduction To Data Structures 03</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
+<span class="date updated"><a href=/2016/9/13/cs367-introtods03.html title="September 13, 2016">September 13, 2016</a></span>
+<span class=category><a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;
+<a href=/category/CS367.html rel="category tag">CS367</a>;</span>
+<span class=category>Tags
+<a href=/tags/CS367.html rel="category tag">#CS367</a></span>
+<span class=comments><a href>Comments are closed</a></span></div></header><p>List Operations<pre><code class=language-java>void add(E item);
+void add(int pos, E item);
+//(at end) and (at position pos | insert)
+E get(int pos);
+E remove(int pos);
+// get and remove, true if item exists in list
+boolean contains(E item);
+int size();
+boolean isEmpty();
+</code></pre><blockquote><p>L3 -3</blockquote><h3 id=code-tracing>Code Tracing.</h3><ul><li>How can we check<li>Code tracing -- correctly</ul><p><strong>myList [a][b][c][d][e]</strong><table><thead><tr><th align=center>index<th align=center>myList.size<th align=center>Eles<tbody><tr><td align=center>0<td align=center>5<td align=center>(a)bcde<tr><td align=center>1<td align=center>4<td align=center>b&copy;de<tr><td align=center>2<td align=center>3<td align=center>bd(e)<tr><td align=center>3<td align=center>2<td align=center>bd</table><p>Removes items at even indexes<blockquote><p>L3 - 4</blockquote><pre><code class=language-java>for (int i=0; i&lt; myList.size()/2; i++) {
+    E tmp = myList[i];
+    myList[i] = myList[myList.size()-i] ;
+    myList[myList.size()-i] = tmp;
+
+}
+</code></pre><p>Implemention of ListADT with generics<pre><code class=language-java>
+public class SimpleArrayList&lt;E&gt; implements ListADT&lt;E&gt; {
+    private E[] items;
+    //the items in the List
+    private int numItems;
+    //the # of items in the List
+    public SimpleArrayList() {
+        items = new Object[100];
+        numItems = 0
+    }
+    //*** required ListADT methods ***
+    public void add(E item) { ... }
+    public void add(int pos, E item) { ... }
+    public E remove(int pos) { ... }
+    public E get (int pos) { ... }
+    public boolean contains (E item) { ... }
+    public int size() { ... }
+    public boolean isEmpty() { ... }
+    //*** additional optional array list methods ***
+}
+
+public boolean contains(E item) {
+    if (item == null)
+        throw new IllegalArgumentException();
+    for (int i=0; i&lt;numItems; i++)
+        if (items.equals(items[i]))
+            return true;
+    return false;
+}
+
+public void add(E item) {
+    // check if null
+    if (item == null)
+        throw new IllegalArgumentException();
+    // check for full array
+    if (items.length == numItems)
+        expandArray();
+
+    items[numItems] = item;
+    numItems++;
+}
+
+private void expandArray() {
+    // create new array
+    E[] a = (E[])new Object(items.length * 2)
+
+    // Copy items from orig to new
+    for ( int i = 0; i&lt;numItems; i++) {
+        a[i] = items[i]
+    }
+    //reassign items to new array
+    items = a
+}
+</code></pre><blockquote><p>L3 -8</blockquote><ul><li>Why ?</ul><p>Program 1<br>- What ?<p>ADt ListAPI<br>- How ?<p>Implementation<br>ArrayList<br>SunokeArrayList<h2 id=iterator>iterator</h2><ul><li>Track progress( objects used to step through a collection of items )<li>an abstracion of a pointer<li>sotres a position in a particular collection<li>position of the iterator can change<li>item at the position of the iterator can be accessed.</ul><p>Coding Tip:
+seperate iter from the container class</p><a class=readmore href=/2016/9/13/cs367-introtods03.html title="CS367-Introduction To Data Structures 03">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>Bio101-Diversity of life</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
 <span class="date updated"><a href=/2016/9/9/bio101-divoflife.html title="September 9, 2016">September 9, 2016</a></span>
 <span class=category><a href=/category/Biology.html rel="category tag">Biology</a>;
 <a href=/category/Bio101.html rel="category tag">Bio101</a>;</span>
@@ -47,46 +122,9 @@ public Object remove() throws NoSuchElementException {
     return Items[--numItems];
 }
 </code></pre><blockquote><p>CS367 Outline 2 P2
-To generalize, good for code reuse<p>CS367 Outline 2 P3</blockquote><a class=readmore href=/2016/9/8/cs367-introtods02.html title="CS367-Introduction To Data Structures 02">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>Testing MathJax</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
-<span class="date updated"><a href=/2016/9/7/testing-mathjax.html title="September 7, 2016">September 7, 2016</a></span>
-<span class=category><a href=/category/Test.html rel="category tag">Test</a>;</span>
-<span class=category>Tags
-<a href=/tags/Test.html rel="category tag">#Test</a></span>
-<span class=comments><a href>Comments are closed</a></span></div></header><h2 id=hello-mathjax>Hello MathJax</h2><p>When $a \ne 0$, there are two solutions to (ax^2 + bx + c = 0) and they are
-$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$<h2>The Lorenz Equations</h2><p>\begin{align}
-\dot{x} & = \sigma(y-x) \\
-\dot{y} & = \rho x - y - xz \\
-\dot{z} & = -\beta z + xy
-\end{align}<h2>The Cauchy-Schwarz Inequality</h2><p>\[
-\left( \sum_{k=1}^n a_k b_k \right)^{\!\!2} \leq
-\left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)
-\]<h2>A Cross Product Formula</h2><p>\[
-\mathbf{V}_1 \times \mathbf{V}_2 =
-\begin{vmatrix}
-\mathbf{i} & \mathbf{j} & \mathbf{k} \\
-\frac{\partial X}{\partial u} & \frac{\partial Y}{\partial u} & 0 \\
-\frac{\partial X}{\partial v} & \frac{\partial Y}{\partial v} & 0 \\
-\end{vmatrix}
-\]<h2>The probability of getting \(k\) heads when flipping \(n\) coins is:</h2><p>\[P(E) = {n \choose k} p^k (1-p)^{ n-k} \]<h2>An Identity of Ramanujan</h2><p>\[
-\frac{1}{(\sqrt{\phi \sqrt{5}}-\phi) e^{\frac25 \pi}} =
-1+\frac{e^{-2\pi}} {1+\frac{e^{-4\pi}} {1+\frac{e^{-6\pi}}
-{1+\frac{e^{-8\pi}} {1+\ldots} } } }
-\]<h2>A Rogers-Ramanujan Identity</h2><p>\[
-1 + \frac{q^2}{(1-q)}+\frac{q^6}{(1-q)(1-q^2)}+\cdots =
-\prod_{j=0}^{\infty}\frac{1}{(1-q^{5j+2})(1-q^{5j+3})},
-\quad\quad \text{for $|q|<1$}.
-\]<h2>Maxwell's Equations</h2><p>\begin{align}
-\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} & = \frac{4\pi}{c}\vec{\mathbf{j}} \\
-\nabla \cdot \vec{\mathbf{E}} & = 4 \pi \rho \\
-\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t} & = \vec{\mathbf{0}} \\
-\nabla \cdot \vec{\mathbf{B}} & = 0
-\end{align}<h2>In-line Mathematics</h2><p>Finally, while display equations look good for a page of samples, the
-ability to mix math and text in a paragraph is also important. This
-expression \(\sqrt{3x-1}+(1+x)^2\) is an example of an inline equation. As
-you see, MathJax equations can be used this way as well, without unduly
-disturbing the spacing between lines.</p><a class=readmore href=/2016/9/7/testing-mathjax.html title="Testing MathJax">Read more</a></article></section><hr><ul class="default-wp-page clearfix"><li class=previous><a href=/posts/19.html>← Prev</a><li class=Next><a href=/posts/21.html>← Next</a></ul></div></div><div id=secondary class="widget-area col-md-4" role=complementary><aside id=toolbox class=widget><h4 class=widget-title>About this site</h4><div class=author_bio_message>This is my personal notes website.
+To generalize, good for code reuse<p>CS367 Outline 2 P3</blockquote><a class=readmore href=/2016/9/8/cs367-introtods02.html title="CS367-Introduction To Data Structures 02">Read more</a></article></section><hr><ul class="default-wp-page clearfix"><li class=previous><a href=/posts/19.html>← Prev</a><li class=Next><a href=/posts/21.html>← Next</a></ul></div></div><div id=secondary class="widget-area col-md-4" role=complementary><aside id=toolbox class=widget><h4 class=widget-title>About this site</h4><div class=author_bio_message>This is my personal notes website.
 You are welcomed to use it.
-But do NOT stop taking your own notes!</div></aside><aside id=recent-posts-2 class="widget widget_recent_entries"><h4 class=widget-title>Recent</h4><ul><li><a href=/2017/9/13/cs540-04.html>CS540-04 Iterative Deepening</a><li><a href=/2017/9/13/cs252-04.html>CS252-04</a><li><a href=/2017/9/12/cs354-02.html>Econ102-02</a><li><a href=/2017/9/12/cs354-02.html>CS354-02</a><li><a href=/2017/9/11/cs540-03.html>CS540-03 Search</a><li><a href=/2017/9/11/cs252-03.html>CS252-03 Binary System</a><li><a href=/2017/9/8/cs540-02.html>CS540-02 Introduction</a><li><a href=/2017/9/8/cs252-02.html>CS252-02 Binary System</a><li><a href=/2017/9/6/cs540-01.html>CS540-01 Introduction</a><li><a href=/2017/9/6/cs252-01.html>CS252-01 Introduction</a></ul></aside><aside id=categories-2 class="widget widget_categories"><h4 class=widget-title>Categories</h4><ul><li class=cat-item><a href=/category/Artificial%20Intelligence.html>Artificial Intelligence</a>(1)<li class=cat-item><a href=/category/Bio101.html>Bio101</a>(5)<li class=cat-item><a href=/category/Biology.html>Biology</a>(5)<li class=cat-item><a href=/category/CS252.html>CS252</a>(4)<li class=cat-item><a href=/category/CS354.html>CS354</a>(1)<li class=cat-item><a href=/category/CS367.html>CS367</a>(23)<li class=cat-item><a href=/category/CS368.html>CS368</a>(1)<li class=cat-item><a href=/category/CS540.html>CS540</a>(4)<li class=cat-item><a href=/category/CS559.html>CS559</a>(5)<li class=cat-item><a href=/category/Computer%20Science.html>Computer Science</a>(58)<li class=cat-item><a href=/category/Deep%20Learning.html>Deep Learning</a>(1)<li class=cat-item><a href=/category/ESL118.html>ESL118</a>(1)<li class=cat-item><a href=/category/Econ102.html>Econ102</a>(1)<li class=cat-item><a href=/category/Economics.html>Economics</a>(1)<li class=cat-item><a href=/category/Go.html>Go</a>(1)<li class=cat-item><a href=/category/Kines100.html>Kines100</a>(3)<li class=cat-item><a href=/category/Kinesiology.html>Kinesiology</a>(3)<li class=cat-item><a href=/category/Math.html>Math</a>(22)<li class=cat-item><a href=/category/Math240.html>Math240</a>(20)<li class=cat-item><a href=/category/Math320.html>Math320</a>(2)<li class=cat-item><a href=/category/NS132.html>NS132</a>(30)<li class=cat-item><a href=/category/Nutritional%20Science.html>Nutritional Science</a>(30)<li class=cat-item><a href=/category/Psych202.html>Psych202</a>(3)<li class=cat-item><a href=/category/Psychology.html>Psychology</a>(3)<li class=cat-item><a href=/category/Test.html>Test</a>(1)<li class=cat-item><a href=/category/Website.html>Website</a>(1)</ul></aside><aside id=tag_cloud-3 class="widget widget_tag_cloud"><h4 class=widget-title>Tags</h4><div class=tagcloud><a href=/tags/Bio101.html class="tag-link tag-link-position" style=font-size:8pt>Bio101</a>
+But do NOT stop taking your own notes!</div></aside><aside id=recent-posts-2 class="widget widget_recent_entries"><h4 class=widget-title>Recent</h4><ul><li><a href=/2017/9/14/cs354-03.html>CS354-03 Pointers</a><li><a href=/2017/9/13/cs540-04.html>CS540-04 Iterative Deepening</a><li><a href=/2017/9/13/cs252-04.html>CS252-04</a><li><a href=/2017/9/12/cs354-02.html>Econ102-02</a><li><a href=/2017/9/12/cs354-02.html>CS354-02</a><li><a href=/2017/9/11/cs540-03.html>CS540-03 Search</a><li><a href=/2017/9/11/cs252-03.html>CS252-03 Binary System</a><li><a href=/2017/9/8/cs540-02.html>CS540-02 Introduction</a><li><a href=/2017/9/8/cs252-02.html>CS252-02 Binary System</a><li><a href=/2017/9/6/cs540-01.html>CS540-01 Introduction</a></ul></aside><aside id=categories-2 class="widget widget_categories"><h4 class=widget-title>Categories</h4><ul><li class=cat-item><a href=/category/Artificial%20Intelligence.html>Artificial Intelligence</a>(1)<li class=cat-item><a href=/category/Bio101.html>Bio101</a>(5)<li class=cat-item><a href=/category/Biology.html>Biology</a>(5)<li class=cat-item><a href=/category/CS252.html>CS252</a>(4)<li class=cat-item><a href=/category/CS354.html>CS354</a>(2)<li class=cat-item><a href=/category/CS367.html>CS367</a>(23)<li class=cat-item><a href=/category/CS368.html>CS368</a>(1)<li class=cat-item><a href=/category/CS540.html>CS540</a>(4)<li class=cat-item><a href=/category/CS559.html>CS559</a>(5)<li class=cat-item><a href=/category/Computer%20Science.html>Computer Science</a>(59)<li class=cat-item><a href=/category/Deep%20Learning.html>Deep Learning</a>(1)<li class=cat-item><a href=/category/ESL118.html>ESL118</a>(1)<li class=cat-item><a href=/category/Econ102.html>Econ102</a>(1)<li class=cat-item><a href=/category/Economics.html>Economics</a>(1)<li class=cat-item><a href=/category/Go.html>Go</a>(1)<li class=cat-item><a href=/category/Kines100.html>Kines100</a>(3)<li class=cat-item><a href=/category/Kinesiology.html>Kinesiology</a>(3)<li class=cat-item><a href=/category/Math.html>Math</a>(22)<li class=cat-item><a href=/category/Math240.html>Math240</a>(20)<li class=cat-item><a href=/category/Math320.html>Math320</a>(2)<li class=cat-item><a href=/category/NS132.html>NS132</a>(30)<li class=cat-item><a href=/category/Nutritional%20Science.html>Nutritional Science</a>(30)<li class=cat-item><a href=/category/Psych202.html>Psych202</a>(3)<li class=cat-item><a href=/category/Psychology.html>Psychology</a>(3)<li class=cat-item><a href=/category/Test.html>Test</a>(1)<li class=cat-item><a href=/category/Website.html>Website</a>(1)</ul></aside><aside id=tag_cloud-3 class="widget widget_tag_cloud"><h4 class=widget-title>Tags</h4><div class=tagcloud><a href=/tags/Bio101.html class="tag-link tag-link-position" style=font-size:8pt>Bio101</a>
 <a href=/tags/CNNs.html class="tag-link tag-link-position" style=font-size:8pt>CNNs</a>
 <a href=/tags/CS252.html class="tag-link tag-link-position" style=font-size:8pt>CS252</a>
 <a href=/tags/CS354.html class="tag-link tag-link-position" style=font-size:8pt>CS354</a>
