@@ -1,94 +1,140 @@
 <!doctype html><head lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>Page 1 - L.E.R Wiz</title><meta name=format-detection content="telephone=no"><script>if(self!=top){top.location=this.location.href;}</script><meta name=keywords content="LER0ever,L.E.R,Yi Rong,blog,L.E.R Space,Lumos,Wiz"><meta name=description content="L.E.R Space, a magical personal website by Yi Rong"><link rel=icon href=/favicon.ico><link rel="shortcut icon" href=/favicon.ico><link rel=stylesheet id=font-style-css href=/css/fonts-google.css><link rel=stylesheet id=fancybox-css href=/css/jquery.fancybox-1.3.4.css><link rel=stylesheet id=cr-style-css href=/css/style.css><link rel=stylesheet href=/css/hljs/monokai-sublime.css><script src=/js/jquery.min.js></script><script src=/js/jquery-migrate.min.js></script><script type=text/x-mathjax-config>
         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
     </script><script async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><body class="home post-list"><div id=wrapper><header id=branding><div class="wrapper clearfix"><div class="hgroup-wrap clearfix"><div class=hgroup-right><div class="social-profiles clearfix"><ul></ul></div><form class="searchform clearfix"><label class=assistive-text for=s>Search</label>
-<input id=searchbox placeholder=Search class="s field" name=s></form></div><div id=site-logo class=clearfix><h3 id=site-title><a href=http://wiz.rongyi.ml title="L.E.R Wiz" rel=home>L.E.R Wiz</a></h3><h4 id=site-description>All Ways Forward @ UW-Madison</h4></div></div><nav id=access class=clearfix><ul class=root><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/>Home</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/academics>My Academics</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/sn>Contact Me</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/archive>Archive</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=https://rongyi.ml target=_blank>L.E.R Space</a><li class=default-menu><a href=https://etasry.ml title=Navigation>Navigation</a></ul></nav></div></header><div id=main class="site-main wrapper clearfix"><div class=container><div id=primary class=no-margin-left><div id=content><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS540-05 Path Checking DFS</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
-<span class="date updated"><a href=/2017/9/15/cs540-05.html title="September 15, 2017">September 15, 2017</a></span>
+<input id=searchbox placeholder=Search class="s field" name=s></form></div><div id=site-logo class=clearfix><h3 id=site-title><a href=http://wiz.rongyi.ml title="L.E.R Wiz" rel=home>L.E.R Wiz</a></h3><h4 id=site-description>All Ways Forward @ UW-Madison</h4></div></div><nav id=access class=clearfix><ul class=root><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/>Home</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/academics>My Academics</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/sn>Contact Me</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/archive>Archive</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=https://rongyi.ml target=_blank>L.E.R Space</a><li class=default-menu><a href=https://etasry.ml title=Navigation>Navigation</a></ul></nav></div></header><div id=main class="site-main wrapper clearfix"><div class=container><div id=primary class=no-margin-left><div id=content><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS540-08 A* Search</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
+<span class="date updated"><a href=/2017/9/22/cs540-08.html title="September 22, 2017">September 22, 2017</a></span>
 <span class=category><a href=/category/CS540.html rel="category tag">CS540</a>;
 <a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;</span>
 <span class=category>Tags
 <a href=/tags/CS540.html rel="category tag">#CS540</a></span>
-<span class=comments><a href>Comments are closed</a></span></div></header><h2 id=dfs-in-graph-with-loops>DFS in graph with loops</h2><ol><li>Method 1: keep CLOSED/visited, memory X<li>Method 2: Path checking DFS</ol><h2 id=path-checking-dfs>Path checking DFS</h2><pre><code class=language-mermaid>graph TD;
-    1 --&gt; 2;
-    1 --&gt; 3;
-    2 --&gt; 4;
-    2 --&gt; 5;
-    3 --&gt; 6;
-    3 --&gt; 7;
-</code></pre><p>Primary stack &amp; Path list<table><thead><tr><th align=center>primary<tbody><tr><td align=center>7_3<tr><td align=center>6_3<tr><td align=center>2_1</table><table><thead><tr><th align=center>Path<tbody><tr><td align=center>1_0<tr><td align=center>3_1<tr><td align=center>6_3</table><h4 id=path-checking-dfs-interative-deepening>(Path-checking DFS)Interative Deepening</h4><p>Recommended method.<h1 id=informed-search>Informed Search</h1><p>G=(V,E)<p>Edge Cost = cost(S, S&rsquo;)<br>Cost from initial state to S<br>(1, 3, 2) = cost(1,3) + cost(3,2)<ul><li><strong>g(s)</strong>: the cheapest path cost from init to S<li><strong>h(s)</strong>: the cheapest path cost from S to a goal</ul><p>g(s)+h(s): cheapest path from initial to goal through s</p><a class=readmore href=/2017/9/15/cs540-05.html title="CS540-05 Path Checking DFS">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS354-03 Pointers</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
-<span class="date updated"><a href=/2017/9/14/cs354-03.html title="September 14, 2017">September 14, 2017</a></span>
+<span class=comments><a href>Comments are closed</a></span></div></header><h2 id=a-search>A* Search</h2><h4 id=proof-a-finds-the-optimal-path>Proof A* finds the optimal path</h4><p>Support not, A* ends of G&rsquo;s instead of G<br>n is the node where it diverges from optimal path<br>$f(s) = g(s) + h(s)<ol><li>$f(G&rsquo;) &gt; f(G)$<li>$f(n) \ge f(G&rsquo;)$<li>$f(n) = g(n) + h(n) \le g(n) + h&rsquo;(n) = f(G)$ (h is the heuristic, h&rsquo; is the true future cost)</ol><p>1,2,3 $\to$ $f(G) \gt f(G)$ (contradiction)<h2 id=improvement>Improvement</h2><ol><li>ID A*<li>Beam search (fix max PQ size)</ol><a class=readmore href=/2017/9/22/cs540-08.html title="CS540-08 A* Search">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS354-05 Array on the heap</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
+<span class="date updated"><a href=/2017/9/21/cs354-05.html title="September 21, 2017">September 21, 2017</a></span>
 <span class=category><a href=/category/CS354.html rel="category tag">CS354</a>;
 <a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;</span>
 <span class=category>Tags
 <a href=/tags/CS354.html rel="category tag">#CS354</a></span>
-<span class=comments><a href>Comments are closed</a></span></div></header><h2 id=today>Today</h2><ul><li>Practive Pointer Basics<li>Recall 1D arrays<li>1D arrays and pointers<li>Parameters and Pointers</ul><h2 id=practice-pointer-basics>Practice Pointer Basics</h2><pre><code class=language-c>void someFunction() {
-    int* ptr1, ptr2;
+<span class=comments><a href>Comments are closed</a></span></div></header><h2 id=1d-arrays-on-the-heap>1D Arrays on the Heap</h2><h4 id=what-memory-segments-used-by-a-program-include>What? Memory segments used by a program include</h4><ul><li>Stack vs Heap<li>static allocation vs dynamic<li>during compile time vs runtime</ul><h4 id=why-heap-memory-enables>Why? Heap memory enables</h4><ul><li>A program to access more mem than what&rsquo;s allocated by the compiler<li>Blocks of memory to be allocated and freed in an arbitrary order</ul><h4 id=how>How?</h4><pre><code class=language-c>#include &quot;stdlib.h&quot;
+// for malloc and free
+
+malloc(size_in_mem);
+// Preserves a block of heap mem of the specified size
+
+free(pointer);
+// Frees the heap mem pointed to by the specified pointer
+
+sizeof(operand);
+// operator that returns size in bytes of its operand
+</code></pre><ul><li><p>IA32<ul><li>sizeof(double) = 8<li>sizeof(char) = 1<li>sizeof(int) = 4</ul><li><p>Write the cdoe to dynamically allocate an integer array named a having 5 elements<pre><code class=language-c>void someFunction() {
+int * a = malloc(5 * sizeof(int));
 }
-</code></pre><h5 id=how-many-pointer-variables-are-declared-in-the-code-above>How many pointer variables are declared in the code above?</h5><p><strong>1</strong><ul><li>ptr1 is a pointer<li>ptr2 is an int var</ul><pre><code class=language-c>int *ptr1, *ptr2;
-</code></pre><h5 id=what-address-is-stored-in-ptr1>What address is stored in ptr1?</h5><p>DANGER: it&rsquo;s uninitialized.
-It may appear to be 0.
-But it&rsquo;s actually whatever bit pattern was in the memory.<h5 id=write-the-code-to-initialize-ptr1-with-address-0>Write the code to initialize ptr1 with address 0</h5><pre><code class=language-c>ptr1 = 0; // or ptr1 = 0x0;
-// or
-ptr1 = NULL; // must include one of c's standard libraries
-</code></pre><h5 id=given-i-below-write-the-code-to-make-ptr1-point-at-i>Given i below, write the code to make ptr1 point at i</h5><pre><code class=language-c>int i = 22;
-ptr1 = &amp;i;
-</code></pre><h5 id=write-the-code-to-display-ptr1-s-pointee-s-value>Write the code to display ptr1&rsquo;s pointee&rsquo;s value</h5><pre><code class=language-c>printf(&quot;%d\n&quot;, *ptr1);
-</code></pre><h5 id=what-happens-if-the-code-above-executes-when-ptr1-is-null>What happens if the code above executes when ptr1 is NULL</h5><p>Segmentation Fault (Core Dumped)<h5 id=write-the-code-to-display-ptr1-s-value>Write the code to display ptr1&rsquo;s value</h5><pre><code class=language-c>printf(&quot;%p\n&quot;, ptr1);
-</code></pre><p>It is usually not useful to know a pointer&rsquo;s exact value,
-which is why we draw arrows instead.<h5 id=what-does-the-code-below-do>What does the code below do?</h5><pre><code class=language-c>int **q = $ptr1;
-</code></pre><p>it creates a pointer to a pointer to an integer.<h2 id=recall-1d-arrays>Recall 1D arrays</h2><h4 id=what>What?</h4><p>An array variable is<ul><li>A compound unit of storage having parts called elements<li>it&rsquo;s accessed using its identifier and indexing to get to a particular element<li><strong>stack</strong> allocated as a continuous, fixed-size block of memory</ul><h4 id=why>Why?</h4><ul><li>For storing a collection of data of the same type with fast access to its elements.<li>Because it&rsquo;s much easier to declare individual variables</ul><h4 id=how>How?</h4><pre><code class=language-c>void someFunction() {
-    int a[5];
+</code></pre><li><p>Draw a memory diagram showing array a</ul><p>Stack: $\block$ a<br>$\downarrow$<br>Heap: |?|?|?|?|?|<ul><li>Write the code that gives the element at indexes 0, 1 and 2 a values of 0, 11 and 22
+by using pointer dereferencing, indexing, and address arithmetic respectively.</ul><pre><code class=language-c>*a=0;
+a[1]=11;
+*(a+2)=22;
+</code></pre><ul><li>Write the code that uses a pointer named p to give the element at index 3 a value of 33.</ul><pre><code class=language-c>int* p = a;
+*(p+3) = 33;
+</code></pre><ul><li>Write the code that frees array a’s heap memory.</ul><pre><code class=language-c>free(a);
+a = NULL;
+</code></pre><h2 id=pointer-caveats>Pointer Caveats</h2><h4 id=don-t-dereference-uninitialized-or-null-pointers>Don&rsquo;t dereference uninitialized or NULL pointers!</h4><pre><code class=language-c>int *p;
+*p = 11;
+int *q = NULL;
+*q = 11;
+</code></pre><h4 id=don-t-dereference-freed-pointers>Don&rsquo;t dereference freed pointers!</h4><pre><code class=language-c>int *p = malloc(sizeof(int));
+int *q = p;
+. . .
+free(p);
+. . .
+*q = 11;
+</code></pre><p><strong>dangling pointer</strong>: is a pointer with an address to heap memory that has been freed<h4 id=watch-out-for-memory-leaks>Watch out for memory leaks!</h4><pre><code class=language-c>int *p = malloc(sizeof(int));
+int *q = malloc(sizeof(int));
+. . .
+p = q;
+</code></pre><h4 id=be-careful-with-testing-for-equality>Be careful with testing for equality!</h4><p>assume p and q are pointers<ul><li>p = q compares nothing because it&rsquo;s assignment<li>p == q compares addresses in pointers<li>* p == * q compares values in pointees</ul><h4 id=don-t-return-addresses-of-local-variables>Don&rsquo;t return addresses of local variables!</h4><pre><code class=language-c>int *badcode() {
+    int i = 11;
+    return &amp;i;
 }
-</code></pre><h6 id=how-many-integer-elements-have-been-allocated-memory>How many integer elements have been allocated memory?</h6><p><strong>5 stack allocated elements</strong><h6 id=write-the-code-that-gives-the-element-at-index-1-a-value-of-11>Write the code that gives the element at index 1 a value of 11</h6><pre><code class=language-c>a[1] = 11;
-</code></pre><h6 id=draw-a-memory-diagram-showing-array-a>Draw a memory diagram showing array a</h6><table><thead><tr><th align=center>0<th align=center>1<th align=center>2<th align=center>3<th align=center>4<tbody><tr><td align=center>?<td align=center>11<td align=center>?<td align=center>?<td align=center>?</table><p>DANGER: elements are undefined/uninitialized<h4 id=the-name-of-an-array>The name of an array</h4><p><strong>Correspond to the address of element 0 in C.</strong><h2 id=1d-array-and-pointers>1D Array and Pointers</h2><h4 id=given>Given:</h4><pre><code class=language-c>void someFunction() {
-    int a[5];
+int *badMakeIntArray(int size) {
+    int a[size];
+    return a;
 }
-</code></pre><p><strong>Basic Memory Diagram</strong><table><thead><tr><th align=center>0<th align=center>1<th align=center>2<th align=center>3<th align=center>4<tbody><tr><td align=center>?<td align=center>?<td align=center>?<td align=center>?<td align=center>?</table><p><strong>Linear Memory Diagram</strong><table><thead><tr><th align=center>LMD<tbody><tr><td align=center><tr><td align=center><tr><td align=center><tr><td align=center>&hellip;<tr><td align=center>Lower Addr</table><h4 id=address-arithmetic>Address Arithmetic</h4><h6 id=a-i-equiv-a-i>a[i] $\equiv$ *(a+i)</h6><ol><li><p>compute address<ul><li>starts at array name (addr of elem 0)<li>add the offset to elem <em>i</em>, which is automatically scaled for the elem&rsquo;s size<li>0x_20 + 2*4 = 0x_20 + 8 = 0x_28</ul><table><thead><tr><th align=center>LMD<tbody><tr><td align=center>00<tr><td align=center>00<tr><td align=center>00<tr><td align=center>16</table><li><p>dereference computed address to access the element&rsquo;s value<ul><li>a[i] = *(a+i);<li>or to assign it a value<li>Note ()&rsquo;s name are required</ul></ol><ul><li>Write the code that uses address arithmetic to give the element at index 2 a value of 22</ul><pre><code class=language-c>*(a+2) = 22;
-</code></pre><ul><li>Write the code that gives the element at index 0 a value of 0</ul><pre><code class=language-c>*a = 0;
-</code></pre><h4 id=using-a-pointer>Using a pointer</h4><ul><li>Write the code to create a pointer p having the address of element 0 in array a</ul><pre><code class=language-c>int *p = a;
-</code></pre><ul><li>Now write the code that uses p to give the element in a at index 3 a value of 33</ul><pre><code class=language-c>*(p+3) = 33;
-</code></pre><p><strong>Pointers and Arrays are strongly related in C</strong><h2 id=parameters-and-pointers>Parameters and Pointers</h2><h4 id=what-is-output-by-the-code-below>What is output by the code below?</h4><pre><code class=language-c>void f(int pv1, int *pv2, int *pv3, int pv4[]) {
-    int lv = pv1 + *pv2 + *pv3 + pv4[0];
-    pv1 = 11;
-    *pv2 = 22;
-    *pv3 = 33;
-    pv4[0] = lv;
-    pv4[1] = 44;
+</code></pre><h2 id=2d-arrays-on-the-heap>2D Arrays on the Heap</h2><h4 id=java-2d-array-of-arrays>Java 2D “Array of Arrays”</h4><p><code>int[][] m = new int[2][4];</code><h4 id=allocating-on-the-heap-a-2d-array-of-arrays-in-c>Allocating on the Heap a 2D “Array of Arrays” in C</h4><ol><li><p>Make a 2D array pointer named m (declare a pointer to an integer pointer).
+<code>int** m;</code><li><p>Assign m an “array of arrays” (allocate of a 1D array of integer pointers of size ROWS).
+<code>m = malloc(rows * sizeof(int*))</code><li><p>Assign each element in the “array of arrays” it own row of integers
+(for each row allocate a 1D array of integers of size COLS).<pre><code class=language-c>for (int i=0; i&lt;ROWS; i++)
+m[i] = malloc(COLS*sizeof(int));
+</code></pre></ol><ul><li>What is the contents of m after the code below executes when ROWS is 2 and COLS is 4?</ul><pre><code class=language-c>for (int i = 0; i &lt; ROWS; i++) {
+    for (int j = 0; j &lt; COLS; j++)
+        m[i][j] = i + j;
+</code></pre><ul><li><p>Can the following be used to replace m[i][j]?<p>a.) * ( * (m+i)+j) <strong>Yes</strong><br>b.) * ( * m + COLS * i + j) <strong>No</strong> requires a continuous array<li><p>Write the code to free the heap allocated 2D array?</ul><pre><code class=language-c>for (int i =0; u&lt;ROWS; i++)
+    free(m[i]);
+free(m)
+</code></pre><h4 id=free-the-components-of-your-heap-memory>Free the components of your heap memory</h4><p><strong>In reverse order of their allocation</strong><h2 id=array-caveats>Array Caveats</h2><h4 id=arrays-have-no-bounds-checking>Arrays have no bounds checking!</h4><pre><code class=language-c>int a[5];
+for (int i = 0; i &lt; 11; i++)
+    a[i] = 0;
+</code></pre><h4 id=arrays-cannot-be-return-types>Arrays cannot be return types!</h4><pre><code class=language-c>int[] makeIntArray(int size) {
+    return malloc(sizeof(int) * size);
 }
-int main(void) {
-    int lv1 = 1, lv2 = 2;
-    int *lv3;
-    int lv4[] = {4,5,6};
-    lv3 = lv4 + 2;
-    f(lv1, &amp;lv2, lv3, lv4);
-    printf(&quot;%i,%i,%i\n&quot;,lv1,lv2,*lv3);
-    printf(&quot;%i,%i,%i\n&quot;,lv4[0],lv4[1],lv4[2]);
-    return 0;
-}
-</code></pre><p>lv: 1, 2, 6, [4,5,6]<br>f(1, ?, 6, [4, 5, 6])<br>lv = 1 + 2 + 6 + 4<p>1 22 33<h4 id=call-stack-tracing>Call Stack Tracing</h4><ul><li>Manually tracing code with functions in a manner that mimics the machine<li>Each function gets a box when it is called: activation record / stack frame<li>Top box on the stack is executing and those below are suspended waiting for their call-ee to return</ul><h4 id=pass-call-by-value>Pass/Call-by-value</h4><ul><li>Arg is copied into its corresponding param<li>used with basic types (scalars) since they&rsquo;re fast to copy</ul><h4 id=changing-the-parameter>Changing the parameter</h4><p>Does not change its args<h4 id=passing-an-address-argument>Passing an address argument</h4><ul><li>The arg is copied into its param which must be a pointer<li>used with complex types to avoid copying<li>used to enable functions to change args&rsquo;s values</ul><h4 id=a-pointer-parameter>A pointer parameter</h4><ul><li><strong>can</strong> change its arg by accessing its pointee with dereferencing.</ul><a class=readmore href=/2017/9/14/cs354-03.html title="CS354-03 Pointers">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS540-04 Iterative Deepening</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
-<span class="date updated"><a href=/2017/9/13/cs540-04.html title="September 13, 2017">September 13, 2017</a></span>
+</code></pre><h4 id=not-all-2d-arrays-are-alike>Not all 2D arrays are alike!</h4><ul><li>What is the layout for 2D arrays on the stack?<li>What is the layout for 2D arrays on the heap?</ul><h4 id=an-array-argument-must-match-its-parameter>An array argument must match its parameter!</h4><h4 id=statically-allocated-arrays-require-all-but-their-first-dimension-specified>Statically allocated arrays require all but their first dimension specified!</h4><pre><code class=language-c>int a[2][4] = {{1,2,3,4},{5,6,7,8}};
+printIntArray(a);
+</code></pre><ul><li>Which of the following are type compatible with a ?</ul><pre><code class=language-c>void printIntArray(int a[2][4]) { . . . } // Y
+void printIntArray(int a[8][4]) { . . . } // Y
+void printIntArray(int a[][4]) { . . . } // Y
+void printIntArray(int a[4][8]) { . . . } // N Col too big
+void printIntArray(int a[][]) { . . . } // N Incomplete type
+void printIntArray(int (*a)[4]) { . . . } // Y
+void printIntArray(int **a) { . . . } // N
+</code></pre><a class=readmore href=/2017/9/21/cs354-05.html title="CS354-05 Array on the heap">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS540-07 A* Search</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
+<span class="date updated"><a href=/2017/9/20/cs540-07.html title="September 20, 2017">September 20, 2017</a></span>
 <span class=category><a href=/category/CS540.html rel="category tag">CS540</a>;
 <a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;</span>
 <span class=category>Tags
 <a href=/tags/CS540.html rel="category tag">#CS540</a></span>
-<span class=comments><a href>Comments are closed</a></span></div></header><h2 id=iterative-deepening>Iterative Deepening</h2><ul><li>DFS, stop expanding at level 1, $b^0$<li>DFS, stop expanding at level 2, $b^0 + b^1$<li>&hellip;<li>DFS, stop expanding at level b. $b^0 + &hellip; + b^d$</ul><p>Time Complexity: $d*b^0 + (d-1)*b^1 + &hellip; + b^{b-1}$<h2 id=search-table-v2>Search Table V2</h2><table><thead><tr><th align=center><th align=center>Guaranteed to find a goal ?<th align=center>Is it the optimal goal ?<th align=center>Time Complexity<th align=center>Space Complexity<tbody><tr><td align=center>BFS<td align=center>Yes<td align=center>Yes (no if cost not the same)<td align=center>$\sum_{x=1}^d b^{d-1} \sim O(b^d)$<td align=center>$b^d-1 \sim O(b^d)$<tr><td align=center>DFS<td align=center>No<td align=center>No<td align=center>(m finite) $O(b^m)$<td align=center>$m*b \sim O(mb)$<tr><td align=center>UCS<td align=center>Yes<td align=center>Yes<td align=center>$O(b^m)$<td align=center>$O(b^m)$<tr><td align=center>ID<td align=center>Yes<td align=center>Yes<td align=center>$O(b^d)$<td align=center>$O(b*d)$</table><p>So far, every search algorithm is <strong>Uninformed Search</strong><hr><h2 id=graph-is-not-a-tree>Graph is not a tree</h2><pre><code class=language-mermaid>graph TD;
-    init --&gt; S;
-    S --&gt; init;
-    S --&gt; goal;
-</code></pre><p>Visited {}, great space cost<p>Path checking DFS</p><a class=readmore href=/2017/9/13/cs540-04.html title="CS540-04 Iterative Deepening">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS252-04</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
-<span class="date updated"><a href=/2017/9/13/cs252-04.html title="September 13, 2017">September 13, 2017</a></span>
-<span class=category><a href=/category/CS252.html rel="category tag">CS252</a>;
+<span class=comments><a href>Comments are closed</a></span></div></header><a class=readmore href=/2017/9/20/cs540-07.html title="CS540-07 A* Search">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS354-04 C String &amp; Arrays</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
+<span class="date updated"><a href=/2017/9/19/cs354-04.html title="September 19, 2017">September 19, 2017</a></span>
+<span class=category><a href=/category/CS354.html rel="category tag">CS354</a>;
 <a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;</span>
 <span class=category>Tags
-<a href=/tags/CS252.html rel="category tag">#CS252</a></span>
-<span class=comments><a href>Comments are closed</a></span></div></header><a class=readmore href=/2017/9/13/cs252-04.html title=CS252-04>Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>Econ102-02</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
-<span class="date updated"><a href=/2017/9/12/cs354-02.html title="September 12, 2017">September 12, 2017</a></span>
-<span class=category><a href=/category/Econ102.html rel="category tag">Econ102</a>;
-<a href=/category/Economics.html rel="category tag">Economics</a>;</span>
+<a href=/tags/CS354.html rel="category tag">#CS354</a></span>
+<span class=comments><a href>Comments are closed</a></span></div></header><h2 id=today>Today</h2><ul><li>C String<li>2D array and pointers</ul><h2 id=c-strings>C Strings</h2><h4 id=what-a-string-is>What? A String is</h4><ul><li>A sequence of chars whose end is marked with a null char (<code>\0</code>).<li>Represented as a one dimensional array of chars</ul><h4 id=how>How?</h4><ul><li>Declare a string variable, named str1 and initialize it with &ldquo;CS 354&rdquo;</ul><pre><code class=language-c>void someFunction() {
+    char str1[11] = &quot;CS 354&quot;;
+    // Copy the string literal into str1's mem
+}
+</code></pre><ul><li>Complete the memory diagram of str 1</ul><table><thead><tr><th align=center>C<th align=center>S<th align=center><th align=center>3<th align=center>5<th align=center>4<th align=center>\0<th align=center>?<th align=center>?<th align=center>?<th align=center>?<tbody></table><hr><h6 id=the-identifier-of-a-string>The identifier of a string</h6><p>Correspond to address of elem 0.<ul><li>Declare a string pointer, named sptr1, and initialize it with &ldquo;CS 354&rdquo;</ul><pre><code class=language-c>char *sptr1 = &quot;CS 354&quot;;
+</code></pre><ul><li>Draw a memory diagram for the code.</ul><p><em>sptr1</em><br>$\downarrow$<table><thead><tr><th align=center>C<th align=center>S<th align=center><th align=center>3<th align=center>5<th align=center>4<th align=center>\0<tbody></table><hr><h4 id=string-caveats>STRING CAVEATS!</h4><ul><li>Assume both code fragments below are added to somefunction above,
+what happens when the code is attempted to be compiled and run?</ul><ol><li><code>str1 = &quot;folderol&quot;;</code><ul><li>Compiler Error</ul><li><code>sptr1 = &quot;mumpsimus&quot;;</code><ul><li>No problems</ul></ol><p><strong>Only string pointer <em>variables</em> can be <em>assigned</em> a new string&rsquo;s address</strong><h2 id=string-h>String.h</h2><h4 id=what-string-h-is>What ? string.h is</h4><ul><li>A collection of useful functionsthat manipulate c strings</ul><p><code>int strlen(const char *str)</code><br>Returns the length of string <strong>str</strong> up to but <em>not including the null character</em>.<p><code>char *strcpy(char *dest, const char *src)</code><br>Copies the string pointed to by <strong>src</strong> to the memory pointed to by <strong>dest</strong>
+and terminates with the null character.<p><code>char *strcat(char *dest, const char *src)</code><br>Appends the string pointed to by <strong>src</strong> to the end of the string pointed to by <strong>dest</strong>
+and terminates with the null character.<p><code>int strcmp(const char *str1, const char *str2)</code><br>Compares the string pointed to by str1 to the string pointed to by str2.<br>Like java,<ul><li>negative if str1 comes before str2<li>0 if same<li>positive if str1 comes after str2</ul><blockquote><p><strong>dest</strong> must be large enough to hold result string or buffer overflow</blockquote><h4 id=more-string-caveats>MORE STRING CAVEATS!</h4><ul><li>Assume each code fragments below is added to somefunction on the prior page,
+what happens when the code is attempted to be compiled and run?</ul><ol><li><code>strcpy(str1, &quot;formication&quot;);</code><ul><li>buffer overflow, null char written out of the array</ul><li><code>strcpy(sptr1, &quot;vomitory&quot;);</code><ul><li>Compiles, may be the same as $\uparrow$ or segfault if sptr&rsquo;s memory is read only</ul></ol><p><strong>Use strcpy (or strncpy) to copy a string into <em>writable</em> memory of another string</strong><h2 id=recall-2d-array>Recall 2D array</h2><pre><code class=language-c>void someFunction(){
+    int m[2][4] = {{0,1,2,3},{4,5,6,7}};
+}
+</code></pre><p>m:<table><thead><tr><th align=center>0<th align=center>1<th align=center>2<th align=center>3<tbody><tr><td align=center>4<td align=center>5<td align=center>6<td align=center>7</table><hr><ul><li>What is output by this code fragment?</ul><pre><code class=language-c>for (int i = 0; i &lt; 2; i++) {
+    for (int j = 0; j &lt; 4; j++) {
+        printf(&quot;%i&quot;, m[i][j]);
+    }
+    printf(&quot;\n&quot;);
+}
+</code></pre><pre><code>0123
+4567
+</code></pre><p><strong>Memory is a sequence of bytes</strong><p><strong>Statically allocated 2D arrays are allocated as a continuous block of memory in role major order</strong><p>layout is row by row<h2 id=2d-array-and-pointers>2D array and pointers</h2><h4 id=address-arithmetic-for-statically-allocated-2d-arrays>Address Arithmetic for Statically Allocated 2D Arrays</h4><ul><li>Which of the following are equivalent to m[i][j]?</ul><p>a. (*(m+i))[j]<br>- addr arith to row i and index to col j<br>b. *(m[i]+j)<br>- index to row i, addr arith to col j<br>c. *( *(m+i)+j)<br>- full addr arith<h6 id=m-i-j-m-i-j>m[i][j] = * ( * (m+i) + j )</h6><ol><li>Compute row i address<ul><li>start at array&rsquo;s address<li>add offset to row i; auto scaled by the row size</ul><li>dereference the address to access row i<li>compute element j address in row i<ul><li>add offset to col j in row i; auto scaled by elem size</ul><li>dereference the address to access element in row i column j</ol><h6 id=m-0-0-m>m[0][0] = * * m</h6><ul><li>What type is * * m? <strong>[int]</strong><li>What type is * m? <strong>[int *]</strong> = <strong>m[0]</strong> = addr of start of row<li>What type is m? <strong>[int * *]</strong> for a statically allocated array 2D<li>* m is the addr of row 0 and * * m is also the addr of row 0</ul><h6 id=m-i-j>m[i][j]</h6><p>= * ( * m + cols * i + j )<br><em>scaling required for row size</em><p>For 2d array in row-major order</p><a class=readmore href=/2017/9/19/cs354-04.html title="CS354-04 C String &amp; Arrays">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS540-06 A* Search</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
+<span class="date updated"><a href=/2017/9/18/cs540-06.html title="September 18, 2017">September 18, 2017</a></span>
+<span class=category><a href=/category/CS540.html rel="category tag">CS540</a>;
+<a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;</span>
 <span class=category>Tags
-<a href=/tags/Econ102.html rel="category tag">#Econ102</a></span>
-<span class=comments><a href>Comments are closed</a></span></div></header><a class=readmore href=/2017/9/12/cs354-02.html title=Econ102-02>Read more</a></article></section><hr><ul class="default-wp-page clearfix"><li class=Next><a href=/posts/2.html>← Next</a></ul></div></div><div id=secondary class="widget-area col-md-4" role=complementary><aside id=toolbox class=widget><h4 class=widget-title>About this site</h4><div class=author_bio_message>This is my personal notes website.
+<a href=/tags/CS540.html rel="category tag">#CS540</a></span>
+<span class=comments><a href>Comments are closed</a></span></div></header><h4 id=edge-cost-c-s-s>Edge cost c(s, s&rsquo;)</h4><h4 id=path-cost>Path cost</h4><ul><li>best path from init to s: g(s)<li>best path from s to goal: h(s)</ul><pre><code class=language-mermaid>graph LR;
+    init --&gt; s1;
+    init --&gt; s3;
+    init --&gt; s5;
+    s1 --&gt; s2;
+    s3 --&gt; s4;
+    s5 --&gt; s6;
+    s2 --3--&gt; s7;
+    s4 --2--&gt; s7;
+    s6 --1--&gt; s7;
+    s7 --&gt; goal;
+</code></pre><p>g(s2) = g(s4) = g(s6) = 2<br>h(s2) = 4<br>h(s4) = 3<br>h(s6) = 2<p><strong>h(): Heuristic function</strong> --&gt; informed search<p>Priority queue: put g(s)+h(s) instead of g(s)<blockquote><p>Ex.</blockquote><table><thead><tr><th align=center>8<th align=center>1<th align=center>3<tbody><tr><td align=center>2<td align=center><td align=center>4<tr><td align=center>5<td align=center>6<td align=center>7</table><p>goal:<table><thead><tr><th align=center>1<th align=center>2<th align=center>3<tbody><tr><td align=center>4<td align=center>5<td align=center>6<tr><td align=center>7<td align=center>8<td align=center></table><p>Lower bound for h(s): sum of manhattan distance for all the tiles to get to goal place<p>$$H(s)= \sum_{t=1}^8 {| r_1^t - r_1^t| + |C_1^t - C_2^t|}$$<h2 id=a-search-uparrow>A* Search $\uparrow$</h2><ul><li>g(s) + h(s) in priority queue<li>$\forall h(s)$ must be a lower bound of the true h (h is admissible)<li>fail if h is not admissible</ul><a class=readmore href=/2017/9/18/cs540-06.html title="CS540-06 A* Search">Read more</a></article></section><hr><ul class="default-wp-page clearfix"><li class=Next><a href=/posts/2.html>← Next</a></ul></div></div><div id=secondary class="widget-area col-md-4" role=complementary><aside id=toolbox class=widget><h4 class=widget-title>About this site</h4><div class=author_bio_message>This is my personal notes website.
 You are welcomed to use it.
-But do NOT stop taking your own notes!</div></aside><aside id=recent-posts-2 class="widget widget_recent_entries"><h4 class=widget-title>Recent</h4><ul><li><a href=/2017/9/15/cs540-05.html>CS540-05 Path Checking DFS</a><li><a href=/2017/9/14/cs354-03.html>CS354-03 Pointers</a><li><a href=/2017/9/13/cs540-04.html>CS540-04 Iterative Deepening</a><li><a href=/2017/9/13/cs252-04.html>CS252-04</a><li><a href=/2017/9/12/cs354-02.html>Econ102-02</a><li><a href=/2017/9/12/cs354-02.html>CS354-02</a><li><a href=/2017/9/11/cs252-03.html>CS252-03 Binary System</a><li><a href=/2017/9/11/cs540-03.html>CS540-03 Search</a><li><a href=/2017/9/8/cs540-02.html>CS540-02 Introduction</a><li><a href=/2017/9/8/cs252-02.html>CS252-02 Binary System</a></ul></aside><aside id=categories-2 class="widget widget_categories"><h4 class=widget-title>Categories</h4><ul><li class=cat-item><a href=/category/Artificial%20Intelligence.html>Artificial Intelligence</a>(1)<li class=cat-item><a href=/category/Bio101.html>Bio101</a>(5)<li class=cat-item><a href=/category/Biology.html>Biology</a>(5)<li class=cat-item><a href=/category/CS252.html>CS252</a>(4)<li class=cat-item><a href=/category/CS354.html>CS354</a>(2)<li class=cat-item><a href=/category/CS367.html>CS367</a>(23)<li class=cat-item><a href=/category/CS368.html>CS368</a>(1)<li class=cat-item><a href=/category/CS540.html>CS540</a>(5)<li class=cat-item><a href=/category/CS559.html>CS559</a>(5)<li class=cat-item><a href=/category/Computer%20Science.html>Computer Science</a>(60)<li class=cat-item><a href=/category/Deep%20Learning.html>Deep Learning</a>(1)<li class=cat-item><a href=/category/ESL118.html>ESL118</a>(1)<li class=cat-item><a href=/category/Econ102.html>Econ102</a>(1)<li class=cat-item><a href=/category/Economics.html>Economics</a>(1)<li class=cat-item><a href=/category/Go.html>Go</a>(1)<li class=cat-item><a href=/category/Kines100.html>Kines100</a>(3)<li class=cat-item><a href=/category/Kinesiology.html>Kinesiology</a>(3)<li class=cat-item><a href=/category/Math.html>Math</a>(22)<li class=cat-item><a href=/category/Math240.html>Math240</a>(20)<li class=cat-item><a href=/category/Math320.html>Math320</a>(2)<li class=cat-item><a href=/category/NS132.html>NS132</a>(30)<li class=cat-item><a href=/category/Nutritional%20Science.html>Nutritional Science</a>(30)<li class=cat-item><a href=/category/Psych202.html>Psych202</a>(3)<li class=cat-item><a href=/category/Psychology.html>Psychology</a>(3)<li class=cat-item><a href=/category/Test.html>Test</a>(1)<li class=cat-item><a href=/category/Website.html>Website</a>(1)</ul></aside><aside id=tag_cloud-3 class="widget widget_tag_cloud"><h4 class=widget-title>Tags</h4><div class=tagcloud><a href=/tags/Bio101.html class="tag-link tag-link-position" style=font-size:8pt>Bio101</a>
+But do NOT stop taking your own notes!</div></aside><aside id=recent-posts-2 class="widget widget_recent_entries"><h4 class=widget-title>Recent</h4><ul><li><a href=/2017/9/22/cs540-08.html>CS540-08 A* Search</a><li><a href=/2017/9/21/cs354-05.html>CS354-05 Array on the heap</a><li><a href=/2017/9/20/cs540-07.html>CS540-07 A* Search</a><li><a href=/2017/9/19/cs354-04.html>CS354-04 C String &amp; Arrays</a><li><a href=/2017/9/18/cs540-06.html>CS540-06 A* Search</a><li><a href=/2017/9/15/cs540-05.html>CS540-05 Path Checking DFS</a><li><a href=/2017/9/14/cs354-03.html>CS354-03 Pointers &amp; Call Stack</a><li><a href=/2017/9/13/cs252-04.html>CS252-04</a><li><a href=/2017/9/13/cs540-04.html>CS540-04 Iterative Deepening</a><li><a href=/2017/9/12/cs354-02.html>Econ102-02</a></ul></aside><aside id=categories-2 class="widget widget_categories"><h4 class=widget-title>Categories</h4><ul><li class=cat-item><a href=/category/Artificial%20Intelligence.html>Artificial Intelligence</a>(1)<li class=cat-item><a href=/category/Bio101.html>Bio101</a>(5)<li class=cat-item><a href=/category/Biology.html>Biology</a>(5)<li class=cat-item><a href=/category/CS252.html>CS252</a>(4)<li class=cat-item><a href=/category/CS354.html>CS354</a>(4)<li class=cat-item><a href=/category/CS367.html>CS367</a>(23)<li class=cat-item><a href=/category/CS368.html>CS368</a>(1)<li class=cat-item><a href=/category/CS540.html>CS540</a>(8)<li class=cat-item><a href=/category/CS559.html>CS559</a>(5)<li class=cat-item><a href=/category/Computer%20Science.html>Computer Science</a>(65)<li class=cat-item><a href=/category/Deep%20Learning.html>Deep Learning</a>(1)<li class=cat-item><a href=/category/ESL118.html>ESL118</a>(1)<li class=cat-item><a href=/category/Econ102.html>Econ102</a>(1)<li class=cat-item><a href=/category/Economics.html>Economics</a>(1)<li class=cat-item><a href=/category/Go.html>Go</a>(1)<li class=cat-item><a href=/category/Kines100.html>Kines100</a>(3)<li class=cat-item><a href=/category/Kinesiology.html>Kinesiology</a>(3)<li class=cat-item><a href=/category/Math.html>Math</a>(22)<li class=cat-item><a href=/category/Math240.html>Math240</a>(20)<li class=cat-item><a href=/category/Math320.html>Math320</a>(2)<li class=cat-item><a href=/category/NS132.html>NS132</a>(30)<li class=cat-item><a href=/category/Nutritional%20Science.html>Nutritional Science</a>(30)<li class=cat-item><a href=/category/Psych202.html>Psych202</a>(3)<li class=cat-item><a href=/category/Psychology.html>Psychology</a>(3)<li class=cat-item><a href=/category/Test.html>Test</a>(1)<li class=cat-item><a href=/category/Website.html>Website</a>(1)</ul></aside><aside id=tag_cloud-3 class="widget widget_tag_cloud"><h4 class=widget-title>Tags</h4><div class=tagcloud><a href=/tags/Bio101.html class="tag-link tag-link-position" style=font-size:8pt>Bio101</a>
 <a href=/tags/CNNs.html class="tag-link tag-link-position" style=font-size:8pt>CNNs</a>
 <a href=/tags/CS252.html class="tag-link tag-link-position" style=font-size:8pt>CS252</a>
 <a href=/tags/CS354.html class="tag-link tag-link-position" style=font-size:8pt>CS354</a>

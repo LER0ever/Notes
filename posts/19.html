@@ -1,7 +1,149 @@
 <!doctype html><head lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>Page 19 - L.E.R Wiz</title><meta name=format-detection content="telephone=no"><script>if(self!=top){top.location=this.location.href;}</script><meta name=keywords content="LER0ever,L.E.R,Yi Rong,blog,L.E.R Space,Lumos,Wiz"><meta name=description content="L.E.R Space, a magical personal website by Yi Rong"><link rel=icon href=/favicon.ico><link rel="shortcut icon" href=/favicon.ico><link rel=stylesheet id=font-style-css href=/css/fonts-google.css><link rel=stylesheet id=fancybox-css href=/css/jquery.fancybox-1.3.4.css><link rel=stylesheet id=cr-style-css href=/css/style.css><link rel=stylesheet href=/css/hljs/monokai-sublime.css><script src=/js/jquery.min.js></script><script src=/js/jquery-migrate.min.js></script><script type=text/x-mathjax-config>
         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
     </script><script async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><body class="home post-list"><div id=wrapper><header id=branding><div class="wrapper clearfix"><div class="hgroup-wrap clearfix"><div class=hgroup-right><div class="social-profiles clearfix"><ul></ul></div><form class="searchform clearfix"><label class=assistive-text for=s>Search</label>
-<input id=searchbox placeholder=Search class="s field" name=s></form></div><div id=site-logo class=clearfix><h3 id=site-title><a href=http://wiz.rongyi.ml title="L.E.R Wiz" rel=home>L.E.R Wiz</a></h3><h4 id=site-description>All Ways Forward @ UW-Madison</h4></div></div><nav id=access class=clearfix><ul class=root><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/>Home</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/academics>My Academics</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/sn>Contact Me</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/archive>Archive</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=https://rongyi.ml target=_blank>L.E.R Space</a><li class=default-menu><a href=https://etasry.ml title=Navigation>Navigation</a></ul></nav></div></header><div id=main class="site-main wrapper clearfix"><div class=container><div id=primary class=no-margin-left><div id=content><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS367-Introduction To Data Structures 08</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
+<input id=searchbox placeholder=Search class="s field" name=s></form></div><div id=site-logo class=clearfix><h3 id=site-title><a href=http://wiz.rongyi.ml title="L.E.R Wiz" rel=home>L.E.R Wiz</a></h3><h4 id=site-description>All Ways Forward @ UW-Madison</h4></div></div><nav id=access class=clearfix><ul class=root><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/>Home</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/academics>My Academics</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/sn>Contact Me</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/archive>Archive</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=https://rongyi.ml target=_blank>L.E.R Space</a><li class=default-menu><a href=https://etasry.ml title=Navigation>Navigation</a></ul></nav></div></header><div id=main class="site-main wrapper clearfix"><div class=container><div id=primary class=no-margin-left><div id=content><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS367-Introduction To Data Structures 12</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
+<span class="date updated"><a href=/2016/10/13/cs367-introtods12.html title="October 13, 2016">October 13, 2016</a></span>
+<span class=category><a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;
+<a href=/category/CS367.html rel="category tag">CS367</a>;</span>
+<span class=category>Tags
+<a href=/tags/CS367.html rel="category tag">#CS367</a></span>
+<span class=comments><a href>Comments are closed</a></span></div></header><h2 id=stack-adt>Stack ADT</h2><h4 id=operation>Operation</h4><ul><li>push(E item)<li>E pop()<li>E peak()<li>boolean isEmpty()</ul><h4 id=implementing-using-an-array>Implementing using an array</h4><p><strong>Top at index</strong>
+Push: O(N)<br>Pop: O(N)<br>Peak: O(1) //must shift<br><strong>Top at numItem</strong><br>Push: O(1) Pop: O(1)<br>Peak O(1) //top = numItem -1<h4 id=implementing-using-a-chain-of-nodes>Implementing using a chain of nodes</h4><p><strong>if top = head</strong><br>Push: O(1)<br>Pop: O(1)<br>Peak: O(1) //top=head<br><strong>top = tail</strong><br>Push: O(1)<br>Pop: O(N)//update tail<br>Peak: O(1)<br><strong>top at end, no tail</strong><br>Push: O(N)<br>Pop: O(N)<br>Peak: O(N)<h2 id=queue-adt>Queue ADT</h2><h4 id=concepts>Concepts</h4><p>Like a checkout line. First in First out<h4 id=operations>Operations</h4><p>(present traditional names)<ul><li>void enqueue(E item) // add<li>E dequeue() // remove<li>boolean isEmpty()</ul><h4 id=implementing-using-a-chain-of-nodes-1>Implementing using a chain of nodes</h4><p><strong>Option 1: front of queue is at head, rear of queue is at tail</strong><ul><li>Enqueue: O(1)<li>Dequeue: O(1)</ul><p><strong>front of queue is at tail, rear of queue is at head</strong><ul><li>Enqueue: O(1)<li>Dequeue: O(N)</ul><h4 id=implementing-using-an-array-1>Implementing using an array</h4><p><strong>Option 1: front of queue is at 0, rear of queue is at n-1</strong><ul><li>Enqueue: O(1)<li>Dequeue: O(N)</ul><p><strong>Option 2: front of queue at numItem -1, rear of queue at 0</strong><ul><li>Enqueue: O(N)<li>Dequeue: O(1)</ul><p><strong>Option 3: front of queue at first item, rear of queue at last item</strong><ul><li>Enqueue: O(1)<li>Dequeue: O(1)</ul><pre><code class=language-java>private int incrementIndex(int i){
+    if (i == items.length - 1)
+        return 0;
+    return i++
+}
+</code></pre><h2 id=implementing-using-circular-array>Implementing using Circular Array</h2><h4 id=concepts-1>Concepts</h4><p>using free elements at front of array<br>Only expand if all elements used<h4 id=enqueue-e-item>Enqueue (E item)</h4><pre><code class=language-java>if (numItems == items.length)
+    expand();
+R = incrementIndex(R);
+items[R] = item;
+numItems ++;
+</code></pre><h4 id=e-dequeue>E Dequeue()</h4><pre><code class=language-java>if (numItems &lt;= 0)
+    throw new EmptyQueueException();
+E temp = items[F];
+F = incrementIndex(F);
+return temp;
+</code></pre><h4 id=expand>Expand()</h4><p>System.<strong>ArrayCopy</strong>(q(source), F(srcPos), newQ(dest), Q(destPos), length)<pre><code class=language-java>
+</code></pre><h2 id=end-of-exam-1>End of exam 1</h2><h2 id=tree-terminology>Tree Terminology</h2><blockquote><p>outlineW6R -3</blockquote><ol><li>Root: H<br><li>How many leaves: 4, EFDI<li>3<li>B<li>2<li>G<li>6<li>A, H<li>3<li>5<li>4</ol><h2 id=priority-queue-adt>Priority Queue ADT</h2><p>store items - so they can be remove in order of hiest priority<h4 id=priority>Priority</h4><ul><li>each item is assigned a priority value<li>allow duplicated priority<li>highest priority is smallest (or largest) value (just be clear which it is)</ul><h4 id=concepts-2>Concepts</h4><p>Items are removed in order of their priority<p><strong>Goal</strong>: Fast acces to highest priority<h4 id=operation-1>Operation</h4><ul><li>void insert(comparable item)<li>comparable removeMax()<li>comparable getMax()<li>boolean isEmpty()</ul><a class=readmore href=/2016/10/13/cs367-introtods12.html title="CS367-Introduction To Data Structures 12">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS367-Introduction To Data Structures 11</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
+<span class="date updated"><a href=/2016/10/11/cs367-introtods11.html title="October 11, 2016">October 11, 2016</a></span>
+<span class=category><a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;
+<a href=/category/CS367.html rel="category tag">CS367</a>;</span>
+<span class=category>Tags
+<a href=/tags/CS367.html rel="category tag">#CS367</a></span>
+<span class=comments><a href>Comments are closed</a></span></div></header><h2 id=number-guessing-game>Number Guessing Game</h2><h6 id=linear-search>Linear Search</h6><ul><li>O(N) W.C.<li>O(1) B.C.<li>O(N/2) A.C.</ul><h6 id=binary-search>Binary Search</h6><p>7 Guess for N &lt; 100<h2 id=complexity-caveats>Complexity Caveats</h2><h4 id=small-problem-size>Small Problem Size</h4><p>Complexity analysis is not a good basic for choosing an algorithm when the problem size is small<br>T(N) = N^2 + 3<br>T(N) = 10 * N + 30<h4 id=same-complexity-or-dominant-operations>Same Complexity (or dominant operations)</h4><ul><li>look at multiplication constant<li>look at lower order terms<li>look at the amount of memory<li>look at expected problem size</ul><h2 id=returning-n-paper-to-n-students>Returning N Paper to N students</h2><h4 id=algorithm-1>Algorithm 1:</h4><p>call out each name,<br>have student come forward &amp; pick up<br>O(2N)<br>Best Case: O(N)<br>Worst Case: O(N)<h4 id=algorithm-2>Algorithm 2:</h4><p>hand pile to first student,<br>student linearly searches through papers &amp; takes hers/his,<br>pass pile to next student who does likewise<br>O(N^2) Quadratic<h4 id=algorithm-3>Algorithm 3:</h4><p>sort the papers alphabetically, O(NlogN)<br>hand pile to first student who does binary search, &lt; NlogN<br>pass to next student who does likewise<br>O(2NlogN) ==&gt; O(NlogN)<h2 id=shadow-array>Shadow Array</h2><ul><li>if items is full, expand shadow<ol><li>create new arr 2x shadow<li>reassign items to shadow (item = shadow)<li>reassign shadow to new array (shadow = newarray)<li>place new item in items<li>place new item in shadow array<li>copy one item from items to shadow</ol></ul><p>All Constant time, O(6)<br>We add to array (w/shadow) is O(1) constant<h2 id=stack-adt>Stack ADT</h2><h4 id=operation>Operation</h4><ul><li>push(E item)<li>E pop()<li>E peak()<li>boolean isEmpty()</ul><a class=readmore href=/2016/10/11/cs367-introtods11.html title="CS367-Introduction To Data Structures 11">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS367-Introduction To Data Structures 10</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
+<span class="date updated"><a href=/2016/10/4/cs367-introtods10.html title="October 4, 2016">October 4, 2016</a></span>
+<span class=category><a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;
+<a href=/category/CS367.html rel="category tag">CS367</a>;</span>
+<span class=category>Tags
+<a href=/tags/CS367.html rel="category tag">#CS367</a></span>
+<span class=comments><a href>Comments are closed</a></span></div></header><table><thead><tr><th align=center>T(N) = n+2<th align=center>f(N) = N<th align=center>C=2, cxf(N)<tbody><tr><td align=center>T(1) = 3<td align=center>f(1) = 1<td align=center>2<tr><td align=center>T(2) = 4<td align=center>f(2) = 2<td align=center>4<tr><td align=center>T(N) = N+2<td align=center>f(N) = N<td align=center>2N</table><p><strong>Choose the smallest growth rate function that is an upper bound</strong><h2 id=complexity-of-java-code>Complexity of Java Code</h2><h4 id=basic-operation>Basic operation</h4><p>O(1) anything that is not a control statement or method call<h4 id=sequence-os-statement-sum-of-comp-of-each-stmt>Sequence os statement //Sum of comp of each stmt</h4><pre><code>statement1;
+statement2;
+...
+statementk;
+</code></pre><p>O(K) ==&gt; O(1) CONSTANT<h4 id=if-else>If else</h4><pre><code class=language-java>if (cond) {
+    //if sequence of statements
+}
+else {
+    //else sequence of statements
+}
+</code></pre><p>O<br>=O(Cond) + Max(Gif, Gelse)
+=Max(Cond, Gif, Gelse)<p><strong>Pick the block that does most work</strong><h4 id=basic-loop>Basic loop</h4><pre><code class=language-java>for (i = 0; i &lt; j; i++) {
+    //sequence of statements
+}
+</code></pre><p>Repeats J times<br>if O(1) then JxO(1) = O(j)<h4 id=nested-loop>Nested Loop</h4><pre><code class=language-java>for (i = 0; i &lt; N; i++) {
+    for (j = 0; j &lt; M; j++) {
+        //sequence of statements
+    }
+}
+</code></pre><p>N * M * Gbody = O(N * M * Gbody)<br>When doing analysis, keep vars.<h4 id=loops-with-nested-method-calls-assume-problem-size-based-on-n>Loops with nested method calls (assume problem size based on N)</h4><pre><code class=language-java>for (i = 0; i &lt; N; i++) {
+    f1(i); //assume O(1)
+}
+for (i = 0; i &lt; N; i++) {
+    f2(N); //assume O(N)
+}
+for (i = 0; i &lt; N; i++) { // 
+    f3(i); //assume O(i)
+}
+</code></pre><p><strong>Must unroll loop if O dependes on a loop</strong><h2 id=comparing-listadt-implentation>Comparing ListADT Implentation</h2><p>| | Constructor | add(E) | add(E) at pos | contains(E) | size | isEmpty | get(int) | remove(int) |
+| | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--:
+| Array | O(1) | O(N) | O(N) | O(N) Linear Search | O(1) | O(1) | O(1) | O(N) |
+| Single-Linked List | same | O(1) | O(N) | same | O(1) | O(1) | O(N) W.C. O(N/2) A.C O(1) B.C. | O(N) W.C O(N/2) A.C O(1) B.C |
+| Circular SLL | same | same | same | same | O(1) | O(1) | same | same |
+| Double Linked List | same | same | same | same | same | same | same | same |
+| Circular DLL | same | same | same | same | same | same | same | same |<p>expand the array is O(N) lenear for , O(1) for shadowarray<h2 id=comparing-listadt-implementation>Comparing ListADT IMplementation</h2><h4 id=problem-size>Problem Size</h4><p>Each Element(same for all, ignore for today)
+1. Array
+- 2N
+- Shift items
+- Expand array
+- naive
+- shadow
+2. Singly-Linked List
+- 2N
+3. Circular SLL
+- 2N
+4. Doubly-Linked List
+- 3N
+5. Circular DLL
+- 3N<p>At first, getting links correct.<br>Draw pictures of chain of node, keep references to curr, prev</p><a class=readmore href=/2016/10/4/cs367-introtods10.html title="CS367-Introduction To Data Structures 10">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS367-Introduction To Data Structures 08</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
+<span class="date updated"><a href=/2016/10/4/cs367-introtods08.html title="October 4, 2016">October 4, 2016</a></span>
+<span class=category><a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;
+<a href=/category/CS367.html rel="category tag">CS367</a>;</span>
+<span class=category>Tags
+<a href=/tags/CS367.html rel="category tag">#CS367</a></span>
+<span class=comments><a href>Comments are closed</a></span></div></header><h3 id=java-for-each-loop>Java For-Each loop</h3><ul><li>Work on arrays and Iterable type
+```
+ListADT<string> list &hellip; //assume list of words
+Iterator<string> itr = list.iterator();
+while (itr.hasNext())
+System.out.println(itr.next());</ul><pre><code>
+### Problem - Implementing Multiple Intefaces
+```java
+public class LinkedList&lt;E&gt; implements ListADT&lt;E&gt;, Iterable&lt;E&gt; { ... }
+
+ListADT&lt;String&gt; list = new LinkedList&lt;String&gt;();
+Iterator&lt;String&gt; itr = list.iterator(); //Fails! No iterator in ListADT
+
+Iterable&lt;String&gt; list = new LinkedList&lt;String&gt;(); //ok
+Iterator&lt;String&gt; itr = list.iterator(); //ok
+list.add(&quot;newitem&quot;); //FAILS list is not ListADT anymore
+
+LinkedList&lt;String&gt; list = new LinkedList&lt;String&gt;(); //ok
+Iterator&lt;String&gt; itr = list.iterator(); //ok
+// Loss of generality - list is a LinkedLlist, not any other type
+</code></pre><h3 id=solution>Solution</h3><pre><code class=language-java>public interface ListADT&lt;E&gt; extends Iterable&lt;E&gt; {
+    //List Ops Listed here
+    //iterator()
+}
+</code></pre><h3 id=make-linkedlist-iterable>Make LinkedList Iterable</h3><pre><code class=language-java>public class LinkedList&lt;E&gt; implements ListADT&lt;E&gt; {
+    private Listnode&lt;E&gt; head;
+    private int numItems;
+    public LinkedList() { ... }
+    public void add(E item) { ... }
+    public E get(int pos) { ... }
+    . . .
+    //must define b.c. ListADT inherited the method requirement
+    public Iterator&lt;E&gt; iterator() {
+        return new LinkedListIterator&lt;E&gt;(head); 
+        // DIRECT access to List
+    }
+}
+</code></pre><h2 id=double-and-circular-linking>Double and Circular Linking</h2><ol><li>curr.getNext().setPrevious(newnode);<li>newnode.setNext(curr.getNext())<li>newnode.setPrevious(curr)<li>curr.setNext(newnode)</ol><h4 id=circular-singly-linked-chains-of-nodes>Circular Singly-Linked Chains of Nodes</h4><p>Last node next refers to the first node<br>- If First, Last and position do not mastter, just keep a curr referense
+- If First, Last and position matter, just keep tail reference (head is same as tail.getNext())<h4 id=circular-doubly-linked-chains-of-nodes>Circular Doubly-Linked Chains of Nodes</h4><ul><li>if Position does not matter, just keep current reference.<li>if Position does matter, keep head reference</ul><h2 id=analyzing-algorithm-efficiency>Analyzing Algorithm Efficiency</h2><h4 id=complexity>Complexity</h4><ol><li>Use to compare algorithms that solve same problem<li>Use to classify the use of resources and how they scale
+Resources<ul><li>Time: # of operation executed<li>Space: Amount of memory
+Problem<li>Some aspect of the problem that when changed, affects the resources used.</ul></ol><h4 id=if-problem-size-doubles-and-the-number-of-operation>If problem size doubles and the number of operation</h4><ul><li>Stays the same =&gt; Constant<li>Doubles =? Linear<li>Quadruples =&gt; Quadratic</ul><p>Complexity classifications is first-order analysis<br>classify based on 1st(highest) order operation<br>Focus on most significant differences first !<h2 id=exmaple-complexity-analysis-of-giving-a-toast>Exmaple: Complexity Analysis of giving a toast</h2><h4 id=what-is-the-problem-size>What is the problem size?</h4><p>Num of people, n<h4 id=what-is-the-algorithm>What is the algorithm</h4><ol><li>Fill the glasses (one bottle) LINEAR<li>Raise the glasses CONSTANT<li>Clink with everyone QUADRATIC<li>Drink CONSTANT</ol><h4 id=characterize-the-problem>characterize the problem</h4><p>Person 1 clinks with persons 2-N [n-1]
+Person 2 clinks with persons 3-N [n-2]
+&hellip;
+Person n-2 clinks with persons N-1 &amp; N [2]
+Person n-1 clinks with person N [1]
+Person N clicks with no one [0]<p>sum of Clinks: n/2x(n-1)
+n^<sup>2</sup>&frasl;<sub>2</sub>: fist order term
+QUADRATIC<p>is not concerned<h2 id=big-o-notation>Big-O notation</h2><h4 id=concept>Concept</h4><p>CONStANT O(1)
+LINEAR O(N)
+QUADRATIC O(N^2)<h4 id=some-growth-rate-function-in-order-of-complexity>Some growth rate function in order of complexity</h4><p>1, logN, N, NlogN, N^2, N^4, N^k, 2^N, N!, N^N<h4 id=simplifying-equations>Simplifying Equations</h4><p>time(N) =&gt; T(N) = 4N^2 + 3N -11
+1. Drop lower order terms
+2. Drop multiplication constant<h4 id=formal-definition>Formal Definition</h4><p>A function T(N) is O(F(N))
+if for some constant C and some number n
+such that T &lt;= F(N) for all N &gt; n</p><a class=readmore href=/2016/10/4/cs367-introtods08.html title="CS367-Introduction To Data Structures 08">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS367-Introduction To Data Structures 08</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
 <span class="date updated"><a href=/2016/9/29/cs367-introtods08.html title="September 29, 2016">September 29, 2016</a></span>
 <span class=category><a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;
 <a href=/category/CS367.html rel="category tag">CS367</a>;</span>
@@ -106,78 +248,9 @@ public class LinkedList&lt;E&gt; implements ListADT&lt;E&gt; {
         numItem++;
     }
 }
-</code></pre><h2 id=implementing-linkedlistiterator>Implementing LinkedListIterator</h2><ul><li><p>Indirect iterator<ul><li>mylist<li>currPos</ul><li><p>Direct iterator<ul><li>curr</ul></ul><a class=readmore href=/2016/9/29/cs367-introtods08.html title="CS367-Introduction To Data Structures 08">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS367-Introduction To Data Structures 06</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
-<span class="date updated"><a href=/2016/9/22/cs367-introtods06.html title="September 22, 2016">September 22, 2016</a></span>
-<span class=category><a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;
-<a href=/category/CS367.html rel="category tag">CS367</a>;</span>
-<span class=category>Tags
-<a href=/tags/CS367.html rel="category tag">#CS367</a></span>
-<span class=comments><a href>Comments are closed</a></span></div></header><a class=readmore href=/2016/9/22/cs367-introtods06.html title="CS367-Introduction To Data Structures 06">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>Bio101-Eukaryotic Cell</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
-<span class="date updated"><a href=/2016/9/21/bio101-eukaryotic-cell.html title="September 21, 2016">September 21, 2016</a></span>
-<span class=category><a href=/category/Biology.html rel="category tag">Biology</a>;
-<a href=/category/Bio101.html rel="category tag">Bio101</a>;</span>
-<span class=category>Tags
-<a href=/tags/Bio101.html rel="category tag">#Bio101</a></span>
-<span class=comments><a href>Comments are closed</a></span></div></header><h2 id=eukaryotic-cells>Eukaryotic Cells</h2><p><strong>Cell must constantly interact with their surrouding environment</strong><br>As cell size increases -&gt; Surface area/volumn decreases<h2 id=animal-cell>Animal Cell</h2><ul><li>Plasma membrane<li>Cytosol(cytoplasm)<li>Ribosomes<li>Organelles</ul><h2 id=the-nucleus>The nucleus</h2><ul><li>Nucleolus<ul><li>site of ribosom synthesis</ul><li>Nuclear Envelope<ul><li>Inner Membrane<li>Outer Membrane</ul><li>Nuclear pore<ul><li>Molecules move in and out of nucleus through pores</ul><li>Nuclear Lamina<ul><li>Helps nucleus maintain shape<li>Organizes chromatin<li>Composed of proteins (lamins)</ul><li>Chromatin<li>Rough ER</ul><h4 id=nuclear-lamina>Nuclear Lamina</h4><p>Function:
-- Shape of nucleus
-- Organizes Chromatin<p>Structure:
-- Lamin Proteins (intermediate filaments)<p>mutant lamin protein = LETHAL
-- irregular shape of nucleus
-- defects in chromosome organization<p>Nematode/roundworm: mutant we find<br>Knockout mice(missing lamin A protein): mutant we make
-- abnormal nucleus</p><a class=readmore href=/2016/9/21/bio101-eukaryotic-cell.html title="Bio101-Eukaryotic Cell">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS367-Introduction To Data Structures 05</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
-<span class="date updated"><a href=/2016/9/20/cs367-introtods05.html title="September 20, 2016">September 20, 2016</a></span>
-<span class=category><a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;
-<a href=/category/CS367.html rel="category tag">CS367</a>;</span>
-<span class=category>Tags
-<a href=/tags/CS367.html rel="category tag">#CS367</a></span>
-<span class=comments><a href>Comments are closed</a></span></div></header><p>Java uses indirect iterator
-List interface extends Iterable<p>When a problem is detected, an exception is constructed.
-When exception is thrown, an exception execution cycle<pre><code class=language-java>throw exceptionObject;
-</code></pre><p>swtich to exception execution cycle<pre><code class=language-java>// add to remove method ArrayBag
-if (numItems &lt;= 0)
-    throw new EmpltyBagException();
-</code></pre><h2 id=exception-handling-resolving-a-problem>Exception Handling – Resolving a Problem</h2><ul><li>try block with code that may cayse an exception<li>catch block: one block for type of exception we can handle<li>finally block : always executed of try block is executed</ul><pre><code class=language-java>// FORMAT
-try {
-    // try block
-    code that might cause an exception to be thrown
-} catch (ExceptionType1 identifier1) {
-    // catch block
-    code to handle exception type 1
-} catch (ExceptionType2 identifier2) {
-    // catch block
-    code to handle exception type 2
-}
-    ... more catch blocks
-finally {
-    // finally block - optional
-    code always executed when try block is entered
-}
-</code></pre><h4 id=example>Example</h4><pre><code class=language-java>try {
-    for (int i=0;i &lt; 1000; i++)
-        bag.remove();
-} catch (EmptyBagException egg) {
-    S.O.P(&quot;remove caused EmpltyBagException&quot;);
-}
-</code></pre><h3 id=exception-execution>Exception Execution</h3><h5 id=normal-execution>Normal Execution</h5><p>Execute:
-- Normal code (not in tru block)
-- Code in a try block
-- code in a finally block
-Skip:
-- Code in catch block<h5 id=exception-handling>Exception Handling</h5><p>Skip:
-- normal code
-- remaining code in try block<p>Execute:
-- Code in matching catch clause
-- Code in finally block<p>Switch to Normal Exec:
-- if exception is caught<h5 id=searching-for-a-matching-catch>Searching for a Matching Catch</h5><ol><li><p>Locally<ul><li>Look in same method/current method</ul><li><p>Remotely<ul><li>if Current method can&rsquo;t handle, look to next method on call stack</ul></ol><h5 id=checking-a-match>Checking a Match</h5><ol><li>Match found<ul><li>execute code in matching catch<li>skip other catch blocks<li>execute code in finally block<li>switch back to normal execution</ul><li>No Match Found<ul><li>Execute in finally block<li>Pass exception object to calling method</ul></ol><blockquote><p>L5 - 5</blockquote><ol><li>main{<br>A{<br>B{after C, after D, B finally, }B<br>After B, }A<br>After A, After E, main finally, }main<br></ol><p>3.
-main{<br>A{<br>B{main-green, main-finally,}main<h2 id=throws-clause>Throws clause</h2><p>Checked: Compiler checks that you do something if exception<br>(IOException)<br>a. catch it<br>b. throw it<br>Unchecked: Compiler does not check that you have a plan<br>(Runtime Exception)<br>a. catch it<br>b. throw it<br>c. ignore it, no additional code added</p><a class=readmore href=/2016/9/20/cs367-introtods05.html title="CS367-Introduction To Data Structures 05">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>Bio101 Vocabulary</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
-<span class="date updated"><a href=/2016/9/18/bio101-vocabulary.html title="September 18, 2016">September 18, 2016</a></span>
-<span class=category><a href=/category/Biology.html rel="category tag">Biology</a>;
-<a href=/category/Bio101.html rel="category tag">Bio101</a>;</span>
-<span class=category>Tags
-<a href=/tags/Bio101.html rel="category tag">#Bio101</a></span>
-<span class=comments><a href>Comments are closed</a></span></div></header><table><thead><tr><th align=center>[Terms]<th align=center>[翻译]<tbody><tr><td align=center>Covalent Bond<td align=center>共价键<tr><td align=center>Polar Covalent Bond<td align=center>极性共价键<tr><td align=center>Hydrogen Bond<td align=center>氢键<tr><td align=center>hydrocarbon<td align=center>碳氢化合物<tr><td align=center>functional group<td align=center>官能团<tr><td align=center>polar<td align=center>极性的<tr><td align=center>nonpolar<td align=center>非极性的<tr><td align=center>macromolecule<td align=center>高分子<tr><td align=center>monomer<td align=center>单体<tr><td align=center>dimer<td align=center>二聚物<tr><td align=center>polymer<td align=center>多聚物，高分子聚合物<tr><td align=center>hydrolysis<td align=center>水解<tr><td align=center>enzyme<td align=center>酶<tr><td align=center>carbonhydrate<td align=center>碳水化合物<tr><td align=center>monosaccharide<td align=center>单糖<tr><td align=center>disaccharide<td align=center>二糖<tr><td align=center>oligosaccharide<td align=center>低聚糖<tr><td align=center>polysaccharide<td align=center>多糖<tr><td align=center>cellulose<td align=center>纤维素<tr><td align=center>glycogen<td align=center>糖元<tr><td align=center>starch<td align=center>淀粉<tr><td align=center>chitin<td align=center>壳质，角素<tr><td align=center>glucose<td align=center>葡萄糖<tr><td align=center>amino acid<td align=center>氨基酸<tr><td align=center>protein<td align=center>蛋白质<tr><td align=center>polypeptide<td align=center>多肽<tr><td align=center>peptide bond<td align=center>肽键<tr><td align=center>hydrophobic<td align=center>恐水的<tr><td align=center>hydrophilic<td align=center>亲水的<tr><td align=center>enzyme<td align=center>酶<tr><td align=center>denaturation<td align=center>变性<tr><td align=center>conformation<td align=center>构造<tr><td align=center>lipid<td align=center>脂质<tr><td align=center>triglyceride<td align=center>甘油三酸脂<tr><td align=center>phospholipid<td align=center>磷脂<tr><td align=center>amphipathic<td align=center>同时亲水，厌水的<tr><td align=center>micelle<td align=center>微团，胶囊<tr><td align=center>steroid<td align=center>类固醇<tr><td align=center>lipoprotein<td align=center>脂蛋白<tr><td align=center>saturated<td align=center>饱和<tr><td align=center>unsaturated<td align=center>不饱和<tr><td align=center>sterol<td align=center>固醇<tr><td align=center>Transmembrane Protein<td align=center>跨膜蛋白<tr><td align=center>Peripheral Protein<td align=center>周围蛋白<tr><td align=center>Glycoprotein<td align=center>糖蛋白<tr><td align=center>Diffusion<td align=center>扩散<tr><td align=center>Concentration Gradient<td align=center>浓度梯度<tr><td align=center>Passive Transport<td align=center>被动运输<tr><td align=center>Active Transport<td align=center>主动运输<tr><td align=center>Facilitated Transport<td align=center>易化运输<tr><td align=center>Carrier Protein<td align=center>载体蛋白<tr><td align=center>Channel Protein<td align=center>通道蛋白<tr><td align=center>Osmosis<td align=center>渗透作用<tr><td align=center>Aquaporin<td align=center>水通道<tr><td align=center>Hypotonic<td align=center>低渗的<tr><td align=center>Hypertonic<td align=center>高渗的<tr><td align=center>Isotonic<td align=center>等压的<tr><td align=center>Endocytosis<td align=center>内噬作用，胞吞<tr><td align=center>Exocytosis<td align=center>胞吐作用<tr><td align=center>Vesicle<td align=center>囊泡<tr><td align=center>Pinocytosis<td align=center>胞饮作用<tr><td align=center>Phagocytosis<td align=center>吞噬作用，噬菌作用<tr><td align=center>Receptor<td align=center>受体<tr><td align=center>LDL<td align=center>低密度脂蛋白<tr><td align=center>Coated Pit<td align=center>被膜小窝<tr><td align=center>Prokaryote<td align=center>原核生物<tr><td align=center>Plasma Membrane<td align=center>质膜<tr><td align=center>Cytosol<td align=center>细胞溶质，胞液<tr><td align=center>Ribosome<td align=center>核糖体<tr><td align=center>Chromosome<td align=center>染色体<tr><td align=center>Nucleoid region<td align=center>拟核区<tr><td align=center>Cell Wall<td align=center>细胞壁<tr><td align=center>Peptidoglycan<td align=center>肽聚糖<tr><td align=center>Flagella<td align=center>鞭毛<tr><td align=center>Decomposer<td align=center>分解体<tr><td align=center>Symbiosis<td align=center>共生现象<tr><td align=center>Mutualism<td align=center>互利共生<tr><td align=center>Microbiome<td align=center>微生物<tr><td align=center>Antibiotic<td align=center>抗生素<tr><td align=center>Halophile<td align=center>喜盐生物<tr><td align=center>Thermophile<td align=center>嗜热生物<tr><td align=center>Methanogen<td align=center>产烷生物<tr><td align=center>Organelle<td align=center>细胞器<tr><td align=center>Nucleus<td align=center>细胞核<tr><td align=center>Nuclear Envolope<td align=center>核包膜<tr><td align=center>Nuclear Pore<td align=center>核膜孔<tr><td align=center>Nuclear Lamina<td align=center>核纤层<tr><td align=center>endoplasmic reticulum<td align=center>内质网<tr><td align=center>Golgi Apparatus<td align=center>高尔基体<tr><td align=center>Lysosome<td align=center>溶酶体<tr><td align=center>Hydrolytic Enzymes<td align=center>水解酶<tr><td align=center>Secretory protein<td align=center>分泌蛋白<tr><td align=center>Cytoskeleton<td align=center>细胞骨架<tr><td align=center>Mitochondria<td align=center>线粒体<tr><td align=center>Chloroplast<td align=center>叶绿体<tr><td align=center>Photosynthesis<td align=center>光合作用<tr><td align=center>Binary fission<td align=center>二分体<tr><td align=center>Prokaryote<td align=center>原核生物<tr><td align=center>Eukaryote<td align=center>真核生物<tr><td align=center>Nucleotide<td align=center>核苷酸<tr><td align=center>Double Helix<td align=center>双螺旋<tr><td align=center>Antiparallel<td align=center>反平行的<tr><td align=center>Polarity<td align=center>极性<tr><td align=center>Complementary<td align=center>补足的<tr><td align=center>isotope<td align=center>同位素<tr><td align=center>Compound<td align=center>混合物，化合物<tr><td align=center>electronegativity<td align=center>电负性<tr><td align=center>Cohesion<td align=center>凝聚力<tr><td align=center>Molarity<td align=center>摩尔浓度<tr><td align=center>Isomers<td align=center>同分异构体<tr><td align=center>Cis-trans Isomers<td align=center>顺反异构体<tr><td align=center>Structural Isomers<td align=center>结构异构体<tr><td align=center>Enantiomers<td align=center>对映体<tr><td align=center>Galactose<td align=center>半乳糖<tr><td align=center>Fructose<td align=center>果糖<tr><td align=center>Granules<td align=center>颗粒<tr><td align=center>Amylos<td align=center>直链淀粉<tr><td align=center>Amylopectin<td align=center>支链淀粉<tr><td align=center>Glycerol<td align=center>甘油<tr><td align=center>Fatty Acid<td align=center>脂肪酸<tr><td align=center>Alcohol<td align=center>醇<tr><td align=center>cardiovascular<td align=center>心血管的<tr><td align=center>Cholesterol<td align=center>胆固醇<tr><td align=center>Superimposed<td align=center>叠加的，重叠的<tr><td align=center>Hemoglobin<td align=center>血红蛋白<tr><td align=center>Ether<td align=center>乙醚<tr><td align=center>chloroform<td align=center>氯仿，三氯甲烷<tr><td align=center>chaperonins<td align=center>伴侣蛋白<tr><td align=center>Lysozyme<td align=center>溶菌酶<tr><td align=center>Ligase<td align=center>联结酶<tr><td align=center>Histone<td align=center>组蛋白<tr><td align=center>Nucleosome<td align=center>染色质核小体<tr><td align=center>poikilotherms<td align=center>冷血动物<tr><td align=center>gametes<td align=center>配子<tr><td align=center>diploid<td align=center>二倍体<tr><td align=center>haploid<td align=center>单倍体<tr><td align=center>fertilization<td align=center>受孕<tr><td align=center>zygote<td align=center>受精卵<tr><td align=center>meiosis<td align=center>成熟分裂</table><a class=readmore href=/2016/9/18/bio101-vocabulary.html title="Bio101 Vocabulary">Read more</a></article></section><hr><ul class="default-wp-page clearfix"><li class=previous><a href=/posts/18.html>← Prev</a><li class=Next><a href=/posts/20.html>← Next</a></ul></div></div><div id=secondary class="widget-area col-md-4" role=complementary><aside id=toolbox class=widget><h4 class=widget-title>About this site</h4><div class=author_bio_message>This is my personal notes website.
+</code></pre><h2 id=implementing-linkedlistiterator>Implementing LinkedListIterator</h2><ul><li><p>Indirect iterator<ul><li>mylist<li>currPos</ul><li><p>Direct iterator<ul><li>curr</ul></ul><a class=readmore href=/2016/9/29/cs367-introtods08.html title="CS367-Introduction To Data Structures 08">Read more</a></article></section><hr><ul class="default-wp-page clearfix"><li class=previous><a href=/posts/18.html>← Prev</a><li class=Next><a href=/posts/20.html>← Next</a></ul></div></div><div id=secondary class="widget-area col-md-4" role=complementary><aside id=toolbox class=widget><h4 class=widget-title>About this site</h4><div class=author_bio_message>This is my personal notes website.
 You are welcomed to use it.
-But do NOT stop taking your own notes!</div></aside><aside id=recent-posts-2 class="widget widget_recent_entries"><h4 class=widget-title>Recent</h4><ul><li><a href=/2017/9/15/cs540-05.html>CS540-05 Path Checking DFS</a><li><a href=/2017/9/14/cs354-03.html>CS354-03 Pointers</a><li><a href=/2017/9/13/cs540-04.html>CS540-04 Iterative Deepening</a><li><a href=/2017/9/13/cs252-04.html>CS252-04</a><li><a href=/2017/9/12/cs354-02.html>Econ102-02</a><li><a href=/2017/9/12/cs354-02.html>CS354-02</a><li><a href=/2017/9/11/cs252-03.html>CS252-03 Binary System</a><li><a href=/2017/9/11/cs540-03.html>CS540-03 Search</a><li><a href=/2017/9/8/cs540-02.html>CS540-02 Introduction</a><li><a href=/2017/9/8/cs252-02.html>CS252-02 Binary System</a></ul></aside><aside id=categories-2 class="widget widget_categories"><h4 class=widget-title>Categories</h4><ul><li class=cat-item><a href=/category/Artificial%20Intelligence.html>Artificial Intelligence</a>(1)<li class=cat-item><a href=/category/Bio101.html>Bio101</a>(5)<li class=cat-item><a href=/category/Biology.html>Biology</a>(5)<li class=cat-item><a href=/category/CS252.html>CS252</a>(4)<li class=cat-item><a href=/category/CS354.html>CS354</a>(2)<li class=cat-item><a href=/category/CS367.html>CS367</a>(23)<li class=cat-item><a href=/category/CS368.html>CS368</a>(1)<li class=cat-item><a href=/category/CS540.html>CS540</a>(5)<li class=cat-item><a href=/category/CS559.html>CS559</a>(5)<li class=cat-item><a href=/category/Computer%20Science.html>Computer Science</a>(60)<li class=cat-item><a href=/category/Deep%20Learning.html>Deep Learning</a>(1)<li class=cat-item><a href=/category/ESL118.html>ESL118</a>(1)<li class=cat-item><a href=/category/Econ102.html>Econ102</a>(1)<li class=cat-item><a href=/category/Economics.html>Economics</a>(1)<li class=cat-item><a href=/category/Go.html>Go</a>(1)<li class=cat-item><a href=/category/Kines100.html>Kines100</a>(3)<li class=cat-item><a href=/category/Kinesiology.html>Kinesiology</a>(3)<li class=cat-item><a href=/category/Math.html>Math</a>(22)<li class=cat-item><a href=/category/Math240.html>Math240</a>(20)<li class=cat-item><a href=/category/Math320.html>Math320</a>(2)<li class=cat-item><a href=/category/NS132.html>NS132</a>(30)<li class=cat-item><a href=/category/Nutritional%20Science.html>Nutritional Science</a>(30)<li class=cat-item><a href=/category/Psych202.html>Psych202</a>(3)<li class=cat-item><a href=/category/Psychology.html>Psychology</a>(3)<li class=cat-item><a href=/category/Test.html>Test</a>(1)<li class=cat-item><a href=/category/Website.html>Website</a>(1)</ul></aside><aside id=tag_cloud-3 class="widget widget_tag_cloud"><h4 class=widget-title>Tags</h4><div class=tagcloud><a href=/tags/Bio101.html class="tag-link tag-link-position" style=font-size:8pt>Bio101</a>
+But do NOT stop taking your own notes!</div></aside><aside id=recent-posts-2 class="widget widget_recent_entries"><h4 class=widget-title>Recent</h4><ul><li><a href=/2017/9/22/cs540-08.html>CS540-08 A* Search</a><li><a href=/2017/9/21/cs354-05.html>CS354-05 Array on the heap</a><li><a href=/2017/9/20/cs540-07.html>CS540-07 A* Search</a><li><a href=/2017/9/19/cs354-04.html>CS354-04 C String &amp; Arrays</a><li><a href=/2017/9/18/cs540-06.html>CS540-06 A* Search</a><li><a href=/2017/9/15/cs540-05.html>CS540-05 Path Checking DFS</a><li><a href=/2017/9/14/cs354-03.html>CS354-03 Pointers &amp; Call Stack</a><li><a href=/2017/9/13/cs252-04.html>CS252-04</a><li><a href=/2017/9/13/cs540-04.html>CS540-04 Iterative Deepening</a><li><a href=/2017/9/12/cs354-02.html>Econ102-02</a></ul></aside><aside id=categories-2 class="widget widget_categories"><h4 class=widget-title>Categories</h4><ul><li class=cat-item><a href=/category/Artificial%20Intelligence.html>Artificial Intelligence</a>(1)<li class=cat-item><a href=/category/Bio101.html>Bio101</a>(5)<li class=cat-item><a href=/category/Biology.html>Biology</a>(5)<li class=cat-item><a href=/category/CS252.html>CS252</a>(4)<li class=cat-item><a href=/category/CS354.html>CS354</a>(4)<li class=cat-item><a href=/category/CS367.html>CS367</a>(23)<li class=cat-item><a href=/category/CS368.html>CS368</a>(1)<li class=cat-item><a href=/category/CS540.html>CS540</a>(8)<li class=cat-item><a href=/category/CS559.html>CS559</a>(5)<li class=cat-item><a href=/category/Computer%20Science.html>Computer Science</a>(65)<li class=cat-item><a href=/category/Deep%20Learning.html>Deep Learning</a>(1)<li class=cat-item><a href=/category/ESL118.html>ESL118</a>(1)<li class=cat-item><a href=/category/Econ102.html>Econ102</a>(1)<li class=cat-item><a href=/category/Economics.html>Economics</a>(1)<li class=cat-item><a href=/category/Go.html>Go</a>(1)<li class=cat-item><a href=/category/Kines100.html>Kines100</a>(3)<li class=cat-item><a href=/category/Kinesiology.html>Kinesiology</a>(3)<li class=cat-item><a href=/category/Math.html>Math</a>(22)<li class=cat-item><a href=/category/Math240.html>Math240</a>(20)<li class=cat-item><a href=/category/Math320.html>Math320</a>(2)<li class=cat-item><a href=/category/NS132.html>NS132</a>(30)<li class=cat-item><a href=/category/Nutritional%20Science.html>Nutritional Science</a>(30)<li class=cat-item><a href=/category/Psych202.html>Psych202</a>(3)<li class=cat-item><a href=/category/Psychology.html>Psychology</a>(3)<li class=cat-item><a href=/category/Test.html>Test</a>(1)<li class=cat-item><a href=/category/Website.html>Website</a>(1)</ul></aside><aside id=tag_cloud-3 class="widget widget_tag_cloud"><h4 class=widget-title>Tags</h4><div class=tagcloud><a href=/tags/Bio101.html class="tag-link tag-link-position" style=font-size:8pt>Bio101</a>
 <a href=/tags/CNNs.html class="tag-link tag-link-position" style=font-size:8pt>CNNs</a>
 <a href=/tags/CS252.html class="tag-link tag-link-position" style=font-size:8pt>CS252</a>
 <a href=/tags/CS354.html class="tag-link tag-link-position" style=font-size:8pt>CS354</a>
