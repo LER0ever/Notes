@@ -1,7 +1,191 @@
 <!doctype html><head lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>CS354 - L.E.R Wiz</title><meta name=format-detection content="telephone=no"><script>if(self!=top){top.location=this.location.href;}</script><meta name=keywords content="LER0ever,L.E.R,Yi Rong,blog,L.E.R Space,Lumos,Wiz"><meta name=description content="L.E.R Space, a magical personal website by Yi Rong"><link rel=icon href=/favicon.ico><link rel="shortcut icon" href=/favicon.ico><link rel=stylesheet id=font-style-css href=/css/fonts-google.css><link rel=stylesheet id=fancybox-css href=/css/jquery.fancybox-1.3.4.css><link rel=stylesheet id=cr-style-css href=/css/style.css><link rel=stylesheet href=/css/hljs/monokai-sublime.css><script src=/js/jquery.min.js></script><script src=/js/jquery-migrate.min.js></script><script type=text/x-mathjax-config>
         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
     </script><script async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><body class="home post-tag"><div id=wrapper><header id=branding><div class="wrapper clearfix"><div class="hgroup-wrap clearfix"><div class=hgroup-right><div class="social-profiles clearfix"><ul></ul></div><form class="searchform clearfix"><label class=assistive-text for=s>Search</label>
-<input id=searchbox placeholder=Search class="s field" name=s></form></div><div id=site-logo class=clearfix><h3 id=site-title><a href=http://wiz.rongyi.ml title="L.E.R Wiz" rel=home>L.E.R Wiz</a></h3><h4 id=site-description>All Ways Forward @ UW-Madison</h4></div></div><nav id=access class=clearfix><ul class=root><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/>Home</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/academics>My Academics</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/sn>Contact Me</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/archive>Archive</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=https://rongyi.ml target=_blank>L.E.R Space</a><li class=default-menu><a href=https://etasry.ml title=Navigation>Navigation</a></ul></nav></div></header><div id=main class="site-main wrapper clearfix"><div class=container><div id=primary class=no-margin-left><div id=content><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS354-05 Array on the heap</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
+<input id=searchbox placeholder=Search class="s field" name=s></form></div><div id=site-logo class=clearfix><h3 id=site-title><a href=http://wiz.rongyi.ml title="L.E.R Wiz" rel=home>L.E.R Wiz</a></h3><h4 id=site-description>All Ways Forward @ UW-Madison</h4></div></div><nav id=access class=clearfix><ul class=root><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/>Home</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/academics>My Academics</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/sn>Contact Me</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/archive>Archive</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=https://rongyi.ml target=_blank>L.E.R Space</a><li class=default-menu><a href=https://etasry.ml title=Navigation>Navigation</a></ul></nav></div></header><div id=main class="site-main wrapper clearfix"><div class=container><div id=primary class=no-margin-left><div id=content><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS354-07 Standard IO</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
+<span class="date updated"><a href=/2017/9/28/cs354-07.html title="September 28, 2017">September 28, 2017</a></span>
+<span class=category><a href=/category/CS354.html rel="category tag">CS354</a>;
+<a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;</span>
+<span class=category>Tags
+<a href=/tags/CS354.html rel="category tag">#CS354</a></span>
+<span class=comments><a href>Comments are closed</a></span></div></header><h2 id=standard-and-string-io-in-stdio-h-library>Standard and String IO in stdio.h library</h2><h4 id=standard-io>Standard IO</h4><h6 id=standard-output-console>Standard Output (console)</h6><pre><code class=language-c>putchar, puts
+int printf(const char *format, ...)
+</code></pre><ul><li>format string, format specifiers<li>matching vars<li>returns the number of chars written of negative if error</ul><h6 id=standard-input-console>Standard Input (console)</h6><pre><code class=language-c>getchar, gets
+int scanf(const char *format, ...)
+</code></pre><ul><li>gets uses EOLN termination<li>format string with info for input format and format specifiers<li>each format specifier must have the <strong>address</strong> of a matching vars<li>returns the number of inputs that have been successfully matched</ul><h6 id=standard-error-console>Standard Error (console)</h6><pre><code class=language-c>void perror(const char *str)
+</code></pre><h4 id=string-io>String IO</h4><pre><code class=language-c>int sprintf(char *str, const char *format, ...)
+// sends formatted output to specified string
+int sscanf(const char *str, const char *format, ...)
+// gets formatted input from specified string
+</code></pre><h2 id=file-i-o-in-stdio-h-library>File I/O in stdio.h Library</h2><h4 id=standard-i-o-redirection>Standard I/O Redirection</h4><pre><code>% a.out &lt; input file &gt; output file
+</code></pre><p>note with output redirection, errors printed with perror still appears
+on the console terminal<h4 id=file-io>File IO</h4><h6 id=file-output>File Output</h6><pre><code class=language-c>fputc/putc, fputs
+int fprintf(FILE *stream, const char *format, ...)
+</code></pre><h6 id=file-input>File Input</h6><pre><code class=language-c>fgetc/getc, ungetc, fgets
+int fscanf(FILE *stream, const char *format, ...)
+</code></pre><p>returns the number of inputs or EOF if error or End Of File<h4 id=file-pointers-descriptors>File Pointers/Descriptors</h4><p><code>stdin, stdout, stderr</code><pre><code class=language-c>printf(&quot;Hello&quot;);
+// Equivalent to
+fprintf(stdout, &quot;Hello&quot;);
+</code></pre><h6 id=open-closing>Open/Closing</h6><pre><code class=language-c>FILE *fopen(const char *filename, const char *mode)
+</code></pre><p>returns a pointer to the open file or NULL if it can&rsquo;t access<pre><code class=language-c>int fclose(FILE *stream)
+</code></pre><p>returns 0, or EOF if there&rsquo;s an error<h2 id=copying-text-files>Copying Text Files</h2><pre><code class=language-c>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt; // for exit()
+
+int main(int argc, char *argv[]) {
+    if (argc != 3) {
+        fprintf(stderr, &quot;Usage: copy inputfile outputfile\n&quot;);
+        exit(1);
+    }
+
+
+    FILE *ifp, *ofp;
+    ifp = fopen(argv[1], &quot;r&quot;);
+    if (ifp == NULL) {
+        fprintf(stderr, &quot;Can't open input file %s!\n&quot;, argv[1]);
+        exit(1);
+    }
+
+
+    ofp = fopen(argv[2], &quot;w&quot;);
+    if (ofp == NULL) {
+        fprintf(stderr, &quot;Can't open output file %s!\n&quot;, argv[2]);
+        exit(1);
+    }
+
+
+    const int bufsize = 257; // lines assumed to be 256 chars or less
+    char buffer[bufsize];
+
+    while (fgets(buffer, bufsize, ifp) != NULL)
+        fputs(buffer, ofp);
+
+    fclose(ifp);
+    fclose(ofp);
+
+
+    return 0;
+}
+</code></pre><h2 id=what-do-i-live>What do I live?</h2><pre><code class=language-c>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+int gus = 14;
+int guy;
+int madison(int pam) {
+    static int max = 0;
+    int meg[] = {22,44,88};
+    int *mel = &amp;pam;
+    max = gus--;
+    return max + meg[1] + *mel;
+}
+int *austin(int *pat){
+    static int amy = 33;
+    int *ari = malloc(sizeof(int)*44);
+    gus--;
+    *ari = *pat;
+    return ari;
+}
+int main(int argc, char *argv[]) {
+    int vic[] = {33,66,99};
+    int *wes = malloc(sizeof(int));
+    *wes = 55;
+    guy = 66;
+    free(wes);
+    wes = vic;
+    wes[1] = madison(guy);
+    wes = austin(&amp;gus);
+    free(wes);
+    printf(&quot;Where do I live?&quot;);
+    return 0;
+}
+</code></pre><ul><li>vic[]: 5<li>{33, 66, 99}: 1<li>wes, ari: 5<li>malloc* : 4<li>assignment: 1<li>pam: 5<li>meg: 5<li>gus: 2<li>guy: 3<li>return value: 5<li>max: 3</ul><h2 id=c-abstract-memory-model>C Abstract Memory Model</h2><h4 id=1-code-segment-aka-text-rodata>1. CODE Segment (AKA .text &amp; .rodata)</h4><p>contains:<ul><li>typically is read only and sharable</ul><h4 id=2-initialized-data-segment-aka-data>2. Initialized DATA Segment (AKA .data)</h4><p>What: Memory allocation with a specified size, type, and non-zero initialization.
+Lifetime: entire program executiton<p>Contains:<h4 id=3-uninitialized-data-segment-aka-bss>3. Uninitialized DATA Segment (AKA .bss)</h4><p>What: Memory allocation with a specified size, type and uninitialized or initialized to zero.
+Lifetime: entire program executiton<p>Contains:<h4 id=4-heap-aka-free-store>4. HEAP (AKA Free Store)</h4><p>What: Memory allocation requested during execution.<p>Lifetime: programmer managed using malloc/free<h4 id=5-stack-aka-call-stack-auto-store>5. STACK (AKA Call Stack, Auto Store)</h4><p>What: Memory automatically allocated and freed as functions are executed.<p>Lifetime: from definition till end of its scope<p>Contains:<p>LIFO:<p>Stack Frame:</p><a class=readmore href=/2017/9/28/cs354-07.html title="CS354-07 Standard IO">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS354-06 Structures &amp; Cmdline Arguments</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
+<span class="date updated"><a href=/2017/9/26/cs354-06.html title="September 26, 2017">September 26, 2017</a></span>
+<span class=category><a href=/category/CS354.html rel="category tag">CS354</a>;
+<a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;</span>
+<span class=category>Tags
+<a href=/tags/CS354.html rel="category tag">#CS354</a></span>
+<span class=comments><a href>Comments are closed</a></span></div></header><h2 id=command-line-arguments>Command Line Arguments</h2><h4 id=what>What?</h4><p>Consider the Linux command: <code>%gcc myprog.c -Wall -m32 -std=gnu99 -o myprog</code><p><strong>Info entered at the command prompt.</strong>
+Note CLAs start with the prog name and then are followed by prog args.<h4 id=why>Why?</h4><p>Enables info to be passed to the program before it begins execution.<h4 id=how>How?</h4><p>Consider the code:<pre><code class=language-c>int main(int argc, char *argv[]) {
+    for (int i = 0; i &lt; argc; i++)
+    printf(&quot;%s\n&quot;, argv[i]);
+}
+</code></pre><ul><li>argc: arg count of whitespace separated CLAs<li>argv: arg vector, which is an array of char pointers</ul><blockquote><p>Assume the program above is invoked with &ldquo;a.out eleven 22 -33.3&rdquo;
+Draw the memory diagram for argv.<p>Now show what is output by the program:<pre><code>a.out
+eleven
+22
+-33.3
+</code></pre></blockquote><h2 id=meet-structure>Meet Structure</h2><h4 id=what-a-structure-defines>What? A structure defines:</h4><p>a new data type that is a composite of typically related data of difference kind<h4 id=why-1>Why?</h4><p>Enables organizing data into a single module.<h4 id=how-1>How?</h4><pre><code class=language-c>struct &lt;struct-name&gt; {
+    &lt;data-declarations&gt;;
+} &lt;optional-list-of-variables&gt;;
+// ; end the new type declaration
+</code></pre><blockquote><p>Declare a structure representing a date having a integer month, day of month, and year.</blockquote><pre><code class=language-c>struct date { // struct is a name space identified with &quot;struct&quot;
+    int month;
+    int mday;
+    int year;
+};
+</code></pre><blockquote><p>Create a variable containing today&rsquo;s date</blockquote><pre><code class=language-c>struct Date today;
+today.month = 9;
+today.mday = 26;
+today.year = 2017;
+</code></pre><p>dot operator(.): member access operator<h4 id=typedef>Typedef</h4><h6 id=what-1>What?</h6><p>Defines a new type name in the global name space<h6 id=why-2>Why?</h6><p>Easier, less cluttered<blockquote><p>Update the code above to use typedef</blockquote><pre><code class=language-c>typedef struct {
+    int month;
+    int mday;
+    int year;
+} Date;
+Date today;
+// ...
+</code></pre><h2 id=nested-structures-and-array-of-structures>Nested Structures and Array of Structures</h2><h4 id=nested-structures>Nested Structures</h4><blockquote><p>Add a Date struct, named caught, to the structure code below.<pre><code class=language-c>typedef struct { ... } Date; //from previous page
+typedef struct {
+    char name[12];
+    char type[12];
+    float weight;
+    Date caught;
+} Pokemon;
+</code></pre></blockquote><h6 id=structures-can-contain>Structures can contain</h6><ul><li>Structures<li>arrays</ul><p>Nested as deeply as we wish<blockquote><p>Show how a pokemon is laid out in the memory diagram</blockquote><h4 id=array-of-structures>Array of structures</h4><blockquote><p>Statically allocate an array, named pokedex, and initialize it with two pokemon.</blockquote><pre><code class=language-c>Pokemon pokedex[2] =
+{ { &quot;Abra&quot;, &quot;Psych&quot;, 43.0, { 1, 21, 2017 } },
+  { &quot;Oddish&quot;, &quot;bro..&quot;, 11.9, { 7, 23, 2017 } } };
+</code></pre><h6 id=arrays-can-have>Arrays can have</h6><p>structures for their elements<h2 id=structures-and-functions>Structures and functions</h2><blockquote><p>Complete the function below that displays the a Date structure.</blockquote><pre><code class=language-c>void printDate (Date date) {
+    printf(&quot;%d/%d/%d&quot;, date.month, date.mday, date.year);
+}
+</code></pre><h6 id=structures-are-passed>Structures are passed</h6><p><strong>by value</strong> which copies the entire structure<h4 id=consider-the-additional-code>Consider the additional code:</h4><pre><code class=language-c>//assume Date, Pokemon, printDate code included here
+void printPm(Pokemon pm) {
+    printf(&quot;\nPokemon Name : %s&quot;,pm.name);
+    printf(&quot;\nPokemon Type : %s&quot;,pm.type);
+    printf(&quot;\nPokemon Weight : %f&quot;,pm.weight);
+    printf(&quot;\nPokemon Caught on : &quot;, printDate(pm.caught));
+    printf(&quot;\n&quot;);
+}
+int main(void) {
+    Pokemon pm1 = {&quot;Abra&quot;,&quot;Psychic&quot;,30,{1,21,2017}};
+    printPm(pm1);
+}
+</code></pre><blockquote><p>Complete the function below so that it displays pokedex.</blockquote><pre><code class=language-c>void printDex(Pokemon dex[], int size) {
+    for (int i = 0; i &lt; size; i++)
+        printPM(dex[i]);
+}
+</code></pre><h6 id=arrays-are-passed>Arrays are passed</h6><p><strong>by value but only their address is copied</strong>, the elements are not copied.<h2 id=pointer-to-structures>Pointer to Structures</h2><h4 id=why-3>Why？</h4><ul><li>Enables heap allocation<li>Avoids copying overhead from pass-by-value<li>Allows functions to change their structure args<li>Enables creating linked data structure</ul><h4 id=how-2>How?</h4><blockquote><p>Declare a pointer to a Pokemon</blockquote><pre><code class=language-c>Pokemon* pmptr;
+</code></pre><blockquote><p>Dynamically allocate space for a Pokemon</blockquote><pre><code class=language-c>pmptr = malloc(sizeof(Pokemon));
+</code></pre><blockquote><p>Assign a weight to the Pokemon</blockquote><pre><code class=language-c>(*pmptr).height = 43.0; // Don't use
+pmptr -&gt; height = 43; // Use this
+</code></pre><blockquote><p>Assign a name and type to the pokemon</blockquote><pre><code class=language-c>strcpy(pmptr-&gt;name, &quot;asdf&quot;);
+strcpy(pmptr-&gt;type, &quot;asdf&quot;);
+</code></pre><blockquote><p>Assign a caught date to the Pokemon</blockquote><pre><code class=language-c>pmptr-&gt;caught.month = 9;
+pmptr-&gt;caught.mday = 28;
+pmptr-&gt;caught.year = 2017;
+</code></pre><blockquote><p>Deallocate the Pokemon&rsquo;s memory</blockquote><pre><code class=language-c>free(pmptr);
+// pmptr = NULL;
+</code></pre><blockquote><p>Update printPm to efficiently pass and print a Pokemon.</blockquote><pre><code class=language-c>void printPm(Pokemon *pm) {
+    printf(&quot;\nPokemon Name : %s&quot;,pm-&gt;name);
+    printf(&quot;\nPokemon Type : %s&quot;,pm-&gt;type);
+    printf(&quot;\nPokemon Weight : %f&quot;,pm-&gt;weight);
+    printf(&quot;\nPokemon Caught on : &quot;);
+    printDate(pm-&gt;caught);
+    printf(&quot;\n&quot;);
+}
+int main(void) {
+    Pokemon pm1 = {&quot;Abra&quot;,&quot;Psychic&quot;,30,{1,21,2017}};
+    printPm(&amp;pm1);
+}
+</code></pre><a class=readmore href=/2017/9/26/cs354-06.html title="CS354-06 Structures &amp; Cmdline Arguments">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS354-05 Array on the heap</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
 <span class="date updated"><a href=/2017/9/21/cs354-05.html title="September 21, 2017">September 21, 2017</a></span>
 <span class=category><a href=/category/CS354.html rel="category tag">CS354</a>;
 <a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;</span>
@@ -103,7 +287,7 @@ what happens when the code is attempted to be compiled and run?</ul><ol><li><cod
 }
 </code></pre><pre><code>0123
 4567
-</code></pre><p><strong>Memory is a sequence of bytes</strong><p><strong>Statically allocated 2D arrays are allocated as a continuous block of memory in role major order</strong><p>layout is row by row<h2 id=2d-array-and-pointers>2D array and pointers</h2><h4 id=address-arithmetic-for-statically-allocated-2d-arrays>Address Arithmetic for Statically Allocated 2D Arrays</h4><ul><li>Which of the following are equivalent to m[i][j]?</ul><p>a. (*(m+i))[j]<br>- addr arith to row i and index to col j<br>b. *(m[i]+j)<br>- index to row i, addr arith to col j<br>c. *( *(m+i)+j)<br>- full addr arith<h6 id=m-i-j-m-i-j>m[i][j] = * ( * (m+i) + j )</h6><ol><li>Compute row i address<ul><li>start at array&rsquo;s address<li>add offset to row i; auto scaled by the row size</ul><li>dereference the address to access row i<li>compute element j address in row i<ul><li>add offset to col j in row i; auto scaled by elem size</ul><li>dereference the address to access element in row i column j</ol><h6 id=m-0-0-m>m[0][0] = * * m</h6><ul><li>What type is * * m? <strong>[int]</strong><li>What type is * m? <strong>[int *]</strong> = <strong>m[0]</strong> = addr of start of row<li>What type is m? <strong>[int * *]</strong> for a statically allocated array 2D<li>* m is the addr of row 0 and * * m is also the addr of row 0</ul><h6 id=m-i-j>m[i][j]</h6><p>= * ( * m + cols * i + j )<br><em>scaling required for row size</em><p>For 2d array in row-major order</p><a class=readmore href=/2017/9/19/cs354-04.html title="CS354-04 C String &amp; Arrays">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS354-03 Pointers &amp; Call Stack</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
+</code></pre><p><strong>Memory is a sequence of bytes</strong><p><strong>Statically allocated 2D arrays are allocated as a continuous block of memory in role major order</strong><p>layout is row by row<h2 id=2d-array-and-pointers>2D array and pointers</h2><h4 id=address-arithmetic-for-statically-allocated-2d-arrays>Address Arithmetic for Statically Allocated 2D Arrays</h4><ul><li>Which of the following are equivalent to m[i][j]?</ul><p>a. (*(m+i))[j]<br>- addr arith to row i and index to col j<br>b. *(m[i]+j)<br>- index to row i, addr arith to col j<br>c. *( *(m+i)+j)<br>- full addr arith<h6 id=m-i-j-m-i-j>m[i][j] = * ( * (m+i) + j )</h6><ol><li>Compute row i address<ul><li>start at array&rsquo;s address<li>add offset to row i; auto scaled by the row size</ul><li>dereference the address to access row i<li>compute element j address in row i<ul><li>add offset to col j in row i; auto scaled by elem size</ul><li>dereference the address to access element in row i column j</ol><h6 id=m-0-0-m>m[0][0] = * * m</h6><ul><li>What type is * * m? <strong>[int]</strong><li>What type is * m? <strong>[int *]</strong> = <strong>m[0]</strong> = addr of start of row<li>What type is m? <strong>[int * *]</strong> for a statically allocated array 2D<li>* m is the addr of row 0 and * * m is also the addr of row 0</ul><h6 id=m-i-j>m[i][j]</h6><p>= * ( * m + cols * i + j )<br><em>scaling required for row size</em><p>For 2d array in row-major order</p><a class=readmore href=/2017/9/19/cs354-04.html title="CS354-04 C String &amp; Arrays">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS354-03 Pointers</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
 <span class="date updated"><a href=/2017/9/14/cs354-03.html title="September 14, 2017">September 14, 2017</a></span>
 <span class=category><a href=/category/CS354.html rel="category tag">CS354</a>;
 <a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;</span>
@@ -153,7 +337,7 @@ int main(void) {
     printf(&quot;%i,%i,%i\n&quot;,lv4[0],lv4[1],lv4[2]);
     return 0;
 }
-</code></pre><p>lv: 1, 2, 6, [4,5,6]<br>f(1, ?, 6, [4, 5, 6])<br>lv = 1 + 2 + 6 + 4<p>1 22 33<h4 id=call-stack-tracing>Call Stack Tracing</h4><ul><li>Manually tracing code with functions in a manner that mimics the machine<li>Each function gets a box when it is called: activation record / stack frame<li>Top box on the stack is executing and those below are suspended waiting for their call-ee to return</ul><h4 id=pass-call-by-value>Pass/Call-by-value</h4><ul><li>Arg is copied into its corresponding param<li>used with basic types (scalars) since they&rsquo;re fast to copy</ul><h4 id=changing-the-parameter>Changing the parameter</h4><p>Does not change its args<h4 id=passing-an-address-argument>Passing an address argument</h4><ul><li>The arg is copied into its param which must be a pointer<li>used with complex types to avoid copying<li>used to enable functions to change args&rsquo;s values</ul><h4 id=a-pointer-parameter>A pointer parameter</h4><ul><li><strong>can</strong> change its arg by accessing its pointee with dereferencing.</ul><a class=readmore href=/2017/9/14/cs354-03.html title="CS354-03 Pointers &amp; Call Stack">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS354-02</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
+</code></pre><p>lv: 1, 2, 6, [4,5,6]<br>f(1, ?, 6, [4, 5, 6])<br>lv = 1 + 2 + 6 + 4<p>1 22 33<h4 id=call-stack-tracing>Call Stack Tracing</h4><ul><li>Manually tracing code with functions in a manner that mimics the machine<li>Each function gets a box when it is called: activation record / stack frame<li>Top box on the stack is executing and those below are suspended waiting for their call-ee to return</ul><h4 id=pass-call-by-value>Pass/Call-by-value</h4><ul><li>Arg is copied into its corresponding param<li>used with basic types (scalars) since they&rsquo;re fast to copy</ul><h4 id=changing-the-parameter>Changing the parameter</h4><p>Does not change its args<h4 id=passing-an-address-argument>Passing an address argument</h4><ul><li>The arg is copied into its param which must be a pointer<li>used with complex types to avoid copying<li>used to enable functions to change args&rsquo;s values</ul><h4 id=a-pointer-parameter>A pointer parameter</h4><ul><li><strong>can</strong> change its arg by accessing its pointee with dereferencing.</ul><a class=readmore href=/2017/9/14/cs354-03.html title="CS354-03 Pointers">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS354-02</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
 <span class="date updated"><a href=/2017/9/12/cs354-02.html title="September 12, 2017">September 12, 2017</a></span>
 <span class=category><a href=/category/CS354.html rel="category tag">CS354</a>;
 <a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;</span>
@@ -168,7 +352,7 @@ int main(void) {
 }
 </code></pre><p>What&rsquo;s the ptr&rsquo;s<ul><li>Initial value? NULL 0x00000000<li>Address? 0x00000004<li>Type? int*<li>Size? 4 Bytes</ul><p><strong>Pointer</strong>: does the pointing (at address tail), declared using *<br><strong>pointee</strong>: is pointed at (at address head)<br><strong>address of</strong>: &amp; operater, which returns its operands addr<br><strong>dereferencing</strong>: using * operater to access a pointer&rsquo;s pointee indirectly</p><a class=readmore href=/2017/9/12/cs354-02.html title=CS354-02>Read more</a></article></section><hr><ul class="default-wp-page clearfix"></ul></div></div><div id=secondary class="widget-area col-md-4" role=complementary><aside id=toolbox class=widget><h4 class=widget-title>About this site</h4><div class=author_bio_message>This is my personal notes website.
 You are welcomed to use it.
-But do NOT stop taking your own notes!</div></aside><aside id=recent-posts-2 class="widget widget_recent_entries"><h4 class=widget-title>Recent</h4><ul><li><a href=/2017/9/22/cs540-08.html>CS540-08 A* Search</a><li><a href=/2017/9/21/cs354-05.html>CS354-05 Array on the heap</a><li><a href=/2017/9/20/cs540-07.html>CS540-07 A* Search</a><li><a href=/2017/9/19/cs354-04.html>CS354-04 C String &amp; Arrays</a><li><a href=/2017/9/18/cs540-06.html>CS540-06 A* Search</a><li><a href=/2017/9/15/cs540-05.html>CS540-05 Path Checking DFS</a><li><a href=/2017/9/14/cs354-03.html>CS354-03 Pointers &amp; Call Stack</a><li><a href=/2017/9/13/cs252-04.html>CS252-04</a><li><a href=/2017/9/13/cs540-04.html>CS540-04 Iterative Deepening</a><li><a href=/2017/9/12/cs354-02.html>Econ102-02</a></ul></aside><aside id=categories-2 class="widget widget_categories"><h4 class=widget-title>Categories</h4><ul><li class=cat-item><a href=/category/Artificial%20Intelligence.html>Artificial Intelligence</a>(1)<li class=cat-item><a href=/category/Bio101.html>Bio101</a>(5)<li class=cat-item><a href=/category/Biology.html>Biology</a>(5)<li class=cat-item><a href=/category/CS252.html>CS252</a>(4)<li class=cat-item><a href=/category/CS354.html>CS354</a>(4)<li class=cat-item><a href=/category/CS367.html>CS367</a>(23)<li class=cat-item><a href=/category/CS368.html>CS368</a>(1)<li class=cat-item><a href=/category/CS540.html>CS540</a>(8)<li class=cat-item><a href=/category/CS559.html>CS559</a>(5)<li class=cat-item><a href=/category/Computer%20Science.html>Computer Science</a>(65)<li class=cat-item><a href=/category/Deep%20Learning.html>Deep Learning</a>(1)<li class=cat-item><a href=/category/ESL118.html>ESL118</a>(1)<li class=cat-item><a href=/category/Econ102.html>Econ102</a>(1)<li class=cat-item><a href=/category/Economics.html>Economics</a>(1)<li class=cat-item><a href=/category/Go.html>Go</a>(1)<li class=cat-item><a href=/category/Kines100.html>Kines100</a>(3)<li class=cat-item><a href=/category/Kinesiology.html>Kinesiology</a>(3)<li class=cat-item><a href=/category/Math.html>Math</a>(22)<li class=cat-item><a href=/category/Math240.html>Math240</a>(20)<li class=cat-item><a href=/category/Math320.html>Math320</a>(2)<li class=cat-item><a href=/category/NS132.html>NS132</a>(30)<li class=cat-item><a href=/category/Nutritional%20Science.html>Nutritional Science</a>(30)<li class=cat-item><a href=/category/Psych202.html>Psych202</a>(3)<li class=cat-item><a href=/category/Psychology.html>Psychology</a>(3)<li class=cat-item><a href=/category/Test.html>Test</a>(1)<li class=cat-item><a href=/category/Website.html>Website</a>(1)</ul></aside><aside id=tag_cloud-3 class="widget widget_tag_cloud"><h4 class=widget-title>Tags</h4><div class=tagcloud><a href=/tags/Bio101.html class="tag-link tag-link-position" style=font-size:8pt>Bio101</a>
+But do NOT stop taking your own notes!</div></aside><aside id=recent-posts-2 class="widget widget_recent_entries"><h4 class=widget-title>Recent</h4><ul><li><a href=/2017/9/28/cs354-07.html>CS354-07 Standard IO</a><li><a href=/2017/9/27/cs540-10.html>CS540-10 Hill Climbing</a><li><a href=/2017/9/26/cs354-06.html>CS354-06 Structures &amp; Cmdline Arguments</a><li><a href=/2017/9/25/cs540-09.html>CS540-09 Hill Climbing</a><li><a href=/2017/9/22/cs540-08.html>CS540-08 A* Search</a><li><a href=/2017/9/21/cs354-05.html>CS354-05 Array on the heap</a><li><a href=/2017/9/20/cs540-07.html>CS540-07 A* Search</a><li><a href=/2017/9/19/cs354-04.html>CS354-04 C String &amp; Arrays</a><li><a href=/2017/9/18/cs540-06.html>CS540-06 A* Search</a><li><a href=/2017/9/15/cs540-05.html>CS540-05 Path Checking DFS</a></ul></aside><aside id=categories-2 class="widget widget_categories"><h4 class=widget-title>Categories</h4><ul><li class=cat-item><a href=/category/Artificial%20Intelligence.html>Artificial Intelligence</a>(1)<li class=cat-item><a href=/category/Bio101.html>Bio101</a>(5)<li class=cat-item><a href=/category/Biology.html>Biology</a>(5)<li class=cat-item><a href=/category/CS252.html>CS252</a>(4)<li class=cat-item><a href=/category/CS354.html>CS354</a>(6)<li class=cat-item><a href=/category/CS367.html>CS367</a>(23)<li class=cat-item><a href=/category/CS368.html>CS368</a>(1)<li class=cat-item><a href=/category/CS540.html>CS540</a>(10)<li class=cat-item><a href=/category/CS559.html>CS559</a>(5)<li class=cat-item><a href=/category/Computer%20Science.html>Computer Science</a>(69)<li class=cat-item><a href=/category/Deep%20Learning.html>Deep Learning</a>(1)<li class=cat-item><a href=/category/ESL118.html>ESL118</a>(1)<li class=cat-item><a href=/category/Econ102.html>Econ102</a>(1)<li class=cat-item><a href=/category/Economics.html>Economics</a>(1)<li class=cat-item><a href=/category/Go.html>Go</a>(1)<li class=cat-item><a href=/category/Kines100.html>Kines100</a>(3)<li class=cat-item><a href=/category/Kinesiology.html>Kinesiology</a>(3)<li class=cat-item><a href=/category/Math.html>Math</a>(22)<li class=cat-item><a href=/category/Math240.html>Math240</a>(20)<li class=cat-item><a href=/category/Math320.html>Math320</a>(2)<li class=cat-item><a href=/category/NS132.html>NS132</a>(30)<li class=cat-item><a href=/category/Nutritional%20Science.html>Nutritional Science</a>(30)<li class=cat-item><a href=/category/Psych202.html>Psych202</a>(3)<li class=cat-item><a href=/category/Psychology.html>Psychology</a>(3)<li class=cat-item><a href=/category/Test.html>Test</a>(1)<li class=cat-item><a href=/category/Website.html>Website</a>(1)</ul></aside><aside id=tag_cloud-3 class="widget widget_tag_cloud"><h4 class=widget-title>Tags</h4><div class=tagcloud><a href=/tags/Bio101.html class="tag-link tag-link-position" style=font-size:8pt>Bio101</a>
 <a href=/tags/CNNs.html class="tag-link tag-link-position" style=font-size:8pt>CNNs</a>
 <a href=/tags/CS252.html class="tag-link tag-link-position" style=font-size:8pt>CS252</a>
 <a href=/tags/CS354.html class="tag-link tag-link-position" style=font-size:8pt>CS354</a>
@@ -187,4 +371,4 @@ But do NOT stop taking your own notes!</div></aside><aside id=recent-posts-2 cla
 <a href=/tags/Test.html class="tag-link tag-link-position" style=font-size:8pt>Test</a></div></aside></div></div></div></div><footer id=colophon class=clearfix><div class=wrapper><div id=site-generator class=clearfix><div class=copyright><a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>CC BY-NC-ND 4.0</a> |
 <a href=/feed.xml>Feed</a> |
 <a href=/sitemap.xml>Sitemap</a></div></div><div id=site-generator class=clearfix><div class=copyright>Copyright © 2016-2017 <a href=https://yirong.ml/ title="L.E.R Wiz"><span>L.E.R Wiz</span></a> |
-Powered by: <a href=/portus.html target=_blank title=Lumos><span>Portus Engine 1.3.0</span></a></div></div></div><div class=back-to-top style=display:none><a href=#branding>Back to Top</a></div></footer><div class=search-tool style=position:fixed;top:0;bottom:0;left:0;right:0;opacity:.95;background-color:#111;z-index:9999;display:none><input class="form-control search-content" id=search-content style=position:fixed;top:60px placeholder="文章标题 分类 标签 (L.E.R Wiz 站内搜索)"><div style=position:fixed;top:16px;right:16px><img src=/search/img/close.png id=close-btn></div></div><link rel=stylesheet href=/search/css/search.css><script src=/search/js/bootstrap3-typeahead.min.js></script><script src=/search/js/search.js></script><script src=/js/backtotop.js></script><script src=/js/tinynav.js></script><script src=/js/jquery.cycle.all.min.js></script><script>var cleanretina_slider_value={"transition_effect":"fade","transition_delay":"4000","transition_duration":"1000"};</script><script src=/js/cleanretina-slider-setting.js></script><script src=/js/jquery.fancybox-1.3.4.pack.js></script><script src=/js/cleanretina-custom-fancybox-script.js></script><script src=/js/highlight.pack.js></script><script src=/js/copynotice.js></script><script>hljs.initHighlightingOnLoad();</script>
+Powered by: <a href=/portus.html target=_blank title=Lumos><span>Portus Engine 1.3.1</span></a></div></div></div><div class=back-to-top style=display:none><a href=#branding>Back to Top</a></div></footer><div class=search-tool style=position:fixed;top:0;bottom:0;left:0;right:0;opacity:.95;background-color:#111;z-index:9999;display:none><input class="form-control search-content" id=search-content style=position:fixed;top:60px placeholder="文章标题 分类 标签 (L.E.R Wiz 站内搜索)"><div style=position:fixed;top:16px;right:16px><img src=/search/img/close.png id=close-btn></div></div><link rel=stylesheet href=/search/css/search.css><script src=/search/js/bootstrap3-typeahead.min.js></script><script src=/search/js/search.js></script><script src=/js/backtotop.js></script><script src=/js/tinynav.js></script><script src=/js/jquery.cycle.all.min.js></script><script>var cleanretina_slider_value={"transition_effect":"fade","transition_delay":"4000","transition_duration":"1000"};</script><script src=/js/cleanretina-slider-setting.js></script><script src=/js/jquery.fancybox-1.3.4.pack.js></script><script src=/js/cleanretina-custom-fancybox-script.js></script><script src=/js/highlight.pack.js></script><script src=/js/copynotice.js></script><script>hljs.initHighlightingOnLoad();</script>

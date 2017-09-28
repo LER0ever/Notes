@@ -1,0 +1,114 @@
+<!doctype html><head lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>CS354-06 Structures &amp; Cmdline Arguments - L.E.R Wiz</title><meta name=format-detection content="telephone=no"><script>if(self!=top){top.location=this.location.href;}</script><meta name=keywords content="LER0ever,L.E.R,Yi Rong,blog,L.E.R Space,Lumos,Wiz"><meta name=description content="CS354 Structures &amp; Cmdline Arguments"><link rel=icon href=/favicon.ico><link rel="shortcut icon" href=/favicon.ico><link rel=stylesheet id=font-style-css href=/css/fonts-google.css><link rel=stylesheet id=fancybox-css href=/css/jquery.fancybox-1.3.4.css><link rel=stylesheet id=cr-style-css href=/css/style.css><link rel=stylesheet href=/css/hljs/monokai-sublime.css><script src=/js/jquery.min.js></script><script src=/js/jquery-migrate.min.js></script><script type=text/x-mathjax-config>
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script><script async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><body class="home post"><div id=wrapper><header id=branding><div class="wrapper clearfix"><div class="hgroup-wrap clearfix"><div class=hgroup-right><div class="social-profiles clearfix"><ul></ul></div><form class="searchform clearfix"><label class=assistive-text for=s>Search</label>
+<input id=searchbox placeholder=Search class="s field" name=s></form></div><div id=site-logo class=clearfix><h3 id=site-title><a href=http://wiz.rongyi.ml title="L.E.R Wiz" rel=home>L.E.R Wiz</a></h3><h4 id=site-description>All Ways Forward @ UW-Madison</h4></div></div><nav id=access class=clearfix><ul class=root><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/>Home</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/academics>My Academics</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/sn>Contact Me</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/archive>Archive</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=https://rongyi.ml target=_blank>L.E.R Space</a><li class=default-menu><a href=https://etasry.ml title=Navigation>Navigation</a></ul></nav></div></header><div id=main class="site-main wrapper clearfix"><div class=container><div id=primary class=no-margin-left><div id=content><header class=entry-header><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
+<span class="date updated"><a href=/2017/9/26/cs354-06.html title="September 26, 2017">September 26, 2017</a></span>
+<span class=category><a href=/category/CS354.html rel="category tag">CS354</a>;
+<a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;</span>
+<span class=category>Tags
+<a href=/tags/CS354.html rel="category tag">#CS354</a></span>
+<span class=comments><a href>Comments are welcomed</a></span></div><h1 class=entry-title>CS354-06 Structures &amp; Cmdline Arguments</h1></header><h2 id=command-line-arguments>Command Line Arguments</h2><h4 id=what>What?</h4><p>Consider the Linux command: <code>%gcc myprog.c -Wall -m32 -std=gnu99 -o myprog</code><p><strong>Info entered at the command prompt.</strong>
+Note CLAs start with the prog name and then are followed by prog args.<h4 id=why>Why?</h4><p>Enables info to be passed to the program before it begins execution.<h4 id=how>How?</h4><p>Consider the code:<pre><code class=language-c>int main(int argc, char *argv[]) {
+    for (int i = 0; i &lt; argc; i++)
+    printf(&quot;%s\n&quot;, argv[i]);
+}
+</code></pre><ul><li>argc: arg count of whitespace separated CLAs<li>argv: arg vector, which is an array of char pointers</ul><blockquote><p>Assume the program above is invoked with &ldquo;a.out eleven 22 -33.3&rdquo;
+Draw the memory diagram for argv.<p>Now show what is output by the program:<pre><code>a.out
+eleven
+22
+-33.3
+</code></pre></blockquote><h2 id=meet-structure>Meet Structure</h2><h4 id=what-a-structure-defines>What? A structure defines:</h4><p>a new data type that is a composite of typically related data of difference kind<h4 id=why-1>Why?</h4><p>Enables organizing data into a single module.<h4 id=how-1>How?</h4><pre><code class=language-c>struct &lt;struct-name&gt; {
+    &lt;data-declarations&gt;;
+} &lt;optional-list-of-variables&gt;;
+// ; end the new type declaration
+</code></pre><blockquote><p>Declare a structure representing a date having a integer month, day of month, and year.</blockquote><pre><code class=language-c>struct date { // struct is a name space identified with &quot;struct&quot;
+    int month;
+    int mday;
+    int year;
+};
+</code></pre><blockquote><p>Create a variable containing today&rsquo;s date</blockquote><pre><code class=language-c>struct Date today;
+today.month = 9;
+today.mday = 26;
+today.year = 2017;
+</code></pre><p>dot operator(.): member access operator<h4 id=typedef>Typedef</h4><h6 id=what-1>What?</h6><p>Defines a new type name in the global name space<h6 id=why-2>Why?</h6><p>Easier, less cluttered<blockquote><p>Update the code above to use typedef</blockquote><pre><code class=language-c>typedef struct {
+    int month;
+    int mday;
+    int year;
+} Date;
+Date today;
+// ...
+</code></pre><h2 id=nested-structures-and-array-of-structures>Nested Structures and Array of Structures</h2><h4 id=nested-structures>Nested Structures</h4><blockquote><p>Add a Date struct, named caught, to the structure code below.<pre><code class=language-c>typedef struct { ... } Date; //from previous page
+typedef struct {
+    char name[12];
+    char type[12];
+    float weight;
+    Date caught;
+} Pokemon;
+</code></pre></blockquote><h6 id=structures-can-contain>Structures can contain</h6><ul><li>Structures<li>arrays</ul><p>Nested as deeply as we wish<blockquote><p>Show how a pokemon is laid out in the memory diagram</blockquote><h4 id=array-of-structures>Array of structures</h4><blockquote><p>Statically allocate an array, named pokedex, and initialize it with two pokemon.</blockquote><pre><code class=language-c>Pokemon pokedex[2] =
+{ { &quot;Abra&quot;, &quot;Psych&quot;, 43.0, { 1, 21, 2017 } },
+  { &quot;Oddish&quot;, &quot;bro..&quot;, 11.9, { 7, 23, 2017 } } };
+</code></pre><h6 id=arrays-can-have>Arrays can have</h6><p>structures for their elements<h2 id=structures-and-functions>Structures and functions</h2><blockquote><p>Complete the function below that displays the a Date structure.</blockquote><pre><code class=language-c>void printDate (Date date) {
+    printf(&quot;%d/%d/%d&quot;, date.month, date.mday, date.year);
+}
+</code></pre><h6 id=structures-are-passed>Structures are passed</h6><p><strong>by value</strong> which copies the entire structure<h4 id=consider-the-additional-code>Consider the additional code:</h4><pre><code class=language-c>//assume Date, Pokemon, printDate code included here
+void printPm(Pokemon pm) {
+    printf(&quot;\nPokemon Name : %s&quot;,pm.name);
+    printf(&quot;\nPokemon Type : %s&quot;,pm.type);
+    printf(&quot;\nPokemon Weight : %f&quot;,pm.weight);
+    printf(&quot;\nPokemon Caught on : &quot;, printDate(pm.caught));
+    printf(&quot;\n&quot;);
+}
+int main(void) {
+    Pokemon pm1 = {&quot;Abra&quot;,&quot;Psychic&quot;,30,{1,21,2017}};
+    printPm(pm1);
+}
+</code></pre><blockquote><p>Complete the function below so that it displays pokedex.</blockquote><pre><code class=language-c>void printDex(Pokemon dex[], int size) {
+    for (int i = 0; i &lt; size; i++)
+        printPM(dex[i]);
+}
+</code></pre><h6 id=arrays-are-passed>Arrays are passed</h6><p><strong>by value but only their address is copied</strong>, the elements are not copied.<h2 id=pointer-to-structures>Pointer to Structures</h2><h4 id=why-3>Why？</h4><ul><li>Enables heap allocation<li>Avoids copying overhead from pass-by-value<li>Allows functions to change their structure args<li>Enables creating linked data structure</ul><h4 id=how-2>How?</h4><blockquote><p>Declare a pointer to a Pokemon</blockquote><pre><code class=language-c>Pokemon* pmptr;
+</code></pre><blockquote><p>Dynamically allocate space for a Pokemon</blockquote><pre><code class=language-c>pmptr = malloc(sizeof(Pokemon));
+</code></pre><blockquote><p>Assign a weight to the Pokemon</blockquote><pre><code class=language-c>(*pmptr).height = 43.0; // Don't use
+pmptr -&gt; height = 43; // Use this
+</code></pre><blockquote><p>Assign a name and type to the pokemon</blockquote><pre><code class=language-c>strcpy(pmptr-&gt;name, &quot;asdf&quot;);
+strcpy(pmptr-&gt;type, &quot;asdf&quot;);
+</code></pre><blockquote><p>Assign a caught date to the Pokemon</blockquote><pre><code class=language-c>pmptr-&gt;caught.month = 9;
+pmptr-&gt;caught.mday = 28;
+pmptr-&gt;caught.year = 2017;
+</code></pre><blockquote><p>Deallocate the Pokemon&rsquo;s memory</blockquote><pre><code class=language-c>free(pmptr);
+// pmptr = NULL;
+</code></pre><blockquote><p>Update printPm to efficiently pass and print a Pokemon.</blockquote><pre><code class=language-c>void printPm(Pokemon *pm) {
+    printf(&quot;\nPokemon Name : %s&quot;,pm-&gt;name);
+    printf(&quot;\nPokemon Type : %s&quot;,pm-&gt;type);
+    printf(&quot;\nPokemon Weight : %f&quot;,pm-&gt;weight);
+    printf(&quot;\nPokemon Caught on : &quot;);
+    printDate(pm-&gt;caught);
+    printf(&quot;\n&quot;);
+}
+int main(void) {
+    Pokemon pm1 = {&quot;Abra&quot;,&quot;Psychic&quot;,30,{1,21,2017}};
+    printPm(&amp;pm1);
+}
+</code></pre><br><br><div id=comments class=comments-area><section id=comment><div class=row><div class="comment-body clearfix col-md-12"><div id=disqus_thread></div><script>(function(){var d=document,s=d.createElement('script');s.src='//l-e-r-wiz.disqus.com/embed.js';s.setAttribute('data-timestamp',+new Date());(d.head||d.body).appendChild(s);})();</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript rel=nofollow>comments
+powered by Disqus.</a></noscript></div></div></section></div></div></div><div id=secondary class="widget-area col-md-4" role=complementary><aside id=toolbox class=widget><h4 class=widget-title>About this site</h4><div class=author_bio_message>This is my personal notes website.
+You are welcomed to use it.
+But do NOT stop taking your own notes!</div></aside><aside id=recent-posts-2 class="widget widget_recent_entries"><h4 class=widget-title>Recent</h4><ul><li><a href=/2017/9/28/cs354-07.html>CS354-07 Standard IO</a><li><a href=/2017/9/27/cs540-10.html>CS540-10 Hill Climbing</a><li><a href=/2017/9/26/cs354-06.html>CS354-06 Structures &amp; Cmdline Arguments</a><li><a href=/2017/9/25/cs540-09.html>CS540-09 Hill Climbing</a><li><a href=/2017/9/22/cs540-08.html>CS540-08 A* Search</a><li><a href=/2017/9/21/cs354-05.html>CS354-05 Array on the heap</a><li><a href=/2017/9/20/cs540-07.html>CS540-07 A* Search</a><li><a href=/2017/9/19/cs354-04.html>CS354-04 C String &amp; Arrays</a><li><a href=/2017/9/18/cs540-06.html>CS540-06 A* Search</a><li><a href=/2017/9/15/cs540-05.html>CS540-05 Path Checking DFS</a></ul></aside><aside id=categories-2 class="widget widget_categories"><h4 class=widget-title>Categories</h4><ul><li class=cat-item><a href=/category/Artificial%20Intelligence.html>Artificial Intelligence</a>(1)<li class=cat-item><a href=/category/Bio101.html>Bio101</a>(5)<li class=cat-item><a href=/category/Biology.html>Biology</a>(5)<li class=cat-item><a href=/category/CS252.html>CS252</a>(4)<li class=cat-item><a href=/category/CS354.html>CS354</a>(6)<li class=cat-item><a href=/category/CS367.html>CS367</a>(23)<li class=cat-item><a href=/category/CS368.html>CS368</a>(1)<li class=cat-item><a href=/category/CS540.html>CS540</a>(10)<li class=cat-item><a href=/category/CS559.html>CS559</a>(5)<li class=cat-item><a href=/category/Computer%20Science.html>Computer Science</a>(69)<li class=cat-item><a href=/category/Deep%20Learning.html>Deep Learning</a>(1)<li class=cat-item><a href=/category/ESL118.html>ESL118</a>(1)<li class=cat-item><a href=/category/Econ102.html>Econ102</a>(1)<li class=cat-item><a href=/category/Economics.html>Economics</a>(1)<li class=cat-item><a href=/category/Go.html>Go</a>(1)<li class=cat-item><a href=/category/Kines100.html>Kines100</a>(3)<li class=cat-item><a href=/category/Kinesiology.html>Kinesiology</a>(3)<li class=cat-item><a href=/category/Math.html>Math</a>(22)<li class=cat-item><a href=/category/Math240.html>Math240</a>(20)<li class=cat-item><a href=/category/Math320.html>Math320</a>(2)<li class=cat-item><a href=/category/NS132.html>NS132</a>(30)<li class=cat-item><a href=/category/Nutritional%20Science.html>Nutritional Science</a>(30)<li class=cat-item><a href=/category/Psych202.html>Psych202</a>(3)<li class=cat-item><a href=/category/Psychology.html>Psychology</a>(3)<li class=cat-item><a href=/category/Test.html>Test</a>(1)<li class=cat-item><a href=/category/Website.html>Website</a>(1)</ul></aside><aside id=tag_cloud-3 class="widget widget_tag_cloud"><h4 class=widget-title>Tags</h4><div class=tagcloud><a href=/tags/Bio101.html class="tag-link tag-link-position" style=font-size:8pt>Bio101</a>
+<a href=/tags/CNNs.html class="tag-link tag-link-position" style=font-size:8pt>CNNs</a>
+<a href=/tags/CS252.html class="tag-link tag-link-position" style=font-size:8pt>CS252</a>
+<a href=/tags/CS354.html class="tag-link tag-link-position" style=font-size:8pt>CS354</a>
+<a href=/tags/CS367.html class="tag-link tag-link-position" style=font-size:8pt>CS367</a>
+<a href=/tags/CS368.html class="tag-link tag-link-position" style=font-size:8pt>CS368</a>
+<a href=/tags/CS540.html class="tag-link tag-link-position" style=font-size:8pt>CS540</a>
+<a href=/tags/CS559.html class="tag-link tag-link-position" style=font-size:8pt>CS559</a>
+<a href=/tags/ESL118.html class="tag-link tag-link-position" style=font-size:8pt>ESL118</a>
+<a href=/tags/Econ102.html class="tag-link tag-link-position" style=font-size:8pt>Econ102</a>
+<a href=/tags/Kines100.html class="tag-link tag-link-position" style=font-size:8pt>Kines100</a>
+<a href=/tags/Lumos.html class="tag-link tag-link-position" style=font-size:8pt>Lumos</a>
+<a href=/tags/Math240.html class="tag-link tag-link-position" style=font-size:8pt>Math240</a>
+<a href=/tags/Math320.html class="tag-link tag-link-position" style=font-size:8pt>Math320</a>
+<a href=/tags/NS132.html class="tag-link tag-link-position" style=font-size:8pt>NS132</a>
+<a href=/tags/Psych202.html class="tag-link tag-link-position" style=font-size:8pt>Psych202</a>
+<a href=/tags/Test.html class="tag-link tag-link-position" style=font-size:8pt>Test</a></div></aside></div></div></div></div><footer id=colophon class=clearfix><div class=wrapper><div id=site-generator class=clearfix><div class=copyright><a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>CC BY-NC-ND 4.0</a> |
+<a href=/feed.xml>Feed</a> |
+<a href=/sitemap.xml>Sitemap</a></div></div><div id=site-generator class=clearfix><div class=copyright>Copyright © 2016-2017 <a href=https://yirong.ml/ title="L.E.R Wiz"><span>L.E.R Wiz</span></a> |
+Powered by: <a href=/portus.html target=_blank title=Lumos><span>Portus Engine 1.3.1</span></a></div></div></div><div class=back-to-top style=display:none><a href=#branding>Back to Top</a></div></footer><div class=search-tool style=position:fixed;top:0;bottom:0;left:0;right:0;opacity:.95;background-color:#111;z-index:9999;display:none><input class="form-control search-content" id=search-content style=position:fixed;top:60px placeholder="文章标题 分类 标签 (L.E.R Wiz 站内搜索)"><div style=position:fixed;top:16px;right:16px><img src=/search/img/close.png id=close-btn></div></div><link rel=stylesheet href=/search/css/search.css><script src=/search/js/bootstrap3-typeahead.min.js></script><script src=/search/js/search.js></script><script src=/js/backtotop.js></script><script src=/js/tinynav.js></script><script src=/js/jquery.cycle.all.min.js></script><script>var cleanretina_slider_value={"transition_effect":"fade","transition_delay":"4000","transition_duration":"1000"};</script><script src=/js/cleanretina-slider-setting.js></script><script src=/js/jquery.fancybox-1.3.4.pack.js></script><script src=/js/cleanretina-custom-fancybox-script.js></script><script src=/js/highlight.pack.js></script><script src=/js/copynotice.js></script><script>hljs.initHighlightingOnLoad();</script>
