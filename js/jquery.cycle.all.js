@@ -21,11 +21,11 @@ opts.paused(cont,opts,byHover,onPager);else if(!paused&&opts.resumed)
 opts.resumed(cont,opts,byHover,onPager);}
 function handleArguments(cont,options,arg2){if(cont.cycleStop===undefined)
 cont.cycleStop=0;if(options===undefined||options===null)
-options={};if(options.constructor==String){switch(options){case 'destroy':case 'stop':var opts=$(cont).data('cycle.opts');if(!opts)
+options={};if(options.constructor==String){switch(options){case'destroy':case'stop':var opts=$(cont).data('cycle.opts');if(!opts)
 return false;cont.cycleStop++;if(cont.cycleTimeout)
 clearTimeout(cont.cycleTimeout);cont.cycleTimeout=0;if(opts.elements)
 $(opts.elements).stop();$(cont).removeData('cycle.opts');if(options=='destroy')
-destroy(cont,opts);return false;case 'toggle':cont.cyclePause=(cont.cyclePause===1)?0:1;checkInstantResume(cont.cyclePause,arg2,cont);triggerPause(cont);return false;case 'pause':cont.cyclePause=1;triggerPause(cont);return false;case 'resume':cont.cyclePause=0;checkInstantResume(false,arg2,cont);triggerPause(cont);return false;case 'prev':case 'next':opts=$(cont).data('cycle.opts');if(!opts){log('options not found, "prev/next" ignored');return false;}
+destroy(cont,opts);return false;case'toggle':cont.cyclePause=(cont.cyclePause===1)?0:1;checkInstantResume(cont.cyclePause,arg2,cont);triggerPause(cont);return false;case'pause':cont.cyclePause=1;triggerPause(cont);return false;case'resume':cont.cyclePause=0;checkInstantResume(false,arg2,cont);triggerPause(cont);return false;case'prev':case'next':opts=$(cont).data('cycle.opts');if(!opts){log('options not found, "prev/next" ignored');return false;}
 $.fn.cycle[options](opts);return false;default:options={fx:options};}
 return options;}
 else if(options.constructor==Number){var num=options;options=$(cont).data('cycle.opts');if(!options){log('options not found, can not advance slide');return false;}
@@ -173,10 +173,10 @@ $a.bind('click.cycle',function(){return false;});var cont=opts.$cont[0];var paus
 cont.cyclePause--;triggerPause(cont,true,true);});}};$.fn.cycle.hopsFromLast=function(opts,fwd){var hops,l=opts.lastSlide,c=opts.currSlide;if(fwd)
 hops=c>l?c-l:opts.slideCount-l;else
 hops=c<l?l-c:l+opts.slideCount-c;return hops;};function clearTypeFix($slides){debug('applying clearType background-color hack');function hex(s){s=parseInt(s,10).toString(16);return s.length<2?'0'+s:s;}
-function getBg(e){for(;e&&e.nodeName.toLowerCase()!='html';e=e.parentNode){var v=$.css(e,'background-color');if(v&&v.indexOf('rgb')>=0){var rgb=v.match(/\d+/g);return '#'+hex(rgb[0])+hex(rgb[1])+hex(rgb[2]);}
+function getBg(e){for(;e&&e.nodeName.toLowerCase()!='html';e=e.parentNode){var v=$.css(e,'background-color');if(v&&v.indexOf('rgb')>=0){var rgb=v.match(/\d+/g);return'#'+hex(rgb[0])+hex(rgb[1])+hex(rgb[2]);}
 if(v&&v!='transparent')
 return v;}
-return '#ffffff';}
+return'#ffffff';}
 $slides.each(function(){$(this).css('background-color',getBg(this));});}
 $.fn.cycle.commonReset=function(curr,next,opts,w,h,rev){$(opts.elements).not(curr).hide();if(typeof opts.cssBefore.opacity=='undefined')
 opts.cssBefore.opacity=1;opts.cssBefore.display='block';if(opts.slideResize&&w!==false&&next.cycleW>0)
