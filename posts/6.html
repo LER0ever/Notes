@@ -1,178 +1,191 @@
 <!doctype html><head lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>Articles Page 6 - L.E.R Wiz</title><meta name=format-detection content="telephone=no"><script>if(self!=top){top.location=this.location.href;}</script><meta name=keywords content="LER0ever,L.E.R,Yi Rong,blog,L.E.R Space,Lumos,Wiz"><meta name=description content="L.E.R Space, a magical personal website by Yi Rong"><link rel=icon href=/favicon.ico><link rel="shortcut icon" href=/favicon.ico><link rel=stylesheet id=font-style-css href=/css/fonts-google.css><link rel=stylesheet id=fancybox-css href=/css/jquery.fancybox-1.3.4.css><link rel=stylesheet id=cr-style-css href=/css/style.css><link rel=stylesheet href=/css/hljs/monokai-sublime.css><script src=/js/jquery.min.js></script><script src=/js/jquery-migrate.min.js></script><script type=text/x-mathjax-config>
         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
     </script><script async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><body class="home post-list"><div id=wrapper><header id=branding><div class="wrapper clearfix"><div class="hgroup-wrap clearfix"><div class=hgroup-right><div class="social-profiles clearfix"><ul></ul></div><form class="searchform clearfix"><label class=assistive-text for=s>Search</label>
-<input id=searchbox placeholder=Search class="s field" name=s></form></div><div id=site-logo class=clearfix><h3 id=site-title><a href=https://notes.rongyi.blog title="L.E.R Wiz" rel=home>L.E.R Wiz</a></h3><h4 id=site-description>All Ways Forward @ UW-Madison</h4></div></div><nav id=access class=clearfix><ul class=root><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/>Home</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/academics>My Academics</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/sn>Contact Me</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/archive>Archive</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=https://rongyi.blog/about target=_blank>L.E.R Space</a><li class=default-menu><a href=https://rongyi.blog title=Navigation>Navigation</a></ul></nav></div></header><div id=main class="site-main wrapper clearfix"><div class=container><div id=primary class=no-margin-left><div id=content><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS540-13 Minimax Algorithm</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
-<span class="date updated"><a href=/2017/10/4/cs540-13.html title="October 4, 2017">October 4, 2017</a></span>
+<input id=searchbox placeholder=Search class="s field" name=s></form></div><div id=site-logo class=clearfix><h3 id=site-title><a href=https://notes.rongyi.blog title="L.E.R Wiz" rel=home>L.E.R Wiz</a></h3><h4 id=site-description>All Ways Forward @ UW-Madison</h4></div></div><nav id=access class=clearfix><ul class=root><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/>Home</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/academics>My Academics</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/sn>Contact Me</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/archive>Archive</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=https://rongyi.blog/about target=_blank>L.E.R Space</a><li class=default-menu><a href=https://rongyi.blog title=Navigation>Navigation</a></ul></nav></div></header><div id=main class="site-main wrapper clearfix"><div class=container><div id=primary class=no-margin-left><div id=content><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS540-10 Hill Climbing</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
+<span class="date updated"><a href=/2017/9/27/cs540-10.html title="September 27, 2017">September 27, 2017</a></span>
 <span class=category><a href=/category/CS540.html rel="category tag">CS540</a>;
 <a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;</span>
 <span class=category>Tags
 <a href=/tags/CS540.html rel="category tag">#CS540</a></span>
-<span class=comments><a href>Comments are closed</a></span></div></header><h2 id=minimax-algorithm>Minimax Algorithm</h2><pre><code>function Max-Value(s)
-inputs:
-    s:current state in game, Max about to play
-output: best-score (for Max) available from s
-    if (s is a terminal state)
-    then return (terminal value of s)
-    else
-        a = -INF
-        for each s' in Succ(s)
-            a = max(a, Min-Value(s'))
-    return a
-
-function Min-Value(s)
-output: best-score(for Min) available from s
-    if (s is a terminal state)
-    then return (terminal value of s)
-    else
-        b = INF
-        for each s' in Succ(s)
-            b = min(b, Max-Value(s'))
-    return b
-</code></pre><h4 id=alpha-beta-motivation>Alpha-beta Motivation</h4><ul><li>Alpha pruning<li>Beta pruning</ul><a class=readmore href=/2017/10/4/cs540-13.html title="CS540-13 Minimax Algorithm">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS354-08 The Heap</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
-<span class="date updated"><a href=/2017/10/3/cs354-08.html title="October 3, 2017">October 3, 2017</a></span>
+<span class=comments><a href>Comments are closed</a></span></div></header><h2 id=hill-climbing-greedy>Hill Climbing (greedy)</h2><ul><li>Random restart, keep tracking best local optimum<li>inspect a single neighbor t (current state s)<ul><li>if f(t)&gt;f(s) move to t s $\leftarrow$ t<li>else do nothing</ul></ul><h2 id=sth>sth</h2><ul><li>if f(t) &gt; f(s) s $\leftarrow t$<li>else [with probability p $\in$ (0,1), s $\leftarrow$ t; otherwise, do nothing]<ul><li>$\uparrow$ pseudo code for else<li>if (random() $\le$ p) s $\leftarrow$ t;<li>else no op</ul></ul><a class=readmore href=/2017/9/27/cs540-10.html title="CS540-10 Hill Climbing">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS354-06 Structures &amp; Cmdline Arguments</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
+<span class="date updated"><a href=/2017/9/26/cs354-06.html title="September 26, 2017">September 26, 2017</a></span>
 <span class=category><a href=/category/CS354.html rel="category tag">CS354</a>;
 <a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;</span>
 <span class=category>Tags
 <a href=/tags/CS354.html rel="category tag">#CS354</a></span>
-<span class=comments><a href>Comments are closed</a></span></div></header><h2 id=the-heap>The heap</h2><h4 id=what-the-heap-is>What? The heap is</h4><ul><li>a segment of a process&rsquo;s variables used for dynamically allocated memory<li>a collection of various-sized memory blocks that are managed by an allocator<li><strong>dynamically allocated memory</strong>: is allocated during runtime to satisfy the uncertain memory needs</ul><h6 id=block>block</h6><p>A continuous chunk of memory containing a payload and overhead<h6 id=payload>payload</h6><p>Part of block usable by the process requesting heap memory<h6 id=overhead>overhead</h6><p>Part of the block used by the allocator to manage the heap&rsquo;s structure<h6 id=allocator>allocator</h6><p>Code that allocates and frees blocks as requested by a process<h4 id=allocator-approach>Allocator Approach</h4><ul><li>Implicit: Java<ul><li>new automatically determines block size<li>garbage collector recycles for us</ul><li>Explicit: C<ul><li>malloc: we say how many bytes we needed<li>free is required when we&rsquo;re done using block</ul></ul><h2 id=c-s-heap-allocator-stdlib-h>C&rsquo;s Heap Allocator (<code>stdlib.h</code>)</h2><h4 id=what-s-in-the-stdlib-h>What&rsquo;s in the <code>stdlib.h</code>?</h4><p>A collection of about 25 commonly used C functions<ul><li>conversion (atof, atoi, atol)<li>execution flows (abort, exit)<li>math (abs)<li>searching (bsearch)<li>sorting (qsort)<li>random numbers (rand, srand(seed))<li>allocator functions</ul><h4 id=allocator-functions>Allocator Functions</h4><h6 id=void-malloc-size-t-size><code>void *malloc(size_t size)</code></h6><p>Allocates and returns generic ptr to block of heap memory of size bytes, or return null if allocation fails, memory double word aligned in Unix<h6 id=void-calloc-size-t-nitems-size-t-size><code>void *calloc(size_t nItems, size_t size)</code></h6><p>Allocates, <strong>clears to 0</strong>, and returns a block of heap memory of nItems*size bytes,<h6 id=void-realloc-void-ptr-size-t-size><code>void *realloc(void *ptr, size_t size)</code></h6><p>Reallocates to size bytes a previously allocated block of heap memory pointed to by ptr.<pre><code class=language-c>if (ptr == null) return malloc(size);
-else if (size == 0) {
-    free(ptr);
-    return null;
+<span class=comments><a href>Comments are closed</a></span></div></header><h2 id=command-line-arguments>Command Line Arguments</h2><h4 id=what>What?</h4><p>Consider the Linux command: <code>%gcc myprog.c -Wall -m32 -std=gnu99 -o myprog</code><p><strong>Info entered at the command prompt.</strong>
+Note CLAs start with the prog name and then are followed by prog args.<h4 id=why>Why?</h4><p>Enables info to be passed to the program before it begins execution.<h4 id=how>How?</h4><p>Consider the code:<pre><code class=language-c>int main(int argc, char *argv[]) {
+    for (int i = 0; i &lt; argc; i++)
+    printf(&quot;%s\n&quot;, argv[i]);
 }
-else // attempt to resize a block
-</code></pre><h6 id=void-free-void-ptr><code>void free(void *ptr)</code></h6><p>Frees the heap memory pointed to by ptr<ul><li>If ptr is null, free does nothing.<li>Undefined:<ul><li>free freed heap memory<li>free stack memory</ul></ul><p>void return type means it can&rsquo;t tell us if there was a problem<p>If malloc/calloc/realloc returns null, exit program with an error message.<h2 id=posix-brk-unistd-h>Posix <code>brk</code> (<code>unistd.h</code>)</h2><h4 id=what-is-unistd-h>What is <code>unistd.h</code></h4><p>Header file to access posix (<strong>Portable OS Interface</strong>)<p>IEEE CS Standard for maintaining compatibility between Unix OS&rsquo;s<h4 id=diy-heap-via-posix-calls>DIY Heap via Posix Calls</h4><h6 id=brk>Brk</h6><p>&ldquo;Program Break&rdquo;, a pointer to the top of the heap<pre><code class=language-c>int brk(void *addr)
-</code></pre><p>sets the top of the heap to specified address<br>returns 0 if success, else -1 and sets errno<br>OS clears to 0 new heap pages<pre><code class=language-c>void *sbrk(intptr_t incr)
-</code></pre><p>Attempts to change the program&rsquo;s top of heap by <code>incr</code> bytes<br>returns old brk if success, else -1 and sets errno<h6 id=errno-h><code>errno.h</code></h6><p>header file to get the error number<pre><code class=language-c>printf(&quot;Error %s&quot;, strerror(errno));
-</code></pre><p><strong>Use malloc/calloc/realloc instead since they will allocate sufficient heap space</strong></p><a class=readmore href=/2017/10/3/cs354-08.html title="CS354-08 The Heap">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS540-12 Game Playing</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
-<span class="date updated"><a href=/2017/10/2/cs540-12.html title="October 2, 2017">October 2, 2017</a></span>
+</code></pre><ul><li>argc: arg count of whitespace separated CLAs<li>argv: arg vector, which is an array of char pointers</ul><blockquote><p>Assume the program above is invoked with &ldquo;a.out eleven 22 -33.3&rdquo;
+Draw the memory diagram for argv.<p>Now show what is output by the program:<pre><code>a.out
+eleven
+22
+-33.3
+</code></pre></blockquote><h2 id=meet-structure>Meet Structure</h2><h4 id=what-a-structure-defines>What? A structure defines:</h4><p>a new data type that is a composite of typically related data of difference kind<h4 id=why-1>Why?</h4><p>Enables organizing data into a single module.<h4 id=how-1>How?</h4><pre><code class=language-c>struct &lt;struct-name&gt; {
+    &lt;data-declarations&gt;;
+} &lt;optional-list-of-variables&gt;;
+// ; end the new type declaration
+</code></pre><blockquote><p>Declare a structure representing a date having a integer month, day of month, and year.</blockquote><pre><code class=language-c>struct date { // struct is a name space identified with &quot;struct&quot;
+    int month;
+    int mday;
+    int year;
+};
+</code></pre><blockquote><p>Create a variable containing today&rsquo;s date</blockquote><pre><code class=language-c>struct Date today;
+today.month = 9;
+today.mday = 26;
+today.year = 2017;
+</code></pre><p>dot operator(.): member access operator<h4 id=typedef>Typedef</h4><h6 id=what-1>What?</h6><p>Defines a new type name in the global name space<h6 id=why-2>Why?</h6><p>Easier, less cluttered<blockquote><p>Update the code above to use typedef</blockquote><pre><code class=language-c>typedef struct {
+    int month;
+    int mday;
+    int year;
+} Date;
+Date today;
+// ...
+</code></pre><h2 id=nested-structures-and-array-of-structures>Nested Structures and Array of Structures</h2><h4 id=nested-structures>Nested Structures</h4><blockquote><p>Add a Date struct, named caught, to the structure code below.<pre><code class=language-c>typedef struct { ... } Date; //from previous page
+typedef struct {
+    char name[12];
+    char type[12];
+    float weight;
+    Date caught;
+} Pokemon;
+</code></pre></blockquote><h6 id=structures-can-contain>Structures can contain</h6><ul><li>Structures<li>arrays</ul><p>Nested as deeply as we wish<blockquote><p>Show how a pokemon is laid out in the memory diagram</blockquote><h4 id=array-of-structures>Array of structures</h4><blockquote><p>Statically allocate an array, named pokedex, and initialize it with two pokemon.</blockquote><pre><code class=language-c>Pokemon pokedex[2] =
+{ { &quot;Abra&quot;, &quot;Psych&quot;, 43.0, { 1, 21, 2017 } },
+  { &quot;Oddish&quot;, &quot;bro..&quot;, 11.9, { 7, 23, 2017 } } };
+</code></pre><h6 id=arrays-can-have>Arrays can have</h6><p>structures for their elements<h2 id=structures-and-functions>Structures and functions</h2><blockquote><p>Complete the function below that displays the a Date structure.</blockquote><pre><code class=language-c>void printDate (Date date) {
+    printf(&quot;%d/%d/%d&quot;, date.month, date.mday, date.year);
+}
+</code></pre><h6 id=structures-are-passed>Structures are passed</h6><p><strong>by value</strong> which copies the entire structure<h4 id=consider-the-additional-code>Consider the additional code:</h4><pre><code class=language-c>//assume Date, Pokemon, printDate code included here
+void printPm(Pokemon pm) {
+    printf(&quot;\nPokemon Name : %s&quot;,pm.name);
+    printf(&quot;\nPokemon Type : %s&quot;,pm.type);
+    printf(&quot;\nPokemon Weight : %f&quot;,pm.weight);
+    printf(&quot;\nPokemon Caught on : &quot;, printDate(pm.caught));
+    printf(&quot;\n&quot;);
+}
+int main(void) {
+    Pokemon pm1 = {&quot;Abra&quot;,&quot;Psychic&quot;,30,{1,21,2017}};
+    printPm(pm1);
+}
+</code></pre><blockquote><p>Complete the function below so that it displays pokedex.</blockquote><pre><code class=language-c>void printDex(Pokemon dex[], int size) {
+    for (int i = 0; i &lt; size; i++)
+        printPM(dex[i]);
+}
+</code></pre><h6 id=arrays-are-passed>Arrays are passed</h6><p><strong>by value but only their address is copied</strong>, the elements are not copied.<h2 id=pointer-to-structures>Pointer to Structures</h2><h4 id=why-3>Why？</h4><ul><li>Enables heap allocation<li>Avoids copying overhead from pass-by-value<li>Allows functions to change their structure args<li>Enables creating linked data structure</ul><h4 id=how-2>How?</h4><blockquote><p>Declare a pointer to a Pokemon</blockquote><pre><code class=language-c>Pokemon* pmptr;
+</code></pre><blockquote><p>Dynamically allocate space for a Pokemon</blockquote><pre><code class=language-c>pmptr = malloc(sizeof(Pokemon));
+</code></pre><blockquote><p>Assign a weight to the Pokemon</blockquote><pre><code class=language-c>(*pmptr).height = 43.0; // Don't use
+pmptr -&gt; height = 43; // Use this
+</code></pre><blockquote><p>Assign a name and type to the pokemon</blockquote><pre><code class=language-c>strcpy(pmptr-&gt;name, &quot;asdf&quot;);
+strcpy(pmptr-&gt;type, &quot;asdf&quot;);
+</code></pre><blockquote><p>Assign a caught date to the Pokemon</blockquote><pre><code class=language-c>pmptr-&gt;caught.month = 9;
+pmptr-&gt;caught.mday = 28;
+pmptr-&gt;caught.year = 2017;
+</code></pre><blockquote><p>Deallocate the Pokemon&rsquo;s memory</blockquote><pre><code class=language-c>free(pmptr);
+// pmptr = NULL;
+</code></pre><blockquote><p>Update printPm to efficiently pass and print a Pokemon.</blockquote><pre><code class=language-c>void printPm(Pokemon *pm) {
+    printf(&quot;\nPokemon Name : %s&quot;,pm-&gt;name);
+    printf(&quot;\nPokemon Type : %s&quot;,pm-&gt;type);
+    printf(&quot;\nPokemon Weight : %f&quot;,pm-&gt;weight);
+    printf(&quot;\nPokemon Caught on : &quot;);
+    printDate(pm-&gt;caught);
+    printf(&quot;\n&quot;);
+}
+int main(void) {
+    Pokemon pm1 = {&quot;Abra&quot;,&quot;Psychic&quot;,30,{1,21,2017}};
+    printPm(&amp;pm1);
+}
+</code></pre><a class=readmore href=/2017/9/26/cs354-06.html title="CS354-06 Structures &amp; Cmdline Arguments">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS540-09 Hill Climbing</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
+<span class="date updated"><a href=/2017/9/25/cs540-09.html title="September 25, 2017">September 25, 2017</a></span>
 <span class=category><a href=/category/CS540.html rel="category tag">CS540</a>;
 <a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;</span>
 <span class=category>Tags
 <a href=/tags/CS540.html rel="category tag">#CS540</a></span>
-<span class=comments><a href>Comments are closed</a></span></div></header><h2 id=game-playing>Game Playing</h2><ul><li>2-player<li>Discrete<li>Finite<li>Deterministic<li>Perfect information<li>Zero sum</ul><blockquote><p>2-Nim, Chess, GO</blockquote><p>TODO:<pre><code class=language-mermaid>graph TD;
-    0(2,2) -&gt; 1(1,2);
-    0(2,2) -&gt; 1(0,2);
-    1(1,2) -&gt; 2(0,2);
-    1(1,2) -&gt; 2(1,1);
-    1(1,2) -&gt; 2(0,1);
-    2(0,2) -&gt; 3(0,0);
-    2(0,2) -&gt; 3(0,1);
-    2(1,1) -&gt; 3(0,1);
-    2(0,1) -&gt; 3(0,0);
-    1(0,2) -&gt; 2(0,0);
-    1(0,2) -&gt; 2(0,1);
-    2(0,1) -&gt; 3(0,0);
-</code></pre><a class=readmore href=/2017/10/2/cs540-12.html title="CS540-12 Game Playing">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS540-11 Simulated Annealing</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
-<span class="date updated"><a href=/2017/9/29/cs540-11.html title="September 29, 2017">September 29, 2017</a></span>
+<span class=comments><a href>Comments are closed</a></span></div></header><h2 id=score-function-f>Score Function f</h2><h4 id=f-s-forall-s>f(s) $\forall s$</h4><ul><li>f(s) = number of queens attacking each other<li><strong>f(s) = 8 - # of queens attacking</strong></ul><h2 id=hill-climbing>Hill Climbing</h2><h4 id=hill-climbing-s>Hill Climbing (s)</h4><ul><li>randomly generate s<li>check f(s) (number of queens not attacking)<li>t = succ(s)<li>check f(t), pick the max<li>if $(f(s) &lt; max(f(t)))$ then $s \leftarrow argmax(f) , t \in succ(s)$<li><em>(argmax returns the arg with max function value)</em><li>else return s</ul><p>Local Maximum vs Global Maximum<p><strong>Hill Climbing may be stuck at Local Maximum</strong><h4 id=hill-climbing-with-random-restarts>Hill Climbing with Random Restarts</h4><blockquote><p>e.g. TSP</blockquote><a class=readmore href=/2017/9/25/cs540-09.html title="CS540-09 Hill Climbing">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS540-08 A* Search</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
+<span class="date updated"><a href=/2017/9/22/cs540-08.html title="September 22, 2017">September 22, 2017</a></span>
 <span class=category><a href=/category/CS540.html rel="category tag">CS540</a>;
 <a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;</span>
 <span class=category>Tags
 <a href=/tags/CS540.html rel="category tag">#CS540</a></span>
-<span class=comments><a href>Comments are closed</a></span></div></header><h2 id=local-search>Local Search</h2><ul><li>Hill Climbing<li>Simulated Annealing<li>Genetic Algorithm</ul><p>State Space + successor G = (V,E)<br>Score f(s), $\forall s \in V $<h4 id=hill-climbing-t-s>Hill Climbing (T, S)</h4><ol><li>at state s, pick a (random) successor t<li>move to t<ul><li>with probability p if f(t) $\le$ f(s)<li>definitely, if f(t) &gt; f(s)</ul></ol><h5 id=p-e-frac-f-s-f-t-t>$p=e^{-\frac{f(s)-f(t)}{T}}$</h5><h4 id=simulated-annealing>Simulated Annealing</h4><ol><li>Randomly choose state s<li>T = big<li>s $\leftarrow$ HC(T, s)<li>Reduce T</ol><p>T: <strong>temperature</strong><br>Reduce T: <strong>cooling scheme</strong> (e.g. T $\leftarrow$ a*T, 0 &lt; a &lt; 1)<p>$T_t = b*c^t$<h2 id=genetic-algorithm>Genetic Algorithm</h2><p>State representation (DNA)<ul><li>Start with population of random states<li>treat f score f(s) as the fitness score of the individual<li>select 100 pairs according to probability and fitness<li>Exchange part of DNA to generate two children<li>remove the original 100 population<li>mutation: very small probability to change a DNA at specific position with another random one</ul><a class=readmore href=/2017/9/29/cs540-11.html title="CS540-11 Simulated Annealing">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS354-07 Standard IO</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
-<span class="date updated"><a href=/2017/9/28/cs354-07.html title="September 28, 2017">September 28, 2017</a></span>
+<span class=comments><a href>Comments are closed</a></span></div></header><h2 id=a-search>A* Search</h2><h4 id=proof-a-finds-the-optimal-path>Proof A* finds the optimal path</h4><p>Support not, A* ends of G&rsquo;s instead of G<br>n is the node where it diverges from optimal path<br>$f(s) = g(s) + h(s)<ol><li>$f(G&rsquo;) &gt; f(G)$<li>$f(n) \ge f(G&rsquo;)$<li>$f(n) = g(n) + h(n) \le g(n) + h&rsquo;(n) = f(G)$ (h is the heuristic, h&rsquo; is the true future cost)</ol><p>1,2,3 $\to$ $f(G) \gt f(G)$ (contradiction)<h2 id=improvement>Improvement</h2><ol><li>ID A*<li>Beam search (fix max PQ size)</ol><a class=readmore href=/2017/9/22/cs540-08.html title="CS540-08 A* Search">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS354-05 Array on the heap</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
+<span class="date updated"><a href=/2017/9/21/cs354-05.html title="September 21, 2017">September 21, 2017</a></span>
 <span class=category><a href=/category/CS354.html rel="category tag">CS354</a>;
 <a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;</span>
 <span class=category>Tags
 <a href=/tags/CS354.html rel="category tag">#CS354</a></span>
-<span class=comments><a href>Comments are closed</a></span></div></header><h2 id=standard-and-string-io-in-stdio-h-library>Standard and String IO in stdio.h library</h2><h4 id=standard-io>Standard IO</h4><h6 id=standard-output-console>Standard Output (console)</h6><pre><code class=language-c>putchar, puts
-int printf(const char *format, ...)
-</code></pre><ul><li>format string, format specifiers<li>matching vars<li>returns the number of chars written of negative if error</ul><h6 id=standard-input-console>Standard Input (console)</h6><pre><code class=language-c>getchar, gets
-int scanf(const char *format, ...)
-</code></pre><ul><li>gets uses EOLN termination<li>format string with info for input format and format specifiers<li>each format specifier must have the <strong>address</strong> of a matching vars<li>returns the number of inputs that have been successfully matched</ul><h6 id=standard-error-console>Standard Error (console)</h6><pre><code class=language-c>void perror(const char *str)
-</code></pre><h4 id=string-io>String IO</h4><pre><code class=language-c>int sprintf(char *str, const char *format, ...)
-// sends formatted output to specified string
-int sscanf(const char *str, const char *format, ...)
-// gets formatted input from specified string
-</code></pre><h2 id=file-i-o-in-stdio-h-library>File I/O in stdio.h Library</h2><h4 id=standard-i-o-redirection>Standard I/O Redirection</h4><pre><code>% a.out &lt; input file &gt; output file
-</code></pre><p>note with output redirection, errors printed with perror still appears
-on the console terminal<h4 id=file-io>File IO</h4><h6 id=file-output>File Output</h6><pre><code class=language-c>fputc/putc, fputs
-int fprintf(FILE *stream, const char *format, ...)
-</code></pre><h6 id=file-input>File Input</h6><pre><code class=language-c>fgetc/getc, ungetc, fgets
-int fscanf(FILE *stream, const char *format, ...)
-</code></pre><p>returns the number of inputs or EOF if error or End Of File<h4 id=file-pointers-descriptors>File Pointers/Descriptors</h4><p><code>stdin, stdout, stderr</code><pre><code class=language-c>printf(&quot;Hello&quot;);
-// Equivalent to
-fprintf(stdout, &quot;Hello&quot;);
-</code></pre><h6 id=open-closing>Open/Closing</h6><pre><code class=language-c>FILE *fopen(const char *filename, const char *mode)
-</code></pre><p>returns a pointer to the open file or NULL if it can&rsquo;t access<pre><code class=language-c>int fclose(FILE *stream)
-</code></pre><p>returns 0, or EOF if there&rsquo;s an error<h2 id=copying-text-files>Copying Text Files</h2><pre><code class=language-c>#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt; // for exit()
+<span class=comments><a href>Comments are closed</a></span></div></header><h2 id=1d-arrays-on-the-heap>1D Arrays on the Heap</h2><h4 id=what-memory-segments-used-by-a-program-include>What? Memory segments used by a program include</h4><ul><li>Stack vs Heap<li>static allocation vs dynamic<li>during compile time vs runtime</ul><h4 id=why-heap-memory-enables>Why? Heap memory enables</h4><ul><li>A program to access more mem than what&rsquo;s allocated by the compiler<li>Blocks of memory to be allocated and freed in an arbitrary order</ul><h4 id=how>How?</h4><pre><code class=language-c>#include &quot;stdlib.h&quot;
+// for malloc and free
 
-int main(int argc, char *argv[]) {
-    if (argc != 3) {
-        fprintf(stderr, &quot;Usage: copy inputfile outputfile\n&quot;);
-        exit(1);
-    }
+malloc(size_in_mem);
+// Preserves a block of heap mem of the specified size
 
+free(pointer);
+// Frees the heap mem pointed to by the specified pointer
 
-    FILE *ifp, *ofp;
-    ifp = fopen(argv[1], &quot;r&quot;);
-    if (ifp == NULL) {
-        fprintf(stderr, &quot;Can't open input file %s!\n&quot;, argv[1]);
-        exit(1);
-    }
-
-
-    ofp = fopen(argv[2], &quot;w&quot;);
-    if (ofp == NULL) {
-        fprintf(stderr, &quot;Can't open output file %s!\n&quot;, argv[2]);
-        exit(1);
-    }
-
-
-    const int bufsize = 257; // lines assumed to be 256 chars or less
-    char buffer[bufsize];
-
-    while (fgets(buffer, bufsize, ifp) != NULL)
-        fputs(buffer, ofp);
-
-    fclose(ifp);
-    fclose(ofp);
-
-
-    return 0;
+sizeof(operand);
+// operator that returns size in bytes of its operand
+</code></pre><ul><li><p>IA32<ul><li>sizeof(double) = 8<li>sizeof(char) = 1<li>sizeof(int) = 4</ul><li><p>Write the cdoe to dynamically allocate an integer array named a having 5 elements<pre><code class=language-c>void someFunction() {
+int * a = malloc(5 * sizeof(int));
 }
-</code></pre><h2 id=what-do-i-live>What do I live?</h2><pre><code class=language-c>#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-int gus = 14;
-int guy;
-int madison(int pam) {
-    static int max = 0;
-    int meg[] = {22,44,88};
-    int *mel = &amp;pam;
-    max = gus--;
-    return max + meg[1] + *mel;
+</code></pre><li><p>Draw a memory diagram showing array a</ul><p>Stack: $\block$ a<br>$\downarrow$<br>Heap: |?|?|?|?|?|<ul><li>Write the code that gives the element at indexes 0, 1 and 2 a values of 0, 11 and 22
+by using pointer dereferencing, indexing, and address arithmetic respectively.</ul><pre><code class=language-c>*a=0;
+a[1]=11;
+*(a+2)=22;
+</code></pre><ul><li>Write the code that uses a pointer named p to give the element at index 3 a value of 33.</ul><pre><code class=language-c>int* p = a;
+*(p+3) = 33;
+</code></pre><ul><li>Write the code that frees array a’s heap memory.</ul><pre><code class=language-c>free(a);
+a = NULL;
+</code></pre><h2 id=pointer-caveats>Pointer Caveats</h2><h4 id=don-t-dereference-uninitialized-or-null-pointers>Don&rsquo;t dereference uninitialized or NULL pointers!</h4><pre><code class=language-c>int *p;
+*p = 11;
+int *q = NULL;
+*q = 11;
+</code></pre><h4 id=don-t-dereference-freed-pointers>Don&rsquo;t dereference freed pointers!</h4><pre><code class=language-c>int *p = malloc(sizeof(int));
+int *q = p;
+. . .
+free(p);
+. . .
+*q = 11;
+</code></pre><p><strong>dangling pointer</strong>: is a pointer with an address to heap memory that has been freed<h4 id=watch-out-for-memory-leaks>Watch out for memory leaks!</h4><pre><code class=language-c>int *p = malloc(sizeof(int));
+int *q = malloc(sizeof(int));
+. . .
+p = q;
+</code></pre><h4 id=be-careful-with-testing-for-equality>Be careful with testing for equality!</h4><p>assume p and q are pointers<ul><li>p = q compares nothing because it&rsquo;s assignment<li>p == q compares addresses in pointers<li>* p == * q compares values in pointees</ul><h4 id=don-t-return-addresses-of-local-variables>Don&rsquo;t return addresses of local variables!</h4><pre><code class=language-c>int *badcode() {
+    int i = 11;
+    return &amp;i;
 }
-int *austin(int *pat){
-    static int amy = 33;
-    int *ari = malloc(sizeof(int)*44);
-    gus--;
-    *ari = *pat;
-    return ari;
+int *badMakeIntArray(int size) {
+    int a[size];
+    return a;
 }
-int main(int argc, char *argv[]) {
-    int vic[] = {33,66,99};
-    int *wes = malloc(sizeof(int));
-    *wes = 55;
-    guy = 66;
-    free(wes);
-    wes = vic;
-    wes[1] = madison(guy);
-    wes = austin(&amp;gus);
-    free(wes);
-    printf(&quot;Where do I live?&quot;);
-    return 0;
+</code></pre><h2 id=2d-arrays-on-the-heap>2D Arrays on the Heap</h2><h4 id=java-2d-array-of-arrays>Java 2D “Array of Arrays”</h4><p><code>int[][] m = new int[2][4];</code><h4 id=allocating-on-the-heap-a-2d-array-of-arrays-in-c>Allocating on the Heap a 2D “Array of Arrays” in C</h4><ol><li><p>Make a 2D array pointer named m (declare a pointer to an integer pointer).
+<code>int** m;</code><li><p>Assign m an “array of arrays” (allocate of a 1D array of integer pointers of size ROWS).
+<code>m = malloc(rows * sizeof(int*))</code><li><p>Assign each element in the “array of arrays” it own row of integers
+(for each row allocate a 1D array of integers of size COLS).<pre><code class=language-c>for (int i=0; i&lt;ROWS; i++)
+m[i] = malloc(COLS*sizeof(int));
+</code></pre></ol><ul><li>What is the contents of m after the code below executes when ROWS is 2 and COLS is 4?</ul><pre><code class=language-c>for (int i = 0; i &lt; ROWS; i++) {
+    for (int j = 0; j &lt; COLS; j++)
+        m[i][j] = i + j;
+</code></pre><ul><li><p>Can the following be used to replace m[i][j]?<p>a.) * ( * (m+i)+j) <strong>Yes</strong><br>b.) * ( * m + COLS * i + j) <strong>No</strong> requires a continuous array<li><p>Write the code to free the heap allocated 2D array?</ul><pre><code class=language-c>for (int i =0; u&lt;ROWS; i++)
+    free(m[i]);
+free(m)
+</code></pre><h4 id=free-the-components-of-your-heap-memory>Free the components of your heap memory</h4><p><strong>In reverse order of their allocation</strong><h2 id=array-caveats>Array Caveats</h2><h4 id=arrays-have-no-bounds-checking>Arrays have no bounds checking!</h4><pre><code class=language-c>int a[5];
+for (int i = 0; i &lt; 11; i++)
+    a[i] = 0;
+</code></pre><h4 id=arrays-cannot-be-return-types>Arrays cannot be return types!</h4><pre><code class=language-c>int[] makeIntArray(int size) {
+    return malloc(sizeof(int) * size);
 }
-</code></pre><ul><li><strong>Arrays, structs, pointers can live in any memory area (2,3,4,5)</strong><li><p><strong>Pointer variables can store any address</strong><li><p>vic[]: 5<li><p>{33, 66, 99}: 1<li><p>wes, ari: 5<li><p>malloc* : 4<li><p>assignment: 1<li><p>pam: 5<li><p>meg: 5<li><p>gus: 2<li><p>guy: 3<li><p>return value: 5<li><p>max: 3</ul><h2 id=c-abstract-memory-model>C Abstract Memory Model</h2><h4 id=1-code-segment-aka-text-rodata>1. CODE Segment (AKA .text &amp; .rodata)</h4><p>contains: <strong>Program instructions and literals</strong><ul><li>typically is read only and sharable</ul><h4 id=2-initialized-data-segment-aka-data>2. Initialized DATA Segment (AKA .data)</h4><p>What: Memory allocation with a specified size, type, and non-zero initialization.
-Lifetime: entire program executiton<p>Contains: <strong>extern, global and static local variables that are non-zero initialization</strong><h4 id=3-uninitialized-data-segment-aka-bss>3. Uninitialized DATA Segment (AKA .bss)</h4><p>What: Memory allocation with a specified size, type and uninitialized or initialized to zero.
-Lifetime: entire program executiton<p>Contains: <strong>extern, global and static local variables that are uninitialized or initialized to zero</strong><h4 id=4-heap-aka-free-store>4. HEAP (AKA Free Store)</h4><p>What: Memory allocation requested during execution.<p>Lifetime: programmer managed using malloc/free<p>Contains: <strong>Dynamic memory allocations</strong><h4 id=5-stack-aka-call-stack-auto-store>5. STACK (AKA Call Stack, Auto Store)</h4><p>What: Memory automatically allocated and freed as functions are executed.<p>Lifetime: from definition till end of its scope<p>Contains: <strong>Stack frames with non-static local and param variables</strong><p>LIFO: Last in, first out<p>Stack Frame: AKA activation record, contains set values for a call of some - later<h2 id=virtual-address-space-for-a-process-ia-32-linux>Virtual Address Space for a Process (IA-32/Linux)</h2><h4 id=32-bit-processor-32-bit-addresses>32-bit Processor = 32-bit Addresses</h4><h4 id=byte-addressable>byte addressable</h4><p>each address accesses 1 bytemax addressable bytes: 2^32 = 4,294,967,296 = 4GB<h4 id=virtual-address-space>Virtual address space</h4><p>illusion by OS that each process has it&rsquo;s own memory sandbox<h4 id=process>Process</h4><p>Running program<h4 id=virtual-address>Virtual Address</h4><p>Simulated address generated by processes<h4 id=physical-address>Physical Address</h4><p>Actual address used to access the machine&rsquo;s memory<h4 id=page-table>Page table</h4><p>OS use this to map from virtual addresses to physical addresses<h2 id=linux-processes-and-address-spaces>Linux: Processes and Address Spaces</h2><h4 id=program-size>Program Size</h4><pre><code>%gcc -m32 myProg.c
-%size a.out   
-text    data     bss     dec     hex filename   
-1029     276       4    1309     51d a.out
-</code></pre><h4 id=virtual-address-space-maps>Virtual Address Space Maps</h4><pre><code>%cat /proc/&lt;pid_of_process&gt;/maps
-%cat /proc/self/maps
-</code></pre><h4 id=process-and-job-control>Process and Job control</h4><p>Linux is a multitasking OS where you can concurrently run multiple processes<ul><li><strong>ps</strong>: lists a snapshot of your running processes<li><strong>jobs</strong>: list a snapshot of the processes you&rsquo;ve started from the command line<li><strong>&amp;</strong>: Puts a process in the background<li><strong>Ctrl-z</strong>: Suspend the running foreground process<li><strong>bg</strong>: Puts a suspended process in the background<li><strong>fg</strong>: Brings the process to the foreground<li><strong>Ctrl-c</strong>: Stops a running foreground process<li><strong>kill</strong>: Stops a process that is running in background</ul><a class=readmore href=/2017/9/28/cs354-07.html title="CS354-07 Standard IO">Read more</a></article></section><hr><ul class="default-wp-page clearfix"><li class=previous><a href=/posts/5.html>← Prev</a><li class=Next><a href=/posts/7.html>← Next</a></ul></div></div><div id=secondary class="widget-area col-md-4" role=complementary><aside id=toolbox class=widget><h4 class=widget-title>About this site</h4><div class=author_bio_message>This is my personal notes website.
+</code></pre><h4 id=not-all-2d-arrays-are-alike>Not all 2D arrays are alike!</h4><ul><li>What is the layout for 2D arrays on the stack?<li>What is the layout for 2D arrays on the heap?</ul><h4 id=an-array-argument-must-match-its-parameter>An array argument must match its parameter!</h4><h4 id=statically-allocated-arrays-require-all-but-their-first-dimension-specified>Statically allocated arrays require all but their first dimension specified!</h4><pre><code class=language-c>int a[2][4] = {{1,2,3,4},{5,6,7,8}};
+printIntArray(a);
+</code></pre><ul><li>Which of the following are type compatible with a ?</ul><pre><code class=language-c>void printIntArray(int a[2][4]) { . . . } // Y
+void printIntArray(int a[8][4]) { . . . } // Y
+void printIntArray(int a[][4]) { . . . } // Y
+void printIntArray(int a[4][8]) { . . . } // N Col too big
+void printIntArray(int a[][]) { . . . } // N Incomplete type
+void printIntArray(int (*a)[4]) { . . . } // Y
+void printIntArray(int **a) { . . . } // N
+</code></pre><a class=readmore href=/2017/9/21/cs354-05.html title="CS354-05 Array on the heap">Read more</a></article></section><hr><ul class="default-wp-page clearfix"><li class=previous><a href=/posts/5.html>← Prev</a><li class=Next><a href=/posts/7.html>← Next</a></ul></div></div><div id=secondary class="widget-area col-md-4" role=complementary><aside id=toolbox class=widget><h4 class=widget-title>About this site</h4><div class=author_bio_message>This is my personal notes website.
 You are welcomed to use it.
-But do NOT stop taking your own notes!</div></aside><aside id=recent-posts-2 class="widget widget_recent_entries"><h4 class=widget-title>Recent</h4><ul><li><a href=/2018/9/27/aa160-06.html>Asian American 160 Lec 06</a><li><a href=/2018/9/25/aa160-05.html>Asian American 160 Lec 05</a><li><a href=/2018/9/20/aa160-04.html>Asian American 160 Lec 04</a><li><a href=/2018/9/18/aa160-03.html>Asian American 160 Lec 03</a><li><a href=/2018/9/13/aa160-02.html>Asian American 160 Lec 02</a><li><a href=/2018/9/11/aa160-01.html>Asian American 160 Lec 01</a><li><a href=/2017/12/15/cs540-fr.html>CS540 Final Review</a><li><a href=/2017/11/8/esl118-p1.html>ESL 118 Paper 1</a><li><a href=/2017/11/1/cs540-23.html>CS540-23 propositional logic</a><li><a href=/2017/10/27/cs540-21.html>CS540-21 PCA</a></ul></aside><aside id=categories-2 class="widget widget_categories"><h4 class=widget-title>Categories</h4><ul><li class=cat-item><a href=/category/AA160.html>AA160</a>(6)<li class=cat-item><a href=/category/Artificial%20Intelligence.html>Artificial Intelligence</a>(1)<li class=cat-item><a href=/category/Bio101.html>Bio101</a>(5)<li class=cat-item><a href=/category/Biology.html>Biology</a>(5)<li class=cat-item><a href=/category/CS252.html>CS252</a>(4)<li class=cat-item><a href=/category/CS354.html>CS354</a>(13)<li class=cat-item><a href=/category/CS367.html>CS367</a>(23)<li class=cat-item><a href=/category/CS368.html>CS368</a>(1)<li class=cat-item><a href=/category/CS540.html>CS540</a>(24)<li class=cat-item><a href=/category/CS559.html>CS559</a>(5)<li class=cat-item><a href=/category/Computer%20Science.html>Computer Science</a>(90)<li class=cat-item><a href=/category/Deep%20Learning.html>Deep Learning</a>(1)<li class=cat-item><a href=/category/ESL118.html>ESL118</a>(2)<li class=cat-item><a href=/category/Econ102.html>Econ102</a>(2)<li class=cat-item><a href=/category/Economics.html>Economics</a>(2)<li class=cat-item><a href=/category/Ethnics.html>Ethnics</a>(6)<li class=cat-item><a href=/category/Go.html>Go</a>(1)<li class=cat-item><a href=/category/Kines100.html>Kines100</a>(3)<li class=cat-item><a href=/category/Kinesiology.html>Kinesiology</a>(3)<li class=cat-item><a href=/category/Math.html>Math</a>(22)<li class=cat-item><a href=/category/Math240.html>Math240</a>(20)<li class=cat-item><a href=/category/Math320.html>Math320</a>(2)<li class=cat-item><a href=/category/NS132.html>NS132</a>(30)<li class=cat-item><a href=/category/Nutritional%20Science.html>Nutritional Science</a>(30)<li class=cat-item><a href=/category/Psych202.html>Psych202</a>(3)<li class=cat-item><a href=/category/Psychology.html>Psychology</a>(3)<li class=cat-item><a href=/category/Test.html>Test</a>(1)<li class=cat-item><a href=/category/Website.html>Website</a>(1)</ul></aside><aside id=tag_cloud-3 class="widget widget_tag_cloud"><h4 class=widget-title>Tags</h4><div class=tagcloud><a href=/tags/AA160.html class="tag-link tag-link-position" style=font-size:8pt>AA160</a>
+But do NOT stop taking your own notes!</div></aside><aside id=recent-posts-2 class="widget widget_recent_entries"><h4 class=widget-title>Recent</h4><ul><li><a href=/2018/11/16/aa160-notes.html>Asian American 160 Lecture Notes</a><li><a href=/2017/12/15/cs540-fr.html>CS540 Final Review</a><li><a href=/2017/11/8/esl118-p1.html>ESL 118 Paper 1</a><li><a href=/2017/11/1/cs540-23.html>CS540-23 propositional logic</a><li><a href=/2017/10/27/cs540-21.html>CS540-21 PCA</a><li><a href=/2017/10/25/cs540-20.html>CS540-20 Dimention Reduction</a><li><a href=/2017/10/24/cs354-14.html>CS354-14 Cache Coding</a><li><a href=/2017/10/23/cs540-19.html>CS540-19 Linear Algebra</a><li><a href=/2017/10/19/cs354-13.html>CS354-13 Cache Practise</a><li><a href=/2017/10/18/cs540-18.html>CS540-18 Probability</a></ul></aside><aside id=categories-2 class="widget widget_categories"><h4 class=widget-title>Categories</h4><ul><li class=cat-item><a href=/category/AA160.html>AA160</a>(1)<li class=cat-item><a href=/category/Artificial%20Intelligence.html>Artificial Intelligence</a>(1)<li class=cat-item><a href=/category/Bio101.html>Bio101</a>(5)<li class=cat-item><a href=/category/Biology.html>Biology</a>(5)<li class=cat-item><a href=/category/CS252.html>CS252</a>(4)<li class=cat-item><a href=/category/CS354.html>CS354</a>(13)<li class=cat-item><a href=/category/CS367.html>CS367</a>(23)<li class=cat-item><a href=/category/CS368.html>CS368</a>(1)<li class=cat-item><a href=/category/CS540.html>CS540</a>(24)<li class=cat-item><a href=/category/CS559.html>CS559</a>(5)<li class=cat-item><a href=/category/Computer%20Science.html>Computer Science</a>(90)<li class=cat-item><a href=/category/Deep%20Learning.html>Deep Learning</a>(1)<li class=cat-item><a href=/category/ESL118.html>ESL118</a>(2)<li class=cat-item><a href=/category/Econ102.html>Econ102</a>(2)<li class=cat-item><a href=/category/Economics.html>Economics</a>(2)<li class=cat-item><a href=/category/Ethnics.html>Ethnics</a>(1)<li class=cat-item><a href=/category/Go.html>Go</a>(1)<li class=cat-item><a href=/category/Kines100.html>Kines100</a>(3)<li class=cat-item><a href=/category/Kinesiology.html>Kinesiology</a>(3)<li class=cat-item><a href=/category/Math.html>Math</a>(22)<li class=cat-item><a href=/category/Math240.html>Math240</a>(20)<li class=cat-item><a href=/category/Math320.html>Math320</a>(2)<li class=cat-item><a href=/category/NS132.html>NS132</a>(30)<li class=cat-item><a href=/category/Nutritional%20Science.html>Nutritional Science</a>(30)<li class=cat-item><a href=/category/Psych202.html>Psych202</a>(3)<li class=cat-item><a href=/category/Psychology.html>Psychology</a>(3)<li class=cat-item><a href=/category/Test.html>Test</a>(1)<li class=cat-item><a href=/category/Website.html>Website</a>(1)</ul></aside><aside id=tag_cloud-3 class="widget widget_tag_cloud"><h4 class=widget-title>Tags</h4><div class=tagcloud><a href=/tags/AA160.html class="tag-link tag-link-position" style=font-size:8pt>AA160</a>
 <a href=/tags/Bio101.html class="tag-link tag-link-position" style=font-size:8pt>Bio101</a>
 <a href=/tags/CNNs.html class="tag-link tag-link-position" style=font-size:8pt>CNNs</a>
 <a href=/tags/CS252.html class="tag-link tag-link-position" style=font-size:8pt>CS252</a>

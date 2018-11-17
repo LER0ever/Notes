@@ -2,12 +2,7 @@ https://notes.rongyi.blog
 https://notes.rongyi.blog/academics.html
 https://notes.rongyi.blog/sn.html
 https://notes.rongyi.blog/me.html
-https://notes.rongyi.blog/2018/9/27/aa160-06.html
-https://notes.rongyi.blog/2018/9/25/aa160-05.html
-https://notes.rongyi.blog/2018/9/20/aa160-04.html
-https://notes.rongyi.blog/2018/9/18/aa160-03.html
-https://notes.rongyi.blog/2018/9/13/aa160-02.html
-https://notes.rongyi.blog/2018/9/11/aa160-01.html
+https://notes.rongyi.blog/2018/11/16/aa160-notes.html
 https://notes.rongyi.blog/2017/12/15/cs540-fr.html
 https://notes.rongyi.blog/2017/11/8/esl118-p1.html
 https://notes.rongyi.blog/2017/11/1/cs540-23.html
@@ -48,8 +43,8 @@ https://notes.rongyi.blog/2017/9/12/cs354-02.html
 https://notes.rongyi.blog/2017/9/12/cs354-02.html
 https://notes.rongyi.blog/2017/9/11/cs540-03.html
 https://notes.rongyi.blog/2017/9/11/cs252-03.html
-https://notes.rongyi.blog/2017/9/8/cs252-02.html
 https://notes.rongyi.blog/2017/9/8/cs540-02.html
+https://notes.rongyi.blog/2017/9/8/cs252-02.html
 https://notes.rongyi.blog/2017/9/6/cs540-01.html
 https://notes.rongyi.blog/2017/9/6/cs252-01.html
 https://notes.rongyi.blog/2017/5/10/ns132-3x Final Review.html
@@ -67,8 +62,8 @@ https://notes.rongyi.blog/2017/3/27/ns132-20.html
 https://notes.rongyi.blog/2017/3/27/math240-21.html
 https://notes.rongyi.blog/2017/3/13/math240-20.html
 https://notes.rongyi.blog/2017/3/8/math240-18.html
-https://notes.rongyi.blog/2017/3/6/ns132-19.html
 https://notes.rongyi.blog/2017/3/6/psych202-exam02.html
+https://notes.rongyi.blog/2017/3/6/ns132-19.html
 https://notes.rongyi.blog/2017/3/1/ns132-18.html
 https://notes.rongyi.blog/2017/3/1/math240-17.html
 https://notes.rongyi.blog/2017/2/27/ns132-17.html
@@ -82,8 +77,8 @@ https://notes.rongyi.blog/2017/2/15/math240-13.html
 https://notes.rongyi.blog/2017/2/15/ns132-13.html
 https://notes.rongyi.blog/2017/2/13/ns132-12.html
 https://notes.rongyi.blog/2017/2/13/math240-12.html
-https://notes.rongyi.blog/2017/2/10/ns132-11.html
 https://notes.rongyi.blog/2017/2/10/math240-11.html
+https://notes.rongyi.blog/2017/2/10/ns132-11.html
 https://notes.rongyi.blog/2017/2/9/cs559-10.html
 https://notes.rongyi.blog/2017/2/8/math240-10.html
 https://notes.rongyi.blog/2017/2/8/ns132-10.html
@@ -91,8 +86,8 @@ https://notes.rongyi.blog/2017/2/6/cs559-09.html
 https://notes.rongyi.blog/2017/2/6/ns132-09.html
 https://notes.rongyi.blog/2017/2/6/math240-09.html
 https://notes.rongyi.blog/2017/2/5/psych202-exam01.html
-https://notes.rongyi.blog/2017/2/3/ns132-08.html
 https://notes.rongyi.blog/2017/2/3/math240-08.html
+https://notes.rongyi.blog/2017/2/3/ns132-08.html
 https://notes.rongyi.blog/2017/2/1/cs368-03.html
 https://notes.rongyi.blog/2017/2/1/ns132-07.html
 https://notes.rongyi.blog/2017/2/1/math240-07.html
@@ -100,8 +95,8 @@ https://notes.rongyi.blog/2017/1/30/kines100-02.html
 https://notes.rongyi.blog/2017/1/30/ns132-hw02.html
 https://notes.rongyi.blog/2017/1/30/ns132-06.html
 https://notes.rongyi.blog/2017/1/30/math240-06.html
-https://notes.rongyi.blog/2017/1/27/math240-05.html
 https://notes.rongyi.blog/2017/1/27/ns132-05.html
+https://notes.rongyi.blog/2017/1/27/math240-05.html
 https://notes.rongyi.blog/2017/1/25/kines100-01.html
 https://notes.rongyi.blog/2017/1/25/ns132-04.html
 https://notes.rongyi.blog/2017/1/25/math240-04.html
@@ -110,8 +105,8 @@ https://notes.rongyi.blog/2017/1/24/cs559-03.html
 https://notes.rongyi.blog/2017/1/23/ns132-03.html
 https://notes.rongyi.blog/2017/1/23/math240-03.html
 https://notes.rongyi.blog/2017/1/21/cs559-hw01-kaleidoscope-in-canvas.html
-https://notes.rongyi.blog/2017/1/20/ns132-02.html
 https://notes.rongyi.blog/2017/1/20/math240-02.html
+https://notes.rongyi.blog/2017/1/20/ns132-02.html
 https://notes.rongyi.blog/2017/1/19/psych202-02.html
 https://notes.rongyi.blog/2017/1/18/ns132-01.html
 https://notes.rongyi.blog/2016/12/15/cs367-introtods23.html
@@ -129,8 +124,8 @@ https://notes.rongyi.blog/2016/10/13/cs367-introtods12.html
 https://notes.rongyi.blog/2016/10/11/cs367-introtods11.html
 https://notes.rongyi.blog/2016/10/4/cs367-introtods10.html
 https://notes.rongyi.blog/2016/10/4/cs367-introtods08.html
-https://notes.rongyi.blog/2016/9/29/cs367-introtods07.html
 https://notes.rongyi.blog/2016/9/29/cs367-introtods08.html
+https://notes.rongyi.blog/2016/9/29/cs367-introtods07.html
 https://notes.rongyi.blog/2016/9/22/cs367-introtods06.html
 https://notes.rongyi.blog/2016/9/21/bio101-eukaryotic-cell.html
 https://notes.rongyi.blog/2016/9/20/cs367-introtods05.html
@@ -138,9 +133,9 @@ https://notes.rongyi.blog/2016/9/18/bio101-vocabulary.html
 https://notes.rongyi.blog/2016/9/15/cs367-introtods04.html
 https://notes.rongyi.blog/2016/9/13/cs367-introtods03.html
 https://notes.rongyi.blog/2016/9/9/bio101-divoflife.html
+https://notes.rongyi.blog/2016/9/8/bio101-prokaryotes.html
 https://notes.rongyi.blog/2016/9/8/cs367-introtods02.html
 https://notes.rongyi.blog/2016/9/8/esl118-hw1.html
-https://notes.rongyi.blog/2016/9/8/bio101-prokaryotes.html
 https://notes.rongyi.blog/2016/9/7/testing-mathjax.html
 https://notes.rongyi.blog/2016/9/7/cs367-text-introduction.html
 https://notes.rongyi.blog/2016/9/7/bio101-introtobio.html
@@ -178,50 +173,49 @@ https://notes.rongyi.blog/posts/26.html
 https://notes.rongyi.blog/posts/27.html
 https://notes.rongyi.blog/posts/28.html
 https://notes.rongyi.blog/posts/29.html
-https://notes.rongyi.blog/posts/30.html
+https://notes.rongyi.blog/tags/Psych202.html
+https://notes.rongyi.blog/tags/Lumos.html
+https://notes.rongyi.blog/tags/AA160.html
+https://notes.rongyi.blog/tags/CS354.html
+https://notes.rongyi.blog/tags/NS132.html
+https://notes.rongyi.blog/tags/Math240.html
+https://notes.rongyi.blog/tags/ESL118.html
+https://notes.rongyi.blog/tags/CS559.html
+https://notes.rongyi.blog/tags/CS367.html
+https://notes.rongyi.blog/tags/CNNs.html
+https://notes.rongyi.blog/tags/CS540.html
+https://notes.rongyi.blog/tags/CS368.html
+https://notes.rongyi.blog/tags/Kines100.html
+https://notes.rongyi.blog/tags/Math320.html
 https://notes.rongyi.blog/tags/Econ102.html
 https://notes.rongyi.blog/tags/CS252.html
-https://notes.rongyi.blog/tags/Math240.html
-https://notes.rongyi.blog/tags/CS368.html
-https://notes.rongyi.blog/tags/CS367.html
 https://notes.rongyi.blog/tags/Bio101.html
-https://notes.rongyi.blog/tags/CS540.html
-https://notes.rongyi.blog/tags/ESL118.html
-https://notes.rongyi.blog/tags/CS354.html
-https://notes.rongyi.blog/tags/Psych202.html
-https://notes.rongyi.blog/tags/CS559.html
-https://notes.rongyi.blog/tags/AA160.html
 https://notes.rongyi.blog/tags/Test.html
-https://notes.rongyi.blog/tags/Math320.html
-https://notes.rongyi.blog/tags/Lumos.html
-https://notes.rongyi.blog/tags/CNNs.html
-https://notes.rongyi.blog/tags/NS132.html
-https://notes.rongyi.blog/tags/Kines100.html
+https://notes.rongyi.blog/category/CS540.html
 https://notes.rongyi.blog/category/ESL118.html
-https://notes.rongyi.blog/category/CS252.html
-https://notes.rongyi.blog/category/Ethnics.html
-https://notes.rongyi.blog/category/Bio101.html
-https://notes.rongyi.blog/category/Test.html
-https://notes.rongyi.blog/category/CS368.html
-https://notes.rongyi.blog/category/Math.html
-https://notes.rongyi.blog/category/Psychology.html
-https://notes.rongyi.blog/category/Artificial Intelligence.html
-https://notes.rongyi.blog/category/AA160.html
-https://notes.rongyi.blog/category/Economics.html
 https://notes.rongyi.blog/category/CS559.html
-https://notes.rongyi.blog/category/Go.html
+https://notes.rongyi.blog/category/Artificial Intelligence.html
 https://notes.rongyi.blog/category/Computer Science.html
-https://notes.rongyi.blog/category/CS354.html
 https://notes.rongyi.blog/category/Econ102.html
+https://notes.rongyi.blog/category/CS252.html
 https://notes.rongyi.blog/category/Biology.html
+https://notes.rongyi.blog/category/Nutritional Science.html
+https://notes.rongyi.blog/category/Math240.html
+https://notes.rongyi.blog/category/Bio101.html
+https://notes.rongyi.blog/category/CS368.html
+https://notes.rongyi.blog/category/Kinesiology.html
+https://notes.rongyi.blog/category/Ethnics.html
+https://notes.rongyi.blog/category/Psychology.html
+https://notes.rongyi.blog/category/CS354.html
 https://notes.rongyi.blog/category/Math320.html
 https://notes.rongyi.blog/category/Website.html
-https://notes.rongyi.blog/category/CS540.html
+https://notes.rongyi.blog/category/Economics.html
 https://notes.rongyi.blog/category/NS132.html
-https://notes.rongyi.blog/category/Math240.html
-https://notes.rongyi.blog/category/Kinesiology.html
-https://notes.rongyi.blog/category/CS367.html
-https://notes.rongyi.blog/category/Nutritional Science.html
+https://notes.rongyi.blog/category/Test.html
+https://notes.rongyi.blog/category/Deep Learning.html
 https://notes.rongyi.blog/category/Psych202.html
 https://notes.rongyi.blog/category/Kines100.html
-https://notes.rongyi.blog/category/Deep Learning.html
+https://notes.rongyi.blog/category/CS367.html
+https://notes.rongyi.blog/category/Go.html
+https://notes.rongyi.blog/category/AA160.html
+https://notes.rongyi.blog/category/Math.html
