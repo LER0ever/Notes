@@ -1,7 +1,91 @@
 <!doctype html><head lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>Articles Page 26 - L.E.R Wiz</title><meta name=format-detection content="telephone=no"><script>if(self!=top){top.location=this.location.href;}</script><meta name=keywords content="LER0ever,L.E.R,Yi Rong,blog,L.E.R Space,Lumos,Wiz"><meta name=description content="L.E.R Space, a magical personal website by Yi Rong"><link rel=icon href=/favicon.ico><link rel="shortcut icon" href=/favicon.ico><link rel=stylesheet id=font-style-css href=/css/fonts-google.css><link rel=stylesheet id=fancybox-css href=/css/jquery.fancybox-1.3.4.css><link rel=stylesheet id=cr-style-css href=/css/style.css><link rel=stylesheet href=/css/hljs/monokai-sublime.css><script src=/js/jquery.min.js></script><script src=/js/jquery-migrate.min.js></script><script type=text/x-mathjax-config>
         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
     </script><script async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><body class="home post-list"><div id=wrapper><header id=branding><div class="wrapper clearfix"><div class="hgroup-wrap clearfix"><div class=hgroup-right><div class="social-profiles clearfix"><ul></ul></div><form class="searchform clearfix"><label class=assistive-text for=s>Search</label>
-<input id=searchbox placeholder=Search class="s field" name=s></form></div><div id=site-logo class=clearfix><h3 id=site-title><a href=https://notes.rongyi.blog title="L.E.R Wiz" rel=home>L.E.R Wiz</a></h3><h4 id=site-description>All Ways Forward @ UW-Madison</h4></div></div><nav id=access class=clearfix><ul class=root><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/>Home</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/academics>My Academics</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/sn>Contact Me</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/archive>Archive</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=https://rongyi.blog/about target=_blank>L.E.R Space</a><li class=default-menu><a href=https://rongyi.blog title=Navigation>Navigation</a></ul></nav></div></header><div id=main class="site-main wrapper clearfix"><div class=container><div id=primary class=no-margin-left><div id=content><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS367-Introduction To Data Structures 11</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
+<input id=searchbox placeholder=Search class="s field" name=s></form></div><div id=site-logo class=clearfix><h3 id=site-title><a href=https://notes.rongyi.blog title="L.E.R Wiz" rel=home>L.E.R Wiz</a></h3><h4 id=site-description>All Ways Forward @ UW-Madison</h4></div></div><nav id=access class=clearfix><ul class=root><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/>Home</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/academics>My Academics</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/sn>Contact Me</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/archive>Archive</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=https://rongyi.blog/about target=_blank>L.E.R Space</a><li class=default-menu><a href=https://rongyi.blog title=Navigation>Navigation</a></ul></nav></div></header><div id=main class="site-main wrapper clearfix"><div class=container><div id=primary class=no-margin-left><div id=content><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS367-Introduction To Data Structures 14</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
+<span class="date updated"><a href=/2016/11/3/cs367-introtods14.html title="November 3, 2016">November 3, 2016</a></span>
+<span class=category><a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;
+<a href=/category/CS367.html rel="category tag">CS367</a>;</span>
+<span class=category>Tags
+<a href=/tags/CS367.html rel="category tag">#CS367</a></span>
+<span class=comments><a href>Comments are closed</a></span></div></header><h2 id=tower-of-hanoi>Tower of hanoi</h2><h4 id=algorithm>Algorithm</h4><pre><code>solveTowers(count, src, dest, spare){
+    if (count == 1) move src to dest;
+    else {
+        solveTowers(count - 1, src, spare, dest);
+        solveTowers(1, src, dest, spare);
+        solveTowers(count - 1, spare, dest, src);
+    }
+}
+</code></pre><h4 id=complexity>Complexity</h4><p><strong>Problem Size N is</strong><br>Num of Disks<br><strong>1. Equation</strong><br>T(1) = 1<br>T(N) = T(N-1) + T(1) + T(N-1) = 2T(N-1) + 1<br><strong>2.Table</strong><br>&hellip;<br>2^k - 1
+<strong>3. Verify</strong><br>T(N) = 2T(N-1) + 1<br>2^k-1 = 2 * (2^(N-1) -1) + 1<h2 id=picking-lottery-numbers>Picking Lottery Numbers</h2><ul><li>order does not matter<li>duplicates not allowed<li><p>combination matters, not permutation<h4 id=n-choose-k>N Choose K</h4><p>N: Number to choose from
+K: Number of items in a combination<h4 id=recursive-definition>Recursive Definition</h4><p>c(n,k) = c(n-1, k-1) + c(n-1, k)<br>with fav # in case<h4 id=base-cases>Base cases</h4><p>c(n, k) = 0 when k &gt; n // no comb solves
+c(n, k) = 1 when k = n // one comb - all numbers
+c(n, k) = 1 when k = 0 // empty set - no pick</ul><h4 id=recursive-case>Recursive case</h4><p>for c(n-1, k-1), we eventually reach k = 0<br>for (n-1, k) we eventually reach<h4 id=implement-the-c-n-k>Implement the c(n,k)</h4><pre><code>int c(int n, int k) {
+    if (k&gt;n) return 0;
+    if (k==0 || k==n) return 1;
+    return c(n-1, k-1) + c(n-1, k);
+}
+</code></pre><p>T(N) = n!/k!(n-k)!<h2 id=searching>Searching</h2><p><strong>N - Num of items in a list</strong><h4 id=linear-search>Linear Search</h4><ul><li>search one by one<li>the list can be unsorted</ul><pre><code>boolean LinSearch(ListADT L, int pos, E x) {
+    if (pos &gt;= L.size()) return false;
+    if (x.equals(L.get(pos))) return true;
+    return LinSearch(L, pos+1, x);
+}
+</code></pre><h4 id=binary-search>Binary search</h4><ul><li>Divide &amp; Conquer<li>Require a sorted list</ul><pre><code>boolean BinSearch(L, first, last, x) {
+    if (first &gt; last) return false;
+    int center = (first + last)/2.
+    if (x.equals(L.get(center))) return true;
+    if (x.compareTo(L.get(center))) &lt; 0)
+        return BinSearch(L, first, center-1, x);
+    else
+        return BinSearch(L, center+1, last, x);
+}
+</code></pre><h2 id=categorising-adt-part-1>Categorising ADT Part 1</h2><ul><li>Linear ADT<ul><li>list<li>stack<li>queue</ul></ul><p>bext.prev relationship, 1 processor, 1 successor<ul><li>Hierarchical<ul><li>Tree</ul></ul><p>parent/child relationship, 1 processor, multiple successor<ul><li>Graphical<ul><li>graph</ul></ul><p>pairwise relationship, 1 or more processors, 1 or more successors<h2 id=general-tree>General Tree</h2><ul><li>each node can store an arbitrary number of child</ul><p>Treenode
+data -&gt;
+children -&gt; treenode<h2 id=determining-height-of-a-general-tree>Determining Height of a General Tree</h2><h4 id=writing-a-recursive-definition-for-the-height-of-a-general-tree>writing a recursive definition for the height of a general tree</h4><p>height(t) = 0 if t is null<br>height = 1 if t is a leaf<br>height = 1 + max(height of children)<pre><code class=language-java>public int height() {
+    
+}
+private int height(Treenode&lt;T&gt; t) {
+    if (t == null) return 0;
+    if (t.getChildren().size() == 0) return 1;
+    
+    // get max height of all children
+    int max = 0;
+    for (Treenode&lt;T&gt; child: t.getChildren()) {
+        int h = height(child);
+        IF (h &gt; max) max = h;
+    }
+    reture 1+max;
+}
+</code></pre><h2 id=binary-tree>Binary Tree</h2><h4 id=each-node-has-at-most-two-children>Each node has at most two children</h4><blockquote><p>//TODO: Arrange notes</blockquote><p>get/set method<h2 id=tree-traversal>Tree Traversal</h2><h4 id=goal-visit-every-node-in-the-tree-exactly-once>Goal: visit every node in the tree exactly once</h4><ul><li>V - visit -- do something with the nodes data<li>C - children -- traverse the children (left to right)<li>L - Left child -- traverse the left child<li>R - right child -- traverse the right child</ul><h4 id=level-order>Level order</h4><p>Top to bottom
+Left to right<h4 id=pre-order>Pre-order</h4><p>VLR (VC)<h4 id=post-order>Post-order</h4><p>LRV (CV)<h4 id=in-order>In-order</h4><p>LVR<h2 id=categorising-adt-part-2>Categorising ADT part 2</h2><p>Position-oriented ADTs: add, remove, lookup by position
+List stack, queue
+Value-oriented ADTs: operation occur at a specific based on the items value
+Sorted List: name determines the position to add remove, lookup
+MapADT - key-value pair
+* in 367, we only focus on the keys
+* we assume that you can get the value from the key<h2 id=binary-search-tree>Binary Search Tree</h2><p>Value-Oriented - Duplicates are not allowed<h4 id=goal>Goal</h4><ul><li>Fast lookup<li>Insert<li>Remove</ul><p><strong>BST are not guaranteed to be ideal shape</strong><p>for each node N having a key value K, L &lt; K for a very node in the left subtree of N, R is greater than K for every node in the right subtree of N</p><a class=readmore href=/2016/11/3/cs367-introtods14.html title="CS367-Introduction To Data Structures 14">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS367-Introduction To Data Structures 12</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
+<span class="date updated"><a href=/2016/10/13/cs367-introtods12.html title="October 13, 2016">October 13, 2016</a></span>
+<span class=category><a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;
+<a href=/category/CS367.html rel="category tag">CS367</a>;</span>
+<span class=category>Tags
+<a href=/tags/CS367.html rel="category tag">#CS367</a></span>
+<span class=comments><a href>Comments are closed</a></span></div></header><h2 id=stack-adt>Stack ADT</h2><h4 id=operation>Operation</h4><ul><li>push(E item)<li>E pop()<li>E peak()<li>boolean isEmpty()</ul><h4 id=implementing-using-an-array>Implementing using an array</h4><p><strong>Top at index</strong>
+Push: O(N)<br>Pop: O(N)<br>Peak: O(1) //must shift<br><strong>Top at numItem</strong><br>Push: O(1) Pop: O(1)<br>Peak O(1) //top = numItem -1<h4 id=implementing-using-a-chain-of-nodes>Implementing using a chain of nodes</h4><p><strong>if top = head</strong><br>Push: O(1)<br>Pop: O(1)<br>Peak: O(1) //top=head<br><strong>top = tail</strong><br>Push: O(1)<br>Pop: O(N)//update tail<br>Peak: O(1)<br><strong>top at end, no tail</strong><br>Push: O(N)<br>Pop: O(N)<br>Peak: O(N)<h2 id=queue-adt>Queue ADT</h2><h4 id=concepts>Concepts</h4><p>Like a checkout line. First in First out<h4 id=operations>Operations</h4><p>(present traditional names)<ul><li>void enqueue(E item) // add<li>E dequeue() // remove<li>boolean isEmpty()</ul><h4 id=implementing-using-a-chain-of-nodes-1>Implementing using a chain of nodes</h4><p><strong>Option 1: front of queue is at head, rear of queue is at tail</strong><ul><li>Enqueue: O(1)<li>Dequeue: O(1)</ul><p><strong>front of queue is at tail, rear of queue is at head</strong><ul><li>Enqueue: O(1)<li>Dequeue: O(N)</ul><h4 id=implementing-using-an-array-1>Implementing using an array</h4><p><strong>Option 1: front of queue is at 0, rear of queue is at n-1</strong><ul><li>Enqueue: O(1)<li>Dequeue: O(N)</ul><p><strong>Option 2: front of queue at numItem -1, rear of queue at 0</strong><ul><li>Enqueue: O(N)<li>Dequeue: O(1)</ul><p><strong>Option 3: front of queue at first item, rear of queue at last item</strong><ul><li>Enqueue: O(1)<li>Dequeue: O(1)</ul><pre><code class=language-java>private int incrementIndex(int i){
+    if (i == items.length - 1)
+        return 0;
+    return i++
+}
+</code></pre><h2 id=implementing-using-circular-array>Implementing using Circular Array</h2><h4 id=concepts-1>Concepts</h4><p>using free elements at front of array<br>Only expand if all elements used<h4 id=enqueue-e-item>Enqueue (E item)</h4><pre><code class=language-java>if (numItems == items.length)
+    expand();
+R = incrementIndex(R);
+items[R] = item;
+numItems ++;
+</code></pre><h4 id=e-dequeue>E Dequeue()</h4><pre><code class=language-java>if (numItems &lt;= 0)
+    throw new EmptyQueueException();
+E temp = items[F];
+F = incrementIndex(F);
+return temp;
+</code></pre><h4 id=expand>Expand()</h4><p>System.<strong>ArrayCopy</strong>(q(source), F(srcPos), newQ(dest), Q(destPos), length)<pre><code class=language-java>
+</code></pre><h2 id=end-of-exam-1>End of exam 1</h2><h2 id=tree-terminology>Tree Terminology</h2><blockquote><p>outlineW6R -3</blockquote><ol><li>Root: H<br><li>How many leaves: 4, EFDI<li>3<li>B<li>2<li>G<li>6<li>A, H<li>3<li>5<li>4</ol><h2 id=priority-queue-adt>Priority Queue ADT</h2><p>store items - so they can be remove in order of hiest priority<h4 id=priority>Priority</h4><ul><li>each item is assigned a priority value<li>allow duplicated priority<li>highest priority is smallest (or largest) value (just be clear which it is)</ul><h4 id=concepts-2>Concepts</h4><p>Items are removed in order of their priority<p><strong>Goal</strong>: Fast acces to highest priority<h4 id=operation-1>Operation</h4><ul><li>void insert(comparable item)<li>comparable removeMax()<li>comparable getMax()<li>boolean isEmpty()</ul><a class=readmore href=/2016/10/13/cs367-introtods12.html title="CS367-Introduction To Data Structures 12">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS367-Introduction To Data Structures 11</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
 <span class="date updated"><a href=/2016/10/11/cs367-introtods11.html title="October 11, 2016">October 11, 2016</a></span>
 <span class=category><a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;
 <a href=/category/CS367.html rel="category tag">CS367</a>;</span>
@@ -120,145 +204,9 @@ QUADRATIC O(N^2)<h4 id=some-growth-rate-function-in-order-of-complexity>Some gro
 1. Drop lower order terms
 2. Drop multiplication constant<h4 id=formal-definition>Formal Definition</h4><p>A function T(N) is O(F(N))
 if for some constant C and some number n
-such that T &lt;= F(N) for all N &gt; n</p><a class=readmore href=/2016/10/4/cs367-introtods08.html title="CS367-Introduction To Data Structures 08">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS367-Introduction To Data Structures 07</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
-<span class="date updated"><a href=/2016/9/29/cs367-introtods07.html title="September 29, 2016">September 29, 2016</a></span>
-<span class=category><a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;
-<a href=/category/CS367.html rel="category tag">CS367</a>;</span>
-<span class=category>Tags
-<a href=/tags/CS367.html rel="category tag">#CS367</a></span>
-<span class=comments><a href>Comments are closed</a></span></div></header><blockquote><p>L7 - 3</blockquote><h3 id=making-a-chain-of-nodes>Making a chain of nodes</h3><pre><code class=language-java>Listnode&lt;String&gt; head = new Listnode&lt;String&gt;(&quot;yippie&quot;, new Listnode&lt;String&gt;(&quot;ki&quot;, new Listnode&lt;String&gt;(&quot;yay&quot;)))
-
-Listnode&lt;String&gt; head = new Listnode&lt;String&gt;(&quot;yay&quot;);
-head = new Listnode&lt;String&gt;(&quot;ki&quot;, head);
-head = new Listnode&lt;String&gt;(&quot;yippie&quot;, head);
-</code></pre><h3 id=traversing-a-chain-of-nodes>Traversing a chain of nodes</h3><pre><code class=language-java>Listnode&lt;String&gt; curr = head
-while (curr != null) {
-    count++;
-    curr = curr.getNext();
-}
-</code></pre><p>When traversing a chain of nodes,use another variable to track<h3 id=adding-a-node-at-the-chain-s-end>Adding a node at the chain&rsquo;s end</h3><pre><code class=language-java>//Traverse the chains of nodes until we reach last node
-Listnode&lt;String&gt; curr = head
-while (curr.getNext() != null) {
-    curr = curr.getNext()
-}
-
-// Create new node, and link to last node
-curr = new Listnode&lt;String&gt;(&quot;rear&quot;);
-</code></pre><h3 id=removing-a-node-from-a-chain>Removing a Node from a chain</h3><pre><code class=language-java>head.getNext().setNext(head.getNext().getNext().getNext());
-</code></pre><pre><code class=language-java>Listnode&lt;String&gt; curr = head;
-for (int i=0; i&lt;N-1; i++){
-    curr = curr.getNext();
-}
-curr.setNext(cur.getNext().getNext());
-
-</code></pre><a class=readmore href=/2016/9/29/cs367-introtods07.html title="CS367-Introduction To Data Structures 07">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS367-Introduction To Data Structures 08</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=http://yirong.ml>L.E.R</a></span></span>
-<span class="date updated"><a href=/2016/9/29/cs367-introtods08.html title="September 29, 2016">September 29, 2016</a></span>
-<span class=category><a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;
-<a href=/category/CS367.html rel="category tag">CS367</a>;</span>
-<span class=category>Tags
-<a href=/tags/CS367.html rel="category tag">#CS367</a></span>
-<span class=comments><a href>Comments are closed</a></span></div></header><h2 id=java-visibility-modifiers>Java visibility modifiers</h2><p>public <code>public class ArrayList</code><br>private <code>private Object[] items</code><br>protected <code>protected String name</code><br>package <code>class Listnode&lt;E&gt;</code><p>Goal: hide d.s. from other class, but make available to our own class<p>Steps to create a package:
-1. Create a folder LinkedList
-2. Put in the folder:
-- Listnode.java
-- LinkedList.java
-- LinkedListIterator.java
-3. Programmer of classes that need LinkedList
-- <code>import LinkedList.*</code><p>CS367 Don&rsquo;t create packages<h2 id=recall-the-list-adt>Recall the List ADT</h2><p>Separate interface from implementation
-- allows programmers to choose diff implementation with only minor changes(one line)<p>ListADT
-- ensures that different implementation type define the same set of operation.<h2 id=linkedlist-implementing-listadt-using-a-chain-of-nodes>LinkedList - Implementing ListADT using a Chain of Nodes</h2><pre><code class=language-java>public class LinkedList&lt;E&gt; implements ListADT&lt;E&gt; {
-    private Listnode&lt;E&gt; head;
-    private int numItems;
-
-    public LinkedList() {
-        head = null;
-        numItem = 0;
-    }
-
-    public void add(E item) {
-        if (item == null) throw new IllegalArgumentException();
-        
-        Listnode&lt;E&gt; newnode = new Listnode&lt;E&gt;(item)
-        if (null == head)
-            head = newnode;
-        else{
-            Listnode&lt;E&gt; curr = head;
-            while(curr.getNext() != null)
-                curr = curr.getNext();
-            curr.setNext(newnode);
-        }
-        numItem++;
-    }
-
-    public E get(int pos) {
-        if (pos &lt; 0 || pos &gt;= numItems)
-            throw new IndexOutOfBoundsException();
-        
-        Listnode&lt;E&gt; curr = head;
-        for (int p=0; p&lt;pos; p++)
-            curr = curr.getNext();
-
-        return curr.getData();
-    }
-}
-</code></pre><h2 id=header-node>Header Node</h2><ul><li>header node does not store data<li>empty condition head references header node<li>Not the same as head reference</ul><pre><code class=language-java>
-public class LinkedList&lt;E&gt; implements ListADT&lt;E&gt; {
-    private Listnode&lt;E&gt; head;
-    private int numItems;
-    public LinkedList() {
-        head = new Listnode&lt;E&gt;(null); //~~null;~~
-        numItems = 0;
-    }
-    public void add(E item) {
-        if (item == null) throw new IllegalArgumentExceptions();
-        Listnode&lt;E&gt; newnode = new Listnode&lt;E&gt;(item);
-        //Special Case: empty list
-        //if (head == null) {
-        //    head = newnode;
-        //}
-        //General Case: non-empty list
-        //else {
-            Listnode&lt;E&gt; curr = head;
-            while (curr.getNext() != null)
-                curr = curr.getNext();
-            curr.setNext(newnode);
-        //}
-        numItem ++;
-    }
-}
-</code></pre><h2 id=tail-reference-no-header-nodes>Tail Reference (no header nodes)</h2><ul><li>reference to the last node</ul><pre><code class=language-java>public class LinkedList&lt;E&gt; implements ListADT&lt;E&gt; {
-    private Listnode&lt;E&gt; head;
-    private Listnode&lt;E&gt; tail;
-    private int numItems;
-
-    public LinkedList() {
-        head = null;
-        tail = null;
-        numItem = 0;
-    }
-
-    public void add(E item) {
-        if (item == null) throw new IllegalArgumentException();
-
-        Listnode&lt;E&gt; newnode = new Listnode&lt;E&gt;(item)
-        if (null == head){
-            head = newnode;
-            tail = newnode;
-        } else {
-            //Listnode&lt;E&gt; curr = head;
-            //while(curr.getNext() != null)
-            //    curr = curr.getNext();
-            //curr.setNext(newnode);
-            tail.setNext(newnode);
-            tail = newnode;
-            numItem++;
-        }
-        numItem++;
-    }
-}
-</code></pre><h2 id=implementing-linkedlistiterator>Implementing LinkedListIterator</h2><ul><li><p>Indirect iterator<ul><li>mylist<li>currPos</ul><li><p>Direct iterator<ul><li>curr</ul></ul><a class=readmore href=/2016/9/29/cs367-introtods08.html title="CS367-Introduction To Data Structures 08">Read more</a></article></section><hr><ul class="default-wp-page clearfix"><li class=previous><a href=/posts/25.html>← Prev</a><li class=Next><a href=/posts/27.html>← Next</a></ul></div></div><div id=secondary class="widget-area col-md-4" role=complementary><aside id=toolbox class=widget><h4 class=widget-title>About this site</h4><div class=author_bio_message>This is my personal notes website.
+such that T &lt;= F(N) for all N &gt; n</p><a class=readmore href=/2016/10/4/cs367-introtods08.html title="CS367-Introduction To Data Structures 08">Read more</a></article></section><hr><ul class="default-wp-page clearfix"><li class=previous><a href=/posts/25.html>← Prev</a><li class=Next><a href=/posts/27.html>← Next</a></ul></div></div><div id=secondary class="widget-area col-md-4" role=complementary><aside id=toolbox class=widget><h4 class=widget-title>About this site</h4><div class=author_bio_message>This is my personal notes website.
 You are welcomed to use it.
-But do NOT stop taking your own notes!</div></aside><aside id=recent-posts-2 class="widget widget_recent_entries"><h4 class=widget-title>Recent</h4><ul><li><a href=/2018/12/11/aa160-notes.html>Asian American 160 Lecture Notes</a><li><a href=/2018/9/27/aa160-06.html>Asian American 160 Lec 06</a><li><a href=/2018/9/25/aa160-05.html>Asian American 160 Lec 05</a><li><a href=/2018/9/20/aa160-04.html>Asian American 160 Lec 04</a><li><a href=/2018/9/18/aa160-03.html>Asian American 160 Lec 03</a><li><a href=/2018/9/13/aa160-02.html>Asian American 160 Lec 02</a><li><a href=/2018/9/11/aa160-01.html>Asian American 160 Lec 01</a><li><a href=/2017/12/15/cs540-fr.html>CS540 Final Review</a><li><a href=/2017/11/8/esl118-p1.html>ESL 118 Paper 1</a><li><a href=/2017/11/1/cs540-23.html>CS540-23 propositional logic</a></ul></aside><aside id=categories-2 class="widget widget_categories"><h4 class=widget-title>Categories</h4><ul><li class=cat-item><a href=/category/AA160.html>AA160</a>(7)<li class=cat-item><a href=/category/Artificial%20Intelligence.html>Artificial Intelligence</a>(1)<li class=cat-item><a href=/category/Bio101.html>Bio101</a>(5)<li class=cat-item><a href=/category/Biology.html>Biology</a>(5)<li class=cat-item><a href=/category/CS252.html>CS252</a>(4)<li class=cat-item><a href=/category/CS354.html>CS354</a>(13)<li class=cat-item><a href=/category/CS367.html>CS367</a>(23)<li class=cat-item><a href=/category/CS368.html>CS368</a>(1)<li class=cat-item><a href=/category/CS540.html>CS540</a>(24)<li class=cat-item><a href=/category/CS559.html>CS559</a>(5)<li class=cat-item><a href=/category/Computer%20Science.html>Computer Science</a>(90)<li class=cat-item><a href=/category/Deep%20Learning.html>Deep Learning</a>(1)<li class=cat-item><a href=/category/ESL118.html>ESL118</a>(2)<li class=cat-item><a href=/category/Econ102.html>Econ102</a>(2)<li class=cat-item><a href=/category/Economics.html>Economics</a>(2)<li class=cat-item><a href=/category/Ethnics.html>Ethnics</a>(7)<li class=cat-item><a href=/category/Go.html>Go</a>(1)<li class=cat-item><a href=/category/Kines100.html>Kines100</a>(3)<li class=cat-item><a href=/category/Kinesiology.html>Kinesiology</a>(3)<li class=cat-item><a href=/category/Math.html>Math</a>(22)<li class=cat-item><a href=/category/Math240.html>Math240</a>(20)<li class=cat-item><a href=/category/Math320.html>Math320</a>(2)<li class=cat-item><a href=/category/NS132.html>NS132</a>(30)<li class=cat-item><a href=/category/Nutritional%20Science.html>Nutritional Science</a>(30)<li class=cat-item><a href=/category/Psych202.html>Psych202</a>(3)<li class=cat-item><a href=/category/Psychology.html>Psychology</a>(3)<li class=cat-item><a href=/category/Test.html>Test</a>(1)<li class=cat-item><a href=/category/Website.html>Website</a>(1)</ul></aside><aside id=tag_cloud-3 class="widget widget_tag_cloud"><h4 class=widget-title>Tags</h4><div class=tagcloud><a href=/tags/AA160.html class="tag-link tag-link-position" style=font-size:8pt>AA160</a>
+But do NOT stop taking your own notes!</div></aside><aside id=recent-posts-2 class="widget widget_recent_entries"><h4 class=widget-title>Recent</h4><ul><li><a href=/2018/12/11/aa160-notes.html>Asian American 160 Lecture Notes</a><li><a href=/2018/9/27/aa160-06.html>Asian American 160 Lec 06</a><li><a href=/2018/9/25/aa160-05.html>Asian American 160 Lec 05</a><li><a href=/2018/9/20/aa160-04.html>Asian American 160 Lec 04</a><li><a href=/2018/9/18/aa160-03.html>Asian American 160 Lec 03</a><li><a href=/2018/9/13/aa160-02.html>Asian American 160 Lec 02</a><li><a href=/2018/9/11/aa160-01.html>Asian American 160 Lec 01</a><li><a href=/2018/5/3/math519-notes.html>Math 519 ODE Lecture Notes Collection</a><li><a href=/2018/5/3/math519-review.html>Math 519 ODE Final Review</a><li><a href=/2017/12/15/cs540-fr.html>CS540 Final Review</a></ul></aside><aside id=categories-2 class="widget widget_categories"><h4 class=widget-title>Categories</h4><ul><li class=cat-item><a href=/category/AA160.html>AA160</a>(7)<li class=cat-item><a href=/category/Artificial%20Intelligence.html>Artificial Intelligence</a>(1)<li class=cat-item><a href=/category/Bio101.html>Bio101</a>(5)<li class=cat-item><a href=/category/Biology.html>Biology</a>(5)<li class=cat-item><a href=/category/CS252.html>CS252</a>(4)<li class=cat-item><a href=/category/CS354.html>CS354</a>(13)<li class=cat-item><a href=/category/CS367.html>CS367</a>(23)<li class=cat-item><a href=/category/CS368.html>CS368</a>(1)<li class=cat-item><a href=/category/CS540.html>CS540</a>(24)<li class=cat-item><a href=/category/CS559.html>CS559</a>(5)<li class=cat-item><a href=/category/Computer%20Science.html>Computer Science</a>(90)<li class=cat-item><a href=/category/Deep%20Learning.html>Deep Learning</a>(1)<li class=cat-item><a href=/category/ESL118.html>ESL118</a>(2)<li class=cat-item><a href=/category/Econ102.html>Econ102</a>(2)<li class=cat-item><a href=/category/Economics.html>Economics</a>(2)<li class=cat-item><a href=/category/Ethnics.html>Ethnics</a>(7)<li class=cat-item><a href=/category/Go.html>Go</a>(1)<li class=cat-item><a href=/category/Kines100.html>Kines100</a>(3)<li class=cat-item><a href=/category/Kinesiology.html>Kinesiology</a>(3)<li class=cat-item><a href=/category/Math.html>Math</a>(24)<li class=cat-item><a href=/category/Math240.html>Math240</a>(20)<li class=cat-item><a href=/category/Math320.html>Math320</a>(2)<li class=cat-item><a href=/category/Math519.html>Math519</a>(2)<li class=cat-item><a href=/category/NS132.html>NS132</a>(30)<li class=cat-item><a href=/category/Nutritional%20Science.html>Nutritional Science</a>(30)<li class=cat-item><a href=/category/Psych202.html>Psych202</a>(3)<li class=cat-item><a href=/category/Psychology.html>Psychology</a>(3)<li class=cat-item><a href=/category/Test.html>Test</a>(1)<li class=cat-item><a href=/category/Website.html>Website</a>(1)</ul></aside><aside id=tag_cloud-3 class="widget widget_tag_cloud"><h4 class=widget-title>Tags</h4><div class=tagcloud><a href=/tags/AA160.html class="tag-link tag-link-position" style=font-size:8pt>AA160</a>
 <a href=/tags/Bio101.html class="tag-link tag-link-position" style=font-size:8pt>Bio101</a>
 <a href=/tags/CNNs.html class="tag-link tag-link-position" style=font-size:8pt>CNNs</a>
 <a href=/tags/CS252.html class="tag-link tag-link-position" style=font-size:8pt>CS252</a>
@@ -273,6 +221,7 @@ But do NOT stop taking your own notes!</div></aside><aside id=recent-posts-2 cla
 <a href=/tags/Lumos.html class="tag-link tag-link-position" style=font-size:8pt>Lumos</a>
 <a href=/tags/Math240.html class="tag-link tag-link-position" style=font-size:8pt>Math240</a>
 <a href=/tags/Math320.html class="tag-link tag-link-position" style=font-size:8pt>Math320</a>
+<a href=/tags/Math519.html class="tag-link tag-link-position" style=font-size:8pt>Math519</a>
 <a href=/tags/NS132.html class="tag-link tag-link-position" style=font-size:8pt>NS132</a>
 <a href=/tags/Psych202.html class="tag-link tag-link-position" style=font-size:8pt>Psych202</a>
 <a href=/tags/Test.html class="tag-link tag-link-position" style=font-size:8pt>Test</a></div></aside></div></div></div></div><footer id=colophon class=clearfix><div class=wrapper><div id=site-generator class=clearfix><div class=copyright><a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>CC BY-NC-ND 4.0</a> |
