@@ -1,7 +1,143 @@
 <!doctype html><head lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>Articles Page 29 - L.E.R Wiz</title><meta name=format-detection content="telephone=no"><script>if(self!=top){top.location=this.location.href;}</script><meta name=keywords content="LER0ever,L.E.R,Yi Rong,blog,L.E.R Space,Lumos,Wiz"><meta name=description content="L.E.R Space, a magical personal website by Yi Rong"><link rel=icon href=/favicon.ico><link rel="shortcut icon" href=/favicon.ico><link rel=stylesheet id=font-style-css href=/css/fonts-google.css><link rel=stylesheet id=fancybox-css href=/css/jquery.fancybox-1.3.4.css><link rel=stylesheet id=cr-style-css href=/css/style.css><link rel=stylesheet href=/css/hljs/monokai-sublime.css><script src=/js/jquery.min.js></script><script src=/js/jquery-migrate.min.js></script><script type=text/x-mathjax-config>
         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
     </script><script async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><body class="home post-list"><div id=wrapper><header id=branding><div class="wrapper clearfix"><div class="hgroup-wrap clearfix"><div class=hgroup-right><div class="social-profiles clearfix"><ul></ul></div><form class="searchform clearfix"><label class=assistive-text for=s>Search</label>
-<input id=searchbox placeholder=Search class="s field" name=s></form></div><div id=site-logo class=clearfix><h3 id=site-title><a href=https://notes.rongyi.blog title="L.E.R Wiz" rel=home>L.E.R Wiz</a></h3><h4 id=site-description>All Ways Forward @ UW-Madison</h4></div></div><nav id=access class=clearfix><ul class=root><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/>Home</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/academics>My Academics</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/sn>Contact Me</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/archive>All Notes</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=https://rongyi.blog/about target=_blank>L.E.R Space</a><li class=default-menu><a href=https://rongyi.blog title=Navigation>Navigation</a></ul></nav></div></header><div id=main class="site-main wrapper clearfix"><div class=container><div id=primary class=no-margin-left><div id=content><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS367-Introduction To Data Structures 06</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=https://rongyi.blog>L.E.R</a></span></span>
+<input id=searchbox placeholder=Search class="s field" name=s></form></div><div id=site-logo class=clearfix><h3 id=site-title><a href=https://notes.rongyi.blog title="L.E.R Wiz" rel=home>L.E.R Wiz</a></h3><h4 id=site-description>All Ways Forward @ UW-Madison</h4></div></div><nav id=access class=clearfix><ul class=root><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/>Home</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/academics>My Academics</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/sn>Contact Me</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/archive>All Notes</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=https://rongyi.blog/about target=_blank>L.E.R Space</a><li class=default-menu><a href=https://rongyi.blog title=Navigation>Navigation</a></ul></nav></div></header><div id=main class="site-main wrapper clearfix"><div class=container><div id=primary class=no-margin-left><div id=content><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS367-Introduction To Data Structures 07</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=https://rongyi.blog>L.E.R</a></span></span>
+<span class="date updated"><a href=/2016/9/29/cs367-introtods07.html title="September 29, 2016">September 29, 2016</a></span>
+<span class=category><a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;
+<a href=/category/CS367.html rel="category tag">CS367</a>;</span>
+<span class=category>Tags
+<a href=/tags/CS367.html rel="category tag">#CS367</a></span>
+<span class=comments><a href>Comments are closed</a></span></div></header><blockquote><p>L7 - 3</blockquote><h3 id=making-a-chain-of-nodes>Making a chain of nodes</h3><pre><code class=language-java>Listnode&lt;String&gt; head = new Listnode&lt;String&gt;(&quot;yippie&quot;, new Listnode&lt;String&gt;(&quot;ki&quot;, new Listnode&lt;String&gt;(&quot;yay&quot;)))
+
+Listnode&lt;String&gt; head = new Listnode&lt;String&gt;(&quot;yay&quot;);
+head = new Listnode&lt;String&gt;(&quot;ki&quot;, head);
+head = new Listnode&lt;String&gt;(&quot;yippie&quot;, head);
+</code></pre><h3 id=traversing-a-chain-of-nodes>Traversing a chain of nodes</h3><pre><code class=language-java>Listnode&lt;String&gt; curr = head
+while (curr != null) {
+    count++;
+    curr = curr.getNext();
+}
+</code></pre><p>When traversing a chain of nodes,use another variable to track<h3 id=adding-a-node-at-the-chain-s-end>Adding a node at the chain&rsquo;s end</h3><pre><code class=language-java>//Traverse the chains of nodes until we reach last node
+Listnode&lt;String&gt; curr = head
+while (curr.getNext() != null) {
+    curr = curr.getNext()
+}
+
+// Create new node, and link to last node
+curr = new Listnode&lt;String&gt;(&quot;rear&quot;);
+</code></pre><h3 id=removing-a-node-from-a-chain>Removing a Node from a chain</h3><pre><code class=language-java>head.getNext().setNext(head.getNext().getNext().getNext());
+</code></pre><pre><code class=language-java>Listnode&lt;String&gt; curr = head;
+for (int i=0; i&lt;N-1; i++){
+    curr = curr.getNext();
+}
+curr.setNext(cur.getNext().getNext());
+
+</code></pre><a class=readmore href=/2016/9/29/cs367-introtods07.html title="CS367-Introduction To Data Structures 07">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS367-Introduction To Data Structures 08</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=https://rongyi.blog>L.E.R</a></span></span>
+<span class="date updated"><a href=/2016/9/29/cs367-introtods08.html title="September 29, 2016">September 29, 2016</a></span>
+<span class=category><a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;
+<a href=/category/CS367.html rel="category tag">CS367</a>;</span>
+<span class=category>Tags
+<a href=/tags/CS367.html rel="category tag">#CS367</a></span>
+<span class=comments><a href>Comments are closed</a></span></div></header><h2 id=java-visibility-modifiers>Java visibility modifiers</h2><p>public <code>public class ArrayList</code><br>private <code>private Object[] items</code><br>protected <code>protected String name</code><br>package <code>class Listnode&lt;E&gt;</code><p>Goal: hide d.s. from other class, but make available to our own class<p>Steps to create a package:
+1. Create a folder LinkedList
+2. Put in the folder:
+- Listnode.java
+- LinkedList.java
+- LinkedListIterator.java
+3. Programmer of classes that need LinkedList
+- <code>import LinkedList.*</code><p>CS367 Don&rsquo;t create packages<h2 id=recall-the-list-adt>Recall the List ADT</h2><p>Separate interface from implementation
+- allows programmers to choose diff implementation with only minor changes(one line)<p>ListADT
+- ensures that different implementation type define the same set of operation.<h2 id=linkedlist-implementing-listadt-using-a-chain-of-nodes>LinkedList - Implementing ListADT using a Chain of Nodes</h2><pre><code class=language-java>public class LinkedList&lt;E&gt; implements ListADT&lt;E&gt; {
+    private Listnode&lt;E&gt; head;
+    private int numItems;
+
+    public LinkedList() {
+        head = null;
+        numItem = 0;
+    }
+
+    public void add(E item) {
+        if (item == null) throw new IllegalArgumentException();
+        
+        Listnode&lt;E&gt; newnode = new Listnode&lt;E&gt;(item)
+        if (null == head)
+            head = newnode;
+        else{
+            Listnode&lt;E&gt; curr = head;
+            while(curr.getNext() != null)
+                curr = curr.getNext();
+            curr.setNext(newnode);
+        }
+        numItem++;
+    }
+
+    public E get(int pos) {
+        if (pos &lt; 0 || pos &gt;= numItems)
+            throw new IndexOutOfBoundsException();
+        
+        Listnode&lt;E&gt; curr = head;
+        for (int p=0; p&lt;pos; p++)
+            curr = curr.getNext();
+
+        return curr.getData();
+    }
+}
+</code></pre><h2 id=header-node>Header Node</h2><ul><li>header node does not store data<li>empty condition head references header node<li>Not the same as head reference</ul><pre><code class=language-java>
+public class LinkedList&lt;E&gt; implements ListADT&lt;E&gt; {
+    private Listnode&lt;E&gt; head;
+    private int numItems;
+    public LinkedList() {
+        head = new Listnode&lt;E&gt;(null); //~~null;~~
+        numItems = 0;
+    }
+    public void add(E item) {
+        if (item == null) throw new IllegalArgumentExceptions();
+        Listnode&lt;E&gt; newnode = new Listnode&lt;E&gt;(item);
+        //Special Case: empty list
+        //if (head == null) {
+        //    head = newnode;
+        //}
+        //General Case: non-empty list
+        //else {
+            Listnode&lt;E&gt; curr = head;
+            while (curr.getNext() != null)
+                curr = curr.getNext();
+            curr.setNext(newnode);
+        //}
+        numItem ++;
+    }
+}
+</code></pre><h2 id=tail-reference-no-header-nodes>Tail Reference (no header nodes)</h2><ul><li>reference to the last node</ul><pre><code class=language-java>public class LinkedList&lt;E&gt; implements ListADT&lt;E&gt; {
+    private Listnode&lt;E&gt; head;
+    private Listnode&lt;E&gt; tail;
+    private int numItems;
+
+    public LinkedList() {
+        head = null;
+        tail = null;
+        numItem = 0;
+    }
+
+    public void add(E item) {
+        if (item == null) throw new IllegalArgumentException();
+
+        Listnode&lt;E&gt; newnode = new Listnode&lt;E&gt;(item)
+        if (null == head){
+            head = newnode;
+            tail = newnode;
+        } else {
+            //Listnode&lt;E&gt; curr = head;
+            //while(curr.getNext() != null)
+            //    curr = curr.getNext();
+            //curr.setNext(newnode);
+            tail.setNext(newnode);
+            tail = newnode;
+            numItem++;
+        }
+        numItem++;
+    }
+}
+</code></pre><h2 id=implementing-linkedlistiterator>Implementing LinkedListIterator</h2><ul><li><p>Indirect iterator<ul><li>mylist<li>currPos</ul><li><p>Direct iterator<ul><li>curr</ul></ul><a class=readmore href=/2016/9/29/cs367-introtods08.html title="CS367-Introduction To Data Structures 08">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS367-Introduction To Data Structures 06</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=https://rongyi.blog>L.E.R</a></span></span>
 <span class="date updated"><a href=/2016/9/22/cs367-introtods06.html title="September 22, 2016">September 22, 2016</a></span>
 <span class=category><a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;
 <a href=/category/CS367.html rel="category tag">CS367</a>;</span>
@@ -64,110 +200,9 @@ Skip:
 - Code in matching catch clause
 - Code in finally block<p>Switch to Normal Exec:
 - if exception is caught<h5 id=searching-for-a-matching-catch>Searching for a Matching Catch</h5><ol><li><p>Locally<ul><li>Look in same method/current method</ul><li><p>Remotely<ul><li>if Current method can&rsquo;t handle, look to next method on call stack</ul></ol><h5 id=checking-a-match>Checking a Match</h5><ol><li>Match found<ul><li>execute code in matching catch<li>skip other catch blocks<li>execute code in finally block<li>switch back to normal execution</ul><li>No Match Found<ul><li>Execute in finally block<li>Pass exception object to calling method</ul></ol><blockquote><p>L5 - 5</blockquote><ol><li>main{<br>A{<br>B{after C, after D, B finally, }B<br>After B, }A<br>After A, After E, main finally, }main<br></ol><p>3.
-main{<br>A{<br>B{main-green, main-finally,}main<h2 id=throws-clause>Throws clause</h2><p>Checked: Compiler checks that you do something if exception<br>(IOException)<br>a. catch it<br>b. throw it<br>Unchecked: Compiler does not check that you have a plan<br>(Runtime Exception)<br>a. catch it<br>b. throw it<br>c. ignore it, no additional code added</p><a class=readmore href=/2016/9/20/cs367-introtods05.html title="CS367-Introduction To Data Structures 05">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>Bio101 Vocabulary</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=https://rongyi.blog>L.E.R</a></span></span>
-<span class="date updated"><a href=/2016/9/18/bio101-vocabulary.html title="September 18, 2016">September 18, 2016</a></span>
-<span class=category><a href=/category/Biology.html rel="category tag">Biology</a>;
-<a href=/category/Bio101.html rel="category tag">Bio101</a>;</span>
-<span class=category>Tags
-<a href=/tags/Bio101.html rel="category tag">#Bio101</a></span>
-<span class=comments><a href>Comments are closed</a></span></div></header><table><thead><tr><th align=center>[Terms]<th align=center>[翻译]<tbody><tr><td align=center>Covalent Bond<td align=center>共价键<tr><td align=center>Polar Covalent Bond<td align=center>极性共价键<tr><td align=center>Hydrogen Bond<td align=center>氢键<tr><td align=center>hydrocarbon<td align=center>碳氢化合物<tr><td align=center>functional group<td align=center>官能团<tr><td align=center>polar<td align=center>极性的<tr><td align=center>nonpolar<td align=center>非极性的<tr><td align=center>macromolecule<td align=center>高分子<tr><td align=center>monomer<td align=center>单体<tr><td align=center>dimer<td align=center>二聚物<tr><td align=center>polymer<td align=center>多聚物，高分子聚合物<tr><td align=center>hydrolysis<td align=center>水解<tr><td align=center>enzyme<td align=center>酶<tr><td align=center>carbonhydrate<td align=center>碳水化合物<tr><td align=center>monosaccharide<td align=center>单糖<tr><td align=center>disaccharide<td align=center>二糖<tr><td align=center>oligosaccharide<td align=center>低聚糖<tr><td align=center>polysaccharide<td align=center>多糖<tr><td align=center>cellulose<td align=center>纤维素<tr><td align=center>glycogen<td align=center>糖元<tr><td align=center>starch<td align=center>淀粉<tr><td align=center>chitin<td align=center>壳质，角素<tr><td align=center>glucose<td align=center>葡萄糖<tr><td align=center>amino acid<td align=center>氨基酸<tr><td align=center>protein<td align=center>蛋白质<tr><td align=center>polypeptide<td align=center>多肽<tr><td align=center>peptide bond<td align=center>肽键<tr><td align=center>hydrophobic<td align=center>恐水的<tr><td align=center>hydrophilic<td align=center>亲水的<tr><td align=center>enzyme<td align=center>酶<tr><td align=center>denaturation<td align=center>变性<tr><td align=center>conformation<td align=center>构造<tr><td align=center>lipid<td align=center>脂质<tr><td align=center>triglyceride<td align=center>甘油三酸脂<tr><td align=center>phospholipid<td align=center>磷脂<tr><td align=center>amphipathic<td align=center>同时亲水，厌水的<tr><td align=center>micelle<td align=center>微团，胶囊<tr><td align=center>steroid<td align=center>类固醇<tr><td align=center>lipoprotein<td align=center>脂蛋白<tr><td align=center>saturated<td align=center>饱和<tr><td align=center>unsaturated<td align=center>不饱和<tr><td align=center>sterol<td align=center>固醇<tr><td align=center>Transmembrane Protein<td align=center>跨膜蛋白<tr><td align=center>Peripheral Protein<td align=center>周围蛋白<tr><td align=center>Glycoprotein<td align=center>糖蛋白<tr><td align=center>Diffusion<td align=center>扩散<tr><td align=center>Concentration Gradient<td align=center>浓度梯度<tr><td align=center>Passive Transport<td align=center>被动运输<tr><td align=center>Active Transport<td align=center>主动运输<tr><td align=center>Facilitated Transport<td align=center>易化运输<tr><td align=center>Carrier Protein<td align=center>载体蛋白<tr><td align=center>Channel Protein<td align=center>通道蛋白<tr><td align=center>Osmosis<td align=center>渗透作用<tr><td align=center>Aquaporin<td align=center>水通道<tr><td align=center>Hypotonic<td align=center>低渗的<tr><td align=center>Hypertonic<td align=center>高渗的<tr><td align=center>Isotonic<td align=center>等压的<tr><td align=center>Endocytosis<td align=center>内噬作用，胞吞<tr><td align=center>Exocytosis<td align=center>胞吐作用<tr><td align=center>Vesicle<td align=center>囊泡<tr><td align=center>Pinocytosis<td align=center>胞饮作用<tr><td align=center>Phagocytosis<td align=center>吞噬作用，噬菌作用<tr><td align=center>Receptor<td align=center>受体<tr><td align=center>LDL<td align=center>低密度脂蛋白<tr><td align=center>Coated Pit<td align=center>被膜小窝<tr><td align=center>Prokaryote<td align=center>原核生物<tr><td align=center>Plasma Membrane<td align=center>质膜<tr><td align=center>Cytosol<td align=center>细胞溶质，胞液<tr><td align=center>Ribosome<td align=center>核糖体<tr><td align=center>Chromosome<td align=center>染色体<tr><td align=center>Nucleoid region<td align=center>拟核区<tr><td align=center>Cell Wall<td align=center>细胞壁<tr><td align=center>Peptidoglycan<td align=center>肽聚糖<tr><td align=center>Flagella<td align=center>鞭毛<tr><td align=center>Decomposer<td align=center>分解体<tr><td align=center>Symbiosis<td align=center>共生现象<tr><td align=center>Mutualism<td align=center>互利共生<tr><td align=center>Microbiome<td align=center>微生物<tr><td align=center>Antibiotic<td align=center>抗生素<tr><td align=center>Halophile<td align=center>喜盐生物<tr><td align=center>Thermophile<td align=center>嗜热生物<tr><td align=center>Methanogen<td align=center>产烷生物<tr><td align=center>Organelle<td align=center>细胞器<tr><td align=center>Nucleus<td align=center>细胞核<tr><td align=center>Nuclear Envolope<td align=center>核包膜<tr><td align=center>Nuclear Pore<td align=center>核膜孔<tr><td align=center>Nuclear Lamina<td align=center>核纤层<tr><td align=center>endoplasmic reticulum<td align=center>内质网<tr><td align=center>Golgi Apparatus<td align=center>高尔基体<tr><td align=center>Lysosome<td align=center>溶酶体<tr><td align=center>Hydrolytic Enzymes<td align=center>水解酶<tr><td align=center>Secretory protein<td align=center>分泌蛋白<tr><td align=center>Cytoskeleton<td align=center>细胞骨架<tr><td align=center>Mitochondria<td align=center>线粒体<tr><td align=center>Chloroplast<td align=center>叶绿体<tr><td align=center>Photosynthesis<td align=center>光合作用<tr><td align=center>Binary fission<td align=center>二分体<tr><td align=center>Prokaryote<td align=center>原核生物<tr><td align=center>Eukaryote<td align=center>真核生物<tr><td align=center>Nucleotide<td align=center>核苷酸<tr><td align=center>Double Helix<td align=center>双螺旋<tr><td align=center>Antiparallel<td align=center>反平行的<tr><td align=center>Polarity<td align=center>极性<tr><td align=center>Complementary<td align=center>补足的<tr><td align=center>isotope<td align=center>同位素<tr><td align=center>Compound<td align=center>混合物，化合物<tr><td align=center>electronegativity<td align=center>电负性<tr><td align=center>Cohesion<td align=center>凝聚力<tr><td align=center>Molarity<td align=center>摩尔浓度<tr><td align=center>Isomers<td align=center>同分异构体<tr><td align=center>Cis-trans Isomers<td align=center>顺反异构体<tr><td align=center>Structural Isomers<td align=center>结构异构体<tr><td align=center>Enantiomers<td align=center>对映体<tr><td align=center>Galactose<td align=center>半乳糖<tr><td align=center>Fructose<td align=center>果糖<tr><td align=center>Granules<td align=center>颗粒<tr><td align=center>Amylos<td align=center>直链淀粉<tr><td align=center>Amylopectin<td align=center>支链淀粉<tr><td align=center>Glycerol<td align=center>甘油<tr><td align=center>Fatty Acid<td align=center>脂肪酸<tr><td align=center>Alcohol<td align=center>醇<tr><td align=center>cardiovascular<td align=center>心血管的<tr><td align=center>Cholesterol<td align=center>胆固醇<tr><td align=center>Superimposed<td align=center>叠加的，重叠的<tr><td align=center>Hemoglobin<td align=center>血红蛋白<tr><td align=center>Ether<td align=center>乙醚<tr><td align=center>chloroform<td align=center>氯仿，三氯甲烷<tr><td align=center>chaperonins<td align=center>伴侣蛋白<tr><td align=center>Lysozyme<td align=center>溶菌酶<tr><td align=center>Ligase<td align=center>联结酶<tr><td align=center>Histone<td align=center>组蛋白<tr><td align=center>Nucleosome<td align=center>染色质核小体<tr><td align=center>poikilotherms<td align=center>冷血动物<tr><td align=center>gametes<td align=center>配子<tr><td align=center>diploid<td align=center>二倍体<tr><td align=center>haploid<td align=center>单倍体<tr><td align=center>fertilization<td align=center>受孕<tr><td align=center>zygote<td align=center>受精卵<tr><td align=center>meiosis<td align=center>成熟分裂</table><a class=readmore href=/2016/9/18/bio101-vocabulary.html title="Bio101 Vocabulary">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS367-Introduction To Data Structures 04</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=https://rongyi.blog>L.E.R</a></span></span>
-<span class="date updated"><a href=/2016/9/15/cs367-introtods04.html title="September 15, 2016">September 15, 2016</a></span>
-<span class=category><a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;
-<a href=/category/CS367.html rel="category tag">CS367</a>;</span>
-<span class=category>Tags
-<a href=/tags/CS367.html rel="category tag">#CS367</a></span>
-<span class=comments><a href>Comments are closed</a></span></div></header><h2 id=iterators>Iterators</h2><ol><li>Ask container for an iterator<li>Use the iterator to get to &ldquo;step thru&rdquo; the items in the containers</ol><h2 id=operations>Operations</h2><p>Container<ul><li>operations that returns an iterator</ul><p>Iterator class<ul><li>the object returned by container and used to track the iteration<li>return true if there are remaining items<li>return the next item and advances the iteration</ul><h2 id=iterators-in-java-api>Iterators in Java API</h2><pre><code class=language-java>Iterator&lt;T&gt; iterator() // has method that returns an Items
-</code></pre><p>Properties of the Iterator returned<ul><li>at beginning, points to 1st iter container<li>container may be empty<li>iterator() method is defined, returns an iterator with its properties.</ul><h4 id=boolean-hasnext>boolean hasNext()</h4><p>returns true if there are more iterations to process<h4 id=e-next>E next()</h4><p>returns the next item and advances the pointer<h4 id=void-remove>void remove()</h4><p>implementing remove() is beyond scope of CS367<br>requires locks and synchronized code<br>CS367: DISABLE this operation<blockquote><p>L4 - 3</blockquote><pre><code class=language-java>Interator&lt;string&gt; itr = words.iterator();
-while (itr.hasNext()) {
-    System.out.Print(itr.Next());
-}
-itr = words.iterator();
-while (itr.hasNext()) {
-    System.out.Print(itr.Next().length())
-}
-</code></pre><blockquote><p>L4-4</blockquote><pre><code class=language-java>if (list==null || list.isEmpty())
-    return false;
-//Do this on your own
-</code></pre><h2 id=implementation>Implementation</h2><h4 id=indirect-access>Indirect Access</h4><ul><li>Do not have a reference to a container&rsquo;s internal data structures<li>Do have a reference to the container</ul><ol><li>The iterator has a reference to the container.<li>Call the container&rsquo;s methods to implement <code>hasNext</code> and <code>next()</code></ol><p><strong>SAFER</strong><h4 id=direct-access>Direct Access</h4><ul><li>Does have a reference to internal data structures<li>Does not have a reference to container itself.</ul><ol><li>the container creates an iterator with the date structure (array)<li>iterator<ul><li>can change the data structure (<strong>BUT must not</strong>)<li>can(must) have additional data structures to track progress</ul></ol><p><strong>FASTER</strong> Direct Access<blockquote><p>L4-5</blockquote><pre><code class=language-java>
-import java.util.*;
-public class SimpleArrayListIterator&lt;E&gt; implements Iterator&lt;E&gt; {
-    private SimpleArrayList&lt;E&gt; myList;
-    private int currPos;
-    public SimpleArrayListIterator(SimpleArrayList&lt;E&gt; list){
-        myList = list;
-        currPos = 0;
-    }
-
-    public boolean hasNext() {
-        return (currPos &lt; myList.size());
-    }
-
-    public E next() {
-        if (!hasNext())
-            throw new NoSuchElementException();
-        E result = myList.get(currPos);
-        currPos ++;
-        return result;
-    }
-
-    public void remove() throws UnsupportedOperationException {
-        throw new UnsupportedOperationException();
-    }
-</code></pre><blockquote><p>L4-7</blockquote><pre><code class=language-java>
-import java.util.*;
-public class ArrayBagIterator&lt;E&gt; implements Iterator&lt;E&gt; {
-    private E[] items;
-    private int numItems;
-    private int currPos;
-
-    public ArrayBagIterator(E[] items, int n) {
-        this.items = items;
-        numItems = n;
-        currPos = 0;
-    }
-
-    public boolean hasNext() {
-        return currPos &lt; numItems;
-    }
-
-    public E next() {
-        if (currPos &gt;= numItems) throw new NoSuchElementException();
-        E result = items[currPos];
-        currPos++;
-        return result;
-    }
-
-    public void remove() {
-        throw new UnsupportedOperationException();
-    }
-}
-</code></pre><p><strong>Can&rsquo;t use indirect because the ArrayBag does not has <code>get()</code> method</strong><blockquote><p>L4-8</blockquote><pre><code class=language-java>import java.util.*;
-public interface BagADT&lt;E&gt; {
-    void add(E item);
-    E remove() throws NoSuchElementException;
-    boolean isEmpty();
-    Iterator&lt;E&gt; iterator();
-}
-</code></pre><pre><code class=language-java>
-import java.util.*;
-public class ArrayBag&lt;E&gt; implements BagADT&lt;E&gt; {
-    // *** Data members (fields) ***
-    private E[] items;
-    private int numItems;
-    private static final int INIT_SIZE = 100;
-    //*** required BagADT methods ***
-    public void add(E item) { ... }
-    public E remove() throws NoSuchElementException { ... }
-    public boolean isEmpty() { ... }
-
-
-    public Iterable&lt;E&gt; iterator() { //returns iterator
-        return new ArrayBagIterator(items, numItems);
-    }
-}
-</code></pre><a class=readmore href=/2016/9/15/cs367-introtods04.html title="CS367-Introduction To Data Structures 04">Read more</a></article></section><hr><ul class="default-wp-page clearfix"><li class=previous><a href=/posts/28.html>← Prev</a><li class=Next><a href=/posts/30.html>← Next</a></ul></div></div><div id=secondary class="widget-area col-md-4" role=complementary><aside id=toolbox class=widget><h4 class=widget-title>About this site</h4><div class=author_bio_message>This is my personal notes website.
+main{<br>A{<br>B{main-green, main-finally,}main<h2 id=throws-clause>Throws clause</h2><p>Checked: Compiler checks that you do something if exception<br>(IOException)<br>a. catch it<br>b. throw it<br>Unchecked: Compiler does not check that you have a plan<br>(Runtime Exception)<br>a. catch it<br>b. throw it<br>c. ignore it, no additional code added</p><a class=readmore href=/2016/9/20/cs367-introtods05.html title="CS367-Introduction To Data Structures 05">Read more</a></article></section><hr><ul class="default-wp-page clearfix"><li class=previous><a href=/posts/28.html>← Prev</a><li class=Next><a href=/posts/30.html>← Next</a></ul></div></div><div id=secondary class="widget-area col-md-4" role=complementary><aside id=toolbox class=widget><h4 class=widget-title>About this site</h4><div class=author_bio_message>This is my personal notes website.
 You are welcomed to use it.
-But do NOT stop taking your own notes!</div></aside><aside id=recent-posts-2 class="widget widget_recent_entries"><h4 class=widget-title>Recent</h4><ul><li><a href=/2018/12/22/math541-homeworks.html>Math 541 Abstract Algebra Homeworks</a><li><a href=/2018/12/22/math541-notes.html>Math 541 Abstract Algebra Lecture Notes</a><li><a href=/2018/12/11/aa160-notes.html>Asian American 160 Lecture Notes</a><li><a href=/2018/9/27/aa160-06.html>Asian American 160 Lec 06</a><li><a href=/2018/9/25/aa160-05.html>Asian American 160 Lec 05</a><li><a href=/2018/9/20/aa160-04.html>Asian American 160 Lec 04</a><li><a href=/2018/9/18/aa160-03.html>Asian American 160 Lec 03</a><li><a href=/2018/9/13/aa160-02.html>Asian American 160 Lec 02</a><li><a href=/2018/9/11/aa160-01.html>Asian American 160 Lec 01</a><li><a href=/2018/8/11/math521-homeworks.html>Math 521 Real Analysis Homeworks</a></ul></aside><aside id=categories-2 class="widget widget_categories"><h4 class=widget-title>Categories</h4><ul><li class=cat-item><a href=/category/AA160.html>AA160</a>(7)<li class=cat-item><a href=/category/Artificial%20Intelligence.html>Artificial Intelligence</a>(1)<li class=cat-item><a href=/category/Bio101.html>Bio101</a>(5)<li class=cat-item><a href=/category/Biology.html>Biology</a>(5)<li class=cat-item><a href=/category/CS.html>CS</a>(1)<li class=cat-item><a href=/category/CS252.html>CS252</a>(4)<li class=cat-item><a href=/category/CS354.html>CS354</a>(13)<li class=cat-item><a href=/category/CS367.html>CS367</a>(23)<li class=cat-item><a href=/category/CS368.html>CS368</a>(1)<li class=cat-item><a href=/category/CS537.html>CS537</a>(1)<li class=cat-item><a href=/category/CS540.html>CS540</a>(24)<li class=cat-item><a href=/category/CS559.html>CS559</a>(5)<li class=cat-item><a href=/category/Computer%20Science.html>Computer Science</a>(90)<li class=cat-item><a href=/category/Deep%20Learning.html>Deep Learning</a>(1)<li class=cat-item><a href=/category/ESL118.html>ESL118</a>(2)<li class=cat-item><a href=/category/Econ102.html>Econ102</a>(2)<li class=cat-item><a href=/category/Economics.html>Economics</a>(2)<li class=cat-item><a href=/category/Ethnics.html>Ethnics</a>(7)<li class=cat-item><a href=/category/Go.html>Go</a>(1)<li class=cat-item><a href=/category/Kines100.html>Kines100</a>(3)<li class=cat-item><a href=/category/Kinesiology.html>Kinesiology</a>(3)<li class=cat-item><a href=/category/Math.html>Math</a>(31)<li class=cat-item><a href=/category/Math240.html>Math240</a>(20)<li class=cat-item><a href=/category/Math320.html>Math320</a>(2)<li class=cat-item><a href=/category/Math431.html>Math431</a>(2)<li class=cat-item><a href=/category/Math519.html>Math519</a>(3)<li class=cat-item><a href=/category/Math521.html>Math521</a>(2)<li class=cat-item><a href=/category/Math541.html>Math541</a>(2)<li class=cat-item><a href=/category/NS132.html>NS132</a>(30)<li class=cat-item><a href=/category/Nutritional%20Science.html>Nutritional Science</a>(30)<li class=cat-item><a href=/category/Psych202.html>Psych202</a>(3)<li class=cat-item><a href=/category/Psychology.html>Psychology</a>(3)<li class=cat-item><a href=/category/Test.html>Test</a>(1)<li class=cat-item><a href=/category/Website.html>Website</a>(1)</ul></aside><aside id=tag_cloud-3 class="widget widget_tag_cloud"><h4 class=widget-title>Tags</h4><div class=tagcloud><a href=/tags/AA160.html class="tag-link tag-link-position" style=font-size:8pt>AA160</a>
+But do NOT stop taking your own notes!</div></aside><aside id=recent-posts-2 class="widget widget_recent_entries"><h4 class=widget-title>Recent</h4><ul><li><a href=/2019/1/24/cs538-02.html>CS 538 Lecture 2</a><li><a href=/2019/1/22/cs538-01.html>CS 538 Lecture 1</a><li><a href=/2018/12/22/math541-notes.html>Math 541 Abstract Algebra Lecture Notes</a><li><a href=/2018/12/22/math541-homeworks.html>Math 541 Abstract Algebra Homeworks</a><li><a href=/2018/12/11/aa160-notes.html>Asian American 160 Lecture Notes</a><li><a href=/2018/9/27/aa160-06.html>Asian American 160 Lec 06</a><li><a href=/2018/9/25/aa160-05.html>Asian American 160 Lec 05</a><li><a href=/2018/9/20/aa160-04.html>Asian American 160 Lec 04</a><li><a href=/2018/9/18/aa160-03.html>Asian American 160 Lec 03</a><li><a href=/2018/9/13/aa160-02.html>Asian American 160 Lec 02</a></ul></aside><aside id=categories-2 class="widget widget_categories"><h4 class=widget-title>Categories</h4><ul><li class=cat-item><a href=/category/AA160.html>AA160</a>(7)<li class=cat-item><a href=/category/Artificial%20Intelligence.html>Artificial Intelligence</a>(1)<li class=cat-item><a href=/category/Bio101.html>Bio101</a>(5)<li class=cat-item><a href=/category/Biology.html>Biology</a>(5)<li class=cat-item><a href=/category/CS.html>CS</a>(3)<li class=cat-item><a href=/category/CS252.html>CS252</a>(4)<li class=cat-item><a href=/category/CS354.html>CS354</a>(13)<li class=cat-item><a href=/category/CS367.html>CS367</a>(23)<li class=cat-item><a href=/category/CS368.html>CS368</a>(1)<li class=cat-item><a href=/category/CS537.html>CS537</a>(2)<li class=cat-item><a href=/category/CS538.html>CS538</a>(1)<li class=cat-item><a href=/category/CS540.html>CS540</a>(24)<li class=cat-item><a href=/category/CS559.html>CS559</a>(5)<li class=cat-item><a href=/category/Computer%20Science.html>Computer Science</a>(90)<li class=cat-item><a href=/category/Deep%20Learning.html>Deep Learning</a>(1)<li class=cat-item><a href=/category/ESL118.html>ESL118</a>(2)<li class=cat-item><a href=/category/Econ102.html>Econ102</a>(2)<li class=cat-item><a href=/category/Economics.html>Economics</a>(2)<li class=cat-item><a href=/category/Ethnics.html>Ethnics</a>(7)<li class=cat-item><a href=/category/Go.html>Go</a>(1)<li class=cat-item><a href=/category/Kines100.html>Kines100</a>(3)<li class=cat-item><a href=/category/Kinesiology.html>Kinesiology</a>(3)<li class=cat-item><a href=/category/Math.html>Math</a>(31)<li class=cat-item><a href=/category/Math240.html>Math240</a>(20)<li class=cat-item><a href=/category/Math320.html>Math320</a>(2)<li class=cat-item><a href=/category/Math431.html>Math431</a>(2)<li class=cat-item><a href=/category/Math519.html>Math519</a>(3)<li class=cat-item><a href=/category/Math521.html>Math521</a>(2)<li class=cat-item><a href=/category/Math541.html>Math541</a>(2)<li class=cat-item><a href=/category/NS132.html>NS132</a>(30)<li class=cat-item><a href=/category/Nutritional%20Science.html>Nutritional Science</a>(30)<li class=cat-item><a href=/category/Psych202.html>Psych202</a>(3)<li class=cat-item><a href=/category/Psychology.html>Psychology</a>(3)<li class=cat-item><a href=/category/Test.html>Test</a>(1)<li class=cat-item><a href=/category/Website.html>Website</a>(1)</ul></aside><aside id=tag_cloud-3 class="widget widget_tag_cloud"><h4 class=widget-title>Tags</h4><div class=tagcloud><a href=/tags/AA160.html class="tag-link tag-link-position" style=font-size:8pt>AA160</a>
 <a href=/tags/Bio101.html class="tag-link tag-link-position" style=font-size:8pt>Bio101</a>
 <a href=/tags/CNNs.html class="tag-link tag-link-position" style=font-size:8pt>CNNs</a>
 <a href=/tags/CS252.html class="tag-link tag-link-position" style=font-size:8pt>CS252</a>
@@ -175,6 +210,7 @@ But do NOT stop taking your own notes!</div></aside><aside id=recent-posts-2 cla
 <a href=/tags/CS367.html class="tag-link tag-link-position" style=font-size:8pt>CS367</a>
 <a href=/tags/CS368.html class="tag-link tag-link-position" style=font-size:8pt>CS368</a>
 <a href=/tags/CS537.html class="tag-link tag-link-position" style=font-size:8pt>CS537</a>
+<a href=/tags/CS538.html class="tag-link tag-link-position" style=font-size:8pt>CS538</a>
 <a href=/tags/CS540.html class="tag-link tag-link-position" style=font-size:8pt>CS540</a>
 <a href=/tags/CS559.html class="tag-link tag-link-position" style=font-size:8pt>CS559</a>
 <a href=/tags/ESL118.html class="tag-link tag-link-position" style=font-size:8pt>ESL118</a>
