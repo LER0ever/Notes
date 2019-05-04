@@ -15,378 +15,33 @@
 <img src=https://i.imgur.com/WkFVaDl.jpg alt>
 <img src=https://i.imgur.com/pnBYE3R.jpg alt>
 <img src=https://i.imgur.com/efmFfIk.jpg alt>
-<img src=https://i.imgur.com/SReUjKi.jpg alt></p><a class=readmore href=/2019/2/7/cs760-hw0.html title="CS 760 Assignment 0">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS 538 Assignment 1</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=https://rongyi.blog>L.E.R</a></span></span>
-<span class="date updated"><a href=/2019/2/7/cs538-hw1.html title="February 7, 2019">February 7, 2019</a></span>
-<span class=category><a href=/category/CS538.html rel="category tag">CS538</a>;
-<a href=/category/CS.html rel="category tag">CS</a>;</span>
-<span class=category>Tags
-<a href=/tags/CS538.html rel="category tag">#CS538</a></span>
-<span class=comments><a href>Comments are closed</a></span></div></header><blockquote><p>This is my solution for the first programming assignment<br>CS538: Theory and Design of Programming Languages<br>at UW-Madison, taught by Justin Hsu</blockquote><p>This is for personal archival purpose only. Don&rsquo;t copy paste my answer.<h1 id=written-assignment>Written Assignment</h1><p><img src=https://i.imgur.com/Nvvu1wY.jpg alt>
-<img src=https://i.imgur.com/zDKlq7g.jpg alt>
-<img src=https://i.imgur.com/mODF02g.jpg alt><h1 id=programming-assignment>Programming Assignment</h1><h2 id=part-1>Part 1</h2><pre><code class=language-haskell>-- CS 839, Spring 2019: Homework 1
--- Part 1: Frequent Words
-
--- Do not change the following line!
-{-# OPTIONS -fwarn-incomplete-patterns -fwarn-tabs -fno-warn-type-defaults #-}
-
--- **Your code should compile without warnings.**
--- The following line makes the compiler treat all warnings as hard errors.
--- When you are done, uncomment it and fix until there are no more errors.
--- {-# OPTIONS -Werror #-}
---
--- You might want some functions from these libraries:
-
-import Data.List
-import Data.Char
-import Data.String
-import Data.Ord
-
--- This first programming assignment will give you experience writing basic
--- programs in Haskell. You will decompose complex tasks into smaller parts, a
--- common pattern in functional programming. There are two parts to this
--- assignment. Please **do not change** the names and type signatures for the
--- functions below: we will use these names when testing your assignment. Of
--- course, you can introduce new functions if you want.
-
--- Part 1: Frequent Words (50)
---
---
---
--- You will write a function freqWords that takes a number n and a string and
--- prints the n most frequent words along with how often they appear.  The
--- function should ignore case (&quot;bat&quot; and &quot;BAT&quot; should be treated as the same
--- word) and if there are ties, print out words in alphabetical order.  For
--- instance:
---
--- freqWords 3 &quot;cat bat Foo xray Bat YoYo&quot;
---
--- should return the string
---
--- &quot;bat: 2, cat: 1, foo: 1&quot;
---
--- Note that we count two occurrences of &quot;bat&quot;, and we do not print &quot;xray&quot;, and
--- &quot;yoyo&quot; since they are after &quot;cat&quot; and &quot;foo&quot; alphabetically.
-
--- First, define a function that takes a string, and converts it to lower case.
--- (Hint: the toLower and map functions may be helpful.)
-
-makeLower :: String -&gt; String
-makeLower = map toLower
-
--- Next, define a function that splits up a string into a list of strings,
--- breaking at each space.
--- (Hint: the `words` function may be helpful.)
-
-splitSpace :: String -&gt; [String]
-splitSpace = words
-
--- Then, define a function that sorts a list of strings alphabetically.
--- (Hint: the sort function also works on Strings.)
-
-sortAlpha :: [String] -&gt; [String]
-sortAlpha = sort
-
--- Now, we can collect &quot;runs&quot; of identical words into a word and its count. For
--- instance: 
---
--- countRuns [&quot;a&quot;, &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;c&quot;, &quot;c&quot;]
---
--- should return
---
--- [(&quot;a&quot;, 2), (&quot;b&quot;, 1), (&quot;c&quot;, 3)]
---
--- (Hint: There are several ways to define this function using recursion. The
--- functions `takeWhile`, `dropWhile`, `length`, or `span` may be useful.)
-
-countRuns :: [String] -&gt; [(String, Int)]
-countRuns list = map (\l -&gt; (head l, length l)) (group (sort list))
-
--- Next, we can sort the frequency list in decreasing order of frequency.
--- For instance:
---
--- sortFreqs [(&quot;a&quot;, 2), (&quot;b&quot;, 1), (&quot;c&quot;, 3)]
---
--- should return
---
--- [(&quot;c&quot;, 3), (&quot;a&quot;, 2), (&quot;b&quot;, 1)]
---
--- (Hint: use the `sortBy` function. The `compare` function takes two things of
--- the same type, and returns whether the first argument is lesser than, equal
--- to, or greater than the second argument.)
-
-sortFreqs :: [(String, Int)] -&gt; [(String, Int)]
-sortFreqs = sortBy (comparing snd)
-
--- Now, time for tidying up. Write a function to convert the frequency list into
--- a printable form:
---
--- printFreqs [(&quot;c&quot;, 3), (&quot;a&quot;, 2), (&quot;b&quot;, 1)]
---
--- should return
---
--- [&quot;c: 3&quot;, &quot;a: 2&quot;, &quot;b: 1&quot;]
--- 
--- (Hint: use the `map` function. Use `show` to turn something into a String.)
-
-printFreqs :: [(String, Int)] -&gt; [String]
-printFreqs = map fmt where fmt (s,i) = s ++ &quot;: &quot; ++ show i 
-
--- Finally, glue all the pieces together to build the final function. (Hint: to
--- select the correct number of things to print, look at the `take` function.
--- Also look at the `intercalate` function, and use function composition
--- operator (.) to string together functions. Remember that function composition
--- runs backwards: to compose `f :: A-&gt; B` and `g :: B -&gt; C`, write `g . f`.)
-
-freqWords :: Int -&gt; String -&gt; String
-freqWords n = intercalate &quot;, &quot; . take n . printFreqs . countRuns . splitSpace . makeLower
-
--- A simple main function that asks you for a string of words and how many
--- of the most frequent words you want
-main = do
-    putStrLn &quot;-- What text would you like to find the frequent words of?&quot;
-    putStrLn &quot;-- (Enter all on one line.)&quot;
-    words &lt;- getLine
-    putStrLn &quot;-- How many of the most frequent words would you like?&quot;
-    int_s &lt;- getLine
-    let x = read int_s
-    print (freqWords x words)
-</code></pre><h2 id=part-2>Part 2</h2><pre><code class=language-haskell>-- CS 839, Spring 2019: Homework 1
--- Part 2: Numbers to Words
-
--- Do not change the following line!
-{-# OPTIONS -fwarn-incomplete-patterns -fwarn-tabs -fno-warn-type-defaults #-}
-
--- **Your code should compile without warnings.**
--- The following line makes the compiler treat all warnings as hard errors.
--- When you are done, uncomment it and fix until there are no more errors.
--- {-# OPTIONS -Werror #-}
---
--- You might want some functions from these libraries:
-
-import Data.List
-import Data.Char
-
--- This first programming assignment will give you experience writing basic
--- programs in Haskell. You will decompose complex tasks into smaller parts, a
--- common pattern in functional programming. There are two parts to this
--- assignment. Please **do not change** the names and type signatures for the
--- functions below: we will use these names when testing your assignment. Of
--- course, you can introduce new functions if you want.
-
--- Part 2: Numbers to Words (50)
---
---
---
--- You will write a function to translate numbers to English words. We will
--- assume that the number is at most 6 digits, and is non-negative. (Your
--- function can do anything if the input is not of this form.) The final
--- function:
---
--- printNum 123456
---
--- should return
---
--- &quot;one hundred twenty-three thousand four hundred fifty-six&quot;
---
--- (Note the dashes.) As before we will build up to this function by first
--- building printing functions for one digit, two digit, and three digit
--- numbers.
---
--- We will use three lists of number names:
-ones = [ &quot;zero&quot;, &quot;one&quot;, &quot;two&quot;, &quot;three&quot;, &quot;four&quot;
-       , &quot;five&quot;, &quot;six&quot;, &quot;seven&quot;, &quot;eight&quot;, &quot;nine&quot;]
-teens = [ &quot;ten&quot;, &quot;eleven&quot;, &quot;twelve&quot;, &quot;thirteen&quot;, &quot;fourteen&quot;
-        , &quot;fifteen&quot; , &quot;sixteen&quot;, &quot;seventeen&quot;, &quot;eighteen&quot;, &quot;nineteen&quot; ]
-tens = [ &quot;twenty&quot;, &quot;thirty&quot;, &quot;forty&quot;, &quot;fifty&quot;, &quot;sixty&quot;, &quot;seventy&quot;, &quot;eighty&quot;, &quot;ninety&quot; ]
-
--- The indexing operation `!!` will be useful to get elements. For instance:
---
--- ones !! 0
---
--- returns &quot;zero&quot;, while
---
--- tens !! 3
---
--- returns &quot;fifty&quot;. Note that the first element is at index 0.
-
--- Each function that prints numbers takes an Int and returns a string.
--- This function is called by main. Redefine it to printNum2, printNum3, and
--- printNum6 as you define them.
-printNum :: Int -&gt; String
-printNum = printNum6
-
--- Let's warm up by writing a function for single-digit numbers. This function
--- should work for all single-digit numbers: 0, 1, ..., 9
-printNum1 :: Int -&gt; String
-printNum1 x = ones !! x
-
--- Write a similar function to handle numbers with at most 2 digits. It should
--- work on numbers 0, 1, ..., 99. For instance:
---
--- printNum2 0  == &quot;zero&quot;
--- printNum2 10 == &quot;ten&quot;
--- printNum2 15 == &quot;fifteen&quot;
--- printNum2 34 == &quot;thirty-four&quot;
---
--- (Hint: there are three cases---single digit, two digit with first digit 1,
--- and two digit with first digit 2. Try to reuse printNum1 for the first case.
--- Make sure you add the dash for the last case but note that printNum2 30
--- should return &quot;thirty&quot;, not &quot;thirty-zero&quot;. The functions `div` and `mod` may
--- come in handy.)
-
-printNum2 :: Int -&gt; String
-printNum2 x
-    | x &lt;= 9 = printNum1 x
-    | x &lt;= 19 = teens !! (x-10)
-    | x &lt;= 99 = tens !! (div x 10 - 2) ++ if mod x 10 == 0 then &quot;&quot; else &quot;-&quot; ++ printNum1 (mod x 10)
-    | otherwise = &quot;Unknown&quot;
-
--- Write a similar function to handle numbers with at most 3 digits. It should
--- work on numbers 0, 1, ..., 999. Try to reuse printNum2. For instance:
---
--- printNum3 15  == &quot;fifteen&quot;
--- printNum3 101 == &quot;one hundred one&quot;
---
--- Note that we don't put an &quot;and&quot; in &quot;one hundred one&quot;.
-
-printNum3 :: Int -&gt; String
-printNum3 x
-    | x &lt;= 99 = printNum2 x
-    | x &lt;= 999 = printNum1 (div x 100) ++ &quot; hundred&quot; ++ if mod x 100 == 0 then &quot;&quot; else &quot; &quot; ++ printNum2 (mod x 100)
-    | otherwise = &quot;Unknown&quot;
-
--- Finally, write a function print numbers up to six digits: 0, 1, ..., 999999.
--- Make sure to reuse printNum3. For instance:
---
--- printNum 123000 == &quot;one hundred twenty-three thousand&quot;
--- printNum 950001 == &quot;nine hundred fifty thousand one&quot;
---
--- We don't put an &quot;and&quot;, but it is not hard to add this extension.
-
-printNum6 :: Int -&gt; String
-printNum6 x
-    | x &lt;= 999 = printNum3 x
-    | x &lt;= 999999 = printNum3 (div x 1000) ++ &quot; thousand&quot; ++ if mod x 1000 == 0 then &quot;&quot; else &quot; &quot; ++ printNum3 (mod x 1000)
-    | otherwise = &quot;Unknown&quot;
-
--- An infinite loop that keeps asking you for a number to convert to English
--- words. It calls the printNum function, which is defined on line 64: you may
--- wish to first assign it to printNum1, and then assign it to printNum2,
--- printNum3, and printNum6 as you complete those functions. 
--- It loops infinitely, asking for input. You can terminate it with CTRL-C or
--- CTRL-D.
-main = do
-    putStrLn &quot;-- Please enter a number.&quot;
-    int_s &lt;- getLine
-    let x = read int_s
-    print (printNum x)
-    main
-
-</code></pre><a class=readmore href=/2019/2/7/cs538-hw1.html title="CS 538 Assignment 1">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS 538 Lecture 2</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=https://rongyi.blog>L.E.R</a></span></span>
-<span class="date updated"><a href=/2019/1/24/cs538-02.html title="January 24, 2019">January 24, 2019</a></span>
-<span class=category><a href=/category/CS538.html rel="category tag">CS538</a>;
-<a href=/category/CS.html rel="category tag">CS</a>;</span>
-<span class=category>Tags
-<a href=/tags/CS538.html rel="category tag">#CS538</a></span>
-<span class=comments><a href>Comments are closed</a></span></div></header><blockquote><p>This is my lecture 02 notes for<br>CS538: Theory and Design of Programming Languages<br>at UW-Madison, taught by Justin Hsu</blockquote><h1 id=news>News</h1><h2 id=installation>Installation</h2><ul><li>Instructional machines now have all Haskell software<li>GHC and HLint should just work<li>Don&rsquo;t spend too much time fighting installation errors</ul><h2 id=readings>Readings</h2><ul><li>On calendar: references for each lecture<ul><li><strong>RWH</strong>: Real World Haskell<li><strong>LYAH</strong>: Learn You a Haskell for Great Good<li><strong>PFPL</strong>: Practical Foundations for PL</ul><li>Very helpful and recommended, but not required</ul><h2 id=homework-1>Homework 1</h2><ul><li>Out after class, due in two weeks<li><strong>No late days</strong>: lowest homework dropped<li>Programming exercises and written exercises<li>See full instructions on class site</ul><h2 id=written-exercises>Written exercises</h2><ul><li>Type up solutions or scan<li>Some parts we won&rsquo;t cover until next Thursday</ul><h2 id=programming-exercises>Programming exercises</h2><ul><li>Check out resources page on course site<li>You will have to search in the docs<ul><li>Hayoo/Hoogle: searching by type</ul><li>GHCi will help you see what your code is doing</ul><h1 id=what-is-a-valid-program>What is a valid program?</h1><h2 id=a-valid-program>A valid program&hellip;</h2><ul><li>Doesn&rsquo;t crash when you run it<li>Applies functions to arguments of the right types<li>Has properly nested parentheses (&hellip;), braces {&hellip;}<li>&hellip;</ul><h2 id=basic-criteria-syntax>Basic criteria: syntax</h2><ul><li>Can check <em>statically</em>, without running program<li>If syntax is wrong, program is definitely wrong<li>If syntax is right, program could still be wrong</ul><h2 id=words-and-phrases>Words and phrases</h2><ul><li>Different kinds of words<ul><li>Constants (<code>0</code>, <code>true</code>), operations (<code>+</code>, <code>-</code>, <code>*</code>)<li>Variable names (<code>x</code>)<li>Keywords (<code>if</code>, <code>then</code>, <code>else</code>, <code>let</code>, <code>where</code>)</ul><li>Compound words (phrases)<ul><li>Expressions (<code>2*x+1</code>)<li>If-statements (<code>if b then 3 else 4</code>)</ul></ul><h1 id=how-to-specify-concrete-syntax>How to specify concrete syntax?</h1><h2 id=grammars>Grammars</h2><ul><li>List of <em>production rules</em>: different kinds of phrases<li>Terminals written <code>&quot;...&quot;</code> or <code>'...'</code><li>Pipe <code>|</code> means or<li>Each rule ended by semicolon<li>Example:</ul><pre><code class=language-haskell>digit-0-to-4 = &quot;0&quot; | &quot;1&quot; | &quot;2&quot; | &quot;3&quot; | &quot;4&quot; ;
-digit-5-to-9 = &quot;5&quot; | &quot;6&quot; | &quot;7&quot; | &quot;8&quot; | &quot;9&quot; ;
-digit        = digit-0-to-4 | digit-5-to-9 ;
-</code></pre><h2 id=repeating-optional>Repeating, optional</h2><ul><li>Braces for <em>repetition</em>, zero or more times:</ul><p><code>num = digit { digit }</code><ul><li>Brackets for <em>option</em>, zero or one times:</ul><p><code>signed-num = [ &quot;-&quot; ] num</code><ul><li>EBNF grammars, Extended Backus-Naur Form</ul><h1 id=basic-examples>Basic Examples</h1><h2 id=booleans>Booleans</h2><p>Begin with Boolean constants:<p><code>bool-cons = &quot;true&quot; | &quot;false&quot; ; (* constants *)</code><p>&hellip;<p>Then add logical combinations:<pre><code class=language-haskell>bool-expr = bool-cons                  (* constants  *)
-          | &quot;!&quot; bool-expr              (* negation   *)
-          | &quot;(&quot; bool-expr &quot;)&quot;          (* paren term *)
-          | bool-expr &quot;==&quot; bool-expr   (* equals     *)
-          | bool-expr &quot;&amp;&amp;&quot; bool-expr   (* and        *)
-          | bool-expr &quot;||&quot; bool-expr ; (* or         *)
-</code></pre><h2 id=numbers>Numbers</h2><p>Integers and arithmetic operations<pre><code class=language-haskell>num-expr = signed-num              (* constants  *)
-         | &quot;-&quot; num-expr            (* negate     *)
-         | &quot;(&quot; num-expr &quot;)&quot;        (* paren term *)
-         | num-expr &quot;+&quot; num-expr   (* add        *)
-         | num-expr &quot;-&quot; num-expr   (* minus      *)
-         | num-expr &quot;*&quot; num-expr ; (* multiply   *)
-</code></pre><h1 id=example-lambda-calculus>Example: lambda calculus</h1><h2 id=why-a-core-language>Why a core language?</h2><ul><li>Simple enough to fully model<ul><li>Remove all unnecessary features<li>Easier to study without extra noise</ul><li>Clarify key language similarities/differences</ul><h2 id=brief-history>Brief history</h2><ul><li>Universal model of computation<li>Equivalent to Turing machines in power<li>Common ancestor of *all* functional languages</ul><h2 id=starting-point>Starting point</h2><p>Begin with variable names and constants:<pre><code class=language-haskell>var  = &quot;x&quot; | &quot;y&quot; | &quot;z&quot; | ... ;
-
-expr = var                    (* variables  *)
-     | bool-cons | num-cons   (* base const *)
-     | &quot;(&quot; expr &quot;)&quot;         ; (* paren expr *)
-</code></pre><h2 id=defining-functions>Defining functions</h2><pre><code class=language-haskell>expr = var                    (* variables  *)
-     | bool-cons | num-cons   (* base const *)
-     | &quot;(&quot; expr &quot;)&quot;           (* paren expr *)
-     | &quot;λ&quot; var &quot;.&quot; expr     ; (* functions  *)
-</code></pre><p>Functions have one input variable and a body expression<h2 id=calling-functions>Calling functions</h2><pre><code class=language-haskell>expr = var                    (* variables   *)
-     | bool-cons | num-cons   (* base const  *)
-     | &quot;(&quot; expr &quot;)&quot;           (* paren expr  *)
-     | &quot;λ&quot; var &quot;.&quot; expr       (* functions   *)
-     | expr &quot; &quot; expr        ; (* application *)
-</code></pre><p>Call function with argument by separating with space<h2 id=add-primitives-as-needed>Add primitives as needed</h2><p>Adding in some Boolean operations&hellip;<pre><code class=language-haskell>expr = ...
-     | expr &quot;==&quot; expr
-     | expr &quot;&amp;&amp;&quot; expr
-     | expr &quot;||&quot; expr
-     | &quot;!&quot; expr ;
-</code></pre><p>&hellip;<p>&hellip;and some other operations<pre><code class=language-haskell>expr = ...
-     | expr &quot;+&quot; expr
-     | expr &quot;*&quot; expr
-     | &quot;-&quot; expr
-     | &quot;if&quot; expr &quot;then&quot; expr &quot;else&quot; expr ;
-</code></pre><h2 id=example>Example</h2><h1 id=abstract-syntax>Abstract syntax</h1><h2 id=concrete-is-good-but>Concrete is good, but&hellip;</h2><ul><li>Keeps a lot of irrelevant details<ul><li>Parentheses, spaces, &hellip;</ul><li>Some important details hard to see<ul><li>Where are variables visible? (scoping)<li>Ambiguity: <code>1+2*3</code> is <code>(1+2)*3</code>? or <code>1+(2*3)</code>?</ul></ul><blockquote><p>More than a just list of characters</blockquote><h2 id=abstract-syntax-trees>Abstract syntax trees</h2><ul><li>Represent program code as a <em>labeled tree</em><li>Each node has:<ul><li>a label (an <em>operation</em>)<li>some number of child trees (maybe 0)</ul><li>Might be very different from actual code!</ul><h2 id=example-1>Example</h2><h2 id=concrete-vs-abstract>Concrete vs. Abstract?</h2><ul><li>Concrete: closer to what programmers <em>write</em><ul><li>Useful for describing languages</ul><li>Abstract: closer to what a program <em>means</em><ul><li>Useful when building compilers<li>Useful when proving things about programs</ul></ul><a class=readmore href=/2019/1/24/cs538-02.html title="CS 538 Lecture 2">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS 538 Lecture 1</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=https://rongyi.blog>L.E.R</a></span></span>
-<span class="date updated"><a href=/2019/1/22/cs538-01.html title="January 22, 2019">January 22, 2019</a></span>
-<span class=category><a href=/category/CS537.html rel="category tag">CS537</a>;
-<a href=/category/CS.html rel="category tag">CS</a>;</span>
-<span class=category>Tags
-<a href=/tags/CS537.html rel="category tag">#CS537</a></span>
-<span class=comments><a href>Comments are closed</a></span></div></header><blockquote><p>This is my lecture 01 notes for<br>CS538: Theory and Design of Programming Languages<br>at UW-Madison, taught by Justin Hsu</blockquote><h1 id=why-study-programming-languages>Why study programming languages?</h1><h2 id=programming-languages-are-everywhere>Programming languages are everywhere!</h2><h2 id=standard-applications>Standard applications</h2><ul><li>Systems and low-level tasks<ul><li>C, C++, Assembly, Rust, Go, &hellip;</ul><li>Higher-level/general-purpose<ul><li>Java, C#, OCaml, Haskell, Lisp, Python, Ruby, &hellip;</ul><li>Web development and mobile apps<ul><li>Javascript, Swift, Dart, Objective-C, &hellip;</ul><li>Scripting<ul><li>Bash, Perl, Awk, Sed, &hellip;</ul></ul><h2 id=not-so-standard>Not-so-standard</h2><ul><li>Database queries<li>Networking and distributed systems<li>Typesetting<li>Configuration and build systems<li>Theorem proving<li>Graphics and GPUs, hardware and FPGAs<li>Numerical and scientific computing<li>Parsing and lexing<li>Blockchain and smart contracts</ul><h2 id=primary-way-we-tell-computers-what-to-do>Primary way we tell computers what to do</h2><ul><li>From human thoughts to precise instructions<ul><li>Enable computers to help us program<li>Spot mistakes, perform optimizations, etc.</ul></ul><h2 id=pl-shapes-how-we-think>PL shapes how we think</h2><ul><li>Programmers think in terms of language features<ul><li>Classes, objects, functions, types, etc.<li>Fits complex systems into human brains</ul></ul><h1 id=what-are-they-good-for>What are they good for?</h1><h2 id=writing-programs>Writing programs</h2><ul><li>Small one-off scripts<ul><li>Automate some boring task</ul><li>Useful applications<ul><li>Notetaking app, web server, &hellip;</ul><li>Serious corporate products ($$$)<ul><li>Google, Facebook, Amazon, Apple, &hellip;</ul><li>Critical infrastructure<ul><li>Hospitals, power plants, electricity grids, &hellip;</ul></ul><h2 id=reusing-existing-code>Reusing existing code</h2><ul><li>Share code between members of a team<li>Use built-in standard libraries<li>Open-source community, Github</ul><h2 id=preventing-errors>Preventing errors</h2><ul><li>At compile-time<ul><li>Rule out nonsensical programs<li>Catch common mistakes automatically<li>Check for security vulnerabilities</ul><li>Through better design<ul><li>Make certain kinds of errors impossible<li>Ensure programmer handles all cases</ul></ul><h2 id=billion-dollar-mistake>&ldquo;Billion-dollar mistake&rdquo;</h2><blockquote><p>I call it my billion-dollar mistake [&hellip;]\
-This has led to innumerable errors, vulnerabilities, and system crashes, which have probably caused a billion dollars of pain and damage.</blockquote><p>&hellip;<ul><li>Tony Hoare, on inventing null pointers/references</ul><h2 id=organizing-software>Organizing software</h2><ul><li>Software: most complex human-designed thing, ever<li>Not limited by laws of physics<ul><li>If you build a 1000 story skyscraper, it will collapse</ul><li>Limited by complexity<ul><li>If you produce enough code, you will run out of programmers to fix bugs</ul><li>PLs: first line of defense to manage complexity</ul><h2 id=there-s-a-lot-of-code>There&rsquo;s a lot of code</h2><p><a href=https://informationisbeautiful.net/visualizations/million-lines-of-code/>How much?</a><h1 id=a-theory-of-programming-languages>A theory of programming languages?</h1><h2 id=a-bunch-of-languages>A bunch of languages?</h2><ul><li>Many languages sort of &ldquo;look the same&rdquo;<li>Every real language has a ton of quirks<ul><li>Historical accidents<li>Specific constraints</ul><li>Essential features of PLs often hard to see</ul><h2 id=programming-paradigms>&ldquo;Programming Paradigms&rdquo;?</h2><ul><li>Popular way of categorizing PLs<ul><li>Objected-oriented (OO)<li>Functional (FP)<li>Imperative<li>Declarative</ul><li>Hard to pin down what these paradigms mean<ul><li>Most languages have features from all paradigms<li>A programming <em>style</em>, or a kind of language?</ul></ul><h2 id=yes-common-pl-features>Yes: Common PL features</h2><ul><li>Many PLs arrived at the same few concepts<ul><li>Examples: variables, functions, loops</ul><li>Analyze the essence of each feature<li>Understand how different features <em>interact</em></ul><h2 id=yes-formalize-languages>Yes: Formalize languages</h2><ul><li>Study toy models of programming languages<ul><li>Extremely simplified (not practical)<li>Focus on just a few, essential features</ul><li>Formally defined using <em>mathematics</em><ul><li>Clearest way to think about languages<li>Possible to prove things about languages<li>Provides a rigorous foundation to PL</ul></ul><h1 id=what-makes-a-language-popular>What makes a language popular?</h1><h2 id=ease-of-use-ergonomics>&ldquo;Ease of use/Ergonomics&rdquo;</h2><ul><li>Depends on things like&hellip;<ul><li>What PLs a programmer is familiar with<li>A programmer&rsquo;s mental model of programs<li>How &ldquo;readable&rdquo; programs are<li>Specific details (braces/parentheses, &hellip;)</ul><li>Hard to analyze scientifically</ul><h2 id=supporting-tools>Supporting tools</h2><ul><li>Development tools<ul><li>IDE, debugger, linter, code formatter, GUI designer</ul><li>Standard libraries and documentation<ul><li>Math, data structures, networking, DB, graphics, &hellip;</ul><li>&ldquo;Toolchain&rdquo;: compiler, package manager, runtime<li>Requires a lot of development effort ($$$)</ul><h2 id=social-factors>Social factors</h2><ul><li>Specific niche<ul><li>iOS apps, scientific computing</ul><li>Community<ul><li>Reddit, Stack Overflow, packages on Github</ul><li>Industrial influence<ul><li>&ldquo;Language for NVIDIA GPUs&rdquo;</ul><li>Reputation and stereotypes<ul><li>&ldquo;Real hackers use C&rdquo;</ul><li>Advertising and marketing<ul><li>Tech talks, conferences, charismatic leaders</ul></ul><h1 id=what-makes-a-language-good>What makes a language &ldquo;good&rdquo;?</h1><h2 id=specify-well-formed-programs>Specify well-formed programs</h2><ul><li>Language should describe:<ul><li>Which programs are well-formed<li>Which programs are not well-formed</ul></ul><blockquote><p><strong>Define what programs look like!</strong></blockquote><h2 id=describe-behavior-of-programs>Describe behavior of programs</h2><ul><li>Language should describe:<ul><li>How well-formed programs should behave<li>What are acceptable outputs, and what are not<li>Which programs are equivalent, and which are not</ul></ul><blockquote><p><strong>Define what programs should do!</strong></blockquote><p>Make it easy<h2 id=to-combine-programs>to combine programs</h2><ul><li>Should be possible to:<ul><li>Understand program by looking at individual parts<li>Put programs together without causing bugs</ul><li>Crucial for managing complexity<li>Makes language feel elegant and well-designed</ul><p>Make it hard<h2 id=to-write-bad-programs>to write bad programs</h2><ul><li>Make some errors impossible<ul><li>Null pointer, buffer overflows, forgotten cases, &hellip;</ul><li>Catch errors early, at compile time<ul><li>Better not to crash during rocket launch</ul><li>Warn when programmer does something dangerous</ul><h1 id=course-plan-and-goals>Course plan and goals</h1><h2 id=hands-on-experience>Hands-on experience</h2><ul><li>Use cutting-edge programming languages<li>First half: Haskell<ul><li>Functional programming<li>Advanced type system<li>Tight control of effects</ul><li>Second half: Rust<ul><li>Imperative programming<li>Neat memory-management mechanisms<li>Fearless concurrency</ul></ul><h2 id=explore-pl-features>Explore PL features</h2><ul><li>Type systems of all kinds<li>Typeclasses/traits<li>Effect systems<li>Mutable and immutable references<li>Lifetimes and memory ownership<li>&hellip;</ul><h2 id=formalize-languages>Formalize languages</h2><ul><li>Sprinkled throughout: core lectures<ul><li>Work with toy languages<li>Define program syntax and grammars<li>Set up operational semantics<li>Design type systems</ul><li>This part: on paper (no programming)</ul><h1 id=course-format>Course format</h1><h2 id=we-will-care-more-about>We will care more about:</h2><ul><li>Learning core Haskell and Rust<li>Specifying languages precisely<li>Specifying type systems precisely</ul><h2 id=we-will-care-less-about>We will care less about:</h2><ul><li>Implementations: compilers, JITs, runtimes, &hellip;<ul><li>Would require a whole course to cover properly</ul><li>Performance (time and space)<ul><li>Lots of tricks and techniques</ul><li>Formally proving stuff about programs<ul><li>Not actually very difficult, we just don&rsquo;t have time</ul><li>Experimental language features<ul><li>Very interesting, but we will steer clear</ul></ul><h2 id=details>Details</h2><ul><li>Assignments<ul><li>Both programming and written components<li>Roughly *two weeks* per assignment</ul><li>Midterm exam: in class<li>Final exam: take home<li>Communications: ask/answer questions on Piazza</ul><blockquote><p><a href=https://pages.cs.wisc.edu/~justhsu/teaching/current/cs538/>https://pages.cs.wisc.edu/~justhsu/teaching/current/cs538/</a></blockquote><h2 id=experiment-in-progress>Experiment in progress</h2><ul><li>This course was last taught (10 years ago)<li>*Everything* is new: format, lectures, HWs<li>Haskell and Rust both move fast<li>We will move fast too</ul><h2 id=bottom-line>Bottom line</h2><blockquote><p><strong>If something is not working, please let us know ASAP and we will try to fix it.</strong></blockquote><h1 id=compiler-errors-are-coming>Compiler errors are coming</h1><h2 id=strong-type-systems>Strong type systems</h2><ul><li>Compiler will complain, a lot<li>Languages have type inference<ul><li>Pro: usually don&rsquo;t have to write types<li>Con: harder time reporting error location</ul></ul><h2 id=some-advice>Some advice</h2><ul><li>Step 1: Don&rsquo;t panic!<li>Step 2: Take errors one at a time<ul><li>Fixing one error often fixes many others</ul><li>Step 3: Try to add type annotations<ul><li>Help compiler narrow down what type you mean</ul></ul><h1 id=functional-programming>Functional programming</h1><h2 id=a-brief-history>A brief history</h2><ul><li>Based on *lambda calculus* by Alonzo Church (1930s)<li>First real language: <strong>Lisp</strong> by John McCarthy (1950s)<li>Popularized by many, especially <a href=https://www.thocp.net/biographies/papers/backus_turingaward_lecture.pdf>John Backus</a><li><strong>ML</strong> developed by Robin Milner at Edinburgh (1973)<li><strong>Miranda</strong> and <strong>Haskell</strong> in late 1980s</ul><h2 id=building-block-functions>Building block: functions</h2><ul><li>A function has two components:<ul><li><em>Input</em>: arguments passed to function<li><em>Output</em>: result of running function</ul><li>Functions are <em>first class</em>: treated like any other value<ul><li>Can be passed into other functions<li>Can be returned from other functions</ul><li>Combine functions to build new functions</ul><h2 id=control-side-effects>Control &ldquo;side-effects&rdquo;</h2><ul><li>*Pure* functions fully described by input/output<ul><li>Always return same result on fixed input</ul><li>Avoid hidden <em>state</em><ul><li>Counters, local variables, etc.</ul><li>Carefully manage <em>side-effects</em><ul><li>Printing, reading a file, etc.</ul></ul><blockquote><p>Think about programs in isolation</blockquote><h1 id=a-taste-of-haskell>A Taste of Haskell</h1><h2 id=declaring-functions>Declaring functions</h2><pre><code class=language-haskell>double :: Int -&gt; Int
-double n = n + n
-</code></pre><ul><li>First line: optional <em>type signature</em>/<em>type annotation</em><ul><li>This one says: function from Int to Int</ul><li>Second line: <em>function definition</em>/<em>function body</em></ul><h2 id=calling-functions>Calling functions</h2><pre><code class=language-haskell>doublePlus :: Int -&gt; Int -&gt; Int
-doublePlus x y = double x + double y
--- SAME AS: doublePlus x y = (double x) + (double y)
--- BUT NOT: doublePlus x y = double(x) + double(y)
-</code></pre><ul><li>Type signature: <code>doublePlus</code> takes two inputs<li>Function calls: <code>double x</code> and <code>double y</code></ul><h2 id=case-analysis>Case analysis</h2><p>Standard if-then-else:<pre><code class=language-haskell>doubleIfBig :: Int -&gt; Int
-doubleIfBig n = if (n &gt; 100) then n + n else n
-</code></pre><p>Cleaner (or for more cases):<pre><code class=language-haskell>doubleIfBig' :: Int -&gt; Int
-doubleIfBig' n
-    | n &gt; 100   = n + n
-    | otherwise = n
-</code></pre><h2 id=working-with-lists>Working with lists</h2><p>This is a list of four integers:<pre><code class=language-haskell>myList :: [Int]
-myList = [1, 2, 3, 4]
-</code></pre><p>Lots of operations on lists:<pre><code class=language-haskell>myList'     = 0 : myList       -- [0, 1, 2, 3, 4]
-myFirstElem = head myList      -- 1
-myLength    = length myList    -- 4
-myBigList   = myList ++ myList -- [1, 2, 3, 4, 1, 2, 3, 4]
-doubleSmalls = [ 2 * x | x &lt;- myList, x &lt; 3 ] -- [2, 4]
-</code></pre><h2 id=pattern-matching>Pattern matching</h2><p>Define functions on list by case analysis:<pre><code class=language-haskell>listPrinter :: [Int] -&gt; String
-listPrinter []     = &quot;Empty list :(&quot;
-listPrinter (x:xs) = &quot;List: &quot; ++ (show x) ++ &quot; and &quot; ++ (show xs)
-</code></pre><p>Underscore <code>_</code> matches any value:<pre><code class=language-haskell>listPrinter' :: [Int] -&gt; String
-listPrinter' [] = &quot;Empty list :(&quot;
-listPrinter' _  = &quot;List with something :)&quot;
-</code></pre><h2 id=another-way-to-match>Another way to match</h2><p>Use a case expression:<pre><code class=language-haskell>listPrinter''' :: [Int] -&gt; String
-listPrinter''' l = case l of
-                   []     -&gt; &quot;Empty list :(&quot;
-                   (x:xs) -&gt; (show x) ++ &quot; and &quot; ++ (show xs)
-</code></pre><h2 id=declaring-variables>Declaring variables</h2><p>At the beginning&hellip;<pre><code class=language-haskell>tripleSecret :: Int
-tripleSecret = let secret = mySecretNum
-                   other  = myOtherNum
-               in 3 * secret + other
-</code></pre><p>&hellip;or at the end<pre><code class=language-haskell>tripleSecret' :: Int
-tripleSecret' = 3 * secret + other
-                where secret = mySecretNum
-                      other  = myOtherNum
-</code></pre><h2 id=recursion>Recursion</h2><p>Avoid loops and counters:<pre><code class=language-haskell>x = 0
-sum = 0
-while x &lt;= n:
-  sum = sum + x
-  x = x + 1
-</code></pre><p>Instead, use recursion:<pre><code class=language-haskell>sumUpTo 0 = 0
-sumUpTo n = n + sumUpTo (n - 1)
-</code></pre><a class=readmore href=/2019/1/22/cs538-01.html title="CS 538 Lecture 1">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>Math 541 Abstract Algebra Lecture Notes</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=https://rongyi.blog>L.E.R</a></span></span>
+<img src=https://i.imgur.com/SReUjKi.jpg alt></p><a class=readmore href=/2019/2/7/cs760-hw0.html title="CS 760 Assignment 0">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>Math 541 Abstract Algebra Lecture Notes</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=https://rongyi.blog>L.E.R</a></span></span>
 <span class="date updated"><a href=/2018/12/22/math541-notes.html title="December 22, 2018">December 22, 2018</a></span>
 <span class=category><a href=/category/Math541.html rel="category tag">Math541</a>;
 <a href=/category/Math.html rel="category tag">Math</a>;</span>
 <span class=category>Tags
 <a href=/tags/Math541.html rel="category tag">#Math541</a></span>
-<span class=comments><a href>Comments are closed</a></span></div></header><p>This is my handwritten notes exported from Goodnotes 4.<br>Math 541 is UW-Madison&rsquo;s Modern Algebra (Abstract Albebra) course. It was taught by Professor (I forgot his name). The textbook is the <em>Abstract Algebra</em> by I.N. Herstein.<h2 id=image-printout>Image Printout</h2><a class=readmore href=/2018/12/22/math541-notes.html title="Math 541 Abstract Algebra Lecture Notes">Read more</a></article></section><hr><ul class="default-wp-page clearfix"><li class=Next><a href=/posts/2.html>← Next</a></ul></div></div><div id=secondary class="widget-area col-md-4" role=complementary><aside id=toolbox class=widget><h4 class=widget-title>About this site</h4><div class=author_bio_message>This is my personal notes website.
+<span class=comments><a href>Comments are closed</a></span></div></header><p>This is my handwritten notes exported from Goodnotes 4.<br>Math 541 is UW-Madison&rsquo;s Modern Algebra (Abstract Albebra) course. It was taught by Professor (I forgot his name). The textbook is the <em>Abstract Algebra</em> by I.N. Herstein.<h2 id=image-printout>Image Printout</h2><a class=readmore href=/2018/12/22/math541-notes.html title="Math 541 Abstract Algebra Lecture Notes">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>Math 541 Abstract Algebra Homeworks</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=https://rongyi.blog>L.E.R</a></span></span>
+<span class="date updated"><a href=/2018/12/22/math541-homeworks.html title="December 22, 2018">December 22, 2018</a></span>
+<span class=category><a href=/category/Math541.html rel="category tag">Math541</a>;
+<a href=/category/Math.html rel="category tag">Math</a>;</span>
+<span class=category>Tags
+<a href=/tags/Math541.html rel="category tag">#Math541</a></span>
+<span class=comments><a href>Comments are closed</a></span></div></header><p>This is my handwritten homeworks collection for Math 541.<br>You are encouraged to use it as a reference, but please DO YOUR OWN HOMEWORKS!<h2 id=image-printout>Image Printout</h2><a class=readmore href=/2018/12/22/math541-homeworks.html title="Math 541 Abstract Algebra Homeworks">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>Asian American 160 Lecture Notes</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=https://rongyi.blog>L.E.R</a></span></span>
+<span class="date updated"><a href=/2018/12/11/aa160-notes.html title="December 11, 2018">December 11, 2018</a></span>
+<span class=category><a href=/category/AA160.html rel="category tag">AA160</a>;
+<a href=/category/Ethnics.html rel="category tag">Ethnics</a>;</span>
+<span class=category>Tags
+<a href=/tags/AA160.html rel="category tag">#AA160</a></span>
+<span class=comments><a href>Comments are closed</a></span></div></header><blockquote><p>This is my collection of notes for UW-Madison Asian American Studies 160<br>A.K.A History 160: Movement and Dislocation of Asian Americans<br>Notes for this course are no longer categorized by lecture number<br>And they are not guatanteed to be comprehensive, so&hellip;<br>Please don&rsquo;t stop taking your own notes.</blockquote><h2 id=reading-1-lecture-notes>Reading 1 Lecture Notes</h2><h5 id=immigration-is-only-part-of-u-s-history>Immigration is only part of U.S. History</h5><h5 id=immigration-policies-of-founding-differed-by-state>Immigration Policies of founding (Differed by State)</h5><ul><li>No Quakers<li>No Black<ul><li>Only Slaves</ul><li>No Catholics<li>No Criminals<li>No Poor People</ul><a class=readmore href=/2018/12/11/aa160-notes.html title="Asian American 160 Lecture Notes">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>Asian American 160 Lec 06</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=https://rongyi.blog>L.E.R</a></span></span>
+<span class="date updated"><a href=/2018/9/27/aa160-06.html title="September 27, 2018">September 27, 2018</a></span>
+<span class=category><a href=/category/AA160.html rel="category tag">AA160</a>;
+<a href=/category/Ethnics.html rel="category tag">Ethnics</a>;</span>
+<span class=category>Tags
+<a href=/tags/AA160.html rel="category tag">#AA160</a></span>
+<span class=comments><a href>Comments are closed</a></span></div></header><blockquote><p>I don&rsquo;t divide notes into lectures for this course anymore, please visit <a href=/2018/12/11/aa160-notes.html>Asian American 160 Course Notes</a> for an updated version</blockquote><h2 id=establishing-european-and-american-rule-in-hawaii>Establishing European and American Rule in Hawaii</h2><h4 id=constitutional-rights>Constitutional Rights</h4><h5 id=1887-bayonet-constitution>1887 Bayonet Constitution</h5><ul><li>Limited power of monarchy<li>Removed voting rights of Asians completely<li>Established income and property requirements to voting rights<li>Over 75% Native population did not qualify to vote<li>Well-to-do Europeans, Americans, and Hawaiians held greater control over policy making in Hawaii</ul><a class=readmore href=/2018/9/27/aa160-06.html title="Asian American 160 Lec 06">Read more</a></article></section><hr><ul class="default-wp-page clearfix"><li class=Next><a href=/posts/2.html>← Next</a></ul></div></div><div id=secondary class="widget-area col-md-4" role=complementary><aside id=toolbox class=widget><h4 class=widget-title>About this site</h4><div class=author_bio_message>This is my personal notes website.
 You are welcomed to use it.
-But do NOT stop taking your own notes!</div></aside><aside id=recent-posts-2 class="widget widget_recent_entries"><h4 class=widget-title>Recent</h4><ul><li><a href=/2019/2/7/cs760-hw0.html>CS 760 Assignment 0</a><li><a href=/2019/2/7/cs538-hw1.html>CS 538 Assignment 1</a><li><a href=/2019/1/24/cs538-02.html>CS 538 Lecture 2</a><li><a href=/2019/1/22/cs538-01.html>CS 538 Lecture 1</a><li><a href=/2018/12/22/math541-notes.html>Math 541 Abstract Algebra Lecture Notes</a><li><a href=/2018/12/22/math541-homeworks.html>Math 541 Abstract Algebra Homeworks</a><li><a href=/2018/12/11/aa160-notes.html>Asian American 160 Lecture Notes</a><li><a href=/2018/9/27/aa160-06.html>Asian American 160 Lec 06</a><li><a href=/2018/9/25/aa160-05.html>Asian American 160 Lec 05</a><li><a href=/2018/9/20/aa160-04.html>Asian American 160 Lec 04</a></ul></aside><aside id=categories-2 class="widget widget_categories"><h4 class=widget-title>Categories</h4><ul><li class=cat-item><a href=/category/AA160.html>AA160</a>(7)<li class=cat-item><a href=/category/Artificial%20Intelligence.html>Artificial Intelligence</a>(1)<li class=cat-item><a href=/category/Bio101.html>Bio101</a>(5)<li class=cat-item><a href=/category/Biology.html>Biology</a>(5)<li class=cat-item><a href=/category/CS.html>CS</a>(5)<li class=cat-item><a href=/category/CS252.html>CS252</a>(4)<li class=cat-item><a href=/category/CS354.html>CS354</a>(13)<li class=cat-item><a href=/category/CS367.html>CS367</a>(23)<li class=cat-item><a href=/category/CS368.html>CS368</a>(1)<li class=cat-item><a href=/category/CS537.html>CS537</a>(2)<li class=cat-item><a href=/category/CS538.html>CS538</a>(2)<li class=cat-item><a href=/category/CS540.html>CS540</a>(24)<li class=cat-item><a href=/category/CS559.html>CS559</a>(5)<li class=cat-item><a href=/category/CS760.html>CS760</a>(1)<li class=cat-item><a href=/category/Computer%20Science.html>Computer Science</a>(90)<li class=cat-item><a href=/category/Deep%20Learning.html>Deep Learning</a>(1)<li class=cat-item><a href=/category/ESL118.html>ESL118</a>(2)<li class=cat-item><a href=/category/Econ102.html>Econ102</a>(2)<li class=cat-item><a href=/category/Economics.html>Economics</a>(2)<li class=cat-item><a href=/category/Ethnics.html>Ethnics</a>(7)<li class=cat-item><a href=/category/Go.html>Go</a>(1)<li class=cat-item><a href=/category/Kines100.html>Kines100</a>(3)<li class=cat-item><a href=/category/Kinesiology.html>Kinesiology</a>(3)<li class=cat-item><a href=/category/Math.html>Math</a>(31)<li class=cat-item><a href=/category/Math240.html>Math240</a>(20)<li class=cat-item><a href=/category/Math320.html>Math320</a>(2)<li class=cat-item><a href=/category/Math431.html>Math431</a>(2)<li class=cat-item><a href=/category/Math519.html>Math519</a>(3)<li class=cat-item><a href=/category/Math521.html>Math521</a>(2)<li class=cat-item><a href=/category/Math541.html>Math541</a>(2)<li class=cat-item><a href=/category/NS132.html>NS132</a>(30)<li class=cat-item><a href=/category/Nutritional%20Science.html>Nutritional Science</a>(30)<li class=cat-item><a href=/category/Psych202.html>Psych202</a>(3)<li class=cat-item><a href=/category/Psychology.html>Psychology</a>(3)<li class=cat-item><a href=/category/Test.html>Test</a>(1)<li class=cat-item><a href=/category/Website.html>Website</a>(1)</ul></aside><aside id=tag_cloud-3 class="widget widget_tag_cloud"><h4 class=widget-title>Tags</h4><div class=tagcloud><a href=/tags/AA160.html class="tag-link tag-link-position" style=font-size:8pt>AA160</a>
+But do NOT stop taking your own notes!</div></aside><aside id=recent-posts-2 class="widget widget_recent_entries"><h4 class=widget-title>Recent</h4><ul><li><a href=/2019/2/7/cs760-hw0.html>CS 760 Assignment 0</a><li><a href=/2018/12/22/math541-notes.html>Math 541 Abstract Algebra Lecture Notes</a><li><a href=/2018/12/22/math541-homeworks.html>Math 541 Abstract Algebra Homeworks</a><li><a href=/2018/12/11/aa160-notes.html>Asian American 160 Lecture Notes</a><li><a href=/2018/9/27/aa160-06.html>Asian American 160 Lec 06</a><li><a href=/2018/9/25/aa160-05.html>Asian American 160 Lec 05</a><li><a href=/2018/9/20/aa160-04.html>Asian American 160 Lec 04</a><li><a href=/2018/9/18/aa160-03.html>Asian American 160 Lec 03</a><li><a href=/2018/9/13/aa160-02.html>Asian American 160 Lec 02</a><li><a href=/2018/9/11/aa160-01.html>Asian American 160 Lec 01</a></ul></aside><aside id=categories-2 class="widget widget_categories"><h4 class=widget-title>Categories</h4><ul><li class=cat-item><a href=/category/AA160.html>AA160</a>(7)<li class=cat-item><a href=/category/Artificial%20Intelligence.html>Artificial Intelligence</a>(1)<li class=cat-item><a href=/category/Bio101.html>Bio101</a>(5)<li class=cat-item><a href=/category/Biology.html>Biology</a>(5)<li class=cat-item><a href=/category/CS.html>CS</a>(2)<li class=cat-item><a href=/category/CS252.html>CS252</a>(4)<li class=cat-item><a href=/category/CS354.html>CS354</a>(13)<li class=cat-item><a href=/category/CS367.html>CS367</a>(23)<li class=cat-item><a href=/category/CS368.html>CS368</a>(1)<li class=cat-item><a href=/category/CS537.html>CS537</a>(1)<li class=cat-item><a href=/category/CS540.html>CS540</a>(24)<li class=cat-item><a href=/category/CS559.html>CS559</a>(5)<li class=cat-item><a href=/category/CS760.html>CS760</a>(1)<li class=cat-item><a href=/category/Computer%20Science.html>Computer Science</a>(90)<li class=cat-item><a href=/category/Deep%20Learning.html>Deep Learning</a>(1)<li class=cat-item><a href=/category/ESL118.html>ESL118</a>(2)<li class=cat-item><a href=/category/Econ102.html>Econ102</a>(2)<li class=cat-item><a href=/category/Economics.html>Economics</a>(2)<li class=cat-item><a href=/category/Ethnics.html>Ethnics</a>(7)<li class=cat-item><a href=/category/Go.html>Go</a>(1)<li class=cat-item><a href=/category/Kines100.html>Kines100</a>(3)<li class=cat-item><a href=/category/Kinesiology.html>Kinesiology</a>(3)<li class=cat-item><a href=/category/Math.html>Math</a>(31)<li class=cat-item><a href=/category/Math240.html>Math240</a>(20)<li class=cat-item><a href=/category/Math320.html>Math320</a>(2)<li class=cat-item><a href=/category/Math431.html>Math431</a>(2)<li class=cat-item><a href=/category/Math519.html>Math519</a>(3)<li class=cat-item><a href=/category/Math521.html>Math521</a>(2)<li class=cat-item><a href=/category/Math541.html>Math541</a>(2)<li class=cat-item><a href=/category/NS132.html>NS132</a>(30)<li class=cat-item><a href=/category/Nutritional%20Science.html>Nutritional Science</a>(30)<li class=cat-item><a href=/category/Psych202.html>Psych202</a>(3)<li class=cat-item><a href=/category/Psychology.html>Psychology</a>(3)<li class=cat-item><a href=/category/Test.html>Test</a>(1)<li class=cat-item><a href=/category/Website.html>Website</a>(1)</ul></aside><aside id=tag_cloud-3 class="widget widget_tag_cloud"><h4 class=widget-title>Tags</h4><div class=tagcloud><a href=/tags/AA160.html class="tag-link tag-link-position" style=font-size:8pt>AA160</a>
 <a href=/tags/Bio101.html class="tag-link tag-link-position" style=font-size:8pt>Bio101</a>
 <a href=/tags/CNNs.html class="tag-link tag-link-position" style=font-size:8pt>CNNs</a>
 <a href=/tags/CS252.html class="tag-link tag-link-position" style=font-size:8pt>CS252</a>
@@ -394,7 +49,6 @@ But do NOT stop taking your own notes!</div></aside><aside id=recent-posts-2 cla
 <a href=/tags/CS367.html class="tag-link tag-link-position" style=font-size:8pt>CS367</a>
 <a href=/tags/CS368.html class="tag-link tag-link-position" style=font-size:8pt>CS368</a>
 <a href=/tags/CS537.html class="tag-link tag-link-position" style=font-size:8pt>CS537</a>
-<a href=/tags/CS538.html class="tag-link tag-link-position" style=font-size:8pt>CS538</a>
 <a href=/tags/CS540.html class="tag-link tag-link-position" style=font-size:8pt>CS540</a>
 <a href=/tags/CS559.html class="tag-link tag-link-position" style=font-size:8pt>CS559</a>
 <a href=/tags/CS760.html class="tag-link tag-link-position" style=font-size:8pt>CS760</a>
