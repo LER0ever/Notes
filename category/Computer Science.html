@@ -1,4 +1,8 @@
-<!doctype html><head lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>Computer Science - L.E.R Wiz</title><meta name=format-detection content="telephone=no"><script>if(self!=top){top.location=this.location.href;}</script><meta name=keywords content="LER0ever,L.E.R,Yi Rong,blog,L.E.R Space,Lumos,Wiz"><meta name=description content="L.E.R Space, a magical personal website by Yi Rong"><link rel=icon href=/favicon.ico><link rel="shortcut icon" href=/favicon.ico><link rel=stylesheet id=font-style-css href=/css/fonts-google.css><link rel=stylesheet id=fancybox-css href=/css/jquery.fancybox-1.3.4.css><link rel=stylesheet id=cr-style-css href=/css/style.css><link rel=stylesheet href=/css/hljs/monokai-sublime.css><script src=/js/jquery.min.js></script><script src=/js/jquery-migrate.min.js></script><script type=text/x-mathjax-config>
+<!doctype html><head lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>Computer Science - L.E.R Wiz</title><meta name=format-detection content="telephone=no"><script>
+        if (self != top) {
+            top.location = this.location.href;
+        }
+    </script><meta name=keywords content="LER0ever,L.E.R,Yi Rong,blog,L.E.R Space,Lumos,Wiz"><meta name=description content="L.E.R Space, a magical personal website by Yi Rong"><link rel=icon href=/favicon.ico><link rel="shortcut icon" href=/favicon.ico><link rel=stylesheet id=font-style-css href=/css/fonts-google.css><link rel=stylesheet id=fancybox-css href=/css/jquery.fancybox-1.3.4.css><link rel=stylesheet id=cr-style-css href=/css/style.css><link rel=stylesheet href=/css/hljs/monokai-sublime.css><script src=/js/jquery.min.js></script><script src=/js/jquery-migrate.min.js></script><script type=text/x-mathjax-config>
         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
     </script><script async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><body class="home post-tag"><div id=wrapper><header id=branding><div class="wrapper clearfix"><div class="hgroup-wrap clearfix"><div class=hgroup-right><div class="social-profiles clearfix"><ul></ul></div><form class="searchform clearfix"><label class=assistive-text for=s>Search</label>
 <input id=searchbox placeholder=Search class="s field" name=s></form></div><div id=site-logo class=clearfix><h3 id=site-title><a href=https://notes.rongyi.blog title="L.E.R Wiz" rel=home>L.E.R Wiz</a></h3><h4 id=site-description>All Ways Forward @ UW-Madison</h4></div></div><nav id=access class=clearfix><ul class=root><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/>Home</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/academics>My Academics</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/sn>Contact Me</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=/archive>All Notes</a><li class="menu-item menu-item-type-post_type menu-item-object-page"><a href=https://rongyi.blog/about target=_blank>L.E.R Space</a><li class=default-menu><a href=https://rongyi.blog title=Navigation>Navigation</a></ul></nav></div></header><div id=main class="site-main wrapper clearfix"><div class=container><div id=primary class=no-margin-left><div id=content><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS540 Final Review</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=https://rongyi.blog>L.E.R</a></span></span>
@@ -461,28 +465,28 @@ free(p1); p1 = NULL;
 <a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;</span>
 <span class=category>Tags
 <a href=/tags/CS540.html rel="category tag">#CS540</a></span>
-<span class=comments><a href>Comments are closed</a></span></div></header><h2 id=alpha-beta-pruning>Alpha-Beta Pruning</h2><p>aloha: max&rsquo;s alternative<br>beta: min&rsquo;s alternativeo<ul><li>Initialization<ul><li>alpha: -INF, beta: INF</ul><li>keep two bounds along the path<ul><li>alpha: the best Max can do<li>beta: the best Min can do</ul></ul><pre><code>function Max-Value(s,α,β)
+<span class=comments><a href>Comments are closed</a></span></div></header><h2 id=alpha-beta-pruning>Alpha-Beta Pruning</h2><p>aloha: max&rsquo;s alternative<br>beta: min&rsquo;s alternativeo<ul><li>Initialization<ul><li>alpha: -INF, beta: INF</ul><li><p>keep two bounds along the path<ul><li>alpha: the best Max can do<li><p>beta: the best Min can do<pre><code>function Max-Value(s,α,β)
 inputs:
-    s: current state in game, Max about to play
-    α: best score (highest) for Max along path to s
-    β: best score (lowest) for Min along path to s
+s: current state in game, Max about to play
+α: best score (highest) for Max along path to s
+β: best score (lowest) for Min along path to s
 output:min(β , best-score (for Max) available from s)
-    if ( s is a terminal state )
-        then return ( terminal value of s )
-    else for each s’ in Succ(s)
-        α := max( α , Min-value(s’,α,β))
-        if ( α ≥ β ) then return β   /* alpha pruning */
-    return α
+if ( s is a terminal state )
+then return ( terminal value of s )
+else for each s’ in Succ(s)
+α := max( α , Min-value(s’,α,β))
+if ( α ≥ β ) then return β   /* alpha pruning */
+return α
 
 function Min-Value(s,α,β)
 output:max(α , best-score (for Min) available from s )
-    if ( s is a terminal state )
-        then return ( terminal value of s)
-    else for each s’ in Succs(s)
-        β := min( β , Max-value(s’,α,β))
-        if (α ≥ β ) then return α   /* beta pruning */
-    return β
-</code></pre><a class=readmore href=/2017/10/6/cs540-14.html title="CS540-14 Alpha-Beta Pruning">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS354-09 Allocator Design</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=https://rongyi.blog>L.E.R</a></span></span>
+if ( s is a terminal state )
+then return ( terminal value of s)
+else for each s’ in Succs(s)
+β := min( β , Max-value(s’,α,β))
+if (α ≥ β ) then return α   /* beta pruning */
+return β
+</code></pre></ul></ul><a class=readmore href=/2017/10/6/cs540-14.html title="CS540-14 Alpha-Beta Pruning">Read more</a></article></section><hr><section class="post type-post status-publish format-standard hentry category"><article class=clearfix><header class=entry-header><h2 class=entry-title>CS354-09 Allocator Design</h2><div class=entry-meta><span class="by-author vcard author"><span class=fn>By <a href=https://rongyi.blog>L.E.R</a></span></span>
 <span class="date updated"><a href=/2017/10/5/cs354-09.html title="October 5, 2017">October 5, 2017</a></span>
 <span class=category><a href=/category/CS354.html rel="category tag">CS354</a>;
 <a href=/category/Computer%20Science.html rel="category tag">Computer Science</a>;</span>
@@ -807,11 +811,11 @@ sizeof(operand);
 </code></pre><ul><li><p>IA32<ul><li>sizeof(double) = 8<li>sizeof(char) = 1<li>sizeof(int) = 4</ul><li><p>Write the cdoe to dynamically allocate an integer array named a having 5 elements<pre><code class=language-c>void someFunction() {
 int * a = malloc(5 * sizeof(int));
 }
-</code></pre><li><p>Draw a memory diagram showing array a</ul><p>Stack: $\block$ a<br>$\downarrow$<br>Heap: |?|?|?|?|?|<ul><li>Write the code that gives the element at indexes 0, 1 and 2 a values of 0, 11 and 22
+</code></pre><ul><li>Draw a memory diagram showing array a</ul><p>Stack: $\block$ a<br>$\downarrow$<br>Heap: |?|?|?|?|?|<ul><li>Write the code that gives the element at indexes 0, 1 and 2 a values of 0, 11 and 22
 by using pointer dereferencing, indexing, and address arithmetic respectively.</ul><pre><code class=language-c>*a=0;
 a[1]=11;
 *(a+2)=22;
-</code></pre><ul><li>Write the code that uses a pointer named p to give the element at index 3 a value of 33.</ul><pre><code class=language-c>int* p = a;
+</code></pre><li><p>Write the code that uses a pointer named p to give the element at index 3 a value of 33.</ul><pre><code class=language-c>int* p = a;
 *(p+3) = 33;
 </code></pre><ul><li>Write the code that frees array a’s heap memory.</ul><pre><code class=language-c>free(a);
 a = NULL;
@@ -842,10 +846,10 @@ int *badMakeIntArray(int size) {
 <code>m = malloc(rows * sizeof(int*))</code><li><p>Assign each element in the “array of arrays” it own row of integers
 (for each row allocate a 1D array of integers of size COLS).<pre><code class=language-c>for (int i=0; i&lt;ROWS; i++)
 m[i] = malloc(COLS*sizeof(int));
-</code></pre></ol><ul><li>What is the contents of m after the code below executes when ROWS is 2 and COLS is 4?</ul><pre><code class=language-c>for (int i = 0; i &lt; ROWS; i++) {
-    for (int j = 0; j &lt; COLS; j++)
-        m[i][j] = i + j;
-</code></pre><ul><li><p>Can the following be used to replace m[i][j]?<p>a.) * ( * (m+i)+j) <strong>Yes</strong><br>b.) * ( * m + COLS * i + j) <strong>No</strong> requires a continuous array<li><p>Write the code to free the heap allocated 2D array?</ul><pre><code class=language-c>for (int i =0; u&lt;ROWS; i++)
+</code></pre><ul><li>What is the contents of m after the code below executes when ROWS is 2 and COLS is 4?</ul><pre><code class=language-c>for (int i = 0; i &lt; ROWS; i++) {
+for (int j = 0; j &lt; COLS; j++)
+    m[i][j] = i + j;
+</code></pre></ol><ul><li><p>Can the following be used to replace m[i][j]?<p>a.) * ( * (m+i)+j) <strong>Yes</strong><br>b.) * ( * m + COLS * i + j) <strong>No</strong> requires a continuous array<li><p>Write the code to free the heap allocated 2D array?</ul><pre><code class=language-c>for (int i =0; u&lt;ROWS; i++)
     free(m[i]);
 free(m)
 </code></pre><h4 id=free-the-components-of-your-heap-memory>Free the components of your heap memory</h4><p><strong>In reverse order of their allocation</strong><h2 id=array-caveats>Array Caveats</h2><h4 id=arrays-have-no-bounds-checking>Arrays have no bounds checking!</h4><pre><code class=language-c>int a[5];
@@ -1557,21 +1561,21 @@ c(n, k) = 1 when k = 0 // empty set - no pick</ul><h4 id=recursive-case>Recursiv
     if (k==0 || k==n) return 1;
     return c(n-1, k-1) + c(n-1, k);
 }
-</code></pre><p>T(N) = n!/k!(n-k)!<h2 id=searching>Searching</h2><p><strong>N - Num of items in a list</strong><h4 id=linear-search>Linear Search</h4><ul><li>search one by one<li>the list can be unsorted</ul><pre><code>boolean LinSearch(ListADT L, int pos, E x) {
-    if (pos &gt;= L.size()) return false;
-    if (x.equals(L.get(pos))) return true;
-    return LinSearch(L, pos+1, x);
+</code></pre><p>T(N) = n!/k!(n-k)!<h2 id=searching>Searching</h2><p><strong>N - Num of items in a list</strong><h4 id=linear-search>Linear Search</h4><ul><li>search one by one<li><p>the list can be unsorted<pre><code>boolean LinSearch(ListADT L, int pos, E x) {
+if (pos &gt;= L.size()) return false;
+if (x.equals(L.get(pos))) return true;
+return LinSearch(L, pos+1, x);
 }
-</code></pre><h4 id=binary-search>Binary search</h4><ul><li>Divide &amp; Conquer<li>Require a sorted list</ul><pre><code>boolean BinSearch(L, first, last, x) {
-    if (first &gt; last) return false;
-    int center = (first + last)/2.
-    if (x.equals(L.get(center))) return true;
-    if (x.compareTo(L.get(center))) &lt; 0)
-        return BinSearch(L, first, center-1, x);
-    else
-        return BinSearch(L, center+1, last, x);
+</code></pre></ul><h4 id=binary-search>Binary search</h4><ul><li>Divide &amp; Conquer<li><p>Require a sorted list<pre><code>boolean BinSearch(L, first, last, x) {
+if (first &gt; last) return false;
+int center = (first + last)/2.
+if (x.equals(L.get(center))) return true;
+if (x.compareTo(L.get(center))) &lt; 0)
+    return BinSearch(L, first, center-1, x);
+else
+    return BinSearch(L, center+1, last, x);
 }
-</code></pre><h2 id=categorising-adt-part-1>Categorising ADT Part 1</h2><ul><li>Linear ADT<ul><li>list<li>stack<li>queue</ul></ul><p>bext.prev relationship, 1 processor, 1 successor<ul><li>Hierarchical<ul><li>Tree</ul></ul><p>parent/child relationship, 1 processor, multiple successor<ul><li>Graphical<ul><li>graph</ul></ul><p>pairwise relationship, 1 or more processors, 1 or more successors<h2 id=general-tree>General Tree</h2><ul><li>each node can store an arbitrary number of child</ul><p>Treenode
+</code></pre></ul><h2 id=categorising-adt-part-1>Categorising ADT Part 1</h2><ul><li>Linear ADT<ul><li>list<li>stack<li>queue</ul></ul><p>bext.prev relationship, 1 processor, 1 successor<ul><li>Hierarchical<ul><li>Tree</ul></ul><p>parent/child relationship, 1 processor, multiple successor<ul><li>Graphical<ul><li>graph</ul></ul><p>pairwise relationship, 1 or more processors, 1 or more successors<h2 id=general-tree>General Tree</h2><ul><li>each node can store an arbitrary number of child</ul><p>Treenode
 data -&gt;
 children -&gt; treenode<h2 id=determining-height-of-a-general-tree>Determining Height of a General Tree</h2><h4 id=writing-a-recursive-definition-for-the-height-of-a-general-tree>writing a recursive definition for the height of a general tree</h4><p>height(t) = 0 if t is null<br>height = 1 if t is a leaf<br>height = 1 + max(height of children)<pre><code class=language-java>public int height() {
     
@@ -1684,15 +1688,12 @@ for (i = 0; i &lt; N; i++) { //
 <a href=/category/CS367.html rel="category tag">CS367</a>;</span>
 <span class=category>Tags
 <a href=/tags/CS367.html rel="category tag">#CS367</a></span>
-<span class=comments><a href>Comments are closed</a></span></div></header><h3 id=java-for-each-loop>Java For-Each loop</h3><ul><li>Work on arrays and Iterable type
-```
-ListADT<string> list &hellip; //assume list of words
-Iterator<string> itr = list.iterator();
+<span class=comments><a href>Comments are closed</a></span></div></header><h3 id=java-for-each-loop>Java For-Each loop</h3><ul><li><p>Work on arrays and Iterable type<pre><code>ListADT&lt;String&gt; list ... //assume list of words
+Iterator&lt;String&gt; itr = list.iterator();
 while (itr.hasNext())
-System.out.println(itr.next());</ul><pre><code>
-### Problem - Implementing Multiple Intefaces
-```java
-public class LinkedList&lt;E&gt; implements ListADT&lt;E&gt;, Iterable&lt;E&gt; { ... }
+System.out.println(itr.next());
+
+</code></pre></ul><h3 id=problem-implementing-multiple-intefaces>Problem - Implementing Multiple Intefaces</h3><pre><code class=language-java>public class LinkedList&lt;E&gt; implements ListADT&lt;E&gt;, Iterable&lt;E&gt; { ... }
 
 ListADT&lt;String&gt; list = new LinkedList&lt;String&gt;();
 Iterator&lt;String&gt; itr = list.iterator(); //Fails! No iterator in ListADT
@@ -2181,4 +2182,10 @@ But do NOT stop taking your own notes!</div></aside><aside id=recent-posts-2 cla
 <a href=/tags/Test.html class="tag-link tag-link-position" style=font-size:8pt>Test</a></div></aside></div></div></div></div><footer id=colophon class=clearfix><div class=wrapper><div id=site-generator class=clearfix><div class=copyright><a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>CC BY-NC-ND 4.0</a> |
 <a href=/feed.xml>Feed</a> |
 <a href=/sitemap.xml>Sitemap</a></div></div><div id=site-generator class=clearfix><div class=copyright>Copyright © 2016-2018 <a href=https://rongyi.blog/ title="L.E.R Wiz"><span>L.E.R Wiz</span></a> |
-Powered by: <a href=/portus.html target=_blank title=Lumos><span>Portus Engine 1.3.7</span></a></div></div></div><script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create','UA-81922310-2','auto');ga('send','pageview');</script><script async src=//www.google-analytics.com/analytics.js></script><script>_atrk_opts={atrk_acct:"JXtbq1Fx9f207i",domain:"rongyi.blog",dynamic:true};(function(){var as=document.createElement('script');as.type='text/javascript';as.async=true;as.src="https://certify-js.alexametrics.com/atrk.js";var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as,s);})();</script><noscript><img src="https://certify.alexametrics.com/atrk.gif?account=JXtbq1Fx9f207i" style=display:none height=1 width=1 alt></noscript><div class=back-to-top style=display:none><a href=#branding>Back to Top</a></div></footer><div class=search-tool style=position:fixed;top:0;bottom:0;left:0;right:0;opacity:.95;background-color:#111;z-index:9999;display:none><input class="form-control search-content" id=search-content style=position:fixed;top:60px placeholder="文章标题 分类 标签 (L.E.R Wiz 站内搜索)"><div style=position:fixed;top:16px;right:16px><img src=/search/img/close.png id=close-btn></div></div><link rel=stylesheet href=/search/css/search.css><script src=/search/js/bootstrap3-typeahead.min.js></script><script src=/search/js/search.js></script><script src=/js/backtotop.js></script><script src=/js/tinynav.js></script><script src=/js/jquery.cycle.all.min.js></script><script>var cleanretina_slider_value={"transition_effect":"fade","transition_delay":"4000","transition_duration":"1000"};</script><script src=/js/cleanretina-slider-setting.js></script><script src=/js/jquery.fancybox-1.3.4.pack.js></script><script src=/js/cleanretina-custom-fancybox-script.js></script><script src=/js/highlight.pack.js></script><script src=/js/copynotice.js></script><script>hljs.initHighlightingOnLoad();</script>
+Powered by: <a href=/portus.html target=_blank title=Lumos><span>Portus Engine 1.3.8</span></a></div></div></div><script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-81922310-2', 'auto');
+    ga('send', 'pageview');
+    </script><script async src=//www.google-analytics.com/analytics.js></script><script>_atrk_opts={atrk_acct:"JXtbq1Fx9f207i",domain:"rongyi.blog",dynamic:true};(function(){var as=document.createElement('script');as.type='text/javascript';as.async=true;as.src="https://certify-js.alexametrics.com/atrk.js";var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as,s);})();</script><noscript><img src="https://certify.alexametrics.com/atrk.gif?account=JXtbq1Fx9f207i" style=display:none height=1 width=1 alt></noscript><div class=back-to-top style=display:none><a href=#branding>Back to Top</a></div></footer><div class=search-tool style=position:fixed;top:0;bottom:0;left:0;right:0;opacity:.95;background-color:#111;z-index:9999;display:none><input class="form-control search-content" id=search-content style=position:fixed;top:60px placeholder="文章标题 分类 标签 (L.E.R Wiz 站内搜索)"><div style=position:fixed;top:16px;right:16px><img src=/search/img/close.png id=close-btn></div></div><link rel=stylesheet href=/search/css/search.css><script src=/search/js/bootstrap3-typeahead.min.js></script><script src=/search/js/search.js></script><script src=/js/backtotop.js></script><script src=/js/tinynav.js></script><script src=/js/jquery.cycle.all.min.js></script><script>var cleanretina_slider_value={"transition_effect":"fade","transition_delay":"4000","transition_duration":"1000"};</script><script src=/js/cleanretina-slider-setting.js></script><script src=/js/jquery.fancybox-1.3.4.pack.js></script><script src=/js/cleanretina-custom-fancybox-script.js></script><script src=/js/highlight.pack.js></script><script src=/js/copynotice.js></script><script>
+    hljs.initHighlightingOnLoad();
+</script>
